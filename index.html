@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FRIGOPAC - Más de 20 años de excelencia en refrigeración industrial. Diseño, instalación y mantenimiento de cuartos fríos, bodegas refrigeradas y túneles de congelación en Colombia.">
+    <meta name="keywords" content="refrigeración industrial, cuartos fríos, bodegas refrigeradas, túneles de congelación, Colombia, Bogotá">
+    <meta name="author" content="FRIGOPAC SAS">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="FRIGOPAC - Ingeniería del Frío">
+    <meta property="og:description" content="Más de 20 años diseñando soluciones frigoríficas para la industria colombiana.">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:url" content="https://frigopac.com">
+    <meta property="og:type" content="website">
+    
+    <title>FRIGOPAC | Ingeniería del Frío</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <!-- ============================================
+         HEADER / NAVEGACIÓN
+    ============================================= -->
+    <header class="header" id="header">
+        <div class="header__container">
+            <!-- Logo -->
+            <a href="index.html" class="header__logo">
+                <span class="logo-text">FRIGOPAC</span>
+            </a>
+            
+            <!-- Navegación Desktop -->
+            <nav class="header__nav" id="nav">
+                <ul class="header__menu">
+                    <li><a href="index.html" class="header__link active">Inicio</a></li>
+                    <li><a href="nosotros.html" class="header__link">Nosotros</a></li>
+                    <li><a href="servicios.html" class="header__link">Servicios</a></li>
+                    <li><a href="proyectos.html" class="header__link">Proyectos</a></li>
+                    <li><a href="contacto.html" class="header__link">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Botón CTA Header -->
+            <a href="contacto.html" class="header__cta">Cotizar</a>
+            
+            <!-- Hamburguesa Mobile -->
+            <button class="header__toggle" id="navToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Menú Mobile Fullscreen -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu__nav">
+            <ul class="mobile-menu__list">
+                <li><a href="index.html" class="mobile-menu__link">Inicio</a></li>
+                <li><a href="nosotros.html" class="mobile-menu__link">Nosotros</a></li>
+                <li><a href="servicios.html" class="mobile-menu__link">Servicios</a></li>
+                <li><a href="proyectos.html" class="mobile-menu__link">Proyectos</a></li>
+                <li><a href="contacto.html" class="mobile-menu__link">Contacto</a></li>
+            </ul>
+            <a href="contacto.html" class="mobile-menu__cta">Solicitar Cotización</a>
+        </nav>
+    </div>
+
+    <!-- ============================================
+         HERO SECTION
+    ============================================= -->
+    <section class="hero" id="hero">
+        <!-- Video o Imagen de Fondo -->
+        <div class="hero__background">
+            <div class="hero__overlay"></div>
+            <!-- Si tienes video, descomenta esto:
+            <video autoplay muted loop playsinline class="hero__video">
+                <source src="assets/videos/hero-video.mp4" type="video/mp4">
+            </video>
+            -->
+            <img src="assets/images/hero-bg.jpg" alt="Instalación de refrigeración industrial" class="hero__image">
+        </div>
+        
+        <!-- Contenido del Hero -->
+        <div class="hero__content">
+            <p class="hero__badge reveal-fade">Más de 20 años de excelencia en refrigeración industrial</p>
+            <h1 class="hero__title reveal-fade">Ingeniería del Frío</h1>
+            <p class="hero__subtitle reveal-fade">Diseñamos, instalamos y mantenemos soluciones frigoríficas que impulsan la industria colombiana.</p>
+            
+            <div class="hero__buttons reveal-fade">
+                <a href="servicios.html" class="btn btn--primary">Conocer Servicios</a>
+                <a href="contacto.html" class="btn btn--outline">Contactar</a>
+            </div>
+        </div>
+        
+        <!-- Indicador de Scroll -->
+        <div class="hero__scroll">
+            <span class="hero__scroll-text">Scroll</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN: CIFRAS DE IMPACTO
+    ============================================= -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats__grid">
+                <div class="stats__item reveal-fade">
+                    <span class="stats__number" data-target="20">0</span>
+                    <span class="stats__plus">+</span>
+                    <p class="stats__label">Años de Trayectoria</p>
+                </div>
+                <div class="stats__item reveal-fade">
+                    <span class="stats__number" data-target="150">0</span>
+                    <span class="stats__plus">+</span>
+                    <p class="stats__label">Proyectos Ejecutados</p>
+                </div>
+                <div class="stats__item reveal-fade">
+                    <span class="stats__number" data-target="100">0</span>
+                    <span class="stats__plus">%</span>
+                    <p class="stats__label">Cobertura Nacional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN: PROPUESTA DE VALOR
+    ============================================= -->
+    <section class="about-preview" id="about-preview">
+        <div class="container">
+            <div class="about-preview__grid">
+                <div class="about-preview__image reveal-slide-right">
+                    <img src="assets/images/cuarto-frio-interior.jpg" alt="Interior de cuarto frío FRIGOPAC">
+                </div>
+                <div class="about-preview__content reveal-slide-left">
+                    <h2 class="section-title">Precisión en cada grado</h2>
+                    <p class="about-preview__text">
+                        En FRIGOPAC no construimos cuartos fríos. Diseñamos soluciones de ingeniería que garantizan la integridad de su cadena de frío, optimizan sus recursos y elevan sus estándares de producción.
+                    </p>
+                    <p class="about-preview__text">
+                        Cada proyecto es único. Cada instalación, impecable.
+                    </p>
+                    <a href="nosotros.html" class="link-arrow">
+                        Conocer nuestra historia
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN: SERVICIOS
+    ============================================= -->
+    <section class="services" id="services">
+        <div class="services__header">
+            <div class="container">
+                <h2 class="section-title section-title--light reveal-fade">Nuestras Soluciones</h2>
+            </div>
+        </div>
+        
+        <div class="services__grid">
+            <a href="servicios.html#cuartos-frios" class="services__card reveal-fade">
+                <div class="services__card-image">
+                    <img src="assets/images/cuarto-frio.jpg" alt="Cuartos Fríos">
+                </div>
+                <div class="services__card-overlay"></div>
+                <h3 class="services__card-title">Cuartos Fríos</h3>
+                <div class="services__card-line"></div>
+            </a>
+            
+            <a href="servicios.html#bodegas" class="services__card reveal-fade">
+                <div class="services__card-image">
+                    <img src="assets/images/bodega.jpg" alt="Bodegas Refrigeradas">
+                </div>
+                <div class="services__card-overlay"></div>
+                <h3 class="services__card-title">Bodegas Refrigeradas</h3>
+                <div class="services__card-line"></div>
+            </a>
+            
+            <a href="servicios.html#salas-proceso" class="services__card reveal-fade">
+                <div class="services__card-image">
+                    <img src="assets/images/sala-proceso.jpg" alt="Salas de Proceso">
+                </div>
+                <div class="services__card-overlay"></div>
+                <h3 class="services__card-title">Salas de Proceso</h3>
+                <div class="services__card-line"></div>
+            </a>
+            
+            <a href="servicios.html#tuneles" class="services__card reveal-fade">
+                <div class="services__card-image">
+                    <img src="assets/images/tunel.jpg" alt="Túneles de Congelación">
+                </div>
+                <div class="services__card-overlay"></div>
+                <h3 class="services__card-title">Túneles de Congelación</h3>
+                <div class="services__card-line"></div>
+            </a>
+            
+            <a href="servicios.html#puertas" class="services__card reveal-fade">
+                <div class="services__card-image">
+                    <img src="assets/images/puertas.jpg" alt="Puertas y Muelles">
+                </div>
+                <div class="services__card-overlay"></div>
+                <h3 class="services__card-title">Puertas y Muelles</h3>
+                <div class="services__card-line"></div>
+            </a>
+            
+            <a href="servicios.html#mantenimiento" class="services__card reveal-fade">
+                <div class="services__card-image">
+                    <img src="assets/images/mantenimiento.jpg" alt="Mantenimiento">
+                </div>
+                <div class="services__card-overlay"></div>
+                <h3 class="services__card-title">Mantenimiento</h3>
+                <div class="services__card-line"></div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN: PROYECTOS DESTACADOS
+    ============================================= -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="projects__header reveal-fade">
+                <h2 class="section-title">Proyectos que hablan por nosotros</h2>
+                <a href="proyectos.html" class="link-arrow">
+                    Ver todos los proyectos
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="projects__grid">
+                <div class="projects__item projects__item--large reveal-fade">
+                    <img src="assets/images/proyecto-1.jpg" alt="Proyecto KFC">
+                    <div class="projects__item-overlay">
+                        <span class="projects__item-category">Cuartos Fríos</span>
+                        <h3 class="projects__item-title">KFC Colombia</h3>
+                    </div>
+                </div>
+                <div class="projects__item reveal-fade">
+                    <img src="assets/images/proyecto-2.jpg" alt="Proyecto Burger King">
+                    <div class="projects__item-overlay">
+                        <span class="projects__item-category">Refrigeración Comercial</span>
+                        <h3 class="projects__item-title">Burger King</h3>
+                    </div>
+                </div>
+                <div class="projects__item reveal-fade">
+                    <img src="assets/images/proyecto-3.jpg" alt="Proyecto Freshmar">
+                    <div class="projects__item-overlay">
+                        <span class="projects__item-category">Túneles de Congelación</span>
+                        <h3 class="projects__item-title">Freshmar</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logos de Clientes -->
+            <div class="clients reveal-fade">
+                <p class="clients__title">Confían en nosotros</p>
+                <div class="clients__logos">
+                    <div class="clients__logo">
+                        <img src="assets/images/logo-kfc.png" alt="KFC">
+                    </div>
+                    <div class="clients__logo">
+                        <img src="assets/images/logo-burgerking.png" alt="Burger King">
+                    </div>
+                    <div class="clients__logo">
+                        <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice">
+                    </div>
+                    <div class="clients__logo">
+                        <img src="assets/images/logo-freshmar.png" alt="Freshmar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN: TESTIMONIO
+    ============================================= -->
+    <section class="testimonial" id="testimonial">
+        <div class="testimonial__background">
+            <img src="assets/images/testimonial-bg.jpg" alt="Instalación FRIGOPAC">
+            <div class="testimonial__overlay"></div>
+        </div>
+        <div class="container">
+            <div class="testimonial__content reveal-fade">
+                <svg class="testimonial__icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 8C10 9.10457 9.10457 10 8 10C6.89543 10 6 9.10457 6 8C6 6.89543 6.89543 6 8 6C9.10457 6 10 6.89543 10 8Z" fill="currentColor"/>
+                    <path d="M10 8C10 11.3137 7.31371 14 4 14V18C9.52285 18 14 13.5228 14 8V4H10V8Z" fill="currentColor"/>
+                    <path d="M24 8C24 9.10457 23.1046 10 22 10C20.8954 10 20 9.10457 20 8C20 6.89543 20.8954 6 22 6C23.1046 6 24 6.89543 24 8Z" fill="currentColor"/>
+                    <path d="M24 8C24 11.3137 21.3137 14 18 14V18C23.5228 18 28 13.5228 28 8V4H24V8Z" fill="currentColor"/>
+                </svg>
+                <blockquote class="testimonial__quote">
+                    FRIGOPAC transformó nuestra operación. La calidad de la instalación y el profesionalismo de su equipo superó todas nuestras expectativas.
+                </blockquote>
+                <cite class="testimonial__author">
+                    <span class="testimonial__author-name">Director de Operaciones</span>
+                    <span class="testimonial__author-company">Cliente Industrial</span>
+                </cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN: CTA FINAL
+    ============================================= -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <div class="cta__content reveal-fade">
+                <h2 class="cta__title">¿Listo para elevar su operación?</h2>
+                <p class="cta__subtitle">Conversemos sobre su próximo proyecto frigorífico.</p>
+                <a href="contacto.html" class="btn btn--primary btn--large">Solicitar Cotización</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+    ============================================= -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <!-- Columna 1: Logo y descripción -->
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <span class="logo-text">FRIGOPAC</span>
+                    </a>
+                    <p class="footer__description">
+                        Ingeniería del frío con más de 20 años de excelencia. Diseño, instalación y mantenimiento de soluciones frigoríficas en toda Colombia.
+                    </p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/frigopac_sas" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="18" cy="6" r="1" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Columna 2: Navegación -->
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navegación</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="proyectos.html">Proyectos</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 3: Servicios -->
+                <div class="footer__nav">
+                    <h4 class="footer__title">Servicios</h4>
+                    <ul class="footer__links">
+                        <li><a href="servicios.html#cuartos-frios">Cuartos Fríos</a></li>
+                        <li><a href="servicios.html#bodegas">Bodegas Refrigeradas</a></li>
+                        <li><a href="servicios.html#salas-proceso">Salas de Proceso</a></li>
+                        <li><a href="servicios.html#tuneles">Túneles de Congelación</a></li>
+                        <li><a href="servicios.html#mantenimiento">Mantenimiento</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 4: Contacto -->
+                <div class="footer__contact">
+                    <h4 class="footer__title">Contacto</h4>
+                    <ul class="footer__contact-list">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 16.92V19.92C22 20.48 21.56 20.93 21 20.99C20.17 21.08 19.35 21.12 18.5 21.12C9.94 21.12 3 14.18 3 5.62C3 4.77 3.04 3.95 3.13 3.12C3.19 2.56 3.64 2.12 4.2 2.12H7.2C7.71 2.12 8.14 2.49 8.2 3C8.3 3.92 8.5 4.81 8.79 5.65C8.94 6.11 8.81 6.62 8.45 6.95L6.89 8.51C8.51 11.45 10.94 13.87 13.88 15.49L15.44 13.93C15.77 13.6 16.28 13.47 16.74 13.62C17.58 13.91 18.47 14.11 19.39 14.21C19.9 14.27 20.27 14.7 20.27 15.21V18.21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <a href="tel:+573103330737">+57 310 333 0737</a>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <a href="mailto:gerenciafrigopac@gmail.com">gerenciafrigopac@gmail.com</a>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Bogotá, Colombia</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2024 FRIGOPAC SAS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         BOTÓN FLOTANTE DE WHATSAPP
+    ============================================= -->
+    <a href="https://wa.me/573103330737?text=Hola,%20estoy%20interesado%20en%20los%20servicios%20de%20FRIGOPAC.%20%C2%BFPodr%C3%ADan%20asesorarme?" 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener"
+       aria-label="Contactar por WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="whatsapp-float__text">¿Necesita asesoría?</span>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
