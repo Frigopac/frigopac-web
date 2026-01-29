@@ -63,40 +63,48 @@ document.addEventListener('DOMContentLoaded', function() {
     revealElements.forEach(el => revealObserver.observe(el));
     
     // ============================================
-    // 4. STATS COUNTER ANIMATION
+    // 4. STATS COUNTER ANIMATION (ARREGLADO)
     // ============================================
     const statNumbers = document.querySelectorAll('.stats__number');
+    let hasCounterAnimated = false;
     
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = entry.target;
-                const finalValue = parseInt(target.getAttribute('data-target'));
-                animateCounter(target, finalValue);
-                counterObserver.unobserve(target);
+            if (entry.isIntersecting && !hasCounterAnimated) {
+                hasCounterAnimated = true;
+                
+                statNumbers.forEach(num => {
+                    const target = parseInt(num.getAttribute('data-target'));
+                    animateCounter(num, target);
+                });
             }
         });
     }, {
         threshold: 0.5
     });
     
-    statNumbers.forEach(num => counterObserver.observe(num));
+    const statsSection = document.getElementById('stats');
+    if (statsSection) {
+        counterObserver.observe(statsSection);
+    }
     
     function animateCounter(element, target) {
         let current = 0;
-        const increment = target / 60;
-        const duration = 2000;
-        const stepTime = duration / 60;
+        const duration = 2000; // 2 segundos
+        const increment = target / (duration / 16); // 60 FPS
         
-        const timer = setInterval(() => {
+        const updateCounter = () => {
             current += increment;
-            if (current >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
+            
+            if (current < target) {
                 element.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target;
             }
-        }, stepTime);
+        };
+        
+        updateCounter();
     }
     
     // ============================================
@@ -151,53 +159,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if 
-                       // ============================================
-// ANIMACIÓN DE NÚMEROS (STATS COUNTER)
-// ============================================
-
-function animateCounter() {
-    const counters = document.querySelectorAll('.stats__number');
-    
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        const duration = 2000; // 2 segundos
-        const increment = target / (duration / 16); // 60 FPS
-        let current = 0;
-        
-        const updateCounter = () => {
-            current += increment;
-            
-            if (current < target) {
-                counter.textContent = Math.floor(current);
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target;
+                    if (link.getAttribute('href') === `#${sectionId}` || 
+                        (sectionId === 'hero' && link.getAttribute('href') === 'index.html')) {
+                        link.classList.add('active');
+                    }
+                });
             }
-        };
-        
-        updateCounter();
-    });
-}
-
-// ============================================
-// INTERSECTION OBSERVER (detecta cuando aparece en pantalla)
-// ============================================
-
-const statsSection = document.getElementById('stats');
-let hasAnimated = false;
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !hasAnimated) {
-            animateCounter();
-            hasAnimated = true;
-        }
-    });
-}, {
-    threshold: 0.5 // Se activa cuando el 50% de la sección es visible
+        });
+    }
+    
+    window.addEventListener('scroll', setActiveLink);
+    
 });
-
-if (statsSection) {
-    observer.observe(statsSection);
-}
