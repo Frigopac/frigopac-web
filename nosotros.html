@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce a FRIGOPAC - Más de 20 años de experiencia en refrigeración industrial en Colombia.">
+    <title>Nosotros | FRIGOPAC</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        /* Estilos específicos para Nosotros */
+        .page-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .page-hero__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+        
+        .page-hero__background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .page-hero__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(11, 29, 58, 0.9) 0%, rgba(11, 29, 58, 0.7) 100%);
+        }
+        
+        .page-hero__content {
+            text-align: center;
+            color: var(--color-white);
+            padding: var(--space-lg);
+        }
+        
+        .page-hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(var(--text-4xl), 8vw, var(--text-6xl));
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        
+        .page-hero__subtitle {
+            font-size: var(--text-lg);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-section {
+            padding: var(--space-4xl) 0;
+        }
+        
+        .about-section--gray {
+            background-color: var(--color-gray-100);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+        
+        @media (min-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .about-grid--reverse {
+                direction: rtl;
+            }
+            
+            .about-grid--reverse > * {
+                direction: ltr;
+            }
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+        
+        .about-content h2 {
+            font-family: var(--font-heading);
+            font-size: var(--text-4xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .about-content p {
+            font-size: var(--text-lg);
+            color: var(--color-gray-600);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: var(--space-xl);
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .value-card__icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--space-md);
+            background: var(--color-secondary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+        }
+        
+        .value-card__title {
+            font-family: var(--font-accent);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .value-card__text {
+            color: var(--color-gray-600);
+            font-size: var(--text-sm);
+        }
+        
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xl);
+        }
+        
+        @media (min-width: 768px) {
+            .mission-vision {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .mission-card {
+            padding: var(--space-2xl);
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-radius: var(--radius-md);
+        }
+        
+        .mission-card--light {
+            background: var(--color-white);
+            color: var(--color-gray-800);
+            border: 1px solid var(--color-gray-200);
+        }
+        
+        .mission-card h3 {
+            font-family: var(--font-heading);
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-md);
+        }
+        
+        .mission-card p {
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="header scrolled" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <span class="logo-text" style="color: var(--color-primary);">FRIGOPAC</span>
+            </a>
+            
+            <nav class="header__nav" id="nav">
+                <ul class="header__menu">
+                    <li><a href="index.html" class="header__link" style="color: var(--color-primary);">Inicio</a></li>
+                    <li><a href="nosotros.html" class="header__link active" style="color: var(--color-primary);">Nosotros</a></li>
+                    <li><a href="servicios.html" class="header__link" style="color: var(--color-primary);">Servicios</a></li>
+                    <li><a href="proyectos.html" class="header__link" style="color: var(--color-primary);">Proyectos</a></li>
+                    <li><a href="contacto.html" class="header__link" style="color: var(--color-primary);">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <a href="contacto.html" class="header__cta" style="display: inline-flex; opacity: 1; transform: none;">Cotizar</a>
+            
+            <button class="header__toggle" id="navToggle" aria-label="Abrir menú">
+                <span style="background-color: var(--color-primary);"></span>
+                <span style="background-color: var(--color-primary);"></span>
+                <span style="background-color: var(--color-primary);"></span>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu__nav">
+            <ul class="mobile-menu__list">
+                <li><a href="index.html" class="mobile-menu__link">Inicio</a></li>
+                <li><a href="nosotros.html" class="mobile-menu__link">Nosotros</a></li>
+                <li><a href="servicios.html" class="mobile-menu__link">Servicios</a></li>
+                <li><a href="proyectos.html" class="mobile-menu__link">Proyectos</a></li>
+                <li><a href="contacto.html" class="mobile-menu__link">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero__background">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80" alt="FRIGOPAC Nosotros">
+            <div class="page-hero__overlay"></div>
+        </div>
+        <div class="page-hero__content">
+            <h1 class="page-hero__title reveal-fade">Quiénes Somos</h1>
+            <p class="page-hero__subtitle reveal-fade">Más de dos décadas construyendo la cadena de frío de Colombia</p>
+        </div>
+    </section>
+
+    <!-- NUESTRA HISTORIA -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal-slide-right">
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" alt="Historia FRIGOPAC">
+                </div>
+                <div class="about-content reveal-slide-left">
+                    <h2>Nuestra Historia</h2>
+                    <p>
+                        FRIGOPAC SAS nació hace más de 20 años con una visión clara: convertirnos en el aliado estratégico de la industria colombiana en soluciones de refrigeración.
+                    </p>
+                    <p>
+                        Desde nuestros inicios, nos hemos caracterizado por la excelencia técnica, la innovación constante y el compromiso absoluto con la satisfacción de nuestros clientes.
+                    </p>
+                    <p>
+                        Hoy, con más de 150 proyectos ejecutados y presencia en todo el territorio nacional, seguimos fieles a nuestra esencia: ofrecer ingeniería de precisión para la cadena de frío.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISIÓN Y VISIÓN -->
+    <section class="about-section about-section--gray">
+        <div class="container">
+            <div class="mission-vision">
+                <div class="mission-card reveal-fade">
+                    <h3>Misión</h3>
+                    <p>
+                        Suministrar, instalar y mantener soluciones frigoríficas con los más altos estándares de calidad, promoviendo el bienestar de nuestro equipo y la satisfacción total de nuestros clientes.
+                    </p>
+                </div>
+                <div class="mission-card mission-card--light reveal-fade">
+                    <h3>Visión</h3>
+                    <p>
+                        Ser la organización líder en proyectos frigoríficos a nivel nacional, reconocidos por nuestra innovación, calidad y compromiso con el medio ambiente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALORES -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: var(--space-lg);">Nuestros Valores</h2>
+            <div class="values-grid">
+                <div class="value-card reveal-fade">
+                    <div class="value-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <h4 class="value-card__title">Excelencia</h4>
+                    <p class="value-card__text">Buscamos la perfección en cada proyecto que realizamos.</p>
+                </div>
+                
+                <div class="value-card reveal-fade">
+                    <div class="value-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93"/>
+                        </svg>
+                    </div>
+                    <h4 class="value-card__title">Innovación</h4>
+                    <p class="value-card__text">Implementamos las últimas tecnologías del sector.</p>
+                </div>
+                
+                <div class="value-card reveal-fade">
+                    <div class="value-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21V19C17 16.79 15.21 15 13 15H5C2.79 15 1 16.79 1 19V21M23 21V19C23 17.13 21.81 15.56 20.12 15.13M16 3.13C17.79 3.57 19 5.14 19 7C19 8.86 17.79 10.43 16 10.87M9 11C11.21 11 13 9.21 13 7C13 4.79 11.21 3 9 3C6.79 3 5 4.79 5 7C5 9.21 6.79 11 9 11Z"/>
+                        </svg>
+                    </div>
+                    <h4 class="value-card__title">Compromiso</h4>
+                    <p class="value-card__text">Cumplimos lo que prometemos, siempre.</p>
+                </div>
+                
+                <div class="value-card reveal-fade">
+                    <div class="value-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12L11 14L15 10M21 12C21 16.97 17.97 21 12 21C6.03 21 3 16.97 3 12C3 7.03 6.03 3 12 3C17.97 3 21 7.03 21 12Z"/>
+                        </svg>
+                    </div>
+                    <h4 class="value-card__title">Calidad</h4>
+                    <p class="value-card__text">Altos estándares en cada instalación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta__content reveal-fade">
+                <h2 class="cta__title">¿Listo para trabajar juntos?</h2>
+                <p class="cta__subtitle">Conozca cómo podemos ayudar a su empresa.</p>
+                <a href="contacto.html" class="btn btn--primary btn--large">Contáctenos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <span class="logo-text">FRIGOPAC</span>
+                    </a>
+                    <p class="footer__description">
+                        Ingeniería del frío con más de 20 años de excelencia.
+                    </p>
+                </div>
+                
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navegación</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="proyectos.html">Proyectos</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__nav">
+                    <h4 class="footer__title">Servicios</h4>
+                    <ul class="footer__links">
+                        <li><a href="servicios.html">Cuartos Fríos</a></li>
+                        <li><a href="servicios.html">Bodegas Refrigeradas</a></li>
+                        <li><a href="servicios.html">Túneles de Congelación</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__contact">
+                    <h4 class="footer__title">Contacto</h4>
+                    <ul class="footer__contact-list">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92V19.92C22 20.48 21.56 20.93 21 20.99C20.17 21.08 19.35 21.12 18.5 21.12C9.94 21.12 3 14.18 3 5.62C3 4.77 3.04 3.95 3.13 3.12C3.19 2.56 3.64 2.12 4.2 2.12H7.2"/></svg>
+                            <a href="tel:+573103330737">+57 310 333 0737</a>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"/><path d="M22 6L12 13L2 6"/></svg>
+                            <a href="mailto:gerenciafrigopac@gmail.com">gerenciafrigopac@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2024 FRIGOPAC SAS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/573103330737?text=Hola,%20estoy%20interesado%20en%20los%20servicios%20de%20FRIGOPAC." class="whatsapp-float" target="_blank" rel="noopener">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="whatsapp-float__text">¿Necesita asesoría?</span>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
