@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacte a FRIGOPAC para cotizaciones de refrigeración industrial en Colombia.">
+    <title>Contacto | FRIGOPAC</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .page-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .page-hero__background {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+        }
+        
+        .page-hero__background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .page-hero__overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(11, 29, 58, 0.9) 0%, rgba(11, 29, 58, 0.7) 100%);
+        }
+        
+        .page-hero__content {
+            text-align: center;
+            color: var(--color-white);
+            padding: var(--space-lg);
+        }
+        
+        .page-hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(var(--text-4xl), 8vw, var(--text-6xl));
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        
+        .page-hero__subtitle {
+            font-size: var(--text-lg);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-section {
+            padding: var(--space-4xl) 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-3xl);
+        }
+        
+        @media (min-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1.5fr;
+            }
+        }
+        
+        .contact-info h2 {
+            font-family: var(--font-heading);
+            font-size: var(--text-3xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .contact-info p {
+            color: var(--color-gray-600);
+            line-height: 1.8;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+        
+        .contact-item__icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-secondary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            flex-shrink: 0;
+        }
+        
+        .contact-item__content h4 {
+            font-family: var(--font-accent);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .contact-item__content a,
+        .contact-item__content span {
+            color: var(--color-gray-600);
+            font-size: var(--text-lg);
+        }
+        
+        .contact-item__content a:hover {
+            color: var(--color-secondary);
+        }
+        
+        .contact-form-wrapper {
+            background: var(--color-gray-100);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-md);
+        }
+        
+        .contact-form-wrapper h3 {
+            font-family: var(--font-heading);
+            font-size: var(--text-2xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-group label {
+            display: block;
+            font-family: var(--font-accent);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            color: var(--color-primary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-sm);
+            background: var(--color-white);
+            transition: var(--transition-base);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+        }
+        
+        @media (min-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .quick-contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--color-gray-200);
+        }
+        
+        .quick-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-accent);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition-base);
+        }
+        
+        .quick-btn--call {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        .quick-btn--call:hover {
+            background: var(--color-primary-light);
+        }
+        
+        .quick-btn--whatsapp {
+            background: #25D366;
+            color: var(--color-white);
+        }
+        
+        .quick-btn--whatsapp:hover {
+            background: #1da851;
+        }
+        
+        .quick-btn--email {
+            background: var(--color-secondary);
+            color: var(--color-primary);
+        }
+        
+        .quick-btn--email:hover {
+            background: #00a3c4;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="header scrolled" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <span class="logo-text" style="color: var(--color-primary);">FRIGOPAC</span>
+            </a>
+            <nav class="header__nav">
+                <ul class="header__menu">
+                    <li><a href="index.html" class="header__link" style="color: var(--color-primary);">Inicio</a></li>
+                    <li><a href="nosotros.html" class="header__link" style="color: var(--color-primary);">Nosotros</a></li>
+                    <li><a href="servicios.html" class="header__link" style="color: var(--color-primary);">Servicios</a></li>
+                    <li><a href="proyectos.html" class="header__link" style="color: var(--color-primary);">Proyectos</a></li>
+                    <li><a href="contacto.html" class="header__link active" style="color: var(--color-primary);">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="contacto.html" class="header__cta" style="display: inline-flex; opacity: 1; transform: none;">Cotizar</a>
+            <button class="header__toggle" id="navToggle">
+                <span style="background-color: var(--color-primary);"></span>
+                <span style="background-color: var(--color-primary);"></span>
+                <span style="background-color: var(--color-primary);"></span>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu__nav">
+            <ul class="mobile-menu__list">
+                <li><a href="index.html" class="mobile-menu__link">Inicio</a></li>
+                <li><a href="nosotros.html" class="mobile-menu__link">Nosotros</a></li>
+                <li><a href="servicios.html" class="mobile-menu__link">Servicios</a></li>
+                <li><a href="proyectos.html" class="mobile-menu__link">Proyectos</a></li>
+                <li><a href="contacto.html" class="mobile-menu__link">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero__background">
+            <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80" alt="Contacto FRIGOPAC">
+            <div class="page-hero__overlay"></div>
+        </div>
+        <div class="page-hero__content">
+            <h1 class="page-hero__title reveal-fade">Contáctenos</h1>
+            <p class="page-hero__subtitle reveal-fade">Estamos listos para hacer realidad su proyecto</p>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info reveal-slide-right">
+                    <h2>Hablemos de su proyecto</h2>
+                    <p>
+                        Nuestro equipo de expertos está listo para asesorarlo en su próximo proyecto de refrigeración industrial. Contáctenos y reciba una cotización personalizada.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92V19.92C22 20.48 21.56 20.93 21 20.99C20.17 21.08 19.35 21.12 18.5 21.12C9.94 21.12 3 14.18 3 5.62C3 4.77 3.04 3.95 3.13 3.12C3.19 2.56 3.64 2.12 4.2 2.12H7.2"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item__content">
+                                <h4>Teléfono / WhatsApp</h4>
+                                <a href="tel:+573103330737">+57 310 333 0737</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"/>
+                                    <path d="M22 6L12 13L2 6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item__content">
+                                <h4>Email</h4>
+                                <a href="mailto:gerenciafrigopac@gmail.com">gerenciafrigopac@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item__content">
+                                <h4>Ubicación</h4>
+                                <span>Bogotá, Colombia</span>
+                                <br>
+                                <span style="font-size: var(--text-sm);">Cobertura nacional</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                    <circle cx="12" cy="12" r="4"/>
+                                    <circle cx="18" cy="6" r="1" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item__content">
+                                <h4>Instagram</h4>
+                                <a href="https://www.instagram.com/frigopac_sas" target="_blank">@frigopac_sas</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Contact Buttons -->
+                    <div class="quick-contact">
+                        <a href="tel:+573103330737" class="quick-btn quick-btn--call">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92V19.92C22 20.48 21.56 20.93 21 20.99C20.17 21.08 19.35 21.12 18.5 21.12C9.94 21.12 3 14.18 3 5.62C3 4.77 3.04 3.95 3.13 3.12"/></svg>
+                            Llamar Ahora
+                        </a>
+                        <a href="https://wa.me/573103330737" target="_blank" class="quick-btn quick-btn--whatsapp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:gerenciafrigopac@gmail.com" class="quick-btn quick-btn--email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"/><path d="M22 6L12 13L2 6"/></svg>
+                            Enviar Email
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper reveal-slide-left">
+                    <h3>Solicite su Cotización</h3>
+                    <form id="contactForm" action="https://formsubmit.co/gerenciafrigopac@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Nueva solicitud de cotización - FRIGOPAC Web">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://tuusuario.github.io/frigopac-web/gracias.html">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre Completo *</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa">Empresa</label>
+                                <input type="text" id="empresa" name="empresa">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono *</label>
+                                <input type="tel" id="telefono" name="telefono" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="servicio">Servicio de Interés</label>
+                            <select id="servicio" name="servicio">
+                                <option value="">Seleccione un servicio</option>
+                                <option value="Cuartos Fríos">Cuartos Fríos</option>
+                                <option value="Bodegas Refrigeradas">Bodegas Refrigeradas</option>
+                                <option value="Salas de Proceso">Salas de Proceso</option>
+                                <option value="Túneles de Congelación">Túneles de Congelación</option>
+                                <option value="Puertas y Muelles">Puertas y Muelles</option>
+                                <option value="Mantenimiento">Mantenimiento</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensaje">Cuéntenos sobre su proyecto</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Describa sus necesidades, dimensiones aproximadas, ubicación del proyecto, etc."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary" style="width: 100%;">
+                            Enviar Solicitud
+                        </button>
+                        
+                        <p style="font-size: var(--text-sm); color: var(--color-gray-600); margin-top: var(--space-md); text-align: center;">
+                
