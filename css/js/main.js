@@ -152,3 +152,52 @@ document.addEventListener('DOMContentLoaded', function() {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if 
+                       // ============================================
+// ANIMACIÓN DE NÚMEROS (STATS COUNTER)
+// ============================================
+
+function animateCounter() {
+    const counters = document.querySelectorAll('.stats__number');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000; // 2 segundos
+        const increment = target / (duration / 16); // 60 FPS
+        let current = 0;
+        
+        const updateCounter = () => {
+            current += increment;
+            
+            if (current < target) {
+                counter.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+            }
+        };
+        
+        updateCounter();
+    });
+}
+
+// ============================================
+// INTERSECTION OBSERVER (detecta cuando aparece en pantalla)
+// ============================================
+
+const statsSection = document.getElementById('stats');
+let hasAnimated = false;
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !hasAnimated) {
+            animateCounter();
+            hasAnimated = true;
+        }
+    });
+}, {
+    threshold: 0.5 // Se activa cuando el 50% de la sección es visible
+});
+
+if (statsSection) {
+    observer.observe(statsSection);
+}
