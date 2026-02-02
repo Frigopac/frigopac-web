@@ -1149,3 +1149,249 @@ button {
     display: none;
     font-family: var(--font-accent);
     font-size: 
+
+   /* ============================================
+   15. LOADING SCREEN
+   ============================================ */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader__logo {
+    font-family: var(--font-accent);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--color-white);
+    margin-bottom: var(--space-xl);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.loader__bar {
+    width: 200px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.loader__progress {
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-secondary);
+    animation: loading 2s ease-in-out forwards;
+}
+
+@keyframes loading {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ============================================
+   16. CURSOR PERSONALIZADO
+   ============================================ */
+.cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor-follower {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-follower.hovering {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 180, 216, 0.1);
+}
+
+/* Ocultar cursor en móviles */
+@media (max-width: 1024px) {
+    .cursor,
+    .cursor-follower {
+        display: none;
+    }
+}
+
+/* ============================================
+   17. ELEMENTOS FLOTANTES
+   ============================================ */
+.floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.03;
+    background: var(--color-secondary);
+}
+
+.floating-shape:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    animation: float1 20s ease-in-out infinite;
+}
+
+.floating-shape:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 10%;
+    animation: float2 25s ease-in-out infinite;
+}
+
+.floating-shape:nth-child(3) {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 20%;
+    animation: float3 18s ease-in-out infinite;
+}
+
+.floating-shape:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    top: 30%;
+    right: 25%;
+    animation: float1 22s ease-in-out infinite reverse;
+}
+
+.floating-shape:nth-child(5) {
+    width: 250px;
+    height: 250px;
+    bottom: 10%;
+    right: 5%;
+    animation: float2 28s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(50px, 50px) rotate(90deg); }
+    50% { transform: translate(0, 100px) rotate(180deg); }
+    75% { transform: translate(-50px, 50px) rotate(270deg); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-30px, 60px) scale(1.1); }
+    66% { transform: translate(30px, -30px) scale(0.9); }
+}
+
+@keyframes float3 {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-80px) rotate(180deg); }
+}
+
+/* ============================================
+   18. FIX HERO OVERLAY (siempre visible)
+   ============================================ */
+.hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        rgba(11, 29, 58, 0.9) 0%,
+        rgba(11, 29, 58, 0.7) 50%,
+        rgba(11, 29, 58, 0.5) 100%
+    );
+    z-index: 1;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero__scroll {
+    z-index: 2;
+}
+
+/* ============================================
+   19. REVEAL ANIMATIONS
+   ============================================ */
+.reveal-fade,
+.reveal-slide-left,
+.reveal-slide-right {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-slide-left {
+    transform: translateX(-50px);
+}
+
+.reveal-slide-right {
+    transform: translateX(50px);
+}
+
+.reveal-fade.revealed,
+.reveal-slide-left.revealed,
+.reveal-slide-right.revealed {
+    opacity: 1;
+    transform: translate(0);
+}
+
+/* ============================================
+   20. BARRA DE PROGRESO DE SCROLL
+   ============================================ */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+    z-index: 1001;
+    transition: width 0.1s ease;
+}
