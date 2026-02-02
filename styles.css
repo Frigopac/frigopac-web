@@ -215,6 +215,8 @@ button {
     z-index: 1000;
     height: var(--header-height);
     transition: var(--transition-base);
+    background-color: transparent;
+}
 }
 
 .header.scrolled {
