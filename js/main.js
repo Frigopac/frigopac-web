@@ -2,6 +2,67 @@
    FRIGOPAC - JavaScript Principal
    ============================================ */
 
+// ============================================
+// LOADING SCREEN (va antes de DOMContentLoaded)
+// ============================================
+window.addEventListener('load', function() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 2000);
+    }
+});
+
+// ============================================
+// CURSOR PERSONALIZADO (va antes de DOMContentLoaded)
+// ============================================
+const cursor = document.getElementById('cursor');
+const cursorFollower = document.getElementById('cursorFollower');
+
+if (cursor && cursorFollower) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        cursorFollower.style.left = e.clientX + 'px';
+        cursorFollower.style.top = e.clientY + 'px';
+    });
+
+    // Efecto hover en enlaces y botones
+    document.addEventListener('DOMContentLoaded', () => {
+        const hoverElements = document.querySelectorAll('a, button, .btn, .services__card');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorFollower.classList.add('hovering');
+                cursor.style.transform = 'scale(2)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorFollower.classList.remove('hovering');
+                cursor.style.transform = 'scale(1)';
+            });
+        });
+    });
+}
+
+// ============================================
+// BARRA DE PROGRESO DE SCROLL
+// ============================================
+const scrollProgress = document.getElementById('scrollProgress');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    
+    if (scrollProgress) {
+        scrollProgress.style.width = scrollPercent + '%';
+    }
+});
+
+// ============================================
+// TU CÓDIGO ORIGINAL (todo igual, sin cambios)
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
     
     // ============================================
