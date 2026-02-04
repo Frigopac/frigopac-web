@@ -142,6 +142,88 @@
             color: var(--color-secondary);
             margin-top: 4px;
         }
+
+        /* CARRUSEL */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+        }
+
+        .carousel__slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel__slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .carousel__slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel__btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel__btn:hover {
+            background: var(--color-secondary);
+            color: white;
+        }
+
+        .carousel__btn--prev {
+            left: 15px;
+        }
+
+        .carousel__btn--next {
+            right: 15px;
+        }
+
+        .carousel__dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel__dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel__dot.active {
+            background: var(--color-secondary);
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -203,7 +285,30 @@
         <div class="container">
             <div class="service-grid">
                 <div class="service-image reveal-slide-right">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Cuartos Fríos">
+                    <div class="carousel">
+                        <div class="carousel__slides">
+                            <div class="carousel__slide">
+                                <img src="assets/images/cuarto-frio-1.jpg" alt="Cuarto Frío 1">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/cuarto-frio-2.jpg" alt="Cuarto Frío 2">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/cuarto-frio-3.jpg" alt="Cuarto Frío 3">
+                            </div>
+                        </div>
+                        <button class="carousel__btn carousel__btn--prev">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
+                        </button>
+                        <button class="carousel__btn carousel__btn--next">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
+                        </button>
+                        <div class="carousel__dots">
+                            <button class="carousel__dot active"></button>
+                            <button class="carousel__dot"></button>
+                            <button class="carousel__dot"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-content reveal-slide-left">
                     <h2>Cuartos Fríos</h2>
@@ -239,7 +344,30 @@
         <div class="container">
             <div class="service-grid service-grid--reverse">
                 <div class="service-image reveal-slide-left">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80" alt="Bodegas Refrigeradas">
+                    <div class="carousel">
+                        <div class="carousel__slides">
+                            <div class="carousel__slide">
+                                <img src="assets/images/bodega-1.jpg" alt="Bodega Refrigerada 1">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/bodega-2.jpg" alt="Bodega Refrigerada 2">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/bodega-3.jpg" alt="Bodega Refrigerada 3">
+                            </div>
+                        </div>
+                        <button class="carousel__btn carousel__btn--prev">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
+                        </button>
+                        <button class="carousel__btn carousel__btn--next">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
+                        </button>
+                        <div class="carousel__dots">
+                            <button class="carousel__dot active"></button>
+                            <button class="carousel__dot"></button>
+                            <button class="carousel__dot"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-content reveal-slide-right">
                     <h2>Bodegas Refrigeradas</h2>
@@ -275,7 +403,30 @@
         <div class="container">
             <div class="service-grid">
                 <div class="service-image reveal-slide-right">
-                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Salas de Proceso">
+                    <div class="carousel">
+                        <div class="carousel__slides">
+                            <div class="carousel__slide">
+                                <img src="assets/images/sala-proceso-1.jpg" alt="Sala de Proceso 1">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/sala-proceso-2.jpg" alt="Sala de Proceso 2">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/sala-proceso-3.jpg" alt="Sala de Proceso 3">
+                            </div>
+                        </div>
+                        <button class="carousel__btn carousel__btn--prev">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
+                        </button>
+                        <button class="carousel__btn carousel__btn--next">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
+                        </button>
+                        <div class="carousel__dots">
+                            <button class="carousel__dot active"></button>
+                            <button class="carousel__dot"></button>
+                            <button class="carousel__dot"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-content reveal-slide-left">
                     <h2>Salas de Proceso</h2>
@@ -311,7 +462,30 @@
         <div class="container">
             <div class="service-grid service-grid--reverse">
                 <div class="service-image reveal-slide-left">
-                    <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80" alt="Túneles de Congelación">
+                    <div class="carousel">
+                        <div class="carousel__slides">
+                            <div class="carousel__slide">
+                                <img src="assets/images/tunel-1.jpg" alt="Túnel de Congelación 1">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/tunel-2.jpg" alt="Túnel de Congelación 2">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/tunel-3.jpg" alt="Túnel de Congelación 3">
+                            </div>
+                        </div>
+                        <button class="carousel__btn carousel__btn--prev">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
+                        </button>
+                        <button class="carousel__btn carousel__btn--next">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
+                        </button>
+                        <div class="carousel__dots">
+                            <button class="carousel__dot active"></button>
+                            <button class="carousel__dot"></button>
+                            <button class="carousel__dot"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-content reveal-slide-right">
                     <h2>Túneles de Congelación</h2>
@@ -347,7 +521,30 @@
         <div class="container">
             <div class="service-grid">
                 <div class="service-image reveal-slide-right">
-                    <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?w=800&q=80" alt="Puertas y Muelles">
+                    <div class="carousel">
+                        <div class="carousel__slides">
+                            <div class="carousel__slide">
+                                <img src="assets/images/puertas-1.jpg" alt="Puertas y Muelles 1">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/puertas-2.jpg" alt="Puertas y Muelles 2">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/puertas-3.jpg" alt="Puertas y Muelles 3">
+                            </div>
+                        </div>
+                        <button class="carousel__btn carousel__btn--prev">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
+                        </button>
+                        <button class="carousel__btn carousel__btn--next">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
+                        </button>
+                        <div class="carousel__dots">
+                            <button class="carousel__dot active"></button>
+                            <button class="carousel__dot"></button>
+                            <button class="carousel__dot"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-content reveal-slide-left">
                     <h2>Puertas Especiales y Muelles de Cargue</h2>
@@ -383,94 +580,12 @@
         <div class="container">
             <div class="service-grid service-grid--reverse">
                 <div class="service-image reveal-slide-left">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80" alt="Mantenimiento">
-                </div>
-                <div class="service-content reveal-slide-right">
-                    <h2>Mantenimiento</h2>
-                    <p>
-                        Ofrecemos servicios de mantenimiento preventivo y correctivo para garantizar el óptimo funcionamiento de sus sistemas de refrigeración.
-                    </p>
-                    <ul class="service-features">
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>
-                            Mantenimiento preventivo programado
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>
-                            Atención de emergencias
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>
-                            Repuestos originales
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>
-                            Técnicos certificados
-                        </li>
-                    </ul>
-                    <a href="contacto.html" class="btn btn--primary" style="margin-top: var(--space-lg);">Solicitar Cotización</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta__content reveal-fade">
-                <h2 class="cta__title">¿Necesita una solución a medida?</h2>
-                <p class="cta__subtitle">Contáctenos y diseñaremos el proyecto perfecto para su operación.</p>
-                <a href="contacto.html" class="btn btn--primary btn--large">Solicitar Cotización</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand">
-                    <a href="index.html" class="footer__logo"><span class="logo-text">FRIGOPAC</span></a>
-                    <p class="footer__description">Ingeniería del frío con más de 20 años de excelencia.</p>
-                </div>
-                <div class="footer__nav">
-                    <h4 class="footer__title">Navegación</h4>
-                    <ul class="footer__links">
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="nosotros.html">Nosotros</a></li>
-                        <li><a href="servicios.html">Servicios</a></li>
-                        <li><a href="proyectos.html">Proyectos</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer__nav">
-                    <h4 class="footer__title">Servicios</h4>
-                    <ul class="footer__links">
-                        <li><a href="#cuartos-frios">Cuartos Fríos</a></li>
-                        <li><a href="#bodegas">Bodegas Refrigeradas</a></li>
-                        <li><a href="#tuneles">Túneles de Congelación</a></li>
-                    </ul>
-                </div>
-                <div class="footer__contact">
-                    <h4 class="footer__title">Contacto</h4>
-                    <ul class="footer__contact-list">
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92V19.92C22 20.48 21.56 20.93 21 20.99C20.17 21.08 19.35 21.12 18.5 21.12C9.94 21.12 3 14.18 3 5.62C3 4.77 3.04 3.95 3.13 3.12C3.19 2.56 3.64 2.12 4.2 2.12H7.2"/></svg><a href="tel:+573103330737">+57 310 333 0737</a></li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"/><path d="M22 6L12 13L2 6"/></svg><a href="mailto:gerenciafrigopac@gmail.com">gerenciafrigopac@gmail.com</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p class="footer__copyright">© 2024 FRIGOPAC SAS. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/573103330737" class="whatsapp-float" target="_blank" rel="noopener">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        <span class="whatsapp-float__text">¿Necesita asesoría?</span>
-    </a>
-
-    <script src="js/main.js"></script>
-</body>
-</html>
+                    <div class="carousel">
+                        <div class="carousel__slides">
+                            <div class="carousel__slide">
+                                <img src="assets/images/mantenimiento-1.jpg" alt="Mantenimiento 1">
+                            </div>
+                            <div class="carousel__slide">
+                                <img src="assets/images/mantenimiento-2.jpg" alt="Mantenimiento 2">
+                            </div>
+                            <div 
