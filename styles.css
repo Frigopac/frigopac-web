@@ -217,7 +217,6 @@ button {
     transition: var(--transition-base);
     background-color: transparent;
 }
-}
 
 .header.scrolled {
     background-color: var(--color-white);
