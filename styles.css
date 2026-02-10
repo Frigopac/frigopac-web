@@ -862,6 +862,7 @@ button {
     text-align: center;
     padding-top: var(--space-2xl);
     border-top: 1px solid var(--color-gray-200);
+    overflow: hidden;
 }
 
 .clients__title {
@@ -874,17 +875,48 @@ button {
     margin-bottom: var(--space-xl);
 }
 
-.clients__logos {
+.clients__marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.clients__marquee::before,
+.clients__marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+}
+
+.clients__marquee::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white), transparent);
+}
+
+.clients__marquee::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white), transparent);
+}
+
+.clients__track {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    gap: var(--space-2xl);
+    gap: var(--space-3xl);
+    animation: marquee 20s linear infinite;
+    width: max-content;
+}
+
+.clients__track:hover {
+    animation-play-state: paused;
 }
 
 .clients__logo {
+    flex-shrink: 0;
     filter: grayscale(100%);
-    opacity: 0.5;
+    opacity: 0.4;
     transition: var(--transition-base);
 }
 
@@ -895,9 +927,19 @@ button {
 
 .clients__logo img {
     max-height: 50px;
+    max-width: 150px;
     width: auto;
+    object-fit: contain;
 }
 
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
 /* ============================================
    11. TESTIMONIAL SECTION
    ============================================ */
