@@ -478,16 +478,19 @@ button {
     bottom: 0;
     background: linear-gradient(
         to right,
-        rgba(11, 29, 58, 0.85) 0%,
-        rgba(11, 29, 58, 0.6) 50%,
-        rgba(11, 29, 58, 0.4) 100%
+        rgba(11, 29, 58, 0.9) 0%,
+        rgba(11, 29, 58, 0.75) 50%,
+        rgba(11, 29, 58, 0.6) 100%
     );
+    z-index: 1;
 }
 
 .hero__content {
     text-align: center;
     max-width: 900px;
     padding: 0 var(--space-lg);
+    position: relative;
+    z-index: 2;
 }
 
 .hero__badge {
@@ -536,6 +539,7 @@ button {
     flex-direction: column;
     align-items: center;
     gap: var(--space-sm);
+    z-index: 2;
 }
 
 .hero__scroll-text {
@@ -856,7 +860,9 @@ button {
     color: var(--color-white);
 }
 
-/* Clients Logos - Cinta Infinita */
+/* ============================================
+   10.1 CLIENTS LOGOS - CINTA INFINITA
+   ============================================ */
 .clients {
     text-align: center;
     padding: var(--space-2xl) 0;
@@ -947,6 +953,7 @@ button {
         transform: translateX(-50%);
     }
 }
+
 /* ============================================
    11. TESTIMONIAL SECTION
    ============================================ */
@@ -1199,6 +1206,44 @@ button {
 .whatsapp-float__text {
     display: none;
     font-family: var(--font-accent);
-    font-size: 
+    font-size: var(--text-sm);
+    font-weight: 500;
+    white-space: nowrap;
+    padding-right: var(--space-sm);
+}
 
+@media (min-width: 768px) {
+    .whatsapp-float {
+        padding: var(--space-sm) var(--space-md);
+    }
+    
+    .whatsapp-float__text {
+        display: block;
+    }
+}
 
+/* ============================================
+   15. REVEAL ANIMATIONS
+   ============================================ */
+.reveal-fade,
+.reveal-slide-left,
+.reveal-slide-right {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-slide-left {
+    transform: translateX(-50px);
+}
+
+.reveal-slide-right {
+    transform: translateX(50px);
+}
+
+.reveal-fade.revealed,
+.reveal-slide-left.revealed,
+.reveal-slide-right.revealed {
+    opacity: 1;
+    transform: translate(0);
+}
