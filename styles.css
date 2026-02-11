@@ -861,14 +861,13 @@ button {
 }
 
 /* ============================================
-   10.1 CLIENTS LOGOS - CINTA INFINITA
+   10.1 CLIENTS LOGOS
    ============================================ */
 .clients {
     text-align: center;
     padding: var(--space-2xl) 0;
     border-top: 1px solid var(--color-gray-200);
     overflow: hidden;
-    width: 100%;
 }
 
 .clients__title {
@@ -881,51 +880,15 @@ button {
     margin-bottom: var(--space-xl);
 }
 
-.clients__marquee {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    padding: 20px 0;
-}
-
-.clients__marquee::before,
-.clients__marquee::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100px;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.clients__marquee::before {
-    left: 0;
-    background: linear-gradient(to right, var(--color-white), transparent);
-}
-
-.clients__marquee::after {
-    right: 0;
-    background: linear-gradient(to left, var(--color-white), transparent);
-}
-
-.clients__track {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    gap: 80px;
-    animation: marquee 15s linear infinite;
-    width: max-content;
-}
-
-.clients__track:hover {
-    animation-play-state: paused;
+.clients__slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
 }
 
 .clients__logo {
-    flex-shrink: 0;
-    display: inline-block;
     filter: grayscale(100%);
     opacity: 0.5;
     transition: all 0.3s ease;
@@ -937,21 +900,10 @@ button {
 }
 
 .clients__logo img {
-    height: 80px !important;
-    width: auto !important;
-    max-width: 200px !important;
-    display: block !important;
+    height: 60px;
+    width: auto;
+    max-width: 150px;
     object-fit: contain;
-    mix-blend-mode: multiply;
-}
-
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
 }
 
 /* ============================================
