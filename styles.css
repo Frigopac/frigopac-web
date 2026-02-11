@@ -861,13 +861,12 @@ button {
 }
 
 /* ============================================
-   10.1 CLIENTS LOGOS
+   10.1 CLIENTS LOGOS - CINTA INFINITA
    ============================================ */
 .clients {
     text-align: center;
     padding: var(--space-2xl) 0;
     border-top: 1px solid var(--color-gray-200);
-    overflow: hidden;
 }
 
 .clients__title {
@@ -880,32 +879,86 @@ button {
     margin-bottom: var(--space-xl);
 }
 
-.clients__slider {
+.clients__marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.clients__marquee::before,
+.clients__marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.clients__marquee::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white), transparent);
+}
+
+.clients__marquee::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white), transparent);
+}
+
+.clients__track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    animation: scrollLogos 20s linear infinite;
+}
+
+.clients__track:hover {
+    animation-play-state: paused;
+}
+
+.clients__logo-card {
+    flex-shrink: 0;
+    width: 130px;
+    height: 130px;
+    background: var(--color-white);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
-}
-
-.clients__logo {
-    filter: grayscale(100%);
-    opacity: 0.5;
+    padding: 20px;
     transition: all 0.3s ease;
 }
 
-.clients__logo:hover {
+.clients__logo-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.clients__logo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.clients__logo-card:hover img {
     filter: grayscale(0%);
     opacity: 1;
 }
 
-.clients__logo img {
-    height: 60px;
-    width: auto;
-    max-width: 150px;
-    object-fit: contain;
+@keyframes scrollLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
-
 /* ============================================
    11. TESTIMONIAL SECTION
    ============================================ */
