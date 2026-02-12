@@ -1546,3 +1546,15 @@ button {
     opacity: 1;
     transform: translate(0);
 }
+
+/* ============================================
+   ARREGLO: FORZAR VISIBILIDAD
+   ============================================ */
+.process .reveal-fade,
+.why .reveal-fade,
+.clients .reveal-fade,
+.cta .reveal-fade,
+.showcase .reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+}
