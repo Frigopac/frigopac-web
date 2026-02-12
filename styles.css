@@ -17,11 +17,11 @@
     --color-gray-600: #475569;
     --color-gray-800: #1E293B;
     --color-dark: #071225;
-    
+
     --font-heading: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-accent: 'Montserrat', sans-serif;
-    
+
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
     --text-base: 1rem;
@@ -33,7 +33,7 @@
     --text-5xl: 3rem;
     --text-6xl: 3.75rem;
     --text-7xl: 4.5rem;
-    
+
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 1.5rem;
@@ -42,22 +42,22 @@
     --space-2xl: 4rem;
     --space-3xl: 6rem;
     --space-4xl: 8rem;
-    
+
     --transition-fast: 0.2s ease;
     --transition-base: 0.3s ease;
     --transition-slow: 0.5s ease;
     --transition-slower: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    
+
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-    
+
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 16px;
     --radius-full: 9999px;
-    
+
     --header-height: 80px;
 }
 
@@ -178,6 +178,18 @@ button {
 .btn--large {
     padding: 1.25rem 3rem;
     font-size: var(--text-base);
+}
+
+.btn--cta {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.btn--cta:hover {
+    background-color: #00c9f0;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(0, 180, 216, 0.3);
 }
 
 .link-arrow {
@@ -324,7 +336,6 @@ button {
     background-color: var(--color-secondary);
 }
 
-/* Hamburger Toggle */
 .header__toggle {
     display: flex;
     flex-direction: column;
@@ -403,21 +414,7 @@ button {
     font-size: var(--text-4xl);
     font-weight: 500;
     color: var(--color-white);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: var(--transition-slow);
 }
-
-.mobile-menu.active .mobile-menu__link {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.mobile-menu.active .mobile-menu__link:nth-child(1) { transition-delay: 0.1s; }
-.mobile-menu.active .mobile-menu__link:nth-child(2) { transition-delay: 0.15s; }
-.mobile-menu.active .mobile-menu__link:nth-child(3) { transition-delay: 0.2s; }
-.mobile-menu.active .mobile-menu__link:nth-child(4) { transition-delay: 0.25s; }
-.mobile-menu.active .mobile-menu__link:nth-child(5) { transition-delay: 0.3s; }
 
 .mobile-menu__cta {
     display: inline-block;
@@ -430,15 +427,6 @@ button {
     color: var(--color-primary);
     background-color: var(--color-secondary);
     border-radius: var(--radius-sm);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: var(--transition-slow);
-    transition-delay: 0.35s;
-}
-
-.mobile-menu.active .mobile-menu__cta {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* ============================================
@@ -463,8 +451,7 @@ button {
     z-index: -1;
 }
 
-.hero__image,
-.hero__video {
+.hero__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -559,21 +546,10 @@ button {
 }
 
 @keyframes scrollLine {
-    0%, 100% {
-        transform: scaleY(0);
-        transform-origin: top;
-    }
-    50% {
-        transform: scaleY(1);
-        transform-origin: top;
-    }
-    51% {
-        transform-origin: bottom;
-    }
-    100% {
-        transform: scaleY(0);
-        transform-origin: bottom;
-    }
+    0%, 100% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
 /* ============================================
@@ -730,26 +706,12 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-        to top,
-        rgba(11, 29, 58, 0.9) 0%,
-        rgba(11, 29, 58, 0.3) 50%,
-        transparent 100%
-    );
+    background: linear-gradient(to top, rgba(11, 29, 58, 0.9) 0%, rgba(11, 29, 58, 0.3) 50%, transparent 100%);
     transition: var(--transition-base);
 }
 
 .services__card:hover .services__card-image img {
     transform: scale(1.1);
-}
-
-.services__card:hover .services__card-overlay {
-    background: linear-gradient(
-        to top,
-        rgba(11, 29, 58, 0.95) 0%,
-        rgba(11, 29, 58, 0.5) 50%,
-        rgba(11, 29, 58, 0.2) 100%
-    );
 }
 
 .services__card-title {
@@ -760,7 +722,6 @@ button {
     font-weight: 500;
     color: var(--color-white);
     text-align: center;
-    transition: var(--transition-base);
 }
 
 .services__card-line {
@@ -779,7 +740,7 @@ button {
 }
 
 /* ============================================
-   10. SHOWCASE / PROJECTS SECTION (REFINADO)
+   10. SHOWCASE / PROJECTS
    ============================================ */
 .showcase {
     padding: var(--space-4xl) 0;
@@ -849,7 +810,7 @@ button {
 
 @media (min-width: 768px) {
     .showcase__image-overlay {
-        padding: var(--space-2xl) var(--space-2xl);
+        padding: var(--space-2xl);
     }
 }
 
@@ -865,7 +826,6 @@ button {
     padding: 6px 16px;
     border: 1px solid rgba(0, 180, 216, 0.4);
     border-radius: var(--radius-full);
-    backdrop-filter: blur(4px);
 }
 
 .showcase__project-title {
@@ -882,7 +842,6 @@ button {
     max-width: 550px;
     line-height: 1.7;
     margin-bottom: var(--space-md);
-    opacity: 0.9;
 }
 
 @media (min-width: 768px) {
@@ -904,7 +863,6 @@ button {
     color: var(--color-secondary);
 }
 
-/* Progress Bar */
 .showcase__progress {
     position: absolute;
     bottom: 0;
@@ -925,7 +883,6 @@ button {
     transition: width 0.1s linear;
 }
 
-/* Tabs */
 .showcase__tabs {
     display: grid;
     grid-template-columns: 1fr;
@@ -948,21 +905,8 @@ button {
     border: 2px solid var(--color-gray-200);
     border-radius: var(--radius-md);
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
     text-align: left;
-    position: relative;
-    overflow: hidden;
-}
-
-.showcase__tab::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 0;
-    background: var(--color-secondary);
-    transition: height 0.4s ease;
 }
 
 .showcase__tab:hover {
@@ -971,17 +915,9 @@ button {
     box-shadow: var(--shadow-lg);
 }
 
-.showcase__tab:hover::before {
-    height: 100%;
-}
-
 .showcase__tab.active {
     border-color: var(--color-secondary);
     background: var(--color-primary);
-}
-
-.showcase__tab.active::before {
-    height: 100%;
 }
 
 .showcase__tab-number {
@@ -999,7 +935,6 @@ button {
     font-weight: 600;
     color: var(--color-primary);
     margin-bottom: 4px;
-    transition: color 0.3s ease;
 }
 
 .showcase__tab.active .showcase__tab-name {
@@ -1011,7 +946,6 @@ button {
     font-size: var(--text-xs);
     color: var(--color-gray-600);
     letter-spacing: 0.05em;
-    transition: color 0.3s ease;
 }
 
 .showcase__tab.active .showcase__tab-service {
@@ -1023,16 +957,8 @@ button {
     margin-bottom: var(--space-sm);
 }
 
-.showcase__footer .btn svg {
-    transition: transform 0.3s ease;
-}
-
-.showcase__footer .btn:hover svg {
-    transform: translateX(5px);
-}
-
 /* ============================================
-   PROCESS SECTION (NUEVA)
+   11. PROCESS SECTION
    ============================================ */
 .process {
     padding: var(--space-4xl) 0;
@@ -1064,14 +990,13 @@ button {
 @media (min-width: 768px) {
     .process__timeline {
         grid-template-columns: repeat(4, 1fr);
-        gap: 0;
+        gap: var(--space-lg);
     }
 }
 
 .process__step {
     text-align: center;
-    padding: 0 var(--space-lg);
-    position: relative;
+    padding: 0 var(--space-sm);
 }
 
 .process__step-number {
@@ -1112,27 +1037,13 @@ button {
     margin: 0 auto;
 }
 
-/* Línea conectora entre pasos (desktop) */
-@media (min-width: 768px) {
-    .process__step:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        top: 28px;
-        right: -1px;
-        width: calc(100% - 60px);
-        height: 1px;
-        background: linear-gradient(to right, transparent, var(--color-gray-200), transparent);
-        transform: translateX(50%);
-    }
-}
-
 /* ============================================
-   WHY FRIGOPAC SECTION (REEMPLAZA TESTIMONIAL)
+   12. WHY FRIGOPAC SECTION
    ============================================ */
 .why {
     position: relative;
     padding: var(--space-4xl) 0;
-    min-height: 700px;
+    min-height: 600px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -1203,15 +1114,14 @@ button {
     padding: var(--space-xl) var(--space-lg);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-md);
-    backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.03);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
 }
 
 .why__card:hover {
     border-color: rgba(0, 180, 216, 0.3);
     background: rgba(255, 255, 255, 0.06);
-    transform: translateY(-8px);
+    transform: translateY(-5px);
 }
 
 .why__card-icon {
@@ -1224,7 +1134,6 @@ button {
     border: 1px solid rgba(0, 180, 216, 0.3);
     color: var(--color-secondary);
     margin-bottom: var(--space-lg);
-    transition: all 0.3s ease;
 }
 
 .why__card:hover .why__card-icon {
@@ -1247,7 +1156,7 @@ button {
 }
 
 /* ============================================
-   CLIENTS SECTION (ESTÁTICA - LIMPIA)
+   13. CLIENTS SECTION
    ============================================ */
 .clients {
     padding: var(--space-3xl) 0;
@@ -1270,7 +1179,7 @@ button {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: var(--space-xl);
+    gap: var(--space-2xl);
     max-width: 900px;
     margin: 0 auto;
 }
@@ -1299,7 +1208,7 @@ button {
 }
 
 /* ============================================
-   CTA SECTION (MEJORADA)
+   14. CTA SECTION
    ============================================ */
 .cta {
     padding: var(--space-4xl) 0;
@@ -1346,20 +1255,8 @@ button {
     justify-content: center;
 }
 
-.btn--cta {
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-    font-weight: 600;
-}
-
-.btn--cta:hover {
-    background-color: #00c9f0;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 40px rgba(0, 180, 216, 0.3);
-}
-
 /* ============================================
-   13. FOOTER
+   15. FOOTER
    ============================================ */
 .footer {
     background-color: var(--color-dark);
@@ -1479,7 +1376,7 @@ button {
 }
 
 /* ============================================
-   14. WHATSAPP FLOAT BUTTON
+   16. WHATSAPP FLOAT
    ============================================ */
 .whatsapp-float {
     position: fixed;
@@ -1515,52 +1412,17 @@ button {
     .whatsapp-float {
         padding: var(--space-sm) var(--space-md);
     }
-    
     .whatsapp-float__text {
         display: block;
     }
 }
 
 /* ============================================
-   15. REVEAL ANIMATIONS
+   17. SCROLL ANIMATIONS (SIMPLE)
    ============================================ */
-.reveal-fade {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-slide-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
+.reveal-fade,
+.reveal-slide-left,
 .reveal-slide-right {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-fade.revealed,
-.reveal-slide-left.revealed,
-.reveal-slide-right.revealed {
-    opacity: 1;
-    transform: translate(0);
-}
-
-/* ============================================
-   FORZAR VISIBILIDAD EN SECCIONES NUEVAS
-   ============================================ */
-.process .reveal-fade,
-.process .reveal-slide-left,
-.process .reveal-slide-right,
-.why .reveal-fade,
-.why .reveal-slide-left,
-.why .reveal-slide-right,
-.clients .reveal-fade,
-.cta .reveal-fade {
     opacity: 1;
     transform: none;
-    transition: none;
 }
