@@ -779,7 +779,7 @@ button {
 }
 
 /* ============================================
-   10. SHOWCASE / PROJECTS SECTION
+   10. SHOWCASE / PROJECTS SECTION (REFINADO)
    ============================================ */
 .showcase {
     padding: var(--space-4xl) 0;
@@ -788,17 +788,32 @@ button {
 
 .showcase__header {
     text-align: center;
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.showcase__eyebrow {
+    display: inline-block;
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-md);
 }
 
 .showcase__subtitle {
     font-size: var(--text-lg);
     color: var(--color-gray-600);
     margin-top: var(--space-sm);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .showcase__display {
     margin-bottom: var(--space-xl);
+    position: relative;
 }
 
 .showcase__image-wrapper {
@@ -811,7 +826,7 @@ button {
 
 @media (min-width: 768px) {
     .showcase__image-wrapper {
-        height: 600px;
+        height: 650px;
     }
 }
 
@@ -827,9 +842,15 @@ button {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: var(--space-2xl);
-    background: linear-gradient(to top, rgba(11, 29, 58, 0.95) 0%, rgba(11, 29, 58, 0.5) 50%, transparent 100%);
+    padding: var(--space-lg);
+    background: linear-gradient(to top, rgba(7, 18, 37, 0.95) 0%, rgba(7, 18, 37, 0.6) 50%, transparent 100%);
     color: var(--color-white);
+}
+
+@media (min-width: 768px) {
+    .showcase__image-overlay {
+        padding: var(--space-2xl) var(--space-2xl);
+    }
 }
 
 .showcase__category {
@@ -842,25 +863,32 @@ button {
     color: var(--color-secondary);
     margin-bottom: var(--space-sm);
     padding: 6px 16px;
-    border: 1px solid var(--color-secondary);
+    border: 1px solid rgba(0, 180, 216, 0.4);
     border-radius: var(--radius-full);
+    backdrop-filter: blur(4px);
 }
 
 .showcase__project-title {
     font-family: var(--font-heading);
-    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    font-size: clamp(var(--text-2xl), 5vw, var(--text-5xl));
     font-weight: 500;
     margin-bottom: var(--space-sm);
     line-height: 1.2;
 }
 
 .showcase__project-desc {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     color: var(--color-gray-300);
-    max-width: 600px;
+    max-width: 550px;
     line-height: 1.7;
     margin-bottom: var(--space-md);
     opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+    .showcase__project-desc {
+        font-size: var(--text-base);
+    }
 }
 
 .showcase__project-location {
@@ -876,7 +904,28 @@ button {
     color: var(--color-secondary);
 }
 
-/* Tabs de proyectos */
+/* Progress Bar */
+.showcase__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    overflow: hidden;
+    z-index: 5;
+}
+
+.showcase__progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--color-secondary);
+    border-radius: 3px;
+    transition: width 0.1s linear;
+}
+
+/* Tabs */
 .showcase__tabs {
     display: grid;
     grid-template-columns: 1fr;
@@ -899,8 +948,21 @@ button {
     border: 2px solid var(--color-gray-200);
     border-radius: var(--radius-md);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.showcase__tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--color-secondary);
+    transition: height 0.4s ease;
 }
 
 .showcase__tab:hover {
@@ -909,9 +971,17 @@ button {
     box-shadow: var(--shadow-lg);
 }
 
+.showcase__tab:hover::before {
+    height: 100%;
+}
+
 .showcase__tab.active {
     border-color: var(--color-secondary);
     background: var(--color-primary);
+}
+
+.showcase__tab.active::before {
+    height: 100%;
 }
 
 .showcase__tab-number {
@@ -929,6 +999,7 @@ button {
     font-weight: 600;
     color: var(--color-primary);
     margin-bottom: 4px;
+    transition: color 0.3s ease;
 }
 
 .showcase__tab.active .showcase__tab-name {
@@ -940,16 +1011,16 @@ button {
     font-size: var(--text-xs);
     color: var(--color-gray-600);
     letter-spacing: 0.05em;
+    transition: color 0.3s ease;
 }
 
 .showcase__tab.active .showcase__tab-service {
     color: var(--color-gray-300);
 }
 
-/* Footer de showcase */
 .showcase__footer {
     text-align: center;
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-sm);
 }
 
 .showcase__footer .btn svg {
@@ -961,22 +1032,238 @@ button {
 }
 
 /* ============================================
-   10.1 CLIENTS LOGOS - CINTA INFINITA
+   PROCESS SECTION (NUEVA)
+   ============================================ */
+.process {
+    padding: var(--space-4xl) 0;
+    background-color: var(--color-white);
+}
+
+.process__header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.process__eyebrow {
+    display: inline-block;
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.process__timeline {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+}
+
+@media (min-width: 768px) {
+    .process__timeline {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+    }
+}
+
+.process__step {
+    text-align: center;
+    padding: 0 var(--space-lg);
+    position: relative;
+}
+
+.process__step-number {
+    font-family: var(--font-heading);
+    font-size: var(--text-5xl);
+    font-weight: 500;
+    color: var(--color-secondary);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: var(--space-md);
+    transition: opacity 0.3s ease;
+}
+
+.process__step:hover .process__step-number {
+    opacity: 1;
+}
+
+.process__step-line {
+    width: 40px;
+    height: 2px;
+    background: var(--color-secondary);
+    margin: 0 auto var(--space-lg);
+}
+
+.process__step-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.process__step-desc {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    line-height: 1.7;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+/* Línea conectora entre pasos (desktop) */
+@media (min-width: 768px) {
+    .process__step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 28px;
+        right: -1px;
+        width: calc(100% - 60px);
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--color-gray-200), transparent);
+        transform: translateX(50%);
+    }
+}
+
+/* ============================================
+   WHY FRIGOPAC SECTION (REEMPLAZA TESTIMONIAL)
+   ============================================ */
+.why {
+    position: relative;
+    padding: var(--space-4xl) 0;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.why__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.why__background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.why__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(7, 18, 37, 0.92) 0%, rgba(11, 29, 58, 0.85) 100%);
+}
+
+.why .container {
+    position: relative;
+    z-index: 1;
+}
+
+.why__header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.why__intro {
+    font-size: var(--text-lg);
+    color: var(--color-gray-300);
+    max-width: 600px;
+    margin: var(--space-lg) auto 0;
+    line-height: 1.7;
+}
+
+.why__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+    .why__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .why__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.why__card {
+    text-align: center;
+    padding: var(--space-xl) var(--space-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.why__card:hover {
+    border-color: rgba(0, 180, 216, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-8px);
+}
+
+.why__card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    color: var(--color-secondary);
+    margin-bottom: var(--space-lg);
+    transition: all 0.3s ease;
+}
+
+.why__card:hover .why__card-icon {
+    background: rgba(0, 180, 216, 0.1);
+    border-color: var(--color-secondary);
+}
+
+.why__card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+}
+
+.why__card-desc {
+    font-size: var(--text-sm);
+    color: var(--color-gray-300);
+    line-height: 1.7;
+}
+
+/* ============================================
+   CLIENTS SECTION (ARREGLADA)
    ============================================ */
 .clients {
-    text-align: center;
-    padding: var(--space-2xl) 0;
-    border-top: 1px solid var(--color-gray-200);
+    padding: var(--space-3xl) 0;
+    background: var(--color-white);
+    overflow: hidden;
 }
 
 .clients__title {
     font-family: var(--font-accent);
     font-size: var(--text-xs);
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--color-gray-600);
     margin-bottom: var(--space-xl);
+    text-align: center;
 }
 
 .clients__marquee {
@@ -992,7 +1279,7 @@ button {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 100px;
+    width: 120px;
     z-index: 2;
     pointer-events: none;
 }
@@ -1020,21 +1307,21 @@ button {
 
 .clients__logo-card {
     flex-shrink: 0;
-    width: 130px;
-    height: 130px;
+    width: 140px;
+    height: 90px;
     background: var(--color-white);
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .clients__logo-card:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transform: scale(1.08);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .clients__logo-card img {
@@ -1042,8 +1329,8 @@ button {
     height: 100%;
     object-fit: contain;
     filter: grayscale(100%);
-    opacity: 0.6;
-    transition: all 0.3s ease;
+    opacity: 0.5;
+    transition: all 0.4s ease;
 }
 
 .clients__logo-card:hover img {
@@ -1059,84 +1346,9 @@ button {
         transform: translateX(-50%);
     }
 }
-/* ============================================
-   11. TESTIMONIAL SECTION
-   ============================================ */
-.testimonial {
-    position: relative;
-    padding: var(--space-4xl) 0;
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-}
-
-.testimonial__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-}
-
-.testimonial__background img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.testimonial__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(11, 29, 58, 0.85);
-}
-
-.testimonial__content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.testimonial__icon {
-    color: var(--color-secondary);
-    margin-bottom: var(--space-lg);
-    opacity: 0.5;
-}
-
-.testimonial__quote {
-    font-family: var(--font-heading);
-    font-size: clamp(var(--text-xl), 4vw, var(--text-3xl));
-    font-weight: 400;
-    font-style: italic;
-    color: var(--color-white);
-    line-height: 1.6;
-    margin-bottom: var(--space-xl);
-}
-
-.testimonial__author {
-    display: block;
-}
-
-.testimonial__author-name {
-    display: block;
-    font-family: var(--font-accent);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-white);
-    letter-spacing: 0.1em;
-    margin-bottom: var(--space-xs);
-}
-
-.testimonial__author-company {
-    font-size: var(--text-sm);
-    color: var(--color-gray-300);
-}
 
 /* ============================================
-   12. CTA SECTION
+   CTA SECTION (MEJORADA)
    ============================================ */
 .cta {
     padding: var(--space-4xl) 0;
@@ -1145,8 +1357,19 @@ button {
 }
 
 .cta__content {
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
+}
+
+.cta__eyebrow {
+    display: inline-block;
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-md);
 }
 
 .cta__title {
@@ -1162,6 +1385,26 @@ button {
     font-size: var(--text-lg);
     color: var(--color-gray-300);
     margin-bottom: var(--space-xl);
+    line-height: 1.7;
+}
+
+.cta__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+}
+
+.btn--cta {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.btn--cta:hover {
+    background-color: #00c9f0;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(0, 180, 216, 0.3);
 }
 
 /* ============================================
