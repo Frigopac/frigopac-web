@@ -525,63 +525,106 @@
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     <script>
-        // SHOWCASE DE PROYECTOS INTERACTIVO
-        const projects = [
-            {
-                image: 'assets/images/proyecto-1.jpg',
-                category: 'Cuartos Fríos',
-                title: 'KFC Colombia',
-                desc: 'Diseño e instalación de 15 cuartos fríos de refrigeración y congelación en puntos de venta a nivel nacional, garantizando la cadena de frío en cada operación.',
-                location: 'Bogotá, Colombia'
-            },
-            {
-                image: 'assets/images/proyecto-2.jpg',
-                category: 'Refrigeración Comercial',
-                title: 'Burger King',
-                desc: 'Implementación de sistemas de refrigeración comercial de alta eficiencia en más de 10 restaurantes, cumpliendo con los estándares internacionales de la marca.',
-                location: 'Bogotá y Medellín, Colombia'
-            },
-            {
-                image: 'assets/images/proyecto-3.jpg',
-                category: 'Túneles de Congelación',
-                title: 'Freshmar',
-                desc: 'Construcción de túneles de congelación rápida para productos pesqueros, aumentando la capacidad de procesamiento en un 40% y optimizando el consumo energético.',
-                location: 'Barranquilla, Colombia'
-            }
-        ];
-
-        function changeProject(index) {
-            const img = document.getElementById('showcaseImg');
-            const cat = document.getElementById('showcaseCat');
-            const title = document.getElementById('showcaseTitle');
-            const desc = document.getElementById('showcaseDesc');
-            const loc = document.getElementById('showcaseLoc');
-            const tabs = document.querySelectorAll('.showcase__tab');
-
-            img.style.opacity = '0';
-            img.style.transform = 'scale(1.05)';
-
-            setTimeout(function() {
-                img.src = projects[index].image;
-                cat.textContent = projects[index].category;
-                title.textContent = projects[index].title;
-                desc.textContent = projects[index].desc;
-                loc.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z"/><circle cx="12" cy="10" r="3"/></svg><span>' + projects[index].location + '</span>';
-
-                img.style.opacity = '1';
-                img.style.transform = 'scale(1)';
-            }, 300);
-
-            tabs.forEach(function(tab) { tab.classList.remove('active'); });
-            tabs[index].classList.add('active');
-            currentProject = index;
+    const projects = [
+        {
+            image: 'assets/images/proyecto-1.jpg',
+            category: 'Cuartos Fríos',
+            title: 'KFC Colombia',
+            desc: 'Diseño e instalación de 15 cuartos fríos de refrigeración y congelación en puntos de venta a nivel nacional, garantizando la cadena de frío en cada operación.',
+            location: 'Bogotá, Colombia'
+        },
+        {
+            image: 'assets/images/proyecto-2.jpg',
+            category: 'Refrigeración Comercial',
+            title: 'Burger King',
+            desc: 'Implementación de sistemas de refrigeración comercial de alta eficiencia en más de 10 restaurantes, cumpliendo con los estándares internacionales de la marca.',
+            location: 'Bogotá y Medellín, Colombia'
+        },
+        {
+            image: 'assets/images/proyecto-3.jpg',
+            category: 'Túneles de Congelación',
+            title: 'Freshmar',
+            desc: 'Construcción de túneles de congelación rápida para productos pesqueros, aumentando la capacidad de procesamiento en un 40% y optimizando el consumo energético.',
+            location: 'Barranquilla, Colombia'
         }
+    ];
 
-        var currentProject = 0;
-        setInterval(function() {
-            currentProject = (currentProject + 1) % 3;
+    let currentProject = 0;
+    let autoplayInterval;
+    let progressInterval;
+    const SLIDE_DURATION = 6000;
+    const PROGRESS_STEP = 30;
+
+    function changeProject(index) {
+        const img = document.getElementById('showcaseImg');
+        const cat = document.getElementById('showcaseCat');
+        const title = document.getElementById('showcaseTitle');
+        const desc = document.getElementById('showcaseDesc');
+        const loc = document.getElementById('showcaseLoc');
+        const tabs = document.querySelectorAll('.showcase__tab');
+        const progressBar = document.getElementById('showcaseProgress');
+
+        img.style.opacity = '0';
+        img.style.transform = 'scale(1.05)';
+
+        setTimeout(function() {
+            img.src = projects[index].image;
+            cat.textContent = projects[index].category;
+            title.textContent = projects[index].title;
+            desc.textContent = projects[index].desc;
+            loc.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z"/><circle cx="12" cy="10" r="3"/></svg><span>' + projects[index].location + '</span>';
+
+            img.style.opacity = '1';
+            img.style.transform = 'scale(1)';
+        }, 350);
+
+        tabs.forEach(function(tab) { tab.classList.remove('active'); });
+        tabs[index].classList.add('active');
+        currentProject = index;
+
+        resetProgress();
+    }
+
+    function resetProgress() {
+        var progressBar = document.getElementById('showcaseProgress');
+        if (!progressBar) return;
+
+        clearInterval(progressInterval);
+        progressBar.style.width = '0%';
+
+        var elapsed = 0;
+        progressInterval = setInterval(function() {
+            elapsed += PROGRESS_STEP;
+            var percent = (elapsed / SLIDE_DURATION) * 100;
+            progressBar.style.width = percent + '%';
+
+            if (elapsed >= SLIDE_DURATION) {
+                clearInterval(progressInterval);
+            }
+        }, PROGRESS_STEP);
+    }
+
+    function startAutoplay() {
+        clearInterval(autoplayInterval);
+        autoplayInterval = setInterval(function() {
+            currentProject = (currentProject + 1) % projects.length;
             changeProject(currentProject);
-        }, 5000);
-    </script>
+        }, SLIDE_DURATION);
+        resetProgress();
+    }
+
+    var showcaseDisplay = document.querySelector('.showcase__display');
+    if (showcaseDisplay) {
+        showcaseDisplay.addEventListener('mouseenter', function() {
+            clearInterval(autoplayInterval);
+            clearInterval(progressInterval);
+        });
+        showcaseDisplay.addEventListener('mouseleave', function() {
+            startAutoplay();
+        });
+    }
+
+    startAutoplay();
+</script>
 </body>
 </html>
