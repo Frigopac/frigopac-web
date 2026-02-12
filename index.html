@@ -7,7 +7,6 @@
     <meta name="keywords" content="refrigeración industrial, cuartos fríos, bodegas refrigeradas, túneles de congelación, Colombia, Bogotá">
     <meta name="author" content="FRIGOPAC SAS">
     
-    <!-- Open Graph -->
     <meta property="og:title" content="FRIGOPAC - Ingeniería del Frío">
     <meta property="og:description" content="Más de 20 años diseñando soluciones frigoríficas para la industria colombiana.">
     <meta property="og:image" content="assets/images/og-image.jpg">
@@ -16,15 +15,12 @@
     
     <title>FRIGOPAC | Ingeniería del Frío</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -58,7 +54,6 @@
         </div>
     </header>
     
-    <!-- Menú Mobile Fullscreen -->
     <div class="mobile-menu" id="mobileMenu">
         <nav class="mobile-menu__nav">
             <ul class="mobile-menu__list">
@@ -219,80 +214,75 @@
     </section>
 
     <!-- ============================================
-         SECCIÓN: PROYECTOS DESTACADOS
+         SECCIÓN: PROYECTOS DESTACADOS (SHOWCASE)
     ============================================= -->
-    <section class="projects" id="projects">
+    <section class="showcase" id="projects">
         <div class="container">
-            <div class="projects__header reveal-fade">
+            <div class="showcase__header reveal-fade">
                 <h2 class="section-title">Proyectos que hablan por nosotros</h2>
-                <a href="proyectos.html" class="link-arrow">
-                    Ver todos los proyectos
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <p class="showcase__subtitle">Cada instalación refleja nuestro compromiso con la excelencia</p>
+            </div>
+
+            <div class="showcase__display reveal-fade">
+                <div class="showcase__image-wrapper">
+                    <img src="assets/images/proyecto-1.jpg" alt="Proyecto KFC" class="showcase__image" id="showcaseImg">
+                    <div class="showcase__image-overlay">
+                        <span class="showcase__category" id="showcaseCat">Cuartos Fríos</span>
+                        <h3 class="showcase__project-title" id="showcaseTitle">KFC Colombia</h3>
+                        <p class="showcase__project-desc" id="showcaseDesc">Diseño e instalación de 15 cuartos fríos de refrigeración y congelación en puntos de venta a nivel nacional, garantizando la cadena de frío en cada operación.</p>
+                        <div class="showcase__project-location" id="showcaseLoc">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Bogotá, Colombia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showcase__tabs reveal-fade">
+                <button class="showcase__tab active" onclick="changeProject(0)">
+                    <span class="showcase__tab-number">01</span>
+                    <span class="showcase__tab-name">KFC Colombia</span>
+                    <span class="showcase__tab-service">Cuartos Fríos</span>
+                </button>
+                <button class="showcase__tab" onclick="changeProject(1)">
+                    <span class="showcase__tab-number">02</span>
+                    <span class="showcase__tab-name">Burger King</span>
+                    <span class="showcase__tab-service">Refrigeración Comercial</span>
+                </button>
+                <button class="showcase__tab" onclick="changeProject(2)">
+                    <span class="showcase__tab-number">03</span>
+                    <span class="showcase__tab-name">Freshmar</span>
+                    <span class="showcase__tab-service">Túneles de Congelación</span>
+                </button>
+            </div>
+
+            <div class="showcase__footer reveal-fade">
+                <a href="proyectos.html" class="btn btn--primary">
+                    Ver Todos los Proyectos
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M19 12L12 5M19 12L12 19"/></svg>
                 </a>
             </div>
-            
-            <div class="projects__grid">
-                <div class="projects__item projects__item--large reveal-fade">
-                    <img src="assets/images/proyecto-1.jpg" alt="Proyecto KFC">
-                    <div class="projects__item-overlay">
-                        <span class="projects__item-category">Cuartos Fríos</span>
-                        <h3 class="projects__item-title">KFC Colombia</h3>
-                    </div>
-                </div>
-                <div class="projects__item reveal-fade">
-                    <img src="assets/images/proyecto-2.jpg" alt="Proyecto Burger King">
-                    <div class="projects__item-overlay">
-                        <span class="projects__item-category">Refrigeración Comercial</span>
-                        <h3 class="projects__item-title">Burger King</h3>
-                    </div>
-                </div>
-                <div class="projects__item reveal-fade">
-                    <img src="assets/images/proyecto-3.jpg" alt="Proyecto Freshmar">
-                    <div class="projects__item-overlay">
-                        <span class="projects__item-category">Túneles de Congelación</span>
-                        <h3 class="projects__item-title">Freshmar</h3>
-                    </div>
-                </div>
-            </div>
-            
+
             <!-- Logos de Clientes -->
             <div class="clients reveal-fade">
                 <p class="clients__title">Empresas que Confían en Nosotros</p>
-                
-                <!-- Cinta de logos -->
-                <div class="clients__marquee">
-                    <div class="clients__track">
-                        <!-- Primera ronda -->
-                        <div class="clients__logo-card">
-                            <img src="assets/images/logo-kfc.png" alt="KFC">
-                        </div>
-                        <div class="clients__logo-card">
-                            <img src="assets/images/logo-burgerking.png" alt="Burger King">
-                        </div>
-                        <div class="clients__logo-card">
-                            <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice">
-                        </div>
-                        <div class="clients__logo-card">
-                            <img src="assets/images/logo-freshmar.png" alt="Freshmar">
-                        </div>
-                        <!-- Segunda ronda (duplicado para efecto infinito) -->
-                        <div class="clients__logo-card">
-                            <img src="assets/images/logo-kfc.png" alt="KFC">
-                        </div>
-                        <div class="clients__logo-card">
-                            <img src="assets/images/logo-burgerking.png" alt="Burger King">
-                        </div>
-                        <div class="clients__logo-card">
-                            <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice">
-                        </div>
-                        <div class="clients__logo-card">
-                            <img src="assets/images/logo-freshmar.png" alt="Freshmar">
-                        </div>
+                <div class="clients__slider">
+                    <div class="clients__logo">
+                        <img src="assets/images/logo-kfc.png" alt="KFC">
+                    </div>
+                    <div class="clients__logo">
+                        <img src="assets/images/logo-burgerking.png" alt="Burger King">
+                    </div>
+                    <div class="clients__logo">
+                        <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice">
+                    </div>
+                    <div class="clients__logo">
+                        <img src="assets/images/logo-freshmar.png" alt="Freshmar">
                     </div>
                 </div>
             </div>
+
+        </div>
     </section>
 
     <!-- ============================================
@@ -430,5 +420,64 @@
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
+    <script>
+        // SHOWCASE DE PROYECTOS INTERACTIVO
+        const projects = [
+            {
+                image: 'assets/images/proyecto-1.jpg',
+                category: 'Cuartos Fríos',
+                title: 'KFC Colombia',
+                desc: 'Diseño e instalación de 15 cuartos fríos de refrigeración y congelación en puntos de venta a nivel nacional, garantizando la cadena de frío en cada operación.',
+                location: 'Bogotá, Colombia'
+            },
+            {
+                image: 'assets/images/proyecto-2.jpg',
+                category: 'Refrigeración Comercial',
+                title: 'Burger King',
+                desc: 'Implementación de sistemas de refrigeración comercial de alta eficiencia en más de 10 restaurantes, cumpliendo con los estándares internacionales de la marca.',
+                location: 'Bogotá y Medellín, Colombia'
+            },
+            {
+                image: 'assets/images/proyecto-3.jpg',
+                category: 'Túneles de Congelación',
+                title: 'Freshmar',
+                desc: 'Construcción de túneles de congelación rápida para productos pesqueros, aumentando la capacidad de procesamiento en un 40% y optimizando el consumo energético.',
+                location: 'Barranquilla, Colombia'
+            }
+        ];
+
+        function changeProject(index) {
+            const img = document.getElementById('showcaseImg');
+            const cat = document.getElementById('showcaseCat');
+            const title = document.getElementById('showcaseTitle');
+            const desc = document.getElementById('showcaseDesc');
+            const loc = document.getElementById('showcaseLoc');
+            const tabs = document.querySelectorAll('.showcase__tab');
+
+            img.style.opacity = '0';
+            img.style.transform = 'scale(1.05)';
+
+            setTimeout(function() {
+                img.src = projects[index].image;
+                cat.textContent = projects[index].category;
+                title.textContent = projects[index].title;
+                desc.textContent = projects[index].desc;
+                loc.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z"/><circle cx="12" cy="10" r="3"/></svg><span>' + projects[index].location + '</span>';
+
+                img.style.opacity = '1';
+                img.style.transform = 'scale(1)';
+            }, 300);
+
+            tabs.forEach(function(tab) { tab.classList.remove('active'); });
+            tabs[index].classList.add('active');
+            currentProject = index;
+        }
+
+        var currentProject = 0;
+        setInterval(function() {
+            currentProject = (currentProject + 1) % 3;
+            changeProject(currentProject);
+        }, 5000);
+    </script>
 </body>
 </html>
