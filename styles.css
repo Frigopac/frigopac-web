@@ -1524,20 +1524,22 @@ button {
 /* ============================================
    15. REVEAL ANIMATIONS
    ============================================ */
-.reveal-fade,
-.reveal-slide-left,
-.reveal-slide-right {
+.reveal-fade {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal-slide-left {
+    opacity: 0;
     transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal-slide-right {
+    opacity: 0;
     transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal-fade.revealed,
@@ -1548,13 +1550,17 @@ button {
 }
 
 /* ============================================
-   ARREGLO: FORZAR VISIBILIDAD
+   FORZAR VISIBILIDAD EN SECCIONES NUEVAS
    ============================================ */
 .process .reveal-fade,
+.process .reveal-slide-left,
+.process .reveal-slide-right,
 .why .reveal-fade,
+.why .reveal-slide-left,
+.why .reveal-slide-right,
 .clients .reveal-fade,
-.cta .reveal-fade,
-.showcase .reveal-fade {
-    opacity: 1 !important;
-    transform: none !important;
+.cta .reveal-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
 }
