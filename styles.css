@@ -1247,12 +1247,11 @@ button {
 }
 
 /* ============================================
-   CLIENTS SECTION (ARREGLADA)
+   CLIENTS SECTION (ESTÁTICA - LIMPIA)
    ============================================ */
 .clients {
     padding: var(--space-3xl) 0;
     background: var(--color-white);
-    overflow: hidden;
 }
 
 .clients__title {
@@ -1266,62 +1265,23 @@ button {
     text-align: center;
 }
 
-.clients__marquee {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 20px 0;
-}
-
-.clients__marquee::before,
-.clients__marquee::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 120px;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.clients__marquee::before {
-    left: 0;
-    background: linear-gradient(to right, var(--color-white), transparent);
-}
-
-.clients__marquee::after {
-    right: 0;
-    background: linear-gradient(to left, var(--color-white), transparent);
-}
-
-.clients__track {
+.clients__grid {
     display: flex;
-    gap: 40px;
-    width: max-content;
-    animation: scrollLogos 20s linear infinite;
-}
-
-.clients__track:hover {
-    animation-play-state: paused;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xl);
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .clients__logo-card {
-    flex-shrink: 0;
-    width: 140px;
-    height: 90px;
-    background: var(--color-white);
-    border-radius: var(--radius-md);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    width: 120px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    transition: all 0.4s ease;
-}
-
-.clients__logo-card:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    padding: 10px;
 }
 
 .clients__logo-card img {
@@ -1329,22 +1289,13 @@ button {
     height: 100%;
     object-fit: contain;
     filter: grayscale(100%);
-    opacity: 0.5;
+    opacity: 0.4;
     transition: all 0.4s ease;
 }
 
 .clients__logo-card:hover img {
     filter: grayscale(0%);
     opacity: 1;
-}
-
-@keyframes scrollLogos {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
 }
 
 /* ============================================
