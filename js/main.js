@@ -2,67 +2,6 @@
    FRIGOPAC - JavaScript Principal
    ============================================ */
 
-// ============================================
-// LOADING SCREEN (va antes de DOMContentLoaded)
-// ============================================
-window.addEventListener('load', function() {
-    const loader = document.getElementById('loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.classList.add('hidden');
-        }, 2000);
-    }
-});
-
-// ============================================
-// CURSOR PERSONALIZADO (va antes de DOMContentLoaded)
-// ============================================
-const cursor = document.getElementById('cursor');
-const cursorFollower = document.getElementById('cursorFollower');
-
-if (cursor && cursorFollower) {
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        
-        cursorFollower.style.left = e.clientX + 'px';
-        cursorFollower.style.top = e.clientY + 'px';
-    });
-
-    // Efecto hover en enlaces y botones
-    document.addEventListener('DOMContentLoaded', () => {
-        const hoverElements = document.querySelectorAll('a, button, .btn, .services__card');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorFollower.classList.add('hovering');
-                cursor.style.transform = 'scale(2)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorFollower.classList.remove('hovering');
-                cursor.style.transform = 'scale(1)';
-            });
-        });
-    });
-}
-
-// ============================================
-// BARRA DE PROGRESO DE SCROLL
-// ============================================
-const scrollProgress = document.getElementById('scrollProgress');
-
-window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    
-    if (scrollProgress) {
-        scrollProgress.style.width = scrollPercent + '%';
-    }
-});
-
-// ============================================
-// TU CÓDIGO ORIGINAL (todo igual, sin cambios)
-// ============================================
 document.addEventListener('DOMContentLoaded', function() {
     
     // ============================================
@@ -94,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
         
-        // Close mobile menu when clicking a link
         const mobileLinks = document.querySelectorAll('.mobile-menu__link');
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
@@ -106,25 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ============================================
-    // 3. SCROLL REVEAL ANIMATIONS
-    // ============================================
-    const revealElements = document.querySelectorAll('.reveal-fade, .reveal-slide-left, .reveal-slide-right');
-    
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    revealElements.forEach(el => revealObserver.observe(el));
-    
-    // ============================================
-    // 4. STATS COUNTER ANIMATION (ARREGLADO)
+    // 3. STATS COUNTER ANIMATION
     // ============================================
     const statNumbers = document.querySelectorAll('.stats__number');
     let hasCounterAnimated = false;
@@ -151,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function animateCounter(element, target) {
         let current = 0;
-        const duration = 2000; // 2 segundos
-        const increment = target / (duration / 16); // 60 FPS
+        const duration = 2000;
+        const increment = target / (duration / 16);
         
         const updateCounter = () => {
             current += increment;
@@ -169,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ============================================
-    // 5. SMOOTH SCROLL FOR ANCHOR LINKS
+    // 4. SMOOTH SCROLL FOR ANCHOR LINKS
     // ============================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -190,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ============================================
-    // 6. PARALLAX EFFECT ON HERO
+    // 5. PARALLAX EFFECT ON HERO
     // ============================================
     const heroBackground = document.querySelector('.hero__background img, .hero__background video');
     
@@ -204,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ============================================
-    // 7. ACTIVE NAV LINK ON SCROLL
+    // 6. ACTIVE NAV LINK ON SCROLL
     // ============================================
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.header__link');
