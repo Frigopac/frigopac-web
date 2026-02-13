@@ -172,55 +172,68 @@
         </div>
     </section>
 
-    <!-- PROYECTOS -->
-    <section class="showcase" id="projects">
-        <div class="container">
-            <div class="showcase__header">
-                <h2 class="section-title">Proyectos que hablan por nosotros</h2>
-                <p class="showcase__subtitle">Cada instalación refleja nuestro compromiso con la excelencia</p>
-            </div>
+ <!-- ============================================
+     SECCIÓN: NUESTROS PROYECTOS (HOME)
+============================================= -->
+<section class="home-projects" id="projects">
+    <div class="home-projects__container">
 
-            <div class="showcase__display">
-                <div class="showcase__image-wrapper">
-                    <img src="assets/images/proyecto-1.jpg" alt="Proyecto KFC" class="showcase__image" id="showcaseImg">
-                    <div class="showcase__image-overlay">
-                        <span class="showcase__category" id="showcaseCat">Cuartos Fríos</span>
-                        <h3 class="showcase__project-title" id="showcaseTitle">KFC Colombia</h3>
-                        <p class="showcase__project-desc" id="showcaseDesc">Diseño e instalación de 15 cuartos fríos de refrigeración y congelación en puntos de venta a nivel nacional.</p>
-                        <div class="showcase__project-location" id="showcaseLoc">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span>Bogotá, Colombia</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="showcase__tabs">
-                <button class="showcase__tab active" onclick="changeProject(0)">
-                    <span class="showcase__tab-number">01</span>
-                    <span class="showcase__tab-name">KFC Colombia</span>
-                    <span class="showcase__tab-service">Cuartos Fríos</span>
-                </button>
-                <button class="showcase__tab" onclick="changeProject(1)">
-                    <span class="showcase__tab-number">02</span>
-                    <span class="showcase__tab-name">Burger King</span>
-                    <span class="showcase__tab-service">Refrigeración Comercial</span>
-                </button>
-                <button class="showcase__tab" onclick="changeProject(2)">
-                    <span class="showcase__tab-number">03</span>
-                    <span class="showcase__tab-name">Freshmar</span>
-                    <span class="showcase__tab-service">Túneles de Congelación</span>
-                </button>
-            </div>
-
-            <div class="showcase__footer">
-                <a href="proyectos.html" class="btn btn--primary">
-                    Ver Todos los Proyectos
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M19 12L12 5M19 12L12 19"/></svg>
-                </a>
-            </div>
+        <!-- Encabezado -->
+        <div class="home-projects__header">
+            <h2 class="home-projects__title">Nuestros Proyectos</h2>
+            <p class="home-projects__subtitle">
+                Cada instalación refleja el compromiso de Frigopac con la
+                <span class="home-projects__highlight">excelencia</span>
+            </p>
         </div>
-    </section>
+
+        <!-- Tarjetas -->
+        <div class="home-projects__grid">
+
+            <article class="home-projects__card">
+                <div class="home-projects__card-image">
+                    <img src="assets/images/proyecto-congelados.jpg" alt="Planta de Congelados">
+                </div>
+                <div class="home-projects__card-body">
+                    <h3 class="home-projects__card-title">Planta de Congelados</h3>
+                    <p class="home-projects__card-desc">Implementación de planta de congelados en Santiago, Chile.</p>
+                    <a href="proyectos.html" class="home-projects__btn">VER MÁS</a>
+                </div>
+            </article>
+
+            <article class="home-projects__card">
+                <div class="home-projects__card-image">
+                    <img src="assets/images/proyecto-distribucion.jpg" alt="Centro de Distribución">
+                </div>
+                <div class="home-projects__card-body">
+                    <h3 class="home-projects__card-title">Centro de Distribución</h3>
+                    <p class="home-projects__card-desc">Instalación de centro de distribución refrigerado para productos perecederos.</p>
+                    <a href="proyectos.html" class="home-projects__btn">VER MÁS</a>
+                </div>
+            </article>
+
+            <article class="home-projects__card">
+                <div class="home-projects__card-image">
+                    <img src="assets/images/proyecto-procesos.jpg" alt="Sala de Procesos">
+                </div>
+                <div class="home-projects__card-body">
+                    <h3 class="home-projects__card-title">Sala de Procesos</h3>
+                    <p class="home-projects__card-desc">Instalación de sala de procesos refrigerada para la industria alimentaria.</p>
+                    <a href="proyectos.html" class="home-projects__btn">VER MÁS</a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Botón principal -->
+        <div class="home-projects__footer">
+            <a href="proyectos.html" class="home-projects__btn home-projects__btn--large">
+                VER TODOS LOS PROYECTOS
+            </a>
+        </div>
+
+    </div>
+</section>
 
     <!-- CLIENTES -->
     <section class="clients" id="clients">
