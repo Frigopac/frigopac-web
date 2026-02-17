@@ -221,59 +221,60 @@
 </section>
 
 <!-- CLIENTES -->
-<section id="clients" style="position: relative; width: 100%; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0; margin: 0;">
+<section id="clients" style="position: relative; width: 100%; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0; margin: 0;">
 
-    <!-- Imagen de fondo -->
+    <!-- Imagen de fondo que cubre TODO -->
     <img src="assets/images/fondo-clientes.jpg" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0;">
 
-    <!-- Overlay oscuro -->
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(11,29,58,0.82) 0%, rgba(20,45,80,0.75) 50%, rgba(30,58,95,0.70) 100%); z-index: 1;"></div>
+    <!-- Overlay: gradiente que va de transparente arriba a oscuro abajo -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(11,29,58,0.3) 0%, rgba(11,29,58,0.6) 30%, rgba(11,29,58,0.8) 60%, rgba(11,29,58,0.85) 100%); z-index: 1;"></div>
 
     <!-- Contenido -->
-    <div style="position: relative; z-index: 2; text-align: center; padding: 80px 24px; max-width: 700px; width: 100%; margin: 0 auto;">
+    <div style="position: relative; z-index: 2; text-align: center; padding: 100px 24px 80px; max-width: 800px; width: 100%; margin: 0 auto;">
 
-        <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.8rem; font-weight: 600; color: #ffffff; margin-bottom: 10px; letter-spacing: 0.5px;">Nuestros Clientes</h2>
+        <!-- Título grande y visible -->
+        <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 3.2rem; font-weight: 600; color: #ffffff; margin-bottom: 12px; letter-spacing: 0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Nuestros Clientes</h2>
 
-        <p style="font-family: 'Inter', 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.75); margin-bottom: 45px; letter-spacing: 0.3px;">Empresas que confían en nosotros</p>
+        <p style="font-family: 'Inter', 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 50px; letter-spacing: 0.3px;">Empresas que confían en nosotros</p>
 
-        <!-- Grid 2x2 -->
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 520px; margin: 0 auto;">
+        <!-- Grid 2x2 con tarjetas más grandes -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 620px; margin: 0 auto;">
 
             <!-- Tarjeta 1 - KFC -->
-            <div class="client-card-hover" style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px; transition: all 0.4s ease; cursor: default;">
-                <img src="assets/images/logo-kfc.png" alt="KFC" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; transition: all 0.4s ease;">
+            <div class="client-card-hover" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.20); border-radius: 18px; padding: 40px 30px; display: flex; align-items: center; justify-content: center; min-height: 180px; transition: all 0.4s ease; cursor: default;">
+                <img src="assets/images/logo-kfc.png" alt="KFC" style="max-width: 180px; max-height: 120px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; transition: all 0.4s ease;">
             </div>
 
             <!-- Tarjeta 2 - Burger King -->
-            <div class="client-card-hover" style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px; transition: all 0.4s ease; cursor: default;">
-                <img src="assets/images/logo-burgerking.png" alt="Burger King" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; transition: all 0.4s ease;">
+            <div class="client-card-hover" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.20); border-radius: 18px; padding: 40px 30px; display: flex; align-items: center; justify-content: center; min-height: 180px; transition: all 0.4s ease; cursor: default;">
+                <img src="assets/images/logo-burgerking.png" alt="Burger King" style="max-width: 180px; max-height: 120px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; transition: all 0.4s ease;">
             </div>
 
             <!-- Tarjeta 3 - La Planice -->
-            <div class="client-card-hover" style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px; transition: all 0.4s ease; cursor: default;">
-                <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; transition: all 0.4s ease;">
+            <div class="client-card-hover" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.20); border-radius: 18px; padding: 40px 30px; display: flex; align-items: center; justify-content: center; min-height: 180px; transition: all 0.4s ease; cursor: default;">
+                <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice" style="max-width: 180px; max-height: 120px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; transition: all 0.4s ease;">
             </div>
 
             <!-- Tarjeta 4 - Freshmar -->
-            <div class="client-card-hover" style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px; transition: all 0.4s ease; cursor: default;">
-                <img src="assets/images/logo-freshmar.png" alt="Freshmar" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; transition: all 0.4s ease;">
+            <div class="client-card-hover" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.20); border-radius: 18px; padding: 40px 30px; display: flex; align-items: center; justify-content: center; min-height: 180px; transition: all 0.4s ease; cursor: default;">
+                <img src="assets/images/logo-freshmar.png" alt="Freshmar" style="max-width: 180px; max-height: 120px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; transition: all 0.4s ease;">
             </div>
 
         </div>
     </div>
 
-    <!-- ESTO es lo que hace el efecto zoom al pasar el mouse -->
+    <!-- Efectos hover -->
     <style>
         .client-card-hover:hover {
             transform: translateY(-8px) scale(1.05) !important;
-            background: rgba(255,255,255,0.20) !important;
-            border-color: rgba(255,255,255,0.35) !important;
+            background: rgba(255,255,255,0.22) !important;
+            border-color: rgba(255,255,255,0.40) !important;
             box-shadow: 0 15px 45px rgba(0,0,0,0.30) !important;
         }
         .client-card-hover:hover img {
             opacity: 1 !important;
             transform: scale(1.15) !important;
-            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3)) !important;
+            filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.4)) !important;
         }
     </style>
 
