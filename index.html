@@ -240,27 +240,43 @@
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 520px; margin: 0 auto;">
 
             <!-- Tarjeta 1 - KFC -->
-            <div style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px;">
-                <img src="assets/images/logo-kfc.png" alt="KFC" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85;">
+            <div class="client-card-hover" style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px; transition: all 0.4s ease; cursor: default;">
+                <img src="assets/images/logo-kfc.png" alt="KFC" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; transition: all 0.4s ease;">
             </div>
 
             <!-- Tarjeta 2 - Burger King -->
-            <div style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px;">
-                <img src="assets/images/logo-burgerking.png" alt="Burger King" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85;">
+            <div class="client-card-hover" style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px; transition: all 0.4s ease; cursor: default;">
+                <img src="assets/images/logo-burgerking.png" alt="Burger King" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; transition: all 0.4s ease;">
             </div>
 
             <!-- Tarjeta 3 - La Planice -->
-            <div style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px;">
-                <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85;">
+            <div class="client-card-hover" style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px; transition: all 0.4s ease; cursor: default;">
+                <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; transition: all 0.4s ease;">
             </div>
 
             <!-- Tarjeta 4 - Freshmar -->
-            <div style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px;">
-                <img src="assets/images/logo-freshmar.png" alt="Freshmar" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85;">
+            <div class="client-card-hover" style="background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; min-height: 150px; transition: all 0.4s ease; cursor: default;">
+                <img src="assets/images/logo-freshmar.png" alt="Freshmar" style="max-width: 130px; max-height: 80px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; transition: all 0.4s ease;">
             </div>
 
         </div>
     </div>
+
+    <!-- ESTO es lo que hace el efecto zoom al pasar el mouse -->
+    <style>
+        .client-card-hover:hover {
+            transform: translateY(-8px) scale(1.05) !important;
+            background: rgba(255,255,255,0.20) !important;
+            border-color: rgba(255,255,255,0.35) !important;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.30) !important;
+        }
+        .client-card-hover:hover img {
+            opacity: 1 !important;
+            transform: scale(1.15) !important;
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.3)) !important;
+        }
+    </style>
+
 </section>
     <!-- CTA -->
     <section class="cta" id="cta">
