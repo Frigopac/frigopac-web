@@ -742,8 +742,6 @@ button {
 /* ============================================
    10. HOME PROJECTS SECTION
    ============================================ */
-
-/* ---- Fondo de hielo ---- */
 .home-projects {
     position: relative;
     padding: 80px 0 100px;
@@ -758,7 +756,6 @@ button {
     overflow: hidden;
 }
 
-/* Contenedor centrado */
 .home-projects__container {
     width: 100%;
     max-width: 1200px;
@@ -768,7 +765,6 @@ button {
     z-index: 1;
 }
 
-/* ---- Encabezado ---- */
 .home-projects__header {
     text-align: center;
     margin-bottom: 48px;
@@ -796,7 +792,6 @@ button {
     font-weight: 600;
 }
 
-/* ---- Layout de tarjetas (Grid) ---- */
 .home-projects__grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -816,7 +811,6 @@ button {
     }
 }
 
-/* ---- Tarjetas ---- */
 .home-projects__card {
     background-color: rgba(255, 255, 255, 0.92);
     border-radius: 12px;
@@ -826,7 +820,6 @@ button {
     position: relative;
 }
 
-/* Efecto hielo asomando en la parte baja de cada tarjeta */
 .home-projects__card::after {
     content: '';
     position: absolute;
@@ -846,7 +839,6 @@ button {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Imagen de tarjeta */
 .home-projects__card-image {
     width: 100%;
     height: 220px;
@@ -867,7 +859,6 @@ button {
     transform: scale(1.05);
 }
 
-/* Cuerpo de tarjeta */
 .home-projects__card-body {
     padding: 24px;
     position: relative;
@@ -891,7 +882,6 @@ button {
     margin-bottom: 20px;
 }
 
-/* ---- Botones ---- */
 .home-projects__btn {
     display: inline-block;
     padding: 10px 24px;
@@ -913,7 +903,6 @@ button {
     transform: translateY(-2px);
 }
 
-/* Botón grande inferior */
 .home-projects__btn--large {
     padding: 14px 36px;
     font-size: 0.85rem;
@@ -925,55 +914,200 @@ button {
 }
 
 /* ============================================
-   13. CLIENTS SECTION
+   13. CLIENTS SECTION - GLASSMORPHISM
    ============================================ */
 .clients {
-    padding: var(--space-3xl) 0;
-    background: var(--color-white);
-}
-
-.clients__title {
-    font-family: var(--font-accent);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--color-gray-600);
-    margin-bottom: var(--space-xl);
-    text-align: center;
-}
-
-.clients__grid {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    gap: var(--space-2xl);
-    max-width: 900px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Imagen de fondo */
+.clients__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.clients__bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Overlay azul oscuro */
+.clients__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(11, 29, 58, 0.80) 0%,
+        rgba(20, 45, 80, 0.75) 50%,
+        rgba(30, 58, 95, 0.70) 100%
+    );
+}
+
+/* Contenido */
+.clients__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 700px;
+    width: 100%;
     margin: 0 auto;
 }
 
-.clients__logo-card {
-    width: 120px;
-    height: 70px;
+/* Título */
+.clients__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+/* Subtítulo */
+.clients__subtitle {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 45px;
+    letter-spacing: 0.3px;
+}
+
+/* Grid 2x2 */
+.clients__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* Tarjeta glassmorphism */
+.clients__card {
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    padding: 32px 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    min-height: 150px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: default;
 }
 
-.clients__logo-card img {
-    width: 100%;
-    height: 100%;
+.clients__card:hover {
+    transform: translateY(-6px) scale(1.03);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.30);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Logo dentro de la tarjeta */
+.clients__card img {
+    max-width: 130px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
     object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.4;
+    filter: brightness(0) invert(1);
+    opacity: 0.80;
     transition: all 0.4s ease;
 }
 
-.clients__logo-card:hover img {
-    filter: grayscale(0%);
+.clients__card:hover img {
     opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Responsive clientes */
+@media (max-width: 768px) {
+    .clients {
+        min-height: 500px;
+    }
+
+    .clients__content {
+        padding: 60px 20px;
+    }
+
+    .clients__heading {
+        font-size: 2rem;
+    }
+
+    .clients__subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 35px;
+    }
+
+    .clients__grid {
+        max-width: 400px;
+        gap: 16px;
+    }
+
+    .clients__card {
+        padding: 24px 18px;
+        min-height: 120px;
+        border-radius: 14px;
+    }
+
+    .clients__card img {
+        max-width: 110px;
+        max-height: 65px;
+    }
+}
+
+@media (max-width: 480px) {
+    .clients {
+        min-height: 450px;
+    }
+
+    .clients__content {
+        padding: 50px 16px;
+    }
+
+    .clients__heading {
+        font-size: 1.7rem;
+    }
+
+    .clients__subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 28px;
+    }
+
+    .clients__grid {
+        max-width: 280px;
+        gap: 12px;
+    }
+
+    .clients__card {
+        padding: 20px 14px;
+        min-height: 100px;
+        border-radius: 12px;
+    }
+
+    .clients__card img {
+        max-width: 90px;
+        max-height: 55px;
+    }
 }
 
 /* ============================================
