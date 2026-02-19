@@ -152,3 +152,59 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', setActiveLink);
     
 });
+
+<!-- CARRUSEL FUNCIONAL -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Buscar todos los carruseles en la página
+    const carousels = document.querySelectorAll('.carousel');
+
+    carousels.forEach(function(carousel) {
+        const slides = carousel.querySelector('.carousel__slides');
+        const totalSlides = carousel.querySelectorAll('.carousel__slide').length;
+        const btnPrev = carousel.querySelector('.carousel__btn--prev');
+        const btnNext = carousel.querySelector('.carousel__btn--next');
+        const dots = carousel.querySelectorAll('.carousel__dot');
+        let currentSlide = 0;
+
+        // Función para ir a una slide específica
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentSlide = index;
+            slides.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+
+            // Actualizar los puntos
+            dots.forEach(function(dot, i) {
+                if (i === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Botón siguiente
+        btnNext.addEventListener('click', function() {
+            goToSlide(currentSlide + 1);
+        });
+
+        // Botón anterior
+        btnPrev.addEventListener('click', function() {
+            goToSlide(currentSlide - 1);
+        });
+
+        // Click en los puntos
+        dots.forEach(function(dot, i) {
+            dot.addEventListener('click', function() {
+                goToSlide(i);
+            });
+        });
+
+        // Auto-play: cambia cada 4 segundos
+        setInterval(function() {
+            goToSlide(currentSlide + 1);
+        }, 4000);
+    });
+});
+</script>
