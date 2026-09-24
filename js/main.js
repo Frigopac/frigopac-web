@@ -8,15 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // 1. HEADER SCROLL EFFECT
     // ============================================
     const header = document.getElementById('header');
-    
+
     function handleScroll() {
+        if (!header) return;
         if (window.scrollY > 100) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
     }
-    
+
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     
@@ -98,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
-                    const headerHeight = header.offsetHeight;
+                    const headerHeight = header ? header.offsetHeight : 0;
                     const targetPosition = target.offsetTop - headerHeight;
                     window.scrollTo({
                         top: targetPosition,
@@ -150,13 +151,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener('scroll', setActiveLink);
-    
-});
 
-<!-- CARRUSEL FUNCIONAL -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Buscar todos los carruseles en la página
+    // ============================================
+    // 7. CARRUSEL FUNCIONAL
+    // ============================================
     const carousels = document.querySelectorAll('.carousel');
 
     carousels.forEach(function(carousel) {
@@ -206,5 +204,24 @@ document.addEventListener('DOMContentLoaded', function() {
             goToSlide(currentSlide + 1);
         }, 4000);
     });
+
+    // ============================================
+    // 8. SCROLL REVEAL ANIMATIONS
+    // ============================================
+    const revealEls = document.querySelectorAll('.reveal');
+
+    if (revealEls.length) {
+        const revealObserver = new IntersectionObserver(function(entries, obs) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal--visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+        revealEls.forEach(function(el) {
+            revealObserver.observe(el);
+        });
+    }
 });
-</script>

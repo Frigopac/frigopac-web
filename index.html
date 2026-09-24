@@ -15,291 +15,265 @@
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="header" id="header">
-        <div class="header__container">
-            <a href="index.html" class="header__logo">
-                <span class="logo-text">FRIGOPAC</span>
-            </a>
-            <nav class="header__nav" id="nav">
-                <ul class="header__menu">
-                    <li><a href="index.html" class="header__link active">Inicio</a></li>
-                    <li><a href="nosotros.html" class="header__link">Nosotros</a></li>
-                    <li><a href="servicios.html" class="header__link">Servicios</a></li>
-                    <li><a href="proyectos.html" class="header__link">Proyectos</a></li>
-                    <li><a href="contacto.html" class="header__link">Contacto</a></li>
-                </ul>
-            </nav>
-            <a href="contacto.html" class="header__cta">Cotizar</a>
-            <button class="header__toggle" id="navToggle" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <nav class="mobile-menu__nav">
-            <ul class="mobile-menu__list">
-                <li><a href="index.html" class="mobile-menu__link">Inicio</a></li>
-                <li><a href="nosotros.html" class="mobile-menu__link">Nosotros</a></li>
-                <li><a href="servicios.html" class="mobile-menu__link">Servicios</a></li>
-                <li><a href="proyectos.html" class="mobile-menu__link">Proyectos</a></li>
-                <li><a href="contacto.html" class="mobile-menu__link">Contacto</a></li>
-            </ul>
-            <a href="contacto.html" class="mobile-menu__cta">Solicitar Cotización</a>
-        </nav>
-    </div>
-
-    <!-- HERO -->
+    <!-- HERO (full-bleed) -->
     <section class="hero" id="hero">
         <div class="hero__background">
-            <img src="assets/images/hero-bg.jpg" alt="Instalación de refrigeración industrial" class="hero__image">
+            <video class="hero__bg-video" autoplay muted loop playsinline poster="assets/images/hero-bg.jpg">
+                <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+            </video>
             <div class="hero__overlay"></div>
         </div>
+
         <div class="hero__content">
-            <p class="hero__badge">Más de 20 años de excelencia en refrigeración industrial</p>
-            <h1 class="hero__title">Soluciones de refrigeración industrial</h1>
-            <p class="hero__subtitle">Diseñamos, instalamos y mantenemos sistemas de refrigeración industrial que protegen su producto y garantizan la continuidad de su cadena de frío.</p>
-            <div class="hero__buttons">
-                <a href="servicios.html" class="btn btn--primary">Conocer Servicios</a>
-                <a href="contacto.html" class="btn btn--outline">Contactar</a>
-            </div>
-        </div>
-        <div class="hero__scroll">
-            <span class="hero__scroll-text">Scroll</span>
-            <div class="hero__scroll-line"></div>
-        </div>
-    </section>
+            <nav class="hero__nav">
+                <div class="hero__logo">FRIGOPAC</div>
+                <ul class="hero__menu">
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+                <a href="contacto.html" class="hero__nav-cta">Cotizar</a>
+            </nav>
 
-    <!-- STATS -->
-    <section class="stats" id="stats">
-        <div class="container">
-            <div class="stats__grid">
-                <div class="stats__item">
-                    <span class="stats__number" data-target="20">0</span>
-                    <span class="stats__plus">+</span>
-                    <p class="stats__label">Años de Trayectoria</p>
-                </div>
-                <div class="stats__item">
-                    <span class="stats__number" data-target="150">0</span>
-                    <span class="stats__plus">+</span>
-                    <p class="stats__label">Proyectos Ejecutados</p>
-                </div>
-                <div class="stats__item">
-                    <span class="stats__number" data-target="100">0</span>
-                    <span class="stats__plus">%</span>
-                    <p class="stats__label">Cobertura Nacional</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT PREVIEW -->
-    <section class="about-preview" id="about-preview">
-        <div class="container">
-            <div class="about-preview__grid">
-                <div class="about-preview__image">
-                    <img src="assets/images/cuarto-frio-interior.jpg" alt="Interior de cuarto frío FRIGOPAC">
-                </div>
-                <div class="about-preview__content">
-                    <h2 class="section-title">Precisión en cada grado</h2>
-                    <p class="about-preview__text">
-                        En FRIGOPAC no solo construimos cuartos fríos. Diseñamos soluciones de ingeniería que protegen su producto, reducen pérdidas, optimizan recursos y elevan los estándares de producción de su empresa
-                    </p>
-                    <p class="about-preview__text">
-                        Cada proyecto es único. Cada instalación, impecable.
-                    </p>
-                    <a href="nosotros.html" class="link-arrow">
-                        Conocer nuestra historia
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="hero__text">
+                <p class="hero__eyebrow">Ingeniería y proyectos térmicos</p>
+                <h1 class="hero__title">Diseño e instalación de cuartos fríos a la medida de su espacio</h1>
+                <div class="hero__actions">
+                    <a href="contacto.html" class="hero-btn hero-btn--glass">
+                        Cotizar proyecto llave en mano
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services" id="services">
-        <div class="services__header">
-            <div class="container">
-                <h2 class="section-title section-title--light">Nuestras Soluciones</h2>
+    <!-- CINTA DE CLIENTES -->
+    <section class="clients" id="clients" aria-label="Empresas que confían en nuestra ingeniería">
+        <p class="clients__title">Empresas que confían en nuestra ingeniería</p>
+        <div class="marquee">
+            <div class="marquee__track">
+                <img src="assets/images/logo-kfc 2.png" alt="KFC" class="clients__logo-img">
+                <img src="assets/images/logo-burgerking.png" alt="Burger King" class="clients__logo-img">
+                <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice" class="clients__logo-img">
+                <img src="assets/images/logo-freshmar.png 3" alt="Freshmar" class="clients__logo-img">
+                <img src="assets/images/logo-kfc 2.png" alt="" class="clients__logo-img" aria-hidden="true">
+                <img src="assets/images/logo-burgerking.png" alt="" class="clients__logo-img" aria-hidden="true">
+                <img src="assets/images/logo-laplanice.png" alt="" class="clients__logo-img" aria-hidden="true">
+                <img src="assets/images/logo-freshmar.png 3" alt="" class="clients__logo-img" aria-hidden="true">
             </div>
-        </div>
-        <div class="services__grid">
-            <a href="servicios.html#cuartos-frios" class="services__card">
-                <div class="services__card-image"><img src="assets/images/cuarto-frio.jpg" alt="Cuartos Fríos"></div>
-                <div class="services__card-overlay"></div>
-                <h3 class="services__card-title">Cuartos Fríos</h3>
-                <div class="services__card-line"></div>
-            </a>
-            <a href="servicios.html#bodegas" class="services__card">
-                <div class="services__card-image"><img src="assets/images/bodega.jpg" alt="Bodegas Refrigeradas"></div>
-                <div class="services__card-overlay"></div>
-                <h3 class="services__card-title">Bodegas Refrigeradas</h3>
-                <div class="services__card-line"></div>
-            </a>
-            <a href="servicios.html#salas-proceso" class="services__card">
-                <div class="services__card-image"><img src="assets/images/sala-proceso.jpg" alt="Salas de Proceso"></div>
-                <div class="services__card-overlay"></div>
-                <h3 class="services__card-title">Salas de Proceso</h3>
-                <div class="services__card-line"></div>
-            </a>
-            <a href="servicios.html#tuneles" class="services__card">
-                <div class="services__card-image"><img src="assets/images/tunel.jpg" alt="Túneles de Congelación"></div>
-                <div class="services__card-overlay"></div>
-                <h3 class="services__card-title">Túneles de Congelación</h3>
-                <div class="services__card-line"></div>
-            </a>
-            <a href="servicios.html#puertas" class="services__card">
-                <div class="services__card-image"><img src="assets/images/puertas.jpg" alt="Puertas y Muelles"></div>
-                <div class="services__card-overlay"></div>
-                <h3 class="services__card-title">Puertas y Muelles</h3>
-                <div class="services__card-line"></div>
-            </a>
-            <a href="servicios.html#mantenimiento" class="services__card">
-                <div class="services__card-image"><img src="assets/images/mantenimiento.jpg" alt="Mantenimiento"></div>
-                <div class="services__card-overlay"></div>
-                <h3 class="services__card-title">Mantenimiento</h3>
-                <div class="services__card-line"></div>
-            </a>
         </div>
     </section>
 
-<!-- PROYECTOS -->
-<section id="home-projects" style="padding:80px 0 100px; background-image:url('assets/images/bg-hielo-proyectos.png'); background-position:bottom center; background-size:cover; background-repeat:no-repeat; background-color:#f0f4f8;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-
-        <h2 style="text-align: center; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.5rem; font-weight: 500; color: #1c3f6e; margin-bottom: 12px;">Nuestros Proyectos</h2>
-        <p style="text-align: center; font-family: 'Inter', sans-serif; font-size: 1rem; color: #4a4a4a; margin-bottom: 48px;">
-            Cada instalación refleja el compromiso de Frigopac con la
-            <span style="color: #2663a8; font-weight: 600;">excelencia</span>
-        </p>
-
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px;">
-
-            <div style="background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 60%, rgba(255,255,255,0.5) 100%); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
-                <div style="width: 100%; height: 220px; background-color: #d0d8e0; display: flex; align-items: center; justify-content: center; color: #888; font-family: sans-serif; font-size: 14px;">Imagen Proyecto 1</div>
-                <div style="padding: 24px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.125rem; font-weight: 700; color: #1c3f6e; margin-bottom: 8px;">Planta de Congelados</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #5a5a5a; line-height: 1.7; margin-bottom: 20px;">Implementación de planta de congelados en Santiago, Chile.</p>
-                    <a href="proyectos.html" style="display: inline-block; padding: 10px 24px; background-color: #1c3f6e; color: white; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;">VER MÁS</a>
-                </div>
+    <!-- FRANJA DE VALOR -->
+    <section class="trust-bar" id="trust-bar" aria-label="Nuestro proceso de trabajo">
+        <div class="container">
+            <div class="trust-bar__grid">
+                <article class="trust-bar__item reveal">
+                    <span class="trust-bar__index">01</span>
+                    <h3 class="trust-bar__title">Cálculo Térmico</h3>
+                    <p class="trust-bar__text">Levantamiento de espacio y dimensionamiento exacto de carga.</p>
+                </article>
+                <article class="trust-bar__item reveal">
+                    <span class="trust-bar__index">02</span>
+                    <h3 class="trust-bar__title">Ingeniería Llave en Mano</h3>
+                    <p class="trust-bar__text">Venta, suministro e instalación de punta a punta.</p>
+                </article>
+                <article class="trust-bar__item reveal">
+                    <span class="trust-bar__index">03</span>
+                    <h3 class="trust-bar__title">Aislamiento High-Spec</h3>
+                    <p class="trust-bar__text">Paneles modulares de alta densidad y cero fuga térmica.</p>
+                </article>
+                <article class="trust-bar__item reveal">
+                    <span class="trust-bar__index">04</span>
+                    <h3 class="trust-bar__title">Soporte y Garantía</h3>
+                    <p class="trust-bar__text">Monitoreo y mantenimiento preventivo especializado.</p>
+                </article>
             </div>
-
-            <div style="background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 60%, rgba(255,255,255,0.5) 100%); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
-                <div style="width: 100%; height: 220px; background-color: #d0d8e0; display: flex; align-items: center; justify-content: center; color: #888; font-family: sans-serif; font-size: 14px;">Imagen Proyecto 2</div>
-                <div style="padding: 24px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.125rem; font-weight: 700; color: #1c3f6e; margin-bottom: 8px;">Centro de Distribución</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #5a5a5a; line-height: 1.7; margin-bottom: 20px;">Instalación de centro de distribución refrigerado para productos perecederos.</p>
-                    <a href="proyectos.html" style="display: inline-block; padding: 10px 24px; background-color: #1c3f6e; color: white; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;">VER MÁS</a>
-                </div>
-            </div>
-
-            <div style="background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 60%, rgba(255,255,255,0.5) 100%); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
-                <div style="width: 100%; height: 220px; background-color: #d0d8e0; display: flex; align-items: center; justify-content: center; color: #888; font-family: sans-serif; font-size: 14px;">Imagen Proyecto 3</div>
-                <div style="padding: 24px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.125rem; font-weight: 700; color: #1c3f6e; margin-bottom: 8px;">Sala de Procesos</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #5a5a5a; line-height: 1.7; margin-bottom: 20px;">Instalación de sala de procesos refrigerada para la industria alimentaria.</p>
-                    <a href="proyectos.html" style="display: inline-block; padding: 10px 24px; background-color: #1c3f6e; color: white; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;">VER MÁS</a>
-                </div>
-            </div>
-
         </div>
+    </section>
 
-        <div style="text-align: center;">
-            <a href="proyectos.html" style="display: inline-block; padding: 14px 36px; background-color: #1c3f6e; color: white; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;">VER TODOS LOS PROYECTOS</a>
+    <!-- SERVICIOS Y CAPACIDAD TÉCNICA -->
+    <section class="capabilities" id="services">
+        <div class="container">
+            <header class="capabilities__header">
+                <h2 class="section-title">Cada instalación empieza con un cálculo, no con un catálogo.</h2>
+                <p class="capabilities__subtitle">Medimos su espacio, calculamos la carga térmica real y diseñamos el sistema puntual que necesita — nada de módulos genéricos ni sobrecostos.</p>
+            </header>
+            <div class="capabilities__grid">
+                <article class="capabilities__card reveal">
+                    <div class="capabilities__card-image">
+                        <img src="assets/images/cuarto-frio.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="capabilities__card-body">
+                    <div class="capabilities__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v10l-8 4-8-4V7z"/><path d="M4 7l8 4 8-4M12 11v10"/></svg>
+                    </div>
+                    <h3 class="capabilities__card-title">Instalación de Cuartos Fríos</h3>
+                    <p class="capabilities__card-text">Montaje de cámaras de conservación y congelación con paneles térmicos y puertas herméticas industriales.</p>
+                    <ul class="capabilities__list">
+                        <li>Paneles de poliuretano de alta densidad</li>
+                        <li>Puertas herméticas industriales</li>
+                        <li>Piso técnico antideslizante</li>
+                    </ul>
+                    <a href="servicios.html#cuartos-frios" class="link-arrow capabilities__card-link">
+                        Ver más
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    </div>
+                </article>
+                <article class="capabilities__card reveal">
+                    <div class="capabilities__card-image">
+                        <img src="assets/images/bodega.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="capabilities__card-body">
+                    <div class="capabilities__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.5 7l15 10M19.5 7l-15 10"/><path d="M6 4l1 3-3 1M18 4l-1 3 3 1M6 20l1-3-3-1M18 20l-1-3 3-1"/></svg>
+                    </div>
+                    <h3 class="capabilities__card-title">Sistemas de Refrigeración a Medida</h3>
+                    <p class="capabilities__card-text">Selección y cálculo de unidades condensadoras, evaporadores y refrigerantes de bajo consumo.</p>
+                    <ul class="capabilities__list">
+                        <li>Unidades condensadoras de bajo consumo</li>
+                        <li>Cálculo exacto de carga térmica</li>
+                        <li>Refrigerantes ecológicos certificados</li>
+                    </ul>
+                    <a href="servicios.html" class="link-arrow capabilities__card-link">
+                        Ver más
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    </div>
+                </article>
+                <article class="capabilities__card reveal">
+                    <div class="capabilities__card-image">
+                        <img src="assets/images/mantenimiento.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="capabilities__card-body">
+                    <div class="capabilities__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2z"/></svg>
+                    </div>
+                    <h3 class="capabilities__card-title">Mantenimiento y Modernización</h3>
+                    <p class="capabilities__card-text">Diagnóstico térmico, corrección de fallas y actualización de equipos para cumplir norma sanitaria.</p>
+                    <ul class="capabilities__list">
+                        <li>Diagnóstico térmico completo</li>
+                        <li>Actualización a norma sanitaria vigente</li>
+                        <li>Contratos de mantenimiento preventivo</li>
+                    </ul>
+                    <a href="servicios.html#mantenimiento" class="link-arrow capabilities__card-link">
+                        Ver más
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    </div>
+                </article>
+            </div>
         </div>
+    </section>
 
-    </div>
-</section>
-
-<!-- CLIENTES -->
-<section id="clients" style="position: relative; width: 100%; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0; margin: 0;">
-
-    <!-- Imagen de fondo -->
-    <img src="assets/images/fondo-clientes.jpg" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0;">
-
-    <!-- Overlay gradiente -->
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(11,29,58,0.3) 0%, rgba(11,29,58,0.6) 30%, rgba(11,29,58,0.8) 60%, rgba(11,29,58,0.85) 100%); z-index: 1;"></div>
-
-    <!-- Contenido -->
-    <div style="position: relative; z-index: 2; text-align: center; padding: 100px 24px 80px; max-width: 900px; width: 100%; margin: 0 auto;">
-
-        <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 3.2rem; font-weight: 600; color: #ffffff; margin-bottom: 12px; letter-spacing: 0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Nuestros Clientes</h2>
-
-        <p style="font-family: 'Inter', 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 50px; letter-spacing: 0.3px;">Empresas que confían en nosotros</p>
-
-        <!-- Grid 2x2 -->
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 700px; margin: 0 auto;">
-
-            <!-- Tarjeta 1 - KFC -->
-            <div class="client-card-hover" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.20); border-radius: 20px; padding: 50px 35px; display: flex; align-items: center; justify-content: center; min-height: 200px; transition: all 0.4s ease; cursor: default;">
-                <img src="assets/images/logo-kfc 2.png" alt="KFC" style="max-width: 220px; max-height: 140px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; transition: all 0.4s ease;">
+    <!-- SECTORES QUE ATENDEMOS -->
+    <section class="industries" id="industries">
+        <div class="container">
+            <header class="industries__header">
+                <h2 class="section-title">Soluciones térmicas adaptadas a cada industria.</h2>
+            </header>
+            <div class="industries__grid">
+                <article class="industries__item reveal">
+                    <div class="industries__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-1-7-5-7-10a9 9 0 0 1 9-9c5 0 9 4 9 9-3 1-6 3-8 6-1 2-2 3-3 4Z"/></svg>
+                    </div>
+                    <h3 class="industries__title">Agroindustria y Alimentos</h3>
+                    <p class="industries__text">Cámaras de conservación de fruta, carne y lácteos.</p>
+                    <a href="contacto.html" class="industries__link">Conocer más →</a>
+                </article>
+                <article class="industries__item reveal">
+                    <div class="industries__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+                    </div>
+                    <h3 class="industries__title">Sector Farmacéutico y Salud</h3>
+                    <p class="industries__text">Control estricto de temperatura y humedad.</p>
+                    <a href="contacto.html" class="industries__link">Conocer más →</a>
+                </article>
+                <article class="industries__item reveal">
+                    <div class="industries__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg>
+                    </div>
+                    <h3 class="industries__title">Logística y Distribución</h3>
+                    <p class="industries__text">Andenes refrigerados y antecámaras de gran volumen.</p>
+                    <a href="contacto.html" class="industries__link">Conocer más →</a>
+                </article>
+                <article class="industries__item reveal">
+                    <div class="industries__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v10h16V9"/><path d="M9 19v-6h6v6"/></svg>
+                    </div>
+                    <h3 class="industries__title">HORECA y Retail</h3>
+                    <p class="industries__text">Cuartos fríos para restaurantes, hoteles y supermercados.</p>
+                    <a href="contacto.html" class="industries__link">Conocer más →</a>
+                </article>
             </div>
-
-            <!-- Tarjeta 2 - Burger King -->
-            <div class="client-card-hover" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.20); border-radius: 20px; padding: 50px 35px; display: flex; align-items: center; justify-content: center; min-height: 200px; transition: all 0.4s ease; cursor: default;">
-                <img src="assets/images/logo-burgerking.png" alt="Burger King" style="max-width: 220px; max-height: 140px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; transition: all 0.4s ease;">
-            </div>
-
-            <!-- Tarjeta 3 - La Planice -->
-            <div class="client-card-hover" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.20); border-radius: 20px; padding: 50px 35px; display: flex; align-items: center; justify-content: center; min-height: 200px; transition: all 0.4s ease; cursor: default;">
-                <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice" style="max-width: 220px; max-height: 140px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; transition: all 0.4s ease;">
-            </div>
-
-            <!-- Tarjeta 4 - Freshmar -->
-            <div class="client-card-hover" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.20); border-radius: 20px; padding: 50px 35px; display: flex; align-items: center; justify-content: center; min-height: 200px; transition: all 0.4s ease; cursor: default;">
-                <img src="assets/images/logo-freshmar.png 3" alt="Freshmar" style="max-width: 220px; max-height: 140px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; transition: all 0.4s ease;">
-            </div>
-
         </div>
-    </div>
+    </section>
 
-    <!-- Efectos hover -->
-    <style>
-        .client-card-hover:hover {
-            transform: translateY(-8px) scale(1.05) !important;
-            background: rgba(255,255,255,0.22) !important;
-            border-color: rgba(255,255,255,0.40) !important;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.30) !important;
-        }
-        .client-card-hover:hover img {
-            opacity: 1 !important;
-            transform: scale(1.15) !important;
-            filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.4)) !important;
-        }
-    </style>
+    <!-- PROYECTOS DESTACADOS -->
+    <section class="projects" id="home-projects">
+        <div class="container">
+            <header class="projects__header">
+                <h2 class="section-title">Proyectos destacados</h2>
+                <a href="proyectos.html" class="link-arrow">
+                    Ver todos los proyectos
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </header>
+            <div class="projects__grid">
+                <article class="projects__item projects__item--large reveal">
+                    <img src="assets/images/bodega-1.jpg" alt="Bodega refrigerada de gran volumen instalada por FRIGOPAC" loading="lazy">
+                    <span class="projects__item-tag">Centro de Distribución | 800 m³</span>
+                    <div class="projects__item-overlay">
+                        <h3 class="projects__item-title">Bodega Refrigerada Multiproducto</h3>
+                    </div>
+                </article>
+                <article class="projects__item projects__item--s1 reveal">
+                    <img src="assets/images/cuarto-frio-2.jpg" alt="Cuarto frío industrial en planta de alimentos" loading="lazy">
+                    <span class="projects__item-tag">Planta de Alimentos | 250 m³</span>
+                    <div class="projects__item-overlay">
+                        <h3 class="projects__item-title">Cámara de Conservación</h3>
+                    </div>
+                </article>
+                <article class="projects__item projects__item--s2 reveal">
+                    <img src="assets/images/sala-proceso.jpg" alt="Sala de proceso refrigerada para industria alimentaria" loading="lazy">
+                    <span class="projects__item-tag">Industria Alimentaria | 180 m³</span>
+                    <div class="projects__item-overlay">
+                        <h3 class="projects__item-title">Sala de Procesos</h3>
+                    </div>
+                </article>
+                <article class="projects__item projects__item--s3 reveal">
+                    <img src="assets/images/tunel.jpg" alt="Túnel de congelación industrial" loading="lazy">
+                    <span class="projects__item-tag">Exportación | 120 m³</span>
+                    <div class="projects__item-overlay">
+                        <h3 class="projects__item-title">Túnel de Congelación</h3>
+                    </div>
+                </article>
+                <article class="projects__item projects__item--s4 reveal">
+                    <img src="assets/images/puertas-1.jpg" alt="Puertas y muelles industriales para centro logístico" loading="lazy">
+                    <span class="projects__item-tag">Centro Logístico | 90 m³</span>
+                    <div class="projects__item-overlay">
+                        <h3 class="projects__item-title">Puertas y Muelles Industriales</h3>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-</section>
-
-    <!-- Efectos hover -->
-    <style>
-        .client-card-hover:hover {
-            transform: translateY(-8px) scale(1.05) !important;
-            background: rgba(255,255,255,0.25) !important;
-            border-color: rgba(255,255,255,0.40) !important;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.30) !important;
-        }
-        .client-card-hover:hover img {
-            transform: scale(1.15) !important;
-        }
-    </style>
-
-</section>
-    <!-- CTA -->
+    <!-- CTA FINAL -->
     <section class="cta" id="cta">
         <div class="container">
-            <div class="cta__content">
-                <h2 class="cta__title">¿Listo para elevar su operación?</h2>
-                <p class="cta__subtitle">Conversemos sobre su próximo proyecto frigorífico.</p>
-                <a href="contacto.html" class="btn btn--primary btn--large">Solicitar Cotización</a>
+            <div class="cta__content reveal">
+                <h2 class="cta__title">¿Tiene un proyecto de refrigeración en mente?</h2>
+                <p class="cta__subtitle">Agende una visita técnica o solicite la evaluación térmica de su espacio con nuestros ingenieros.</p>
+                <a href="contacto.html" class="cta__btn">Cotizar proyecto con un especialista <span aria-hidden="true">→</span></a>
             </div>
         </div>
     </section>
