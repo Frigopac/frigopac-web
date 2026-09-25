@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diseñe su cuarto frío con FRIGOPAC: capacidad del equipo, cuánto le cabe y costo de luz al mes, al instante.">
+    <title>Diseñe su cuarto frío | FRIGOPAC</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/proyecto.css">
+</head>
+<body class="page-proyecto">
+    <header class="header scrolled" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <span class="logo-text" style="color: var(--color-primary);">FRIGOPAC</span>
+            </a>
+            <nav class="header__nav">
+                <ul class="header__menu">
+                    <li><a href="index.html" class="header__link" style="color: var(--color-primary);">Inicio</a></li>
+                    <li><a href="nosotros.html" class="header__link" style="color: var(--color-primary);">Nosotros</a></li>
+                    <li><a href="servicios.html" class="header__link" style="color: var(--color-primary);">Servicios</a></li>
+                    <li><a href="proyectos.html" class="header__link" style="color: var(--color-primary);">Proyectos</a></li>
+                    <li><a href="contacto.html" class="header__link" style="color: var(--color-primary);">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="contacto.html" class="header__cta" style="display: inline-flex; opacity: 1; transform: none;">Cotizar</a>
+            <button class="header__toggle" id="navToggle">
+                <span style="background-color: var(--color-primary);"></span>
+                <span style="background-color: var(--color-primary);"></span>
+                <span style="background-color: var(--color-primary);"></span>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu__nav">
+            <ul class="mobile-menu__list">
+                <li><a href="index.html" class="mobile-menu__link">Inicio</a></li>
+                <li><a href="nosotros.html" class="mobile-menu__link">Nosotros</a></li>
+                <li><a href="servicios.html" class="mobile-menu__link">Servicios</a></li>
+                <li><a href="proyectos.html" class="mobile-menu__link">Proyectos</a></li>
+                <li><a href="contacto.html" class="mobile-menu__link">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <!-- ENCABEZADO DE LA HERRAMIENTA -->
+    <section class="pe-hero">
+        <div class="pe-container">
+            <p class="pe-hero__eyebrow">FrigoPac Project Engine</p>
+            <h1 class="pe-hero__title">Diseñe su cuarto frío</h1>
+            <p class="pe-hero__lead">Elija qué va a guardar, dónde y de qué tamaño. Vea al instante qué equipo necesita, cuánto le cabe y cuánto pagará de luz al mes.</p>
+            <ol class="pe-fases" aria-label="Pasos del proyecto">
+                <li class="pe-fases__item is-activa"><span>1</span>Explorar</li>
+                <li class="pe-fases__item"><span>2</span>Afinar</li>
+                <li class="pe-fases__item"><span>3</span>Diagnóstico</li>
+                <li class="pe-fases__item"><span>4</span>Cotizar</li>
+            </ol>
+        </div>
+    </section>
+
+    <main class="pe-main" id="projectEngine">
+        <div class="pe-container pe-layout">
+
+            <!-- CONFIGURADOR -->
+            <form class="pe-config" id="peForm" novalidate>
+
+                <fieldset class="pe-card">
+                    <legend class="pe-card__title"><span class="pe-card__num">01</span>¿Qué va a guardar?</legend>
+                    <div class="pe-cats" id="peCategorias" role="radiogroup" aria-label="Tipo de producto"></div>
+                    <label class="pe-label" for="peProducto">Producto</label>
+                    <select class="pe-select" id="peProducto"></select>
+                </fieldset>
+
+                <fieldset class="pe-card">
+                    <legend class="pe-card__title"><span class="pe-card__num">02</span>¿Refrigerar o congelar?</legend>
+                    <div class="pe-seg" role="radiogroup" aria-label="Tipo de cuarto" id="peModo">
+                        <button type="button" class="pe-seg__btn" role="radio" data-modo="refrigerar">Refrigerar</button>
+                        <button type="button" class="pe-seg__btn" role="radio" data-modo="congelar">Congelar</button>
+                    </div>
+                    <div class="pe-slider">
+                        <div class="pe-slider__head"><label for="peTemp">Temperatura del cuarto</label><output id="peTempOut" for="peTemp"></output></div>
+                        <input type="range" id="peTemp" step="1">
+                        <p class="pe-hint" id="peTempHint"></p>
+                    </div>
+                </fieldset>
+
+                <fieldset class="pe-card">
+                    <legend class="pe-card__title"><span class="pe-card__num">03</span>¿Dónde va el cuarto?</legend>
+                    <label class="pe-label" for="peCiudad">Ciudad</label>
+                    <select class="pe-select" id="peCiudad"></select>
+                    <label class="pe-label" for="peLugar">Tipo de lugar</label>
+                    <select class="pe-select" id="peLugar">
+                        <option value="comercial">Local comercial</option>
+                        <option value="industrial">Industria o bodega</option>
+                        <option value="residencial">Vivienda (cuarto en casa o finca)</option>
+                    </select>
+                    <div id="peEstratoWrap" hidden>
+                        <label class="pe-label" for="peEstrato">Estrato</label>
+                        <select class="pe-select" id="peEstrato">
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                            <option value="4" selected>4</option><option value="5">5</option><option value="6">6</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset class="pe-card">
+                    <legend class="pe-card__title"><span class="pe-card__num">04</span>¿De qué tamaño?</legend>
+                    <div class="pe-seg" role="radiogroup" aria-label="Cómo definir el tamaño" id="peTamanoModo">
+                        <button type="button" class="pe-seg__btn" role="radio" data-tam="medidas">Sé las medidas</button>
+                        <button type="button" class="pe-seg__btn" role="radio" data-tam="cantidad">Sé cuánto guardo</button>
+                    </div>
+                    <div id="peMedidas">
+                        <div class="pe-slider">
+                            <div class="pe-slider__head"><label for="peLargo">Largo</label><output id="peLargoOut" for="peLargo"></output></div>
+                            <input type="range" id="peLargo" min="1.5" max="12" step="0.1" value="3">
+                        </div>
+                        <div class="pe-slider">
+                            <div class="pe-slider__head"><label for="peAncho">Ancho</label><output id="peAnchoOut" for="peAncho"></output></div>
+                            <input type="range" id="peAncho" min="1.5" max="10" step="0.1" value="2">
+                        </div>
+                        <div class="pe-slider">
+                            <div class="pe-slider__head"><label for="peAlto">Alto</label><output id="peAltoOut" for="peAlto"></output></div>
+                            <input type="range" id="peAlto" min="2.2" max="6" step="0.1" value="2.4">
+                        </div>
+                    </div>
+                    <div id="peCantidad" hidden>
+                        <label class="pe-label" for="peCantidadNum">¿Cuánto guarda como máximo?</label>
+                        <div class="pe-inline">
+                            <input class="pe-input" type="number" id="peCantidadNum" min="1" step="1" value="100" inputmode="numeric">
+                            <select class="pe-select pe-select--auto" id="peCantidadUnidad">
+                                <option value="canastillas">canastillas</option>
+                                <option value="kg">kg</option>
+                            </select>
+                        </div>
+                        <p class="pe-hint" id="peDimHint"></p>
+                    </div>
+                </fieldset>
+
+                <fieldset class="pe-card">
+                    <legend class="pe-card__title"><span class="pe-card__num">05</span>¿Cómo se usa?</legend>
+                    <div class="pe-slider">
+                        <div class="pe-slider__head"><label for="peKgDia">Producto que entra por día</label><output id="peKgDiaOut" for="peKgDia"></output></div>
+                        <input type="range" id="peKgDia" min="20" max="5000" step="10" value="300">
+                    </div>
+                    <p class="pe-label" id="pePuertaLbl">¿Cuánto se abre la puerta?</p>
+                    <div class="pe-seg pe-seg--3" role="radiogroup" aria-labelledby="pePuertaLbl" id="pePuerta">
+                        <button type="button" class="pe-seg__btn" role="radio" data-uso="bajo">Poco</button>
+                        <button type="button" class="pe-seg__btn" role="radio" data-uso="medio">Normal</button>
+                        <button type="button" class="pe-seg__btn" role="radio" data-uso="alto">Mucho</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <!-- RESULTADOS -->
+            <aside class="pe-results" id="peResultados" aria-live="polite">
+                <div class="pe-res pe-res--hero">
+                    <div class="pe-res__top">
+                        <p class="pe-res__label">Equipo que necesita</p>
+                        <span class="pe-conf" id="peConf"></span>
+                    </div>
+                    <p class="pe-res__big"><span id="peBtu">–</span> <small>BTU/h</small></p>
+                    <p class="pe-res__sub" id="peCapSub"></p>
+                    <p class="pe-res__note" id="peCapNote"></p>
+                </div>
+
+                <div class="pe-res-grid">
+                    <div class="pe-res">
+                        <p class="pe-res__label">Le caben</p>
+                        <p class="pe-res__mid"><span id="peKg">–</span> <small>kg</small></p>
+                        <p class="pe-res__sub" id="peKgSub"></p>
+                        <div class="pe-ocup" id="peOcup" hidden>
+                            <div class="pe-ocup__bar"><i id="peOcupFill"></i></div>
+                            <p class="pe-res__sub" id="peOcupTxt"></p>
+                        </div>
+                    </div>
+                    <div class="pe-res">
+                        <p class="pe-res__label">Luz al mes</p>
+                        <p class="pe-res__mid"><span id="peCosto">–</span></p>
+                        <p class="pe-res__sub" id="peCostoSub"></p>
+                        <div class="pe-meses" id="peMeses" role="img"></div>
+                    </div>
+                </div>
+
+                <div class="pe-res">
+                    <p class="pe-res__label">De dónde viene el calor</p>
+                    <div class="pe-desglose" id="peDesglose"></div>
+                </div>
+
+                <div class="pe-res" id="peAhorroBox">
+                    <p class="pe-res__label">Cómo pagar menos luz</p>
+                    <ul class="pe-list" id="peAhorro"></ul>
+                </div>
+
+                <div class="pe-res" id="peAlertasBox">
+                    <p class="pe-res__label">Lo que debe saber</p>
+                    <ul class="pe-alertas" id="peAlertas"></ul>
+                </div>
+
+                <details class="pe-res pe-supuestos">
+                    <summary>Lo que supusimos para calcular <span id="peNSup"></span></summary>
+                    <ul class="pe-list pe-list--sup" id="peSupuestos"></ul>
+                </details>
+
+                <div class="pe-cta">
+                    <p class="pe-cta__txt" id="peAfinar"></p>
+                    <a class="pe-btn pe-btn--primary" id="peWhatsapp" href="#" target="_blank" rel="noopener">Cotizar mi proyecto por WhatsApp</a>
+                    <p class="pe-cta__legal">Estimación preliminar para decidir. FrigoPac verifica las condiciones reales en la visita técnica.</p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Barra fija en celular -->
+        <div class="pe-bar" id="peBar">
+            <div><small>Equipo</small><strong id="peBarBtu">–</strong></div>
+            <div><small>Caben</small><strong id="peBarKg">–</strong></div>
+            <div><small>Luz/mes</small><strong id="peBarCosto">–</strong></div>
+            <a href="#peResultados" class="pe-bar__btn">Ver</a>
+        </div>
+    </main>
+
+        <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <span class="logo-text">FRIGOPAC</span>
+                    </a>
+                    <p class="footer__description">Ingeniería del frío con más de 20 años de excelencia. Diseño, instalación y mantenimiento de soluciones frigoríficas en toda Colombia.</p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/frigopac_sas" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navegación</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="proyectos.html">Proyectos</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__nav">
+                    <h4 class="footer__title">Servicios</h4>
+                    <ul class="footer__links">
+                        <li><a href="servicios.html#cuartos-frios">Cuartos Fríos</a></li>
+                        <li><a href="servicios.html#bodegas">Bodegas Refrigeradas</a></li>
+                        <li><a href="servicios.html#salas-proceso">Salas de Proceso</a></li>
+                        <li><a href="servicios.html#tuneles">Túneles de Congelación</a></li>
+                        <li><a href="servicios.html#mantenimiento">Mantenimiento</a></li>
+                    </ul>
+                </div>
+                <div class="footer__contact">
+                    <h4 class="footer__title">Contacto</h4>
+                    <ul class="footer__contact-list">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92V19.92C22 20.48 21.56 20.93 21 20.99C20.17 21.08 19.35 21.12 18.5 21.12C9.94 21.12 3 14.18 3 5.62C3 4.77 3.04 3.95 3.13 3.12C3.19 2.56 3.64 2.12 4.2 2.12H7.2C7.71 2.12 8.14 2.49 8.2 3C8.3 3.92 8.5 4.81 8.79 5.65C8.94 6.11 8.81 6.62 8.45 6.95L6.89 8.51C8.51 11.45 10.94 13.87 13.88 15.49L15.44 13.93C15.77 13.6 16.28 13.47 16.74 13.62C17.58 13.91 18.47 14.11 19.39 14.21C19.9 14.27 20.27 14.7 20.27 15.21V18.21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <a href="tel:+573103330737">+57 310 333 0737</a>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <a href="mailto:gerenciafrigopac@gmail.com">gerenciafrigopac@gmail.com</a>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+                            <span>Bogotá, Colombia</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2024 FRIGOPAC SAS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="js/main.js"></script>
+    <script src="js/frigopac-engine.js"></script>
+    <script src="js/proyecto.js"></script>
+</body>
+</html>

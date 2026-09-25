@@ -1371,4 +1371,45 @@ button {
 .whatsapp-float__text {
     display: none;
     font-family: var(--font-accent);
-    font-size: 
+    font-size: var(--text-sm);
+    font-weight: 500;
+    white-space: nowrap;
+    padding-right: var(--space-sm);
+}
+
+@media (min-width: 768px) {
+    .whatsapp-float {
+        padding: var(--space-sm) var(--space-md);
+    }
+    .whatsapp-float__text {
+        display: block;
+    }
+}
+
+/* ============================================
+   17. SCROLL ANIMATIONS (SIMPLE)
+   ============================================ */
+.reveal-fade,
+.reveal-slide-left,
+.reveal-slide-right {
+    opacity: 1;
+    transform: none;
+}
+
+/* Enlace al Project Engine (proyecto.html) */
+.capabilities__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: var(--space-md);
+    padding: 0.8rem 1.4rem;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+.capabilities__cta:hover { background: var(--color-primary-light); transform: translateY(-1px); box-shadow: var(--shadow-lg); }
