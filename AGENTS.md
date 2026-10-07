@@ -63,6 +63,9 @@ Desde la carpeta del repositorio, y abrir http://localhost:8000. Si el navegador
 - Clases estilo BEM: `bloque__elemento--modificador`.
 - Toda animación respeta `prefers-reduced-motion`.
 
+**Piezas compartidas**
+- La cabecera, el pie de página y el botón de WhatsApp son idénticos en las seis páginas (detalle en `docs/ARQUITECTURA.md`, sección 4). Si se cambia uno, se cambian los seis en el mismo commit, usando `index.html` como referencia.
+
 **JavaScript**
 - Vanilla, sin dependencias. Cada bloque comprueba que sus elementos existen antes de usarlos.
 - `js/main.js` es global; la lógica propia de una página va en su archivo.

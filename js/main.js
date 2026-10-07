@@ -5,42 +5,52 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ============================================
-    // 1. HEADER SCROLL EFFECT
+    // 1. CABECERA: sombra al bajar
     // ============================================
-    const header = document.getElementById('header');
+    const siteHeader = document.getElementById('siteHeader');
 
-    function handleScroll() {
-        if (!header) return;
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+    if (siteHeader) {
+        const marcarScroll = function() {
+            siteHeader.classList.toggle('is-scrolled', window.scrollY > 8);
+        };
+        window.addEventListener('scroll', marcarScroll, { passive: true });
+        marcarScroll();
     }
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    
     // ============================================
-    // 2. MOBILE MENU TOGGLE
+    // 2. MENÚ EN CELULAR
     // ============================================
-    const navToggle = document.getElementById('navToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    if (navToggle && mobileMenu) {
-        navToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    const menuToggle = document.getElementById('siteMenuToggle');
+    const siteMenu = document.getElementById('siteMenu');
+
+    if (menuToggle && siteMenu) {
+        const abrirMenu = function(abrir) {
+            menuToggle.setAttribute('aria-expanded', String(abrir));
+            menuToggle.setAttribute('aria-label', abrir ? 'Cerrar menú' : 'Abrir menú');
+            siteMenu.classList.toggle('is-open', abrir);
+            document.body.classList.toggle('has-menu-open', abrir);
+        };
+
+        menuToggle.addEventListener('click', function() {
+            abrirMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
         });
-        
-        const mobileLinks = document.querySelectorAll('.mobile-menu__link');
-        mobileLinks.forEach(link => {
+
+        siteMenu.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
-                navToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                abrirMenu(false);
             });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && siteMenu.classList.contains('is-open')) {
+                abrirMenu(false);
+                menuToggle.focus();
+            }
+        });
+
+        const escritorio = window.matchMedia('(min-width: 960px)');
+        escritorio.addEventListener('change', function(e) {
+            if (e.matches) abrirMenu(false);
         });
     }
     
@@ -124,34 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ============================================
-    // 6. ACTIVE NAV LINK ON SCROLL
-    // ============================================
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.header__link');
-    
-    function setActiveLink() {
-        const scrollPosition = window.scrollY + 200;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}` || 
-                        (sectionId === 'hero' && link.getAttribute('href') === 'index.html')) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', setActiveLink);
-
     // ============================================
     // 7. CARRUSEL FUNCIONAL
     // ============================================

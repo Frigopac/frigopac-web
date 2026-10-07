@@ -13,44 +13,40 @@
     <link rel="stylesheet" href="css/proyecto.css">
 </head>
 <body class="page-proyecto">
-    <header class="header scrolled" id="header">
-        <div class="header__container">
-            <a href="index.html" class="header__logo">
-                <span class="logo-text" style="color: var(--color-primary);">FRIGOPAC</span>
-            </a>
-            <nav class="header__nav">
-                <ul class="header__menu">
-                    <li><a href="index.html" class="header__link" style="color: var(--color-primary);">Inicio</a></li>
-                    <li><a href="nosotros.html" class="header__link" style="color: var(--color-primary);">Nosotros</a></li>
-                    <li><a href="servicios.html" class="header__link" style="color: var(--color-primary);">Servicios</a></li>
-                    <li><a href="proyectos.html" class="header__link" style="color: var(--color-primary);">Proyectos</a></li>
-                    <li><a href="contacto.html" class="header__link" style="color: var(--color-primary);">Contacto</a></li>
+
+    <!-- CABECERA (igual en todas las páginas) -->
+    <header class="site-header" id="siteHeader">
+        <div class="site-header__bar">
+            <a href="index.html" class="site-header__logo" aria-label="FRIGOPAC, ir al inicio">FRIGOPAC</a>
+            <nav class="site-header__nav" aria-label="Principal">
+                <ul class="site-header__menu">
+                    <li><a href="nosotros.html" class="site-header__link">Nosotros</a></li>
+                    <li><a href="servicios.html" class="site-header__link">Servicios</a></li>
+                    <li><a href="proyectos.html" class="site-header__link">Proyectos</a></li>
+                    <li><a href="proyecto.html" class="site-header__link" aria-current="page">Diseñe su cuarto frío</a></li>
+                    <li><a href="contacto.html" class="site-header__link">Contacto</a></li>
                 </ul>
             </nav>
-            <a href="contacto.html" class="header__cta" style="display: inline-flex; opacity: 1; transform: none;">Cotizar</a>
-            <button class="header__toggle" id="navToggle">
-                <span style="background-color: var(--color-primary);"></span>
-                <span style="background-color: var(--color-primary);"></span>
-                <span style="background-color: var(--color-primary);"></span>
+            <a href="contacto.html" class="site-header__cta">Cotizar</a>
+            <button type="button" class="site-header__toggle" id="siteMenuToggle" aria-expanded="false" aria-controls="siteMenu" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
             </button>
         </div>
-    </header>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <nav class="mobile-menu__nav">
-            <ul class="mobile-menu__list">
-                <li><a href="index.html" class="mobile-menu__link">Inicio</a></li>
-                <li><a href="nosotros.html" class="mobile-menu__link">Nosotros</a></li>
-                <li><a href="servicios.html" class="mobile-menu__link">Servicios</a></li>
-                <li><a href="proyectos.html" class="mobile-menu__link">Proyectos</a></li>
-                <li><a href="contacto.html" class="mobile-menu__link">Contacto</a></li>
+        <nav class="site-menu" id="siteMenu" aria-label="Menú">
+            <ul class="site-menu__list">
+                <li><a href="index.html" class="site-menu__link">Inicio</a></li>
+                <li><a href="nosotros.html" class="site-menu__link">Nosotros</a></li>
+                <li><a href="servicios.html" class="site-menu__link">Servicios</a></li>
+                <li><a href="proyectos.html" class="site-menu__link">Proyectos</a></li>
+                <li><a href="proyecto.html" class="site-menu__link" aria-current="page">Diseñe su cuarto frío</a></li>
+                <li><a href="contacto.html" class="site-menu__link">Contacto</a></li>
             </ul>
+            <a href="contacto.html" class="site-menu__cta">Cotizar mi proyecto</a>
         </nav>
-    </div>
+    </header>
 
-
-    <!-- ENCABEZADO DE LA HERRAMIENTA -->
+<!-- ENCABEZADO DE LA HERRAMIENTA -->
     <section class="pe-hero">
         <div class="pe-container">
             <p class="pe-hero__eyebrow">FrigoPac Project Engine</p>
@@ -246,6 +242,7 @@
                         <li><a href="nosotros.html">Nosotros</a></li>
                         <li><a href="servicios.html">Servicios</a></li>
                         <li><a href="proyectos.html">Proyectos</a></li>
+                        <li><a href="proyecto.html">Diseñe su cuarto frío</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
@@ -278,7 +275,7 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <p class="footer__copyright">© 2024 FRIGOPAC SAS. Todos los derechos reservados.</p>
+                <p class="footer__copyright">© 2026 FRIGOPAC SAS. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

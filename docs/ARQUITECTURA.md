@@ -1,6 +1,6 @@
 # Arquitectura del sitio FRIGOPAC
 
-Estado al 6 de octubre de 2026 (rama `main`, commit `0e1ca52`). Este documento cumple el paso 1 del plan de la web del motor (`frigopac-engine/docs/PLAN_WEB.md`: "entender la web").
+Estado al 7 de octubre de 2026 (rama `dev`). Este documento cumple el paso 1 del plan de la web del motor (`frigopac-engine/docs/PLAN_WEB.md`: "entender la web").
 
 ## 1. Vista general
 
@@ -69,14 +69,23 @@ frigopac-web/
 
 | Página | Propósito | Navegación | Estilos | Scripts |
 |---|---|---|---|---|
-| `index.html` | Portada: hero con video, cinta de clientes, proceso en 4 pasos, servicios, sectores, proyectos destacados y llamado final | `.hero__nav` propia (sin menú en celular) | `styles.css` | `main.js` |
-| `nosotros.html` | Historia y equipo | `.header` + `.mobile-menu` | `styles.css` + bloque `<style>` propio | `main.js` |
-| `servicios.html` | Servicios con carruseles de fotos | `.header` + `.mobile-menu` | `styles.css` + bloque `<style>` propio | `main.js` (carrusel) |
-| `proyectos.html` | Galería de proyectos | `.header` + `.mobile-menu` | `styles.css` + bloque `<style>` propio | `main.js` |
-| `contacto.html` | Formulario de contacto | `.header` + `.mobile-menu` | `styles.css` + bloque `<style>` propio | ninguno (archivo incompleto, ver auditoría) |
-| `proyecto.html` | Calculadora de cuartos fríos | `.header` forzada a fondo claro | `styles.css` + `proyecto.css` | `main.js`, `frigopac-engine.js`, `proyecto.js` |
+| `index.html` | Portada: hero con video, cinta de clientes, proceso en 4 pasos, servicios, sectores, proyectos destacados y llamado final | `.site-header` | `styles.css` | `main.js` |
+| `nosotros.html` | Historia y equipo | `.site-header` | `styles.css` + bloque `<style>` propio | `main.js` |
+| `servicios.html` | Servicios con carruseles de fotos | `.site-header` | `styles.css` + bloque `<style>` propio | `main.js` (carrusel) |
+| `proyectos.html` | Galería de proyectos | `.site-header` | `styles.css` + bloque `<style>` propio | `main.js` |
+| `contacto.html` | Formulario de contacto | `.site-header` | `styles.css` + bloque `<style>` propio | `main.js` |
+| `proyecto.html` | Calculadora de cuartos fríos | `.site-header` | `styles.css` + `proyecto.css` | `main.js`, `frigopac-engine.js`, `proyecto.js` |
 
-La cabecera y el pie de página están copiados en cada archivo. Cambiar el menú significa editar las seis páginas.
+### Piezas compartidas
+
+La cabecera (`.site-header`), el pie de página (`.footer`) y el botón de WhatsApp (`.whatsapp-float`) son **idénticos en las seis páginas**. Lo único que cambia es qué enlace lleva `aria-current="page"`. Como no hay plantillas, están copiados en cada archivo: si se cambia uno, se cambian los seis, tomando `index.html` como referencia.
+
+| Pieza | Dónde está | Excepción |
+|---|---|---|
+| Cabecera | Las 6 páginas | La página actual marca su enlace |
+| Pie de página | Las 6 páginas | — |
+| Botón de WhatsApp | 5 páginas | No va en `proyecto.html`, que tiene su propia barra inferior en celular |
+| Enlace de fuentes | Las 6 páginas | Solo Poppins e Inter |
 
 ## 5. Estilos
 
@@ -101,8 +110,9 @@ La cabecera y el pie de página están copiados en cada archivo. Cambiar el men�
 | 2 | Reset y base | Todo el sitio |
 | 3 | Utilidades y animación de aparición (`.reveal`) | Portada |
 | 4 | Botones (`.btn`) | Todo el sitio |
-| 5 | Cabecera (`.header`), botón hamburguesa y menú móvil | Páginas internas y calculadora |
-| 6 | Hero de la portada (`.hero`, `.hero__nav`, `.hero-btn`) | Portada |
+| 5 | Cabecera del sitio (`.site-header`): barra de cristal fija, menú en línea desde 960 px, panel desplegable en celular | Todas |
+| 5b | Encabezado de las páginas internas (`.page-hero`; `.page-hero--compact` en contacto) | Nosotros, servicios, proyectos, contacto |
+| 6 | Hero de la portada (`.hero`, `.hero-btn`) | Portada |
 | 7 | Proceso en 4 pasos (`.trust-bar`) | Portada |
 | 8 | Servicios (`.capabilities`) | Portada |
 | 9 | Sectores (`.industries`) | Portada |
@@ -113,7 +123,7 @@ La cabecera y el pie de página están copiados en cada archivo. Cambiar el men�
 | 14 | Botón flotante de WhatsApp | Todo menos contacto y calculadora |
 | 17 | Animaciones de páginas internas y botón hacia la calculadora | Varias |
 
-Las páginas internas además repiten en su propio `<style>` los estilos de su encabezado (`.page-hero`).
+Las páginas internas conservan un bloque `<style>` con estilos propios de su contenido.
 
 ### 5.3 Estilos de la calculadora (`css/proyecto.css`)
 
@@ -125,15 +135,14 @@ Un solo `DOMContentLoaded` con bloques independientes:
 
 | § | Bloque | Elementos que busca | Se usa en |
 |---|---|---|---|
-| 1 | Cabecera que cambia al hacer scroll | `#header` | Páginas internas |
-| 2 | Menú móvil | `#navToggle`, `#mobileMenu` | Páginas internas y calculadora |
+| 1 | Sombra de la cabecera al bajar | `#siteHeader` | Todas |
+| 2 | Menú en celular: abre y cierra, se cierra con Escape y al pasar a escritorio | `#siteMenuToggle`, `#siteMenu` | Todas |
 | 3 | Contador de cifras | `#stats`, `.stats__number` | Ninguna página |
 | 4 | Scroll suave en enlaces `#` | `a[href^="#"]` | Todo el sitio |
 | 5 | Parallax del hero | `.hero__background img/video` | Portada |
-| 6 | Enlace activo según la sección | `section[id]`, `.header__link` | Páginas internas |
 | 7 | Carruseles | `.carousel` | Servicios |
 | 8 | Aparición al hacer scroll | `.reveal` | Portada |
-| 9 | Reanudar el video del hero si el navegador lo pausa | `.hero__bg-video` | Portada (solo en local, sin publicar) |
+| 9 | Reanudar el video del hero si el navegador lo pausa | `.hero__bg-video` | Portada |
 
 ## 7. La calculadora (Project Engine)
 

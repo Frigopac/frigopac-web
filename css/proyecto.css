@@ -296,7 +296,3 @@
     .pe-flash { animation: none; }
     .pe-ocup__bar i, .pe-mes i, .pe-fila__bar i, .pe-bar { transition: none; }
 }
-
-/* El encabezado del sitio es transparente arriba y el texto es azul: aquí va siempre blanco */
-.page-proyecto .header { background-color: var(--color-white); box-shadow: var(--shadow-md); }
-.page-proyecto .header .logo-text { color: var(--color-primary); }

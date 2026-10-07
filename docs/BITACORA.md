@@ -4,6 +4,15 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-07 · Unificar cabecera, pie y botón de WhatsApp en las 6 páginas
+
+- **Tipo:** cambio
+- **Qué:** la barra de cristal blanca de la portada pasa a todas las páginas, fija arriba, con la página actual marcada y una pestaña nueva, "Diseñe su cuarto frío". En celular tiene botón de menú (antes la portada no tenía menú en celular). Pie de página y botón de WhatsApp iguales en todas; el pie también enlaza la calculadora y dice © 2026. Se completa el final de `contacto.html`, que estaba cortado desde enero. El encabezado de las páginas internas (`.page-hero`) pasa de cuatro copias a una sola en `css/styles.css`. Se quitan dos fuentes que se descargaban sin usarse.
+- **Por qué:** que el sitio se vea y se navegue igual en todas las páginas, y que la calculadora tenga su pestaña.
+- **Archivos:** las 6 páginas, `css/styles.css`, `css/proyecto.css`, `js/main.js`, `AGENTS.md`, `docs/ARQUITECTURA.md`, `docs/PENDIENTES.md`
+- **Estado:** dev (2026-10-07). Pendiente de aprobación para `main`.
+- **Pendiente:** el aviso de datos de contacto es provisional (marcado `RELLENO`): falta la política de tratamiento de datos. En celular, el botón de WhatsApp tapa parte del botón principal de la portada (ya pasaba antes).
+
 ## 2026-10-06 · Documentar el proyecto, crear la rama `dev` y auditar el código
 
 - **Tipo:** infraestructura
