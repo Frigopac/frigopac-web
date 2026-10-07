@@ -972,17 +972,22 @@ button {
     .projects__item--s3 { grid-area: s3; }
     .projects__item--s4 { grid-area: s4; }
 
-    .projects__item { aspect-ratio: auto; }
+    .projects__grid .projects__item {
+        aspect-ratio: auto;
+        height: 100%;
+    }
 }
 
 .projects__item {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 4/3;
+    aspect-ratio: 1/1;
 }
 
-.projects__item--large {
-    aspect-ratio: auto;
+@media (min-width: 480px) {
+    .projects__item {
+        aspect-ratio: 4/3;
+    }
 }
 
 .projects__item img {
@@ -1025,9 +1030,20 @@ button {
 
 .projects__item-title {
     font-family: var(--font-heading);
-    font-size: var(--text-2xl);
+    font-size: var(--text-lg);
     font-weight: 500;
+    line-height: 1.25;
     color: var(--color-white);
+}
+
+@media (min-width: 768px) {
+    .projects__item-title {
+        font-size: var(--text-xl);
+    }
+
+    .projects__item--large .projects__item-title {
+        font-size: var(--text-2xl);
+    }
 }
 
 .projects__grid .reveal:nth-child(1) { transition-delay: 0ms; }

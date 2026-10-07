@@ -37,7 +37,7 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 - **Qué:** las tarjetas pequeñas de "Proyectos destacados" no llenaban su fila y, en celular, la tarjeta grande quedaba con 0 px de alto. Se corrige el CSS y se ajusta el tamaño de los títulos. Además, el video del hero se reanuda solo si el navegador lo pausa.
 - **Por qué:** la sección se veía desordenada y el proyecto principal no aparecía en celular.
 - **Archivos:** `css/styles.css`, `js/main.js`
-- **Estado:** local, sin commit. Pendiente de aprobación.
+- **Estado:** dev (2026-10-07). Pendiente de aprobación para `main`.
 
 ## 2026-09-24 · Decisión: mostrar antes de publicar
 

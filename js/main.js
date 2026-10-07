@@ -224,4 +224,25 @@ document.addEventListener('DOMContentLoaded', function() {
             revealObserver.observe(el);
         });
     }
+
+    // ============================================
+    // 9. VIDEO DEL HERO — reanudar si el navegador lo pausa
+    // ============================================
+    const heroVideo = document.querySelector('.hero__bg-video');
+
+    if (heroVideo) {
+        const playHeroVideo = function() {
+            if (heroVideo.paused && !document.hidden) {
+                const attempt = heroVideo.play();
+                if (attempt && attempt.catch) {
+                    attempt.catch(function() {});
+                }
+            }
+        };
+
+        playHeroVideo();
+        heroVideo.addEventListener('loadeddata', playHeroVideo);
+        heroVideo.addEventListener('canplay', playHeroVideo);
+        document.addEventListener('visibilitychange', playHeroVideo);
+    }
 });
