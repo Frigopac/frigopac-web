@@ -4,6 +4,15 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-08 · Auditoría de diseño (impeccable) y primera tanda de arreglos
+
+- **Tipo:** arreglo
+- **Qué:** imágenes comprimidas (de unos 9 MB a menos de 1 MB: `mantenimiento.jpg` 5,5 MB a 293 KB, `tunel.jpg`, logos y fondo de hielo, que pasa de PNG a JPG); logos renombrados sin espacios (`logo-kfc.png`, `logo-freshmar.png`). Contraste corregido en el texto celeste sobre fondo claro, en el pie de página y en el botón flotante de WhatsApp (ahora con texto verde oscuro). Foco de teclado y selección de texto con los colores de la marca. Enlaces y botones con zona de toque de 44 px. La calculadora queda con un solo `h1`. Los títulos del pie pasan de `h4` a `h2`, con el mismo estilo. Se quitan las etiquetas sobre los títulos de las páginas internas y los números 01-06 de Servicios. La aparición al hacer scroll es más suave.
+- **Por qué:** auditoría con las skills de diseño instaladas el 2026-10-08.
+- **Archivos:** las 6 páginas, `css/styles.css`, `css/proyecto.css`, `css/proyectos.css`, `css/servicios.css`, `assets/images/*`
+- **Estado:** dev (2026-10-08). Pendiente de aprobación para `main`.
+- **Pendiente:** `css/proyecto.css` usa 83 colores escritos a mano en vez de las variables; el `hover` de las tarjetas también se activa en celular. No se alcanzaron a revisar.
+
 ## 2026-10-08 · Poner el configurador "Arme su cuarto frío" con bodegas e informe técnico
 
 - **Tipo:** cambio

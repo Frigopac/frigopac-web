@@ -45,10 +45,10 @@ Estado vivo del sitio. Cuando algo se resuelve, se tacha (`~~así~~`) con la fec
 ### Fase 1 · Rápidas
 | # | Tarea | Hallazgo |
 |---|---|---|
-| 5 | Comprimir imágenes pesadas | A1 |
+| ~~5~~ | ~~Comprimir imágenes pesadas~~ (2026-10-08, en `dev`) | A1 |
 | ~~6~~ | ~~Quitar Cormorant Garamond y Montserrat~~ (2026-10-07, en `dev`) | A2 |
 | 7 | Favicon, imagen para compartir y Open Graph en todas las páginas | A3 |
-| 8 | Renombrar `logo-kfc 2.png` y `logo-freshmar.png 3` | M7 |
+| ~~8~~ | ~~Renombrar `logo-kfc 2.png` y `logo-freshmar.png 3`~~ (2026-10-08, en `dev`) | M7 |
 | 8b | En celular, el botón flotante de WhatsApp tapa parte del botón principal de la portada | Nuevo |
 
 ### Fase 2 · Unificación

@@ -200,6 +200,9 @@
 }
 
 .py-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     align-self: flex-start;
     margin-top: var(--space-xs);
     font-family: var(--font-accent);
