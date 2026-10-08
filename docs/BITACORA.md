@@ -10,7 +10,7 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 - **Qué:** se quitan de Proyectos los 4 pasos de trabajo, que ya están en la portada. En Nosotros, la sección de valores pasa a llamarse "Nuestros valores", para que ninguna página repita el título "Cómo trabajamos".
 - **Por qué:** lo pidió el responsable al revisar `dev`.
 - **Archivos:** `proyectos.html`, `nosotros.html`, `css/proyectos.css`
-- **Estado:** dev (2026-10-07). Pendiente de aprobación para `main`.
+- **Estado:** main (2026-10-08), con aprobación del responsable.
 
 ## 2026-10-07 · Rediseñar las páginas Proyectos y Nosotros
 
@@ -18,7 +18,7 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 - **Qué:** Proyectos tiene encabezado con cifras, un proyecto destacado (Freshmar), la cinta de logos de la portada justo debajo, una galería con botones para filtrar por tipo, los 4 pasos de trabajo, un espacio para testimonio y un cierre con la calculadora. Nosotros tiene otro diseño, claro y redondeado: fotos superpuestas, historia en línea de tiempo, misión y visión en un bloque oscuro, valores, equipo y contacto directo. Se quitó de Nosotros lo que ya está en la portada. Los textos se reescribieron en lenguaje más sencillo. El diseño se trabajó antes en un lienzo de Claude.
 - **Por qué:** las dos páginas se veían pobres y repetían la portada.
 - **Archivos:** `proyectos.html`, `nosotros.html`, `css/proyectos.css` (nuevo, prefijo `py-`), `css/nosotros.css` (nuevo, prefijo `ns-`), `js/proyectos.js` (nuevo, filtros), `css/styles.css` (dos variables de color: `--color-secondary-dark` y `--color-secondary-soft`), `docs/PENDIENTES.md`
-- **Estado:** dev (2026-10-07). Pendiente de aprobación para `main`.
+- **Estado:** main (2026-10-08), con aprobación del responsable.
 - **Pendiente:** muchos datos van entre corchetes y marcados `RELLENO` (ver `docs/PENDIENTES.md`). Decidir si se publican así o después de llenarlos.
 
 ## 2026-10-07 · Unificar cabecera, pie y botón de WhatsApp en las 6 páginas
@@ -27,7 +27,7 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 - **Qué:** la barra de cristal blanca de la portada pasa a todas las páginas, fija arriba, con la página actual marcada y una pestaña nueva, "Diseñe su cuarto frío". En celular tiene botón de menú (antes la portada no tenía menú en celular). Pie de página y botón de WhatsApp iguales en todas; el pie también enlaza la calculadora y dice © 2026. Se completa el final de `contacto.html`, que estaba cortado desde enero. El encabezado de las páginas internas (`.page-hero`) pasa de cuatro copias a una sola en `css/styles.css`. Se quitan dos fuentes que se descargaban sin usarse.
 - **Por qué:** que el sitio se vea y se navegue igual en todas las páginas, y que la calculadora tenga su pestaña.
 - **Archivos:** las 6 páginas, `css/styles.css`, `css/proyecto.css`, `js/main.js`, `AGENTS.md`, `docs/ARQUITECTURA.md`, `docs/PENDIENTES.md`
-- **Estado:** dev (2026-10-07). Pendiente de aprobación para `main`.
+- **Estado:** main (2026-10-08), con aprobación del responsable.
 - **Pendiente:** el aviso de datos de contacto es provisional (marcado `RELLENO`): falta la política de tratamiento de datos. En celular, el botón de WhatsApp tapa parte del botón principal de la portada (ya pasaba antes).
 
 ## 2026-10-06 · Documentar el proyecto, crear la rama `dev` y auditar el código
@@ -36,7 +36,7 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 - **Qué:** se agregan `CLAUDE.md`, `AGENTS.md` y la carpeta `docs/` (arquitectura, reglas de memoria, bitácora, pendientes, guía de Cloudflare y auditoría). Se crea la rama `dev` para la vista previa.
 - **Por qué:** dejar por escrito cómo está hecho el sitio y cómo se trabaja, antes de pasar a Cloudflare y seguir con la calculadora.
 - **Archivos:** `CLAUDE.md`, `AGENTS.md`, `docs/*`
-- **Estado:** dev
+- **Estado:** main (2026-10-08)
 - **Pendiente:** la auditoría encontró 4 problemas críticos (ver `docs/PENDIENTES.md`). Conectar Cloudflare según `docs/DESPLIEGUE_CLOUDFLARE.md`.
 
 ## 2026-09-25 · Publicar la calculadora "Diseñe su cuarto frío" (Project Engine, fase 1)
@@ -63,7 +63,7 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 - **Qué:** las tarjetas pequeñas de "Proyectos destacados" no llenaban su fila y, en celular, la tarjeta grande quedaba con 0 px de alto. Se corrige el CSS y se ajusta el tamaño de los títulos. Además, el video del hero se reanuda solo si el navegador lo pausa.
 - **Por qué:** la sección se veía desordenada y el proyecto principal no aparecía en celular.
 - **Archivos:** `css/styles.css`, `js/main.js`
-- **Estado:** dev (2026-10-07). Pendiente de aprobación para `main`.
+- **Estado:** main (2026-10-08), con aprobación del responsable.
 
 ## 2026-09-24 · Decisión: mostrar antes de publicar
 

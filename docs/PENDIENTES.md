@@ -8,10 +8,10 @@ Estado vivo del sitio. Cuando algo se resuelve, se tacha (`~~así~~`) con la fec
 
 | # | Qué hay que decidir | Por qué importa |
 |---|---|---|
-| D1 | ¿Se publica en `main` lo que está en `dev`: grilla de proyectos, video y cabecera unificada? | Está listo y revisado en `dev` (C3, C2, M1) |
+| ~~D1~~ | ~~¿Se publica en `main` lo que está en `dev`?~~ | Resuelto 2026-10-08: publicado en `main` |
 | ~~D2~~ | ~~¿En qué pestaña del menú va la calculadora?~~ | Resuelto 2026-10-07: pestaña "Diseñe su cuarto frío", antes de Contacto |
 | D7 | Política de tratamiento de datos de FRIGOPAC SAS (NIT, dirección, correo para consultas) | El aviso del formulario de contacto es provisional (C1) |
-| D8 | ¿Se publican Proyectos y Nosotros con los datos entre corchetes, o primero se llenan? | Hoy muestran `[Ciudad]`, `[Año]`, `[Nombre]`… a la vista del público |
+| D8 | Llenar los datos entre corchetes de Proyectos y Nosotros | Se publicó el 2026-10-08 con `[Ciudad]`, `[Año]`, `[Nombre]`… visibles al público |
 | D3 | ¿Qué hacer con las 9 fotos que faltan en servicios: conseguirlas o quitar esas diapositivas? | Hoy se ven huecos (C4) |
 | D4 | ¿Se sube `frigopac-engine` a GitHub? ¿Público o privado? | Es la fuente del motor de la web |
 | D5 | ¿Qué dominio se compra y dónde? | Define `og:url`, `canonical` y el correo de marca |
@@ -36,7 +36,7 @@ Estado vivo del sitio. Cuando algo se resuelve, se tacha (`~~así~~`) con la fec
 ### Fase 0 · Urgente
 | # | Tarea | Hallazgo |
 |---|---|---|
-| 1 | Publicar el arreglo de la grilla y del video (en `dev`, espera D1) | C3 |
+| ~~1~~ | ~~Publicar el arreglo de la grilla y del video~~ (2026-10-08, en `main`) | C3 |
 | 2 | ~~Completar `contacto.html`~~ (2026-10-07, en `dev`). Falta el enlace a la política de datos (D7) | C1 |
 | ~~3~~ | ~~Menú en celular para la portada~~ (2026-10-07, en `dev`) | C2 |
 | 4 | Resolver las imágenes rotas de servicios (espera D3) | C4 |
