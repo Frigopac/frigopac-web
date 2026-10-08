@@ -4,6 +4,15 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-08 · Rediseñar Servicios y Contacto, y poner el logo de WhatsApp
+
+- **Tipo:** cambio
+- **Qué:** Servicios pasa a tarjetas grandes y redondeadas, una por servicio, con dos fotos, cuatro puntos y un enlace para cotizar; arriba hay botones para saltar a cada servicio. Contacto tiene el botón verde de WhatsApp destacado, los otros medios en una lista y el formulario en una tarjeta flotante; se agrega un cierre con la calculadora. Donde se habla de WhatsApp (Contacto, Servicios y Nosotros) se usa el logo de WhatsApp y no un teléfono. Ya no hay carruseles en Servicios. El diseño se trabajó antes en el lienzo de Claude.
+- **Por qué:** Servicios se veía anticuada frente a Proyectos y Nosotros; Contacto necesitaba el mismo estilo.
+- **Archivos:** `servicios.html`, `contacto.html`, `nosotros.html`, `css/servicios.css` (nuevo, prefijo `sv-`), `css/contacto.css` (nuevo, prefijo `ct-`), `css/nosotros.css`, `docs/PENDIENTES.md`
+- **Estado:** dev (2026-10-08). Pendiente de aprobación para `main`.
+- **Pendiente:** el formulario de Contacto sigue redirigiendo a una dirección de ejemplo (`tuusuario.github.io/.../gracias.html`) que no existe; no se tocó (ver `docs/PENDIENTES.md`). Servicios usa solo las fotos que existen, por lo que las 9 fotos faltantes (C4) dejan de verse como huecos.
+
 ## 2026-10-07 · Quitar la sección repetida "Cómo trabajamos"
 
 - **Tipo:** arreglo

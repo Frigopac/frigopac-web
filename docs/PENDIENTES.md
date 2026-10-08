@@ -10,6 +10,7 @@ Estado vivo del sitio. Cuando algo se resuelve, se tacha (`~~así~~`) con la fec
 |---|---|---|
 | ~~D1~~ | ~~¿Se publica en `main` lo que está en `dev`?~~ | Resuelto 2026-10-08: publicado en `main` |
 | ~~D2~~ | ~~¿En qué pestaña del menú va la calculadora?~~ | Resuelto 2026-10-07: pestaña "Diseñe su cuarto frío", antes de Contacto |
+| D9 | El formulario de Contacto manda al visitante a `tuusuario.github.io/frigopac-web/gracias.html`, una dirección de ejemplo y una página que no existe. ¿Creamos `gracias.html` y ponemos la dirección real? | Hoy, después de enviar una solicitud, la persona ve un error aunque el correo sí llegue |
 | D7 | Política de tratamiento de datos de FRIGOPAC SAS (NIT, dirección, correo para consultas) | El aviso del formulario de contacto es provisional (C1) |
 | D8 | Llenar los datos entre corchetes de Proyectos y Nosotros | Se publicó el 2026-10-08 con `[Ciudad]`, `[Año]`, `[Nombre]`… visibles al público |
 | D3 | ¿Qué hacer con las 9 fotos que faltan en servicios: conseguirlas o quitar esas diapositivas? | Hoy se ven huecos (C4) |
@@ -39,7 +40,7 @@ Estado vivo del sitio. Cuando algo se resuelve, se tacha (`~~así~~`) con la fec
 | ~~1~~ | ~~Publicar el arreglo de la grilla y del video~~ (2026-10-08, en `main`) | C3 |
 | 2 | ~~Completar `contacto.html`~~ (2026-10-07, en `dev`). Falta el enlace a la política de datos (D7) | C1 |
 | ~~3~~ | ~~Menú en celular para la portada~~ (2026-10-07, en `dev`) | C2 |
-| 4 | Resolver las imágenes rotas de servicios (espera D3) | C4 |
+| ~~4~~ | ~~Resolver las imágenes rotas de servicios~~ (2026-10-08, en `dev`: Servicios usa solo fotos existentes) | C4 |
 
 ### Fase 1 · Rápidas
 | # | Tarea | Hallazgo |

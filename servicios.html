@@ -11,172 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     
-    <style>
-        
-        
-        
-        
-        
-        
-        
-        .service-section {
-            padding: var(--space-4xl) 0;
-        }
-        
-        .service-section:nth-child(even) {
-            background-color: var(--color-gray-100);
-        }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-3xl);
-            align-items: center;
-        }
-        
-        @media (min-width: 1024px) {
-            .service-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .service-grid--reverse {
-                direction: rtl;
-            }
-            
-            .service-grid--reverse > * {
-                direction: ltr;
-            }
-        }
-        
-        .service-image {
-            overflow: hidden;
-            border-radius: var(--radius-md);
-        }
-        
-        .service-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: var(--transition-slower);
-        }
-        
-        .service-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        .service-content h2 {
-            font-family: var(--font-heading);
-            font-size: var(--text-4xl);
-            color: var(--color-primary);
-            margin-bottom: var(--space-md);
-        }
-        
-        .service-content p {
-            font-size: var(--text-lg);
-            color: var(--color-gray-600);
-            line-height: 1.8;
-            margin-bottom: var(--space-md);
-        }
-        
-        .service-features {
-            margin-top: var(--space-lg);
-        }
-        
-        .service-features li {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-sm);
-            color: var(--color-gray-600);
-        }
-        
-        .service-features svg {
-            flex-shrink: 0;
-            color: var(--color-secondary);
-            margin-top: 4px;
-        }
-
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            border-radius: var(--radius-md);
-        }
-
-        .carousel__slides {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel__slide {
-            min-width: 100%;
-            height: 100%;
-        }
-
-        .carousel__slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .carousel__btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .carousel__btn:hover {
-            background: var(--color-secondary);
-            color: white;
-        }
-
-        .carousel__btn--prev {
-            left: 15px;
-        }
-
-        .carousel__btn--next {
-            right: 15px;
-        }
-
-        .carousel__dots {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .carousel__dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel__dot.active {
-            background: var(--color-secondary);
-            transform: scale(1.2);
-        }
-    </style>
+    <link rel="stylesheet" href="css/servicios.css">
 </head>
 <body>
 
@@ -213,287 +48,153 @@
     </header>
 
     
-<!-- PAGE HERO -->
-    <section class="page-hero">
-        <div class="page-hero__background">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80" alt="Servicios FRIGOPAC">
-            <div class="page-hero__overlay"></div>
-        </div>
-        <div class="page-hero__content">
-            <h1 class="page-hero__title">Nuestros Servicios</h1>
-            <p class="page-hero__subtitle">Soluciones integrales de refrigeración industrial para su empresa</p>
-        </div>
-    </section>
+    <main class="sv-page">
+        <!-- ENCABEZADO -->
+        <section class="sv-hero">
+            <div class="sv-wrap">
+                <p class="sv-pill">Servicios</p>
+                <h1 class="sv-hero__title">Diseñamos, instalamos y mantenemos su refrigeración.</h1>
+                <p class="sv-hero__lead">Seis servicios para empresas que necesitan guardar producto frío sin sobresaltos. Elija el que busca o escríbanos y le ayudamos a decidir.</p>
+                <ul class="sv-chips" aria-label="Ir a un servicio">
+                    <li><a href="#cuartos-frios">Cuartos fríos</a></li>
+                    <li><a href="#bodegas">Bodegas refrigeradas</a></li>
+                    <li><a href="#salas-proceso">Salas de proceso</a></li>
+                    <li><a href="#tuneles">Túneles de congelación</a></li>
+                    <li><a href="#puertas">Puertas y muelles</a></li>
+                    <li><a href="#mantenimiento">Mantenimiento</a></li>
+                </ul>
+            </div>
+        </section>
 
-    <!-- CUARTOS FRÍOS -->
-    <section class="service-section" id="cuartos-frios">
-        <div class="container">
-            <div class="service-grid">
-                <div class="service-image">
-                    <div class="carousel">
-                        <div class="carousel__slides">
-                            <div class="carousel__slide">
-                                <img src="assets/images/cuarto-frio-5.jpg" alt="Cuarto Frío 1">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/cuarto-frio-2.jpg" alt="Cuarto Frío 2">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/cuarto-frio-3.jpg" alt="Cuarto Frío 3">
-                            </div>
-                        </div>
-                        <button class="carousel__btn carousel__btn--prev">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
-                        </button>
-                        <button class="carousel__btn carousel__btn--next">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
-                        </button>
-                        <div class="carousel__dots">
-                            <button class="carousel__dot active"></button>
-                            <button class="carousel__dot"></button>
-                            <button class="carousel__dot"></button>
-                        </div>
+        <!-- SERVICIOS -->
+        <section class="sv-list">
+            <div class="sv-wrap">
+                <article class="sv-card" id="cuartos-frios">
+                    <div class="sv-card__media">
+                        <img src="assets/images/cuarto-frio.jpg" alt="Cuarto frío instalado por FRIGOPAC" class="sv-card__main" loading="lazy">
+                        <img src="assets/images/cuarto-frio-5.jpg" alt="Cuarto frío instalado por FRIGOPAC, otra vista" class="sv-card__small" loading="lazy">
+                    </div>
+                    <div class="sv-card__body">
+                        <span class="sv-card__num">01</span>
+                        <h2 class="sv-card__title">Cuartos fríos</h2>
+                        <p class="sv-card__text">Diseñamos e instalamos cuartos de refrigeración y de congelación a la medida de su operación, para que el producto se conserve en buen estado.</p>
+                        <ul class="sv-features">
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Diseño según sus requerimientos</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Control preciso de temperatura</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Materiales de alta calidad y durabilidad</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Cumplimiento de normas sanitarias</span></li>
+                        </ul>
+                        <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
+                    </div>
+                </article>
+                <article class="sv-card sv-card--reverse" id="bodegas">
+                    <div class="sv-card__media">
+                        <img src="assets/images/bodega-1.jpg" alt="Bodega refrigerada" class="sv-card__main" loading="lazy">
+                        <img src="assets/images/bodega-2.jpg" alt="Bodega refrigerada, otra vista" class="sv-card__small" loading="lazy">
+                    </div>
+                    <div class="sv-card__body">
+                        <span class="sv-card__num">02</span>
+                        <h2 class="sv-card__title">Bodegas refrigeradas</h2>
+                        <p class="sv-card__text">Instalamos bodegas del tamaño que necesite para almacenar todo su producto, con la temperatura que cada uno pide para conservarse.</p>
+                        <ul class="sv-features">
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Gran capacidad de almacenamiento</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Sistemas de refrigeración eficientes</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Aprovechamiento del espacio</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bajo consumo de energía</span></li>
+                        </ul>
+                        <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
+                    </div>
+                </article>
+                <article class="sv-card" id="salas-proceso">
+                    <div class="sv-card__media">
+                        <img src="assets/images/sala-proceso.jpg" alt="Sala de proceso refrigerada" class="sv-card__main" loading="lazy">
+                        <img src="assets/images/sala-proceso-2.jpg" alt="Sala de proceso refrigerada, otra vista" class="sv-card__small" loading="lazy">
+                    </div>
+                    <div class="sv-card__body">
+                        <span class="sv-card__num">03</span>
+                        <h2 class="sv-card__title">Salas de proceso</h2>
+                        <p class="sv-card__text">Diseñamos y dimensionamos salas de proceso acordes a lo que usted produce, para que el trabajo sea cómodo, limpio y de calidad.</p>
+                        <ul class="sv-features">
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Diseño funcional y cómodo para el personal</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ambientes con temperatura controlada</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Cumplimiento de buenas prácticas de manufactura</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Fáciles de limpiar y mantener</span></li>
+                        </ul>
+                        <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
+                    </div>
+                </article>
+                <article class="sv-card sv-card--reverse" id="tuneles">
+                    <div class="sv-card__media">
+                        <img src="assets/images/tunel.jpg" alt="Túnel de congelación" class="sv-card__main sv-card__main--full" loading="lazy">
+                    </div>
+                    <div class="sv-card__body">
+                        <span class="sv-card__num">04</span>
+                        <h2 class="sv-card__title">Túneles de congelación</h2>
+                        <p class="sv-card__text">¿Maneja productos perecederos que necesitan congelarse rápido? Nuestros túneles bajan la temperatura en poco tiempo y cuidan la calidad del producto.</p>
+                        <ul class="sv-features">
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Congelación rápida y pareja</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Alta eficiencia energética</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>El producto conserva su calidad</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Varias capacidades disponibles</span></li>
+                        </ul>
+                        <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
+                    </div>
+                </article>
+                <article class="sv-card" id="puertas">
+                    <div class="sv-card__media">
+                        <img src="assets/images/puertas-1.jpg" alt="Puertas frigoríficas" class="sv-card__main" loading="lazy">
+                        <img src="assets/images/puertas-2.jpg" alt="Puertas frigoríficas, otra vista" class="sv-card__small" loading="lazy">
+                    </div>
+                    <div class="sv-card__body">
+                        <span class="sv-card__num">05</span>
+                        <h2 class="sv-card__title">Puertas especiales y muelles de cargue</h2>
+                        <p class="sv-card__text">Trabajamos con aliados que fabrican puertas y muelles de cargue de buena calidad, y nos encargamos de instalarlos.</p>
+                        <ul class="sv-features">
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Puertas frigoríficas de alto rendimiento</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Sellos y abrigos para muelles</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Apertura automática</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Mantenimiento preventivo</span></li>
+                        </ul>
+                        <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
+                    </div>
+                </article>
+                <article class="sv-card sv-card--reverse" id="mantenimiento">
+                    <div class="sv-card__media">
+                        <img src="assets/images/mantenimiento-1.jpg" alt="Técnico dando mantenimiento" class="sv-card__main" loading="lazy">
+                        <img src="assets/images/mantenimiento-2.jpg" alt="Técnico dando mantenimiento, otra vista" class="sv-card__small" loading="lazy">
+                    </div>
+                    <div class="sv-card__body">
+                        <span class="sv-card__num">06</span>
+                        <h2 class="sv-card__title">Mantenimiento</h2>
+                        <p class="sv-card__text">Revisamos y reparamos sus equipos de refrigeración, y los actualizamos cuando hace falta, para que no se detengan en mal momento.</p>
+                        <ul class="sv-features">
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Revisión completa del equipo</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Corrección de fallas</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Actualización a la norma sanitaria vigente</span></li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Planes de mantenimiento preventivo</span></li>
+                        </ul>
+                        <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CIERRE -->
+        <section class="sv-cta">
+            <div class="sv-wrap">
+                <div class="sv-cta__box">
+                    <div class="sv-cta__text">
+                        <h2 class="sv-cta__title">¿No sabe cuál necesita?</h2>
+                        <p class="sv-cta__sub">Use la calculadora para ver qué equipo le conviene, o cuéntenos su caso por WhatsApp.</p>
+                    </div>
+                    <div class="sv-cta__actions">
+                        <a href="proyecto.html" class="sv-btn sv-btn--calc">Diseñe su cuarto frío</a>
+                        <a href="https://wa.me/573103330737" target="_blank" rel="noopener" class="sv-btn sv-btn--wa"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir por WhatsApp</a>
                     </div>
                 </div>
-                <div class="service-content">
-                    <h2>Cuartos Fríos</h2>
-                    <p>Diseñamos e instalamos cuartos fríos de refrigeración y congelación adaptados a las necesidades específicas de su operación, garantizando la conservación óptima de sus productos.</p>
-                    <ul class="service-features">
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Diseño personalizado según sus requerimientos</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Control preciso de temperatura</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Materiales de alta calidad y durabilidad</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Cumplimiento de normativas sanitarias</li>
-                    </ul>
-                    <a href="contacto.html" class="btn btn--primary" style="margin-top: var(--space-lg);">Solicitar Cotización</a>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- BODEGAS REFRIGERADAS -->
-    <section class="service-section" id="bodegas">
-        <div class="container">
-            <div class="service-grid service-grid--reverse">
-                <div class="service-image">
-                    <div class="carousel">
-                        <div class="carousel__slides">
-                            <div class="carousel__slide">
-                                <img src="assets/images/bodega-1.jpg" alt="Bodega Refrigerada 1">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/bodega-2.jpg" alt="Bodega Refrigerada 2">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/bodega-3.jpg" alt="Bodega Refrigerada 3">
-                            </div>
-                        </div>
-                        <button class="carousel__btn carousel__btn--prev">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
-                        </button>
-                        <button class="carousel__btn carousel__btn--next">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
-                        </button>
-                        <div class="carousel__dots">
-                            <button class="carousel__dot active"></button>
-                            <button class="carousel__dot"></button>
-                            <button class="carousel__dot"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-content">
-                    <h2>Bodegas Refrigeradas</h2>
-                    <p>Instalamos bodegas a su medida para que almacene todos sus productos, cumpliendo con los requisitos de temperatura necesarios para conservar y garantizar la calidad de estos.</p>
-                    <ul class="service-features">
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Gran capacidad de almacenamiento</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Sistemas de refrigeración eficientes</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Optimización de espacios</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Bajo consumo energético</li>
-                    </ul>
-                    <a href="contacto.html" class="btn btn--primary" style="margin-top: var(--space-lg);">Solicitar Cotización</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SALAS DE PROCESO -->
-    <section class="service-section" id="salas-proceso">
-        <div class="container">
-            <div class="service-grid">
-                <div class="service-image">
-                    <div class="carousel">
-                        <div class="carousel__slides">
-                            <div class="carousel__slide">
-                                <img src="assets/images/sala-proceso-1.jpg" alt="Sala de Proceso 1">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/sala-proceso-2.jpg" alt="Sala de Proceso 2">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/sala-proceso-3.jpg" alt="Sala de Proceso 3">
-                            </div>
-                        </div>
-                        <button class="carousel__btn carousel__btn--prev">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
-                        </button>
-                        <button class="carousel__btn carousel__btn--next">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
-                        </button>
-                        <div class="carousel__dots">
-                            <button class="carousel__dot active"></button>
-                            <button class="carousel__dot"></button>
-                            <button class="carousel__dot"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-content">
-                    <h2>Salas de Proceso</h2>
-                    <p>Diseñamos y dimensionamos salas de proceso acordes a sus necesidades, pensando en que nuestros clientes optimicen y garanticen una producción de calidad.</p>
-                    <ul class="service-features">
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Diseño ergonómico y funcional</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Ambientes controlados</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Cumplimiento BPM</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Fácil limpieza y mantenimiento</li>
-                    </ul>
-                    <a href="contacto.html" class="btn btn--primary" style="margin-top: var(--space-lg);">Solicitar Cotización</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TÚNELES DE CONGELACIÓN -->
-    <section class="service-section" id="tuneles">
-        <div class="container">
-            <div class="service-grid service-grid--reverse">
-                <div class="service-image">
-                    <div class="carousel">
-                        <div class="carousel__slides">
-                            <div class="carousel__slide">
-                                <img src="assets/images/tunel-1.jpg" alt="Túnel de Congelación 1">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/tunel-2.jpg" alt="Túnel de Congelación 2">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/tunel-3.jpg" alt="Túnel de Congelación 3">
-                            </div>
-                        </div>
-                        <button class="carousel__btn carousel__btn--prev">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
-                        </button>
-                        <button class="carousel__btn carousel__btn--next">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
-                        </button>
-                        <div class="carousel__dots">
-                            <button class="carousel__dot active"></button>
-                            <button class="carousel__dot"></button>
-                            <button class="carousel__dot"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-content">
-                    <h2>Túneles de Congelación</h2>
-                    <p>¿Tiene productos perecederos que demanden bajas temperaturas? Con nuestros túneles de congelación de alta eficacia asegure la calidad de sus productos y la satisfacción de sus clientes.</p>
-                    <ul class="service-features">
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Congelación rápida y uniforme</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Alta eficiencia energética</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Preservación de calidad del producto</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Diferentes capacidades disponibles</li>
-                    </ul>
-                    <a href="contacto.html" class="btn btn--primary" style="margin-top: var(--space-lg);">Solicitar Cotización</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PUERTAS Y MUELLES -->
-    <section class="service-section" id="puertas">
-        <div class="container">
-            <div class="service-grid">
-                <div class="service-image">
-                    <div class="carousel">
-                        <div class="carousel__slides">
-                            <div class="carousel__slide">
-                                <img src="assets/images/puertas-1.jpg" alt="Puertas y Muelles 1">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/puertas-2.jpg" alt="Puertas y Muelles 2">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/puertas-3.jpg" alt="Puertas y Muelles 3">
-                            </div>
-                        </div>
-                        <button class="carousel__btn carousel__btn--prev">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
-                        </button>
-                        <button class="carousel__btn carousel__btn--next">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
-                        </button>
-                        <div class="carousel__dots">
-                            <button class="carousel__dot active"></button>
-                            <button class="carousel__dot"></button>
-                            <button class="carousel__dot"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-content">
-                    <h2>Puertas Especiales y Muelles de Cargue</h2>
-                    <p>Contamos con aliados estratégicos para brindarle la mejor tecnología en puertas y muelles de cargue, con los más altos estándares de calidad.</p>
-                    <ul class="service-features">
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Puertas frigoríficas de alto rendimiento</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Sellos y abrigos para muelles</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Sistemas de apertura automática</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Mantenimiento preventivo</li>
-                    </ul>
-                    <a href="contacto.html" class="btn btn--primary" style="margin-top: var(--space-lg);">Solicitar Cotización</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MANTENIMIENTO -->
-    <section class="service-section" id="mantenimiento">
-        <div class="container">
-            <div class="service-grid service-grid--reverse">
-                <div class="service-image">
-                    <div class="carousel">
-                        <div class="carousel__slides">
-                            <div class="carousel__slide">
-                                <img src="assets/images/mantenimiento-1.jpg" alt="Mantenimiento 1">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/mantenimiento-2.jpg" alt="Mantenimiento 2">
-                            </div>
-                            <div class="carousel__slide">
-                                <img src="assets/images/mantenimiento-3.jpg" alt="Mantenimiento 3">
-                            </div>
-                        </div>
-                        <button class="carousel__btn carousel__btn--prev">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
-                        </button>
-                        <button class="carousel__btn carousel__btn--next">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18L15 12L9 6"/></svg>
-                        </button>
-                        <div class="carousel__dots">
-                            <button class="carousel__dot active"></button>
-                            <button class="carousel__dot"></button>
-                            <button class="carousel__dot"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-content">
-                    <h2>Mantenimiento</h2>
-                    <p>Ofrecemos servicios de mantenimiento preventivo y correctivo para garantizar el óptimo funcionamiento de sus equipos de refrigeración y prolongar su vida útil.</p>
-                    <ul class="service-features">
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Mantenimiento preventivo programado</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Atención correctiva de emergencia</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Repuestos originales</li>
-                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>Personal técnico certificado</li>
-                    </ul>
-                    <a href="contacto.html" class="btn btn--primary" style="margin-top: var(--space-lg);">Solicitar Cotización</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer" id="footer">
