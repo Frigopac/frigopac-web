@@ -357,48 +357,6 @@
     border-radius: 6px;
 }
 
-/* --- Cómo trabajamos --- */
-.py-process {
-    background: var(--color-gray-100);
-    padding: var(--space-3xl) 0;
-}
-
-.py-steps {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-xl);
-}
-
-.py-steps__item {
-    background: var(--color-white);
-    border: 1px solid var(--color-gray-200);
-    border-radius: var(--radius-lg);
-    padding: var(--space-md);
-}
-
-.py-steps__num {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: var(--text-sm);
-    color: var(--color-secondary-dark);
-}
-
-.py-steps__title {
-    margin: 0.75rem 0 0.5rem;
-    font-family: var(--font-heading);
-    font-size: var(--text-xl);
-    font-weight: 600;
-    color: var(--color-primary);
-}
-
-.py-steps__text {
-    font-size: var(--text-sm);
-    line-height: 1.6;
-    color: var(--color-gray-600);
-}
-
 /* --- Testimonio --- */
 .py-quote {
     padding: var(--space-3xl) 0;

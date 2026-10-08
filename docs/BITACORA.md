@@ -4,6 +4,14 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-07 · Quitar la sección repetida "Cómo trabajamos"
+
+- **Tipo:** arreglo
+- **Qué:** se quitan de Proyectos los 4 pasos de trabajo, que ya están en la portada. En Nosotros, la sección de valores pasa a llamarse "Nuestros valores", para que ninguna página repita el título "Cómo trabajamos".
+- **Por qué:** lo pidió el responsable al revisar `dev`.
+- **Archivos:** `proyectos.html`, `nosotros.html`, `css/proyectos.css`
+- **Estado:** dev (2026-10-07). Pendiente de aprobación para `main`.
+
 ## 2026-10-07 · Rediseñar las páginas Proyectos y Nosotros
 
 - **Tipo:** cambio
