@@ -49,28 +49,68 @@
 
     
     <main class="sv-page">
-        <!-- ENCABEZADO -->
+        <!-- ENCABEZADO OSCURO CON ÍNDICE DE FOTOS -->
         <section class="sv-hero">
             <div class="sv-wrap">
-                <p class="sv-pill">Servicios</p>
-                <h1 class="sv-hero__title">Diseñamos, instalamos y mantenemos su refrigeración.</h1>
-                <p class="sv-hero__lead">Seis servicios para empresas que necesitan guardar producto frío sin sobresaltos. Elija el que busca o escríbanos y le ayudamos a decidir.</p>
-                <ul class="sv-chips" aria-label="Ir a un servicio">
-                    <li><a href="#cuartos-frios">Cuartos fríos</a></li>
-                    <li><a href="#bodegas">Bodegas refrigeradas</a></li>
-                    <li><a href="#salas-proceso">Salas de proceso</a></li>
-                    <li><a href="#tuneles">Túneles de congelación</a></li>
-                    <li><a href="#puertas">Puertas y muelles</a></li>
-                    <li><a href="#mantenimiento">Mantenimiento</a></li>
+                <div class="sv-hero__top">
+                    <div class="sv-hero__text">
+                        <p class="sv-eyebrow">Servicios</p>
+                        <h1 class="sv-hero__title">Diseñamos, instalamos y mantenemos su refrigeración.</h1>
+                    </div>
+                    <p class="sv-hero__lead">Seis servicios para empresas que necesitan guardar producto frío sin sobresaltos. Elija uno para ver el detalle.</p>
+                </div>
+                <ul class="sv-index" aria-label="Ir a un servicio">
+                    <li>
+                        <a href="#cuartos-frios" class="sv-tile">
+                            <span class="sv-tile__img"><img src="assets/images/cuarto-frio.jpg" alt=""></span>
+                            <span class="sv-tile__label"><span class="sv-tile__num">01</span>Cuartos fríos</span>
+                            <span class="sv-tile__line" aria-hidden="true"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#bodegas" class="sv-tile">
+                            <span class="sv-tile__img"><img src="assets/images/bodega-1.jpg" alt=""></span>
+                            <span class="sv-tile__label"><span class="sv-tile__num">02</span>Bodegas refrigeradas</span>
+                            <span class="sv-tile__line" aria-hidden="true"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#salas-proceso" class="sv-tile">
+                            <span class="sv-tile__img"><img src="assets/images/sala-proceso.jpg" alt=""></span>
+                            <span class="sv-tile__label"><span class="sv-tile__num">03</span>Salas de proceso</span>
+                            <span class="sv-tile__line" aria-hidden="true"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tuneles" class="sv-tile">
+                            <span class="sv-tile__img"><img src="assets/images/tunel.jpg" alt=""></span>
+                            <span class="sv-tile__label"><span class="sv-tile__num">04</span>Túneles de congelación</span>
+                            <span class="sv-tile__line" aria-hidden="true"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#puertas" class="sv-tile">
+                            <span class="sv-tile__img"><img src="assets/images/puertas-1.jpg" alt=""></span>
+                            <span class="sv-tile__label"><span class="sv-tile__num">05</span>Puertas y muelles</span>
+                            <span class="sv-tile__line" aria-hidden="true"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#mantenimiento" class="sv-tile">
+                            <span class="sv-tile__img"><img src="assets/images/mantenimiento-1.jpg" alt=""></span>
+                            <span class="sv-tile__label"><span class="sv-tile__num">06</span>Mantenimiento</span>
+                            <span class="sv-tile__line" aria-hidden="true"></span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
 
         <!-- SERVICIOS -->
-        <section class="sv-list">
-            <div class="sv-wrap">
-                <article class="sv-card" id="cuartos-frios">
-                    <div class="sv-card__media">
+        <div class="sv-list">
+                <section class="sv-band" id="cuartos-frios">
+                    <div class="sv-wrap sv-card">
+                    <div class="sv-card__media sv-zoom">
                         <img src="assets/images/cuarto-frio.jpg" alt="Cuarto frío instalado por FRIGOPAC" class="sv-card__main" loading="lazy">
                         <img src="assets/images/cuarto-frio-5.jpg" alt="Cuarto frío instalado por FRIGOPAC, otra vista" class="sv-card__small" loading="lazy">
                     </div>
@@ -86,9 +126,11 @@
                         </ul>
                         <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
                     </div>
-                </article>
-                <article class="sv-card sv-card--reverse" id="bodegas">
-                    <div class="sv-card__media">
+                    </div>
+                </section>
+                <section class="sv-band sv-band--alt" id="bodegas">
+                    <div class="sv-wrap sv-card sv-card--reverse">
+                    <div class="sv-card__media sv-zoom">
                         <img src="assets/images/bodega-1.jpg" alt="Bodega refrigerada" class="sv-card__main" loading="lazy">
                         <img src="assets/images/bodega-2.jpg" alt="Bodega refrigerada, otra vista" class="sv-card__small" loading="lazy">
                     </div>
@@ -104,9 +146,11 @@
                         </ul>
                         <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
                     </div>
-                </article>
-                <article class="sv-card" id="salas-proceso">
-                    <div class="sv-card__media">
+                    </div>
+                </section>
+                <section class="sv-band" id="salas-proceso">
+                    <div class="sv-wrap sv-card">
+                    <div class="sv-card__media sv-zoom">
                         <img src="assets/images/sala-proceso.jpg" alt="Sala de proceso refrigerada" class="sv-card__main" loading="lazy">
                         <img src="assets/images/sala-proceso-2.jpg" alt="Sala de proceso refrigerada, otra vista" class="sv-card__small" loading="lazy">
                     </div>
@@ -122,9 +166,11 @@
                         </ul>
                         <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
                     </div>
-                </article>
-                <article class="sv-card sv-card--reverse" id="tuneles">
-                    <div class="sv-card__media">
+                    </div>
+                </section>
+                <section class="sv-band sv-band--alt" id="tuneles">
+                    <div class="sv-wrap sv-card sv-card--reverse">
+                    <div class="sv-card__media sv-zoom">
                         <img src="assets/images/tunel.jpg" alt="Túnel de congelación" class="sv-card__main sv-card__main--full" loading="lazy">
                     </div>
                     <div class="sv-card__body">
@@ -139,9 +185,11 @@
                         </ul>
                         <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
                     </div>
-                </article>
-                <article class="sv-card" id="puertas">
-                    <div class="sv-card__media">
+                    </div>
+                </section>
+                <section class="sv-band" id="puertas">
+                    <div class="sv-wrap sv-card">
+                    <div class="sv-card__media sv-zoom">
                         <img src="assets/images/puertas-1.jpg" alt="Puertas frigoríficas" class="sv-card__main" loading="lazy">
                         <img src="assets/images/puertas-2.jpg" alt="Puertas frigoríficas, otra vista" class="sv-card__small" loading="lazy">
                     </div>
@@ -157,9 +205,11 @@
                         </ul>
                         <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
                     </div>
-                </article>
-                <article class="sv-card sv-card--reverse" id="mantenimiento">
-                    <div class="sv-card__media">
+                    </div>
+                </section>
+                <section class="sv-band sv-band--alt" id="mantenimiento">
+                    <div class="sv-wrap sv-card sv-card--reverse">
+                    <div class="sv-card__media sv-zoom">
                         <img src="assets/images/mantenimiento-1.jpg" alt="Técnico dando mantenimiento" class="sv-card__main" loading="lazy">
                         <img src="assets/images/mantenimiento-2.jpg" alt="Técnico dando mantenimiento, otra vista" class="sv-card__small" loading="lazy">
                     </div>
@@ -175,9 +225,9 @@
                         </ul>
                         <a href="contacto.html" class="sv-link">Cotizar este servicio →</a>
                     </div>
-                </article>
-            </div>
-        </section>
+                    </div>
+                </section>
+        </div>
 
         <!-- CIERRE -->
         <section class="sv-cta">

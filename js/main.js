@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
+                    const header = document.getElementById('siteHeader');
                     const headerHeight = header ? header.offsetHeight : 0;
                     const targetPosition = target.offsetTop - headerHeight;
                     window.scrollTo({

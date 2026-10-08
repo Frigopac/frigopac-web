@@ -4,6 +4,15 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-08 · Diferenciar Servicios de Nosotros y arreglar los enlaces internos
+
+- **Tipo:** cambio y arreglo
+- **Qué:** Servicios abre con una franja azul oscura y un índice de seis fotos, una por servicio, que llevan a cada sección. Los servicios pasan de tarjetas con sombra a franjas de borde a borde que alternan blanco y gris. Las animaciones cambian: zoom en las fotos y una línea celeste bajo el nombre, en vez de tarjetas que suben (eso queda solo en Nosotros). Además se arregla un error de `js/main.js`: los enlaces que llevan a una parte de la misma página no hacían nada, porque el código usaba una variable de la cabecera vieja que se borró el 2026-10-07.
+- **Por qué:** Servicios y Nosotros se veían iguales. El responsable notó que los botones de Servicios no funcionaban.
+- **Archivos:** `servicios.html`, `css/servicios.css`, `js/main.js`
+- **Estado:** dev (2026-10-08). Pendiente de aprobación para `main`.
+- **Pendiente:** el error de los enlaces también está en la web pública (`main`).
+
 ## 2026-10-08 · Rediseñar Servicios y Contacto, y poner el logo de WhatsApp
 
 - **Tipo:** cambio
