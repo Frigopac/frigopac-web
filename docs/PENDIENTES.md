@@ -11,6 +11,7 @@ Estado vivo del sitio. Cuando algo se resuelve, se tacha (`~~así~~`) con la fec
 | D1 | ¿Se publica en `main` lo que está en `dev`: grilla de proyectos, video y cabecera unificada? | Está listo y revisado en `dev` (C3, C2, M1) |
 | ~~D2~~ | ~~¿En qué pestaña del menú va la calculadora?~~ | Resuelto 2026-10-07: pestaña "Diseñe su cuarto frío", antes de Contacto |
 | D7 | Política de tratamiento de datos de FRIGOPAC SAS (NIT, dirección, correo para consultas) | El aviso del formulario de contacto es provisional (C1) |
+| D8 | ¿Se publican Proyectos y Nosotros con los datos entre corchetes, o primero se llenan? | Hoy muestran `[Ciudad]`, `[Año]`, `[Nombre]`… a la vista del público |
 | D3 | ¿Qué hacer con las 9 fotos que faltan en servicios: conseguirlas o quitar esas diapositivas? | Hoy se ven huecos (C4) |
 | D4 | ¿Se sube `frigopac-engine` a GitHub? ¿Público o privado? | Es la fuente del motor de la web |
 | D5 | ¿Qué dominio se compra y dónde? | Define `og:url`, `canonical` y el correo de marca |
@@ -22,6 +23,12 @@ Estado vivo del sitio. Cuando algo se resuelve, se tacha (`~~así~~`) con la fec
 |---|---|---|
 | Portada, "Proyectos destacados" | Nombres de los 5 proyectos y sus volúmenes (800, 250, 180, 120 y 90 m³) | Proyectos reales con su tipo y volumen |
 | Portada, tarjetas de servicios | Los puntos técnicos de las 3 tarjetas | Especificaciones reales de FRIGOPAC |
+| `proyectos.html`, encabezado | Número de departamentos con obra (`[N]`) | El número real |
+| `proyectos.html`, proyecto destacado (Freshmar) | Texto del reto y la solución, temperatura, capacidad y ciudad | Datos reales del proyecto |
+| `proyectos.html`, galería | Frase de cada proyecto, ciudad, temperatura y volumen de las 6 tarjetas | Datos reales de cada obra |
+| `proyectos.html`, testimonio | Cita, nombre, cargo y empresa | Un testimonio real con permiso del cliente |
+| `nosotros.html`, "Cómo empezamos" | Quién fundó la empresa y los años de la línea de tiempo | La historia real |
+| `nosotros.html`, "El equipo" | Fotos, nombres y cargos | Datos y fotos del equipo |
 | `contacto.html`, debajo del botón de enviar | Aviso de tratamiento de datos, sin enlace a la política | La política de FRIGOPAC SAS (D7) |
 
 ## Tareas

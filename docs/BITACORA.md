@@ -4,6 +4,15 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-07 · Rediseñar las páginas Proyectos y Nosotros
+
+- **Tipo:** cambio
+- **Qué:** Proyectos tiene encabezado con cifras, un proyecto destacado (Freshmar), la cinta de logos de la portada justo debajo, una galería con botones para filtrar por tipo, los 4 pasos de trabajo, un espacio para testimonio y un cierre con la calculadora. Nosotros tiene otro diseño, claro y redondeado: fotos superpuestas, historia en línea de tiempo, misión y visión en un bloque oscuro, valores, equipo y contacto directo. Se quitó de Nosotros lo que ya está en la portada. Los textos se reescribieron en lenguaje más sencillo. El diseño se trabajó antes en un lienzo de Claude.
+- **Por qué:** las dos páginas se veían pobres y repetían la portada.
+- **Archivos:** `proyectos.html`, `nosotros.html`, `css/proyectos.css` (nuevo, prefijo `py-`), `css/nosotros.css` (nuevo, prefijo `ns-`), `js/proyectos.js` (nuevo, filtros), `css/styles.css` (dos variables de color: `--color-secondary-dark` y `--color-secondary-soft`), `docs/PENDIENTES.md`
+- **Estado:** dev (2026-10-07). Pendiente de aprobación para `main`.
+- **Pendiente:** muchos datos van entre corchetes y marcados `RELLENO` (ver `docs/PENDIENTES.md`). Decidir si se publican así o después de llenarlos.
+
 ## 2026-10-07 · Unificar cabecera, pie y botón de WhatsApp en las 6 páginas
 
 - **Tipo:** cambio

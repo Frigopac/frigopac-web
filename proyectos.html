@@ -11,111 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     
-    <style>
-        
-        
-        
-        
-        
-        
-        
-        .projects-section {
-            padding: var(--space-4xl) 0;
-        }
-        
-        .projects-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--space-lg);
-        }
-        
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-md);
-            aspect-ratio: 4/3;
-        }
-        
-        .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-slower);
-        }
-        
-        .project-card:hover img {
-            transform: scale(1.1);
-        }
-        
-        .project-card__overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: var(--space-xl);
-            background: linear-gradient(to top, rgba(11, 29, 58, 0.95), transparent);
-            transform: translateY(20px);
-            opacity: 0;
-            transition: var(--transition-base);
-        }
-        
-        .project-card:hover .project-card__overlay {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .project-card__category {
-            font-family: var(--font-accent);
-            font-size: var(--text-xs);
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--color-secondary);
-            margin-bottom: var(--space-xs);
-        }
-        
-        .project-card__title {
-            font-family: var(--font-heading);
-            font-size: var(--text-2xl);
-            font-weight: 500;
-            color: var(--color-white);
-        }
-        
-        .clients-section {
-            padding: var(--space-4xl) 0;
-            background-color: var(--color-gray-100);
-            text-align: center;
-        }
-        
-        .clients-section h2 {
-            font-family: var(--font-heading);
-            font-size: var(--text-4xl);
-            color: var(--color-primary);
-            margin-bottom: var(--space-2xl);
-        }
-        
-        .clients-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: var(--space-3xl);
-        }
-        
-        .client-logo {
-            font-family: var(--font-accent);
-            font-weight: 700;
-            font-size: var(--text-2xl);
-            color: var(--color-gray-600);
-            opacity: 0.7;
-            transition: var(--transition-base);
-        }
-        
-        .client-logo:hover {
-            opacity: 1;
-            color: var(--color-primary);
-        }
-    </style>
+    <link rel="stylesheet" href="css/proyectos.css">
 </head>
 <body>
 
@@ -152,96 +48,260 @@
     </header>
 
     
-<!-- PAGE HERO -->
-    <section class="page-hero">
-        <div class="page-hero__background">
-            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=80" alt="Proyectos FRIGOPAC">
-            <div class="page-hero__overlay"></div>
-        </div>
-        <div class="page-hero__content">
-            <h1 class="page-hero__title reveal-fade">Nuestros Proyectos</h1>
-            <p class="page-hero__subtitle reveal-fade">Más de 150 instalaciones en todo el territorio nacional</p>
-        </div>
-    </section>
+    <main>
+        <!-- ENCABEZADO -->
+        <section class="py-hero">
+            <div class="py-wrap py-hero__inner">
+                <div class="py-hero__text">
+                    <p class="py-eyebrow py-eyebrow--light">Proyectos</p>
+                    <h1 class="py-hero__title">Cuartos fríos y bodegas que hemos instalado</h1>
+                    <p class="py-hero__lead">Trabajamos con restaurantes, plantas de alimentos, cultivos y laboratorios. Aquí hay una muestra de esas obras.</p>
+                </div>
+                <dl class="py-stats">
+                    <div class="py-stats__item">
+                        <dt class="py-stats__label">instalaciones entregadas</dt>
+                        <dd class="py-stats__value">+150</dd>
+                    </div>
+                    <div class="py-stats__item">
+                        <dt class="py-stats__label">años de experiencia</dt>
+                        <dd class="py-stats__value">+20</dd>
+                    </div>
+                    <div class="py-stats__item">
+                        <dt class="py-stats__label">líneas de servicio</dt>
+                        <dd class="py-stats__value">5</dd>
+                    </div>
+                    <div class="py-stats__item">
+                        <dt class="py-stats__label">departamentos con obra</dt>
+                        <!-- RELLENO: número real de departamentos donde FRIGOPAC ha hecho obras -->
+                        <dd class="py-stats__value py-stats__value--pending">[N]</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
 
-    <!-- PROJECTS GALLERY -->
-    <section class="projects-section">
-        <div class="container">
-            <div class="projects-gallery">
-                <div class="project-card reveal-fade">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Proyecto KFC">
-                    <div class="project-card__overlay">
-                        <span class="project-card__category">Cuartos Fríos</span>
-                        <h3 class="project-card__title">KFC Colombia</h3>
+        <!-- PROYECTO DESTACADO -->
+        <section class="py-featured">
+            <div class="py-wrap">
+                <article class="py-featured__card">
+                    <div class="py-featured__media">
+                        <img src="assets/images/tunel.jpg" alt="Túnel de congelación instalado para Freshmar">
+                        <span class="py-featured__badge">Proyecto destacado</span>
                     </div>
-                </div>
-                
-                <div class="project-card reveal-fade">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80" alt="Proyecto Burger King">
-                    <div class="project-card__overlay">
-                        <span class="project-card__category">Refrigeración Comercial</span>
-                        <h3 class="project-card__title">Burger King</h3>
+                    <div class="py-featured__body">
+                        <p class="py-eyebrow">Túnel de congelación</p>
+                        <h2 class="py-title">Freshmar</h2>
+                        <!-- RELLENO: reto del cliente y solución; temperatura, capacidad y ciudad reales -->
+                        <p class="py-featured__text">[El reto del cliente y cómo lo resolvimos, en 2 o 3 frases. Ej.: qué producto congelan, cuánto por hora y qué cambió en su operación.]</p>
+                        <dl class="py-specs">
+                            <div class="py-specs__item">
+                                <dt class="py-specs__label">Temperatura</dt>
+                                <dd class="py-specs__value">[−__ °C]</dd>
+                            </div>
+                            <div class="py-specs__item">
+                                <dt class="py-specs__label">Capacidad</dt>
+                                <dd class="py-specs__value">[__ kg/h]</dd>
+                            </div>
+                            <div class="py-specs__item">
+                                <dt class="py-specs__label">Ciudad</dt>
+                                <dd class="py-specs__value">[Ciudad]</dd>
+                            </div>
+                        </dl>
+                        <a href="contacto.html" class="py-link">Cotizar un proyecto similar →</a>
                     </div>
-                </div>
-                
-                <div class="project-card reveal-fade">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Proyecto Freshmar">
-                    <div class="project-card__overlay">
-                        <span class="project-card__category">Túneles de Congelación</span>
-                        <h3 class="project-card__title">Freshmar</h3>
-                    </div>
-                </div>
-                
-                <div class="project-card reveal-fade">
-                    <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=80" alt="Proyecto La Planice">
-                    <div class="project-card__overlay">
-                        <span class="project-card__category">Bodegas Refrigeradas</span>
-                        <h3 class="project-card__title">Cultivos La Planice</h3>
-                    </div>
-                </div>
-                
-                <div class="project-card reveal-fade">
-                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80" alt="Proyecto Industrial">
-                    <div class="project-card__overlay">
-                        <span class="project-card__category">Salas de Proceso</span>
-                        <h3 class="project-card__title">Industria Alimenticia</h3>
-                    </div>
-                </div>
-                
-                <div class="project-card reveal-fade">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="Proyecto Farmacéutico">
-                    <div class="project-card__overlay">
-                        <span class="project-card__category">Cuartos Fríos</span>
-                        <h3 class="project-card__title">Sector Farmacéutico</h3>
+                </article>
+            </div>
+        </section>
+
+        <!-- CINTA DE CLIENTES (misma cinta de la portada) -->
+        <section class="clients py-clients" aria-label="Algunos de nuestros clientes">
+            <p class="clients__title">Algunos de nuestros clientes</p>
+            <div class="py-wrap">
+                <div class="marquee">
+                    <div class="marquee__track">
+                        <img src="assets/images/logo-kfc 2.png" alt="KFC" class="clients__logo-img">
+                        <img src="assets/images/logo-burgerking.png" alt="Burger King" class="clients__logo-img">
+                        <img src="assets/images/logo-laplanice.png" alt="Cultivos La Planice" class="clients__logo-img">
+                        <img src="assets/images/logo-freshmar.png 3" alt="Freshmar" class="clients__logo-img">
+                        <img src="assets/images/logo-kfc 2.png" alt="" class="clients__logo-img" aria-hidden="true">
+                        <img src="assets/images/logo-burgerking.png" alt="" class="clients__logo-img" aria-hidden="true">
+                        <img src="assets/images/logo-laplanice.png" alt="" class="clients__logo-img" aria-hidden="true">
+                        <img src="assets/images/logo-freshmar.png 3" alt="" class="clients__logo-img" aria-hidden="true">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CLIENTS -->
-    <section class="clients-section">
-        <div class="container">
-            <h2 class="reveal-fade">Clientes que Confían en Nosotros</h2>
-            <div class="clients-grid">
-                <span class="client-logo reveal-fade">KFC</span>
-                <span class="client-logo reveal-fade">BURGER KING</span>
-                <span class="client-logo reveal-fade">CULTIVOS LA PLANICE</span>
-                <span class="client-logo reveal-fade">FRESHMAR</span>
-            </div>
-        </div>
-    </section>
+        <!-- GALERÍA CON FILTROS -->
+        <section class="py-gallery" id="galeria">
+            <div class="py-wrap">
+                <div class="py-gallery__head">
+                    <div>
+                        <h2 class="py-title">Todos los proyectos</h2>
+                        <p class="py-lead" id="pyCount" aria-live="polite">Mostrando 6 de 6 proyectos</p>
+                    </div>
+                    <div class="py-filters" role="group" aria-label="Filtrar por tipo">
+                        <button type="button" class="py-filters__btn" data-filter="todos" aria-pressed="true">Todos</button>
+                        <button type="button" class="py-filters__btn" data-filter="cuartos" aria-pressed="false">Cuartos fríos</button>
+                        <button type="button" class="py-filters__btn" data-filter="comercial" aria-pressed="false">Comercial</button>
+                        <button type="button" class="py-filters__btn" data-filter="bodegas" aria-pressed="false">Bodegas</button>
+                        <button type="button" class="py-filters__btn" data-filter="salas" aria-pressed="false">Salas de proceso</button>
+                        <button type="button" class="py-filters__btn" data-filter="tuneles" aria-pressed="false">Túneles</button>
+                    </div>
+                </div>
 
-    <!-- CTA -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta__content reveal-fade">
-                <h2 class="cta__title">¿Quiere que su empresa sea el próximo caso de éxito?</h2>
-                <p class="cta__subtitle">Contáctenos y hagamos realidad su proyecto.</p>
-                <a href="contacto.html" class="btn btn--primary btn--large">Solicitar Cotización</a>
+                <!-- RELLENO: en cada tarjeta, la frase de descripción, ciudad, temperatura y volumen -->
+                <div class="py-grid">
+                    <article class="py-card" data-cat="cuartos">
+                        <div class="py-card__media">
+                            <img src="assets/images/cuarto-frio.jpg" alt="Cuarto frío para KFC" loading="lazy">
+                            <span class="py-card__cat">Cuartos fríos</span>
+                        </div>
+                        <div class="py-card__body">
+                            <h3 class="py-card__title">KFC Colombia</h3>
+                            <p class="py-card__text">[Una frase: qué se instaló y para qué sirve.]</p>
+                            <ul class="py-card__tags">
+                                <li>[Ciudad]</li>
+                                <li>[__ °C]</li>
+                                <li>[__ m³]</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="py-card" data-cat="comercial">
+                        <div class="py-card__media">
+                            <img src="assets/images/cuarto-frio-2.jpg" alt="Refrigeración comercial para Burger King" loading="lazy">
+                            <span class="py-card__cat">Refrigeración comercial</span>
+                        </div>
+                        <div class="py-card__body">
+                            <h3 class="py-card__title">Burger King</h3>
+                            <p class="py-card__text">[Una frase: qué se instaló y para qué sirve.]</p>
+                            <ul class="py-card__tags">
+                                <li>[Ciudad]</li>
+                                <li>[__ °C]</li>
+                                <li>[__ m³]</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="py-card" data-cat="tuneles">
+                        <div class="py-card__media">
+                            <img src="assets/images/tunel.jpg" alt="Túnel de congelación de Freshmar" loading="lazy">
+                            <span class="py-card__cat">Túneles de congelación</span>
+                        </div>
+                        <div class="py-card__body">
+                            <h3 class="py-card__title">Freshmar</h3>
+                            <p class="py-card__text">[Una frase: qué se instaló y para qué sirve.]</p>
+                            <ul class="py-card__tags">
+                                <li>[Ciudad]</li>
+                                <li>[__ °C]</li>
+                                <li>[__ m³]</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="py-card" data-cat="bodegas">
+                        <div class="py-card__media">
+                            <img src="assets/images/bodega-1.jpg" alt="Bodega refrigerada de Cultivos La Planice" loading="lazy">
+                            <span class="py-card__cat">Bodegas refrigeradas</span>
+                        </div>
+                        <div class="py-card__body">
+                            <h3 class="py-card__title">Cultivos La Planice</h3>
+                            <p class="py-card__text">[Una frase: qué se instaló y para qué sirve.]</p>
+                            <ul class="py-card__tags">
+                                <li>[Ciudad]</li>
+                                <li>[__ °C]</li>
+                                <li>[__ m³]</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="py-card" data-cat="salas">
+                        <div class="py-card__media">
+                            <img src="assets/images/sala-proceso.jpg" alt="Sala de proceso para industria alimenticia" loading="lazy">
+                            <span class="py-card__cat">Salas de proceso</span>
+                        </div>
+                        <div class="py-card__body">
+                            <h3 class="py-card__title">Industria alimenticia</h3>
+                            <p class="py-card__text">[Una frase: qué se instaló y para qué sirve.]</p>
+                            <ul class="py-card__tags">
+                                <li>[Ciudad]</li>
+                                <li>[__ °C]</li>
+                                <li>[__ m³]</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="py-card" data-cat="cuartos">
+                        <div class="py-card__media">
+                            <img src="assets/images/cuarto-frio-interior.jpg" alt="Interior de cuarto frío farmacéutico" loading="lazy">
+                            <span class="py-card__cat">Cuartos fríos</span>
+                        </div>
+                        <div class="py-card__body">
+                            <h3 class="py-card__title">Sector farmacéutico</h3>
+                            <p class="py-card__text">[Una frase: qué se instaló y para qué sirve.]</p>
+                            <ul class="py-card__tags">
+                                <li>[Ciudad]</li>
+                                <li>[__ °C]</li>
+                                <li>[__ m³]</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- CÓMO TRABAJAMOS -->
+        <section class="py-process">
+            <div class="py-wrap">
+                <h2 class="py-title">Cómo trabajamos</h2>
+                <p class="py-lead">El mismo equipo se encarga desde la visita hasta el mantenimiento.</p>
+                <ol class="py-steps">
+                    <li class="py-steps__item">
+                        <span class="py-steps__num">01</span>
+                        <h3 class="py-steps__title">Visita técnica</h3>
+                        <p class="py-steps__text">Vamos al sitio, tomamos medidas y revisamos qué producto se va a guardar y a qué temperatura.</p>
+                    </li>
+                    <li class="py-steps__item">
+                        <span class="py-steps__num">02</span>
+                        <h3 class="py-steps__title">Diseño y cotización</h3>
+                        <p class="py-steps__text">Con esas medidas calculamos la carga térmica y escogemos los equipos.</p>
+                    </li>
+                    <li class="py-steps__item">
+                        <span class="py-steps__num">03</span>
+                        <h3 class="py-steps__title">Instalación</h3>
+                        <p class="py-steps__text">Montamos paneles, puertas y equipos, y dejamos el cuarto funcionando.</p>
+                    </li>
+                    <li class="py-steps__item">
+                        <span class="py-steps__num">04</span>
+                        <h3 class="py-steps__title">Mantenimiento</h3>
+                        <p class="py-steps__text">Visitas programadas para revisar los equipos antes de que fallen.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- TESTIMONIO -->
+        <section class="py-quote">
+            <div class="py-wrap">
+                <!-- RELLENO: testimonio real de un cliente, con nombre, cargo y empresa -->
+                <figure>
+                    <blockquote class="py-quote__text">“[Testimonio real de un cliente: una o dos frases sobre el resultado.]”</blockquote>
+                    <figcaption class="py-quote__author">[Nombre], [Cargo] — [Empresa]</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- CIERRE -->
+        <section class="py-cta">
+            <div class="py-wrap">
+                <div class="py-cta__box">
+                    <div class="py-cta__text">
+                        <h2 class="py-cta__title">¿Necesita un cuarto frío?</h2>
+                        <p class="py-cta__sub">Puede hacer el cálculo usted mismo en la página o escribirnos para agendar una visita técnica.</p>
+                    </div>
+                    <div class="py-cta__actions">
+                        <a href="proyecto.html" class="py-btn py-btn--primary">Diseñe su cuarto frío</a>
+                        <a href="contacto.html" class="py-btn py-btn--ghost">Solicitar cotización</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer" id="footer">
@@ -310,5 +370,6 @@
     </a>
 
     <script src="js/main.js"></script>
+    <script src="js/proyectos.js"></script>
 </body>
 </html>
