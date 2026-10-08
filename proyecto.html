@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Diseñe su cuarto frío con FRIGOPAC: capacidad del equipo, cuánto le cabe y costo de luz al mes, al instante.">
+    <meta name="description" content="Arme su cuarto frío o su bodega con FRIGOPAC: mueva medidas, temperatura y producto, y vea cuánto le cabe y cuánto paga de luz al mes.">
     <title>Diseñe su cuarto frío | FRIGOPAC</title>
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,179 +46,384 @@
         </nav>
     </header>
 
-<!-- ENCABEZADO DE LA HERRAMIENTA -->
-    <section class="pe-hero">
-        <div class="pe-container">
-            <p class="pe-hero__eyebrow">FrigoPac Project Engine</p>
-            <h1 class="pe-hero__title">Diseñe su cuarto frío</h1>
-            <p class="pe-hero__lead">Elija qué va a guardar, dónde y de qué tamaño. Vea al instante qué equipo necesita, cuánto le cabe y cuánto pagará de luz al mes.</p>
-            <ol class="pe-fases" aria-label="Pasos del proyecto">
-                <li class="pe-fases__item is-activa"><span>1</span>Explorar</li>
-                <li class="pe-fases__item"><span>2</span>Afinar</li>
-                <li class="pe-fases__item"><span>3</span>Diagnóstico</li>
-                <li class="pe-fases__item"><span>4</span>Cotizar</li>
-            </ol>
-        </div>
-    </section>
+<main class="pe" id="projectEngine" data-crm="">
 
-    <main class="pe-main" id="projectEngine">
-        <div class="pe-container pe-layout">
+        <!-- 1. INICIO: qué guarda y dónde -->
+        <section class="pe-pantalla pe-inicio" data-pantalla="inicio">
+            <div class="pe-wrap">
+                <p class="pe-eyebrow">Arme su cuarto frío</p>
+                <h1 class="pe-h1">Arme su cuarto frío y vea cómo funciona antes de construirlo</h1>
+                <p class="pe-lead">Mueva las medidas, la temperatura y la cantidad de producto. El cuarto y los números cambian mientras usted lo arma. Sin registro.</p>
 
-            <!-- CONFIGURADOR -->
-            <form class="pe-config" id="peForm" novalidate>
-
-                <fieldset class="pe-card">
-                    <legend class="pe-card__title"><span class="pe-card__num">01</span>¿Qué va a guardar?</legend>
+                <div class="pe-bloque">
+                    <h2 class="pe-h3">¿Qué va a guardar?</h2>
                     <div class="pe-cats" id="peCategorias" role="radiogroup" aria-label="Tipo de producto"></div>
-                    <label class="pe-label" for="peProducto">Producto</label>
-                    <select class="pe-select" id="peProducto"></select>
-                </fieldset>
+                    <div class="pe-chips" id="peProductos" role="radiogroup" aria-label="Producto" hidden></div>
+                    <p class="pe-otro" id="peOtro" hidden>Para otros productos lo mejor es hablar directo con FrigoPac. <a id="peOtroWa" href="#" target="_blank" rel="noopener">Escribirnos por WhatsApp</a></p>
+                </div>
 
-                <fieldset class="pe-card">
-                    <legend class="pe-card__title"><span class="pe-card__num">02</span>¿Refrigerar o congelar?</legend>
-                    <div class="pe-seg" role="radiogroup" aria-label="Tipo de cuarto" id="peModo">
-                        <button type="button" class="pe-seg__btn" role="radio" data-modo="refrigerar">Refrigerar</button>
-                        <button type="button" class="pe-seg__btn" role="radio" data-modo="congelar">Congelar</button>
+                <div class="pe-bloque">
+                    <h2 class="pe-h3">¿En qué ciudad va el cuarto?</h2>
+                    <div class="pe-chips" id="peCiudades" role="radiogroup" aria-label="Ciudad"></div>
+                    <div id="peClimaWrap" hidden>
+                        <p class="pe-label">¿Cómo es el clima allá?</p>
+                        <div class="pe-chips" id="peClima" role="radiogroup" aria-label="Clima">
+                            <button type="button" class="pe-chip" role="radio" data-clima="bogota">Frío</button>
+                            <button type="button" class="pe-chip" role="radio" data-clima="medellin">Templado</button>
+                            <button type="button" class="pe-chip" role="radio" data-clima="barranquilla">Caliente</button>
+                        </div>
                     </div>
-                    <div class="pe-slider">
-                        <div class="pe-slider__head"><label for="peTemp">Temperatura del cuarto</label><output id="peTempOut" for="peTemp"></output></div>
-                        <input type="range" id="peTemp" step="1">
-                        <p class="pe-hint" id="peTempHint"></p>
-                    </div>
-                </fieldset>
+                </div>
 
-                <fieldset class="pe-card">
-                    <legend class="pe-card__title"><span class="pe-card__num">03</span>¿Dónde va el cuarto?</legend>
-                    <label class="pe-label" for="peCiudad">Ciudad</label>
-                    <select class="pe-select" id="peCiudad"></select>
-                    <label class="pe-label" for="peLugar">Tipo de lugar</label>
-                    <select class="pe-select" id="peLugar">
-                        <option value="comercial">Local comercial</option>
-                        <option value="industrial">Industria o bodega</option>
-                        <option value="residencial">Vivienda (cuarto en casa o finca)</option>
-                    </select>
+                <div class="pe-bloque">
+                    <h2 class="pe-h3">¿Dónde lo va a montar?</h2>
+                    <div class="pe-chips" id="peLugar" role="radiogroup" aria-label="Tipo de lugar">
+                        <button type="button" class="pe-chip" role="radio" data-lugar="comercial">Local comercial</button>
+                        <button type="button" class="pe-chip" role="radio" data-lugar="industrial">Bodega o planta</button>
+                        <button type="button" class="pe-chip" role="radio" data-lugar="residencial">Casa o finca</button>
+                    </div>
                     <div id="peEstratoWrap" hidden>
-                        <label class="pe-label" for="peEstrato">Estrato</label>
-                        <select class="pe-select" id="peEstrato">
-                            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-                            <option value="4" selected>4</option><option value="5">5</option><option value="6">6</option>
-                        </select>
-                    </div>
-                </fieldset>
-
-                <fieldset class="pe-card">
-                    <legend class="pe-card__title"><span class="pe-card__num">04</span>¿De qué tamaño?</legend>
-                    <div class="pe-seg" role="radiogroup" aria-label="Cómo definir el tamaño" id="peTamanoModo">
-                        <button type="button" class="pe-seg__btn" role="radio" data-tam="medidas">Sé las medidas</button>
-                        <button type="button" class="pe-seg__btn" role="radio" data-tam="cantidad">Sé cuánto guardo</button>
-                    </div>
-                    <div id="peMedidas">
-                        <div class="pe-slider">
-                            <div class="pe-slider__head"><label for="peLargo">Largo</label><output id="peLargoOut" for="peLargo"></output></div>
-                            <input type="range" id="peLargo" min="1.5" max="12" step="0.1" value="3">
-                        </div>
-                        <div class="pe-slider">
-                            <div class="pe-slider__head"><label for="peAncho">Ancho</label><output id="peAnchoOut" for="peAncho"></output></div>
-                            <input type="range" id="peAncho" min="1.5" max="10" step="0.1" value="2">
-                        </div>
-                        <div class="pe-slider">
-                            <div class="pe-slider__head"><label for="peAlto">Alto</label><output id="peAltoOut" for="peAlto"></output></div>
-                            <input type="range" id="peAlto" min="2.2" max="6" step="0.1" value="2.4">
+                        <p class="pe-label">Estrato de la casa (cambia el precio de la luz)</p>
+                        <div class="pe-chips" id="peEstrato" role="radiogroup" aria-label="Estrato">
+                            <button type="button" class="pe-chip" role="radio" data-estrato="1">1</button>
+                            <button type="button" class="pe-chip" role="radio" data-estrato="2">2</button>
+                            <button type="button" class="pe-chip" role="radio" data-estrato="3">3</button>
+                            <button type="button" class="pe-chip" role="radio" data-estrato="4">4</button>
+                            <button type="button" class="pe-chip" role="radio" data-estrato="5">5</button>
+                            <button type="button" class="pe-chip" role="radio" data-estrato="6">6</button>
                         </div>
                     </div>
-                    <div id="peCantidad" hidden>
-                        <label class="pe-label" for="peCantidadNum">¿Cuánto guarda como máximo?</label>
-                        <div class="pe-inline">
-                            <input class="pe-input" type="number" id="peCantidadNum" min="1" step="1" value="100" inputmode="numeric">
-                            <select class="pe-select pe-select--auto" id="peCantidadUnidad">
-                                <option value="canastillas">canastillas</option>
-                                <option value="kg">kg</option>
-                            </select>
-                        </div>
-                        <p class="pe-hint" id="peDimHint"></p>
-                    </div>
-                </fieldset>
-
-                <fieldset class="pe-card">
-                    <legend class="pe-card__title"><span class="pe-card__num">05</span>¿Cómo se usa?</legend>
-                    <div class="pe-slider">
-                        <div class="pe-slider__head"><label for="peKgDia">Producto que entra por día</label><output id="peKgDiaOut" for="peKgDia"></output></div>
-                        <input type="range" id="peKgDia" min="20" max="5000" step="10" value="300">
-                    </div>
-                    <p class="pe-label" id="pePuertaLbl">¿Cuánto se abre la puerta?</p>
-                    <div class="pe-seg pe-seg--3" role="radiogroup" aria-labelledby="pePuertaLbl" id="pePuerta">
-                        <button type="button" class="pe-seg__btn" role="radio" data-uso="bajo">Poco</button>
-                        <button type="button" class="pe-seg__btn" role="radio" data-uso="medio">Normal</button>
-                        <button type="button" class="pe-seg__btn" role="radio" data-uso="alto">Mucho</button>
-                    </div>
-                </fieldset>
-            </form>
-
-            <!-- RESULTADOS -->
-            <aside class="pe-results" id="peResultados" aria-live="polite">
-                <div class="pe-res pe-res--hero">
-                    <div class="pe-res__top">
-                        <p class="pe-res__label">Equipo que necesita</p>
-                        <span class="pe-conf" id="peConf"></span>
-                    </div>
-                    <p class="pe-res__big"><span id="peBtu">–</span> <small>BTU/h</small></p>
-                    <p class="pe-res__sub" id="peCapSub"></p>
-                    <p class="pe-res__note" id="peCapNote"></p>
                 </div>
 
-                <div class="pe-res-grid">
-                    <div class="pe-res">
-                        <p class="pe-res__label">Le caben</p>
-                        <p class="pe-res__mid"><span id="peKg">–</span> <small>kg</small></p>
-                        <p class="pe-res__sub" id="peKgSub"></p>
-                        <div class="pe-ocup" id="peOcup" hidden>
-                            <div class="pe-ocup__bar"><i id="peOcupFill"></i></div>
-                            <p class="pe-res__sub" id="peOcupTxt"></p>
+                <button type="button" class="pe-btn pe-btn--primario pe-btn--grande" id="peArmar" disabled>Armar mi cuarto</button>
+            </div>
+        </section>
+
+        <!-- 2. TALLER: el configurador -->
+        <section class="pe-pantalla pe-taller" data-pantalla="taller" hidden>
+            <div class="pe-wrap pe-wrap--ancho">
+                <div class="pe-cabeza">
+                    <div>
+                        <p class="pe-eyebrow" id="peCabezaSub"></p>
+                        <h1 class="pe-h2" id="peCabezaTitulo"></h1>
+                    </div>
+                    <button type="button" class="pe-link" data-ir="inicio">Cambiar producto o ciudad</button>
+                </div>
+
+                <div class="pe-taller__grid">
+                    <!-- Cuarto dibujado (queda fijo arriba en celular) -->
+                    <div class="pe-escena" id="peEscena">
+                        <svg id="peCuarto" viewBox="0 0 520 330" role="img" aria-label="Dibujo del cuarto frío"></svg>
+                        <div class="pe-escena__temp" id="peTempChip"></div>
+                    </div>
+
+                    <div class="pe-cifras">
+                        <div class="pe-cifra">
+                            <p class="pe-cifra__label">Le caben</p>
+                            <p class="pe-cifra__valor" id="peCaben">–</p>
+                            <div class="pe-ocup"><i id="peOcupBar"></i></div>
+                            <p class="pe-cifra__sub" id="peOcupTxt"></p>
+                        </div>
+                        <div class="pe-cifra">
+                            <p class="pe-cifra__label">Luz al mes</p>
+                            <p class="pe-cifra__valor" id="peLuz">–</p>
+                            <div class="pe-meses" id="peMeses" aria-hidden="true"></div>
+                            <p class="pe-cifra__sub" id="peLuzSub"></p>
                         </div>
                     </div>
-                    <div class="pe-res">
-                        <p class="pe-res__label">Luz al mes</p>
-                        <p class="pe-res__mid"><span id="peCosto">–</span></p>
-                        <p class="pe-res__sub" id="peCostoSub"></p>
-                        <div class="pe-meses" id="peMeses" role="img"></div>
+
+                    <!-- Controles -->
+                    <form class="pe-controles" id="peControles" novalidate>
+                        <fieldset class="pe-grupo">
+                            <legend class="pe-grupo__t">Temperatura</legend>
+                            <div class="pe-seg" id="peModo" role="radiogroup" aria-label="Tipo de cuarto">
+                                <button type="button" class="pe-seg__b" role="radio" data-modo="refrigerar">Refrigerar</button>
+                                <button type="button" class="pe-seg__b" role="radio" data-modo="congelar">Congelar</button>
+                            </div>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peTemp">Temperatura del cuarto</label><output id="peTempOut" for="peTemp"></output></div>
+                                <div class="pe-slider__pista">
+                                    <i class="pe-banda" id="peBanda"></i>
+                                    <input type="range" id="peTemp" step="1">
+                                </div>
+                                <p class="pe-hint" id="peTempHint"></p>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="pe-grupo">
+                            <legend class="pe-grupo__t">Producto</legend>
+                            <p class="pe-label" id="peFormatoLbl">¿Cómo lo guarda?</p>
+                            <div class="pe-chips pe-chips--sm" id="peFormato" role="radiogroup" aria-labelledby="peFormatoLbl">
+                                <button type="button" class="pe-chip" role="radio" data-formato="canastilla">Canastillas</button>
+                                <button type="button" class="pe-chip" role="radio" data-formato="cajas">Cajas de cartón</button>
+                                <button type="button" class="pe-chip" role="radio" data-formato="estiba">Estibas con gato o montacargas</button>
+                                <button type="button" class="pe-chip" role="radio" data-formato="riel">Colgada en rieles</button>
+                            </div>
+                            <div class="pe-seg" id="peUnidad" role="radiogroup" aria-label="Unidad">
+                                <button type="button" class="pe-seg__b" role="radio" data-unidad="canastillas">Canastillas</button>
+                                <button type="button" class="pe-seg__b" role="radio" data-unidad="kg">Kilos</button>
+                            </div>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peGuardo">Guarda como máximo</label><span class="pe-num"><input type="number" id="peGuardoNum" inputmode="numeric" min="1" aria-label="Guarda como máximo"><span class="peUnidadTxt"></span></span></div>
+                                <input type="range" id="peGuardo" min="0" max="1000" step="1">
+                            </div>
+                            <p class="pe-hint"><button type="button" class="pe-link" data-ir="bodega">¿Guarda más de 60 toneladas? Calcule una bodega</button></p>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peLlegan">Le llega cada día</label><span class="pe-num"><input type="number" id="peLleganNum" inputmode="numeric" min="0" aria-label="Le llega cada día"><span class="peUnidadTxt"></span></span></div>
+                                <input type="range" id="peLlegan" min="0" max="1000" step="1">
+                            </div>
+                            <p class="pe-label" id="peEstadoLbl">¿Cómo le llega?</p>
+                            <div class="pe-chips pe-chips--sm" id="peEstado" role="radiogroup" aria-labelledby="peEstadoLbl">
+                                <button type="button" class="pe-chip" role="radio" data-estado="ambiente">Sin frío</button>
+                                <button type="button" class="pe-chip" role="radio" data-estado="refrigerado">Ya viene frío</button>
+                                <button type="button" class="pe-chip" role="radio" data-estado="congelado">Ya viene congelado</button>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="pe-grupo">
+                            <legend class="pe-grupo__t">Tamaño del cuarto</legend>
+                            <div class="pe-seg" id="peTam" role="radiogroup" aria-label="Tamaño">
+                                <button type="button" class="pe-seg__b" role="radio" data-tam="auto">A la medida de mi producto</button>
+                                <button type="button" class="pe-seg__b" role="radio" data-tam="manual">Tengo un espacio</button>
+                            </div>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peLargo">Largo</label><output id="peLargoOut" for="peLargo"></output></div>
+                                <input type="range" id="peLargo" min="1.5" max="12" step="0.1">
+                            </div>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peAncho">Ancho</label><output id="peAnchoOut" for="peAncho"></output></div>
+                                <input type="range" id="peAncho" min="1.5" max="10" step="0.1">
+                            </div>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peAlto">Alto</label><output id="peAltoOut" for="peAlto"></output></div>
+                                <input type="range" id="peAlto" min="2.2" max="5" step="0.1">
+                            </div>
+                            <p class="pe-hint" id="peTamHint"></p>
+                            <p class="pe-label" id="pePisoLbl">Piso del cuarto</p>
+                            <div class="pe-seg" id="pePiso" role="radiogroup" aria-labelledby="pePisoLbl">
+                                <button type="button" class="pe-seg__b" role="radio" data-piso="no">Sin aislar, sobre el concreto</button>
+                                <button type="button" class="pe-seg__b" role="radio" data-piso="si">Aislado</button>
+                            </div>
+                            <p class="pe-hint" id="pePisoHint"></p>
+                        </fieldset>
+
+                        <fieldset class="pe-grupo">
+                            <legend class="pe-grupo__t">Uso</legend>
+                            <p class="pe-label" id="pePuertaLbl">¿Qué tanto se abre la puerta?</p>
+                            <div class="pe-seg pe-seg--3" id="pePuerta" role="radiogroup" aria-labelledby="pePuertaLbl">
+                                <button type="button" class="pe-seg__b" role="radio" data-uso="bajo">Pocas veces</button>
+                                <button type="button" class="pe-seg__b" role="radio" data-uso="medio">Varias veces</button>
+                                <button type="button" class="pe-seg__b" role="radio" data-uso="alto">Todo el día</button>
+                            </div>
+                            <div class="pe-mejoras" id="peMejoras"></div>
+                        </fieldset>
+                    </form>
+
+                    <!-- Lo que pasa adentro -->
+                    <div class="pe-analisis">
+                        <section class="pe-aviso-bodega" id="peAvisoBodega" hidden>
+                            <div><strong>Para esta cantidad ya no es un cuarto: es una bodega.</strong>
+                            <p>Un cuarto de panel llega hasta unos 12 m de lado. Con estas toneladas conviene calcular una bodega con estanterías y montacargas.</p></div>
+                            <button type="button" class="pe-btn pe-btn--primario pe-btn--sm" data-ir="bodega">Calcular como bodega</button>
+                        </section>
+                        <section class="pe-panel" id="peGuardaBox">
+                            <h2 class="pe-h3" id="peGuardaTitulo">Cómo se guarda</h2>
+                            <div class="pe-guarda">
+                                <svg id="peGuardaDibujo" viewBox="0 0 180 130" role="img" aria-label="Cómo se guarda el producto"></svg>
+                                <div class="pe-guarda__txt">
+                                    <p id="peGuardaNota" class="pe-hint"></p>
+                                    <p id="peGuardaTexto"></p>
+                                </div>
+                            </div>
+                            <div class="pe-cuenta">
+                                <p class="pe-cuenta__t">Cómo sale lo que le cabe</p>
+                                <ol id="peGuardaPasos"></ol>
+                                <p id="peGuardaAlterno" class="pe-hint"></p>
+                            </div>
+                        </section>
+                        <section class="pe-panel">
+                            <h2 class="pe-h3">De dónde le entra el calor</h2>
+                            <p class="pe-panel__sub">El equipo trabaja para sacar todo esto. Mueva los controles y mire cómo cambia.</p>
+                            <div class="pe-calor" id="peCalor"></div>
+                        </section>
+
+                        <section class="pe-panel" id="peTarjetasBox">
+                            <h2 class="pe-h3" id="peTarjetasTitulo">Lo que debe saber</h2>
+                            <div class="pe-tarjetas" id="peTarjetas"></div>
+                        </section>
+
+                        <section class="pe-panel">
+                            <h2 class="pe-h3">Lo que revisamos en la visita</h2>
+                            <p class="pe-panel__sub">Esto no se ve en un dibujo. Cambia el proyecto y lo confirmamos en su sitio.</p>
+                            <ul class="pe-visita" id="peVisita"></ul>
+                        </section>
+
+                        <section class="pe-panel" id="peParecidosBox" hidden>
+                            <h2 class="pe-h3">Cuartos parecidos que ya montamos</h2>
+                            <div class="pe-parecidos" id="peParecidos"></div>
+                        </section>
+
+                        <section class="pe-cierre">
+                            <div>
+                                <h2 class="pe-h3">Guarde su cuarto</h2>
+                                <p>Le damos un número de proyecto. Puede volver a él cuando quiera o pedir que FrigoPac lo revise con usted.</p>
+                            </div>
+                            <button type="button" class="pe-btn pe-btn--primario" data-ir="guardar">Guardar mi proyecto</button>
+                        </section>
                     </div>
                 </div>
+            </div>
 
-                <div class="pe-res">
-                    <p class="pe-res__label">De dónde viene el calor</p>
-                    <div class="pe-desglose" id="peDesglose"></div>
+            <!-- Barra fija en celular -->
+            <div class="pe-barra" id="peBarra">
+                <div><small>Le caben</small><strong id="peBarraCaben">–</strong></div>
+                <div><small>Luz al mes</small><strong id="peBarraLuz">–</strong></div>
+                <button type="button" class="pe-btn pe-btn--primario pe-btn--sm" data-ir="guardar">Guardar</button>
+            </div>
+        </section>
+
+        <!-- 2b. BODEGA: proyectos grandes -->
+        <section class="pe-pantalla pe-bodega" data-pantalla="bodega" hidden>
+            <div class="pe-wrap pe-wrap--ancho">
+                <div class="pe-cabeza">
+                    <div>
+                        <p class="pe-eyebrow" id="peBodSub"></p>
+                        <h1 class="pe-h2" id="peBodTitulo">Bodega frigorífica</h1>
+                    </div>
+                    <button type="button" class="pe-link" data-ir="taller">Volver a un cuarto frío</button>
                 </div>
-
-                <div class="pe-res" id="peAhorroBox">
-                    <p class="pe-res__label">Cómo pagar menos luz</p>
-                    <ul class="pe-list" id="peAhorro"></ul>
+                <div class="pe-taller__grid">
+                    <div class="pe-escena pe-escena--bodega">
+                        <svg id="peBodDibujo" viewBox="0 0 520 330" role="img" aria-label="Tamaño de la bodega comparado con una cancha de fútbol"></svg>
+                        <div class="pe-escena__temp" id="peBodTemp"></div>
+                    </div>
+                    <div class="pe-cifras pe-cifras--4">
+                        <div class="pe-cifra"><p class="pe-cifra__label" id="peBodVolLbl">Volumen refrigerado</p><p class="pe-cifra__valor" id="peBodVol">–</p><p class="pe-cifra__sub" id="peBodVolSub"></p></div>
+                        <div class="pe-cifra"><p class="pe-cifra__label">Área de planta</p><p class="pe-cifra__valor" id="peBodArea">–</p><p class="pe-cifra__sub" id="peBodAreaSub"></p></div>
+                        <div class="pe-cifra"><p class="pe-cifra__label">Estibas</p><p class="pe-cifra__valor" id="peBodPos">–</p><p class="pe-cifra__sub" id="peBodPosSub"></p></div>
+                        <div class="pe-cifra"><p class="pe-cifra__label">Luz al mes</p><p class="pe-cifra__valor" id="peBodLuz">–</p><p class="pe-cifra__sub" id="peBodLuzSub"></p></div>
+                    </div>
+                    <form class="pe-controles" id="peBodControles" novalidate>
+                        <fieldset class="pe-grupo">
+                            <legend class="pe-grupo__t">Cuánto guarda</legend>
+                            <div class="pe-seg" id="peBodModo" role="radiogroup" aria-label="Qué sabe de la bodega">
+                                <button type="button" class="pe-seg__b" role="radio" data-bmodo="toneladas">Sé cuánto quiero guardar</button>
+                                <button type="button" class="pe-seg__b" role="radio" data-bmodo="medidas">Tengo las medidas</button>
+                            </div>
+                            <div id="peBodMedWrap" hidden>
+                                <div class="pe-slider">
+                                    <div class="pe-slider__cab"><label for="peBodL">Largo</label><span class="pe-num"><input type="number" id="peBodLNum" inputmode="decimal" min="1" aria-label="Largo en metros"><span>m</span></span></div>
+                                    <input type="range" id="peBodL" min="0" max="1000" step="1">
+                                </div>
+                                <div class="pe-slider">
+                                    <div class="pe-slider__cab"><label for="peBodA">Ancho</label><span class="pe-num"><input type="number" id="peBodANum" inputmode="decimal" min="1" aria-label="Ancho en metros"><span>m</span></span></div>
+                                    <input type="range" id="peBodA" min="0" max="1000" step="1">
+                                </div>
+                                <p class="pe-hint">Medidas por dentro, de 5 a 500 m. El alto se pone abajo, en "Altura libre".</p>
+                            </div>
+                            <div class="pe-slider" id="peBodTWrap">
+                                <div class="pe-slider__cab"><label for="peBodT">Producto guardado</label><span class="pe-num"><input type="number" id="peBodTNum" inputmode="numeric" min="1" aria-label="Toneladas guardadas"><span>t</span></span></div>
+                                <input type="range" id="peBodT" min="0" max="1000" step="1">
+                                <p class="pe-hint">De 10 a 500.000 toneladas. Puede escribir el número.</p>
+                            </div>
+                            <p class="pe-hint" id="peBodComp" hidden></p>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peBodTemp2">Temperatura</label><output id="peBodTempOut" for="peBodTemp2"></output></div>
+                                <input type="range" id="peBodTemp2" min="-30" max="16" step="1">
+                            </div>
+                        </fieldset>
+                        <fieldset class="pe-grupo">
+                            <legend class="pe-grupo__t">Cómo se almacena</legend>
+                            <div class="pe-sistemas" id="peBodSis" role="radiogroup" aria-label="Sistema de almacenamiento"></div>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peBodAlt">Altura libre de la bodega</label><output id="peBodAltOut" for="peBodAlt"></output></div>
+                                <input type="range" id="peBodAlt" min="6" max="40" step="1">
+                                <p class="pe-hint">Cuatro niveles de estibas piden unos 8 m; cinco, unos 10 m. Las bodegas automáticas llegan a 40 m.</p>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="pe-analisis">
+                        <section class="pe-panel">
+                            <h2 class="pe-h3">Cómo sale</h2>
+                            <ol class="pe-pasos-cuenta" id="peBodPasos"></ol>
+                            <p class="pe-hint" id="peBodRef"></p>
+                        </section>
+                        <section class="pe-panel">
+                            <h2 class="pe-h3">Lo que falta definir con FrigoPac</h2>
+                            <ul class="pe-visita">
+                                <li><strong>Cuántas cámaras y a qué temperatura</strong><span>Una bodega así se divide en varias cámaras, con antecámaras y muelles de carga.</span></li>
+                                <li><strong>El sistema de frío</strong><span>A esta escala se usan centrales de amoníaco o CO₂, no equipos de cuarto.</span></li>
+                                <li><strong>Muelles, puertas y montacargas</strong><span>Cuántos camiones entran al día y cuántas puertas de muelle hacen falta.</span></li>
+                                <li><strong>Terreno y energía</strong><span>La subestación eléctrica y el lote son parte del proyecto.</span></li>
+                            </ul>
+                        </section>
+                        <section class="pe-cierre">
+                            <div>
+                                <h2 class="pe-h3">Guarde su proyecto</h2>
+                                <p>Esto es un orden de magnitud para empezar a hablar. Un ingeniero de FrigoPac lo revisa con usted.</p>
+                            </div>
+                            <button type="button" class="pe-btn pe-btn--primario" data-ir="guardar">Guardar mi proyecto</button>
+                        </section>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="pe-res" id="peAlertasBox">
-                    <p class="pe-res__label">Lo que debe saber</p>
-                    <ul class="pe-alertas" id="peAlertas"></ul>
+        <!-- 3. GUARDAR -->
+        <section class="pe-pantalla pe-guardar" data-pantalla="guardar" hidden>
+            <div class="pe-wrap pe-wrap--estrecho">
+                <button type="button" class="pe-link" data-ir="taller">← Volver a mi cuarto</button>
+                <h1 class="pe-h2">Guarde su proyecto</h1>
+                <p class="pe-lead" id="peGuardarResumen"></p>
+                <form class="pe-form" id="peForm" novalidate>
+                    <label class="pe-label" for="peNombre">Nombre</label>
+                    <input class="pe-input" id="peNombre" autocomplete="name" required>
+                    <label class="pe-label" for="peWhatsappNum">WhatsApp</label>
+                    <input class="pe-input" id="peWhatsappNum" type="tel" inputmode="tel" autocomplete="tel" placeholder="300 123 4567" required>
+                    <label class="pe-label" for="peCorreo">Correo <span class="pe-opc">(opcional)</span></label>
+                    <input class="pe-input" id="peCorreo" type="email" autocomplete="email">
+                    <label class="pe-label" for="peEmpresa">Negocio o empresa <span class="pe-opc">(opcional)</span></label>
+                    <input class="pe-input" id="peEmpresa" autocomplete="organization">
+                    <p class="pe-label" id="peEtapaLbl">¿En qué punto está?</p>
+                    <div class="pe-chips" id="peEtapa" role="radiogroup" aria-labelledby="peEtapaLbl">
+                        <button type="button" class="pe-chip" role="radio" data-etapa="explorando">Estoy mirando opciones</button>
+                        <button type="button" class="pe-chip" role="radio" data-etapa="meses">Lo quiero en los próximos meses</button>
+                        <button type="button" class="pe-chip" role="radio" data-etapa="cotizar">Quiero cotizar ya</button>
+                    </div>
+                    <label class="pe-check"><input type="checkbox" id="peAutorizo"> Autorizo a FrigoPac a guardar mis datos y contactarme sobre este proyecto (Ley 1581 de 2012).</label>
+                    <p class="pe-error" id="peError" role="alert"></p>
+                    <button type="submit" class="pe-btn pe-btn--primario pe-btn--grande">Guardar mi proyecto</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 4. LISTO -->
+        <section class="pe-pantalla pe-listo" data-pantalla="listo" hidden>
+            <div class="pe-wrap pe-wrap--estrecho">
+                <p class="pe-eyebrow">Proyecto guardado</p>
+                <h1 class="pe-h2">Su proyecto es el <span id="peId"></span></h1>
+                <p class="pe-lead">Con ese número FrigoPac encuentra su cuarto tal como lo dejó.</p>
+                <div class="pe-caminos">
+                    <a class="pe-camino pe-camino--primario" id="peRevisionWa" href="#" target="_blank" rel="noopener">
+                        <strong>Pedir que FrigoPac lo revise</strong>
+                        <span>Se abre WhatsApp con su proyecto listo para enviar.</span>
+                    </a>
+                    <button type="button" class="pe-camino" data-ir="taller">
+                        <strong>Seguir armando</strong>
+                        <span>Puede cambiar lo que quiera y volver a guardar.</span>
+                    </button>
                 </div>
-
-                <details class="pe-res pe-supuestos">
-                    <summary>Lo que supusimos para calcular <span id="peNSup"></span></summary>
-                    <ul class="pe-list pe-list--sup" id="peSupuestos"></ul>
-                </details>
-
-                <div class="pe-cta">
-                    <p class="pe-cta__txt" id="peAfinar"></p>
-                    <a class="pe-btn pe-btn--primary" id="peWhatsapp" href="#" target="_blank" rel="noopener">Cotizar mi proyecto por WhatsApp</a>
-                    <p class="pe-cta__legal">Estimación preliminar para decidir. FrigoPac verifica las condiciones reales en la visita técnica.</p>
+                <div class="pe-panel">
+                    <h2 class="pe-h3">Qué hace FrigoPac con su proyecto</h2>
+                    <ol class="pe-pasos">
+                        <li><strong>Revisión.</strong> Un técnico mira su cuarto y le hace las preguntas que faltan.</li>
+                        <li><strong>Visita técnica.</strong> Medimos el sitio y revisamos piso, energía, desagüe y dónde va el equipo.</li>
+                        <li><strong>Diseño y equipos.</strong> Elegimos el equipo exacto y le mostramos dos opciones de proveedor con su consumo.</li>
+                        <li><strong>Instalación.</strong> Un cuarto de 2 × 3 m se monta en cerca de una semana, con la obra lista.</li>
+                    </ol>
                 </div>
-            </aside>
-        </div>
-
-        <!-- Barra fija en celular -->
-        <div class="pe-bar" id="peBar">
-            <div><small>Equipo</small><strong id="peBarBtu">–</strong></div>
-            <div><small>Caben</small><strong id="peBarKg">–</strong></div>
-            <div><small>Luz/mes</small><strong id="peBarCosto">–</strong></div>
-            <a href="#peResultados" class="pe-bar__btn">Ver</a>
-        </div>
+            </div>
+        </section>
     </main>
 
         <footer class="footer" id="footer">
@@ -283,6 +488,7 @@
     <!-- JAVASCRIPT -->
     <script src="js/main.js"></script>
     <script src="js/frigopac-engine.js"></script>
+    <script src="js/proyecto-modelo.js"></script>
     <script src="js/proyecto.js"></script>
 </body>
 </html>

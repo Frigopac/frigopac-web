@@ -4,6 +4,23 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-08 · Poner el configurador "Arme su cuarto frío" con bodegas e informe técnico
+
+- **Tipo:** cambio
+- **Qué:** la calculadora de la Fase 1 pasa a ser un configurador: el cliente elige producto y ciudad, arma el cuarto con controles y ve en vivo el dibujo, cuánto le cabe, la luz del mes, de dónde le entra el calor y tarjetas sobre su producto (por norma colombiana). Puede elegir cómo guarda (canastilla, cajas, estibas o rieles), si el piso va aislado y, si el proyecto es grande, calcular una bodega por toneladas o por medidas (hasta 500.000 t). Al guardar recibe un número de proyecto y puede pedir la revisión por WhatsApp; FrigoPac recibe una ficha para la hoja de Google y un informe técnico interno (`informe.html`, no indexado). El diseño se trabajó antes en Claude.ai.
+- **Por qué:** que el cliente arme su proyecto y que FrigoPac reciba el lead con todo el cálculo.
+- **Archivos:** `proyecto.html` (se cambia el contenido de `main`; cabecera y pie quedan iguales), `css/proyecto.css`, `js/proyecto.js`, `js/proyecto-modelo.js` (nuevo), `informe.html` (nuevo), `css/informe.css` (nuevo), `js/informe.js` (nuevo), `docs/PENDIENTES.md`
+- **Estado:** dev (2026-10-08). Llegó como parche desde Claude.ai (`arme-su-cuarto-v3.patch`); pendiente de aprobación para `main`.
+- **Pendiente:** conectar la hoja de Google (dirección en `data-crm` de `proyecto.html`); fotos para "Cuartos parecidos"; el informe técnico se abre con el enlace, sin clave. En esta página se oculta el botón flotante de WhatsApp porque tapa la barra de abajo en celular.
+
+## 2026-10-08 · Actualizar el motor de cálculo a v0.6.1
+
+- **Tipo:** motor
+- **Qué:** `js/frigopac-engine.js` pasa de v0.5.0 a v0.6.1: congelación con panel de 4" (Bogotá) o 5" (ciudades más calientes); deshielo con el compresor apagado de 1 °C hacia arriba y con resistencias a 0 °C o menos (criterio del jefe de FrigoPac); cálculo de bodegas grandes; temperaturas de conservación por norma.
+- **Por qué:** datos nuevos de FrigoPac y la investigación de supuestos.
+- **Archivos:** `js/frigopac-engine.js`
+- **Estado:** dev (2026-10-08). Llegó como parche desde Claude.ai (`arme-su-cuarto-v3.patch`); pendiente de aprobación para `main`.
+
 ## 2026-10-08 · Diferenciar Servicios de Nosotros y arreglar los enlaces internos
 
 - **Tipo:** cambio y arreglo

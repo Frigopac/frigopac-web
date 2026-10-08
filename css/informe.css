@@ -1,0 +1,41 @@
+/* FRIGOPAC - Informe técnico interno (pantalla e impresión) */
+.page-informe { background: #F4F6F9; margin: 0; }
+.inf {
+    --i-navy: var(--color-primary, #0B1D3A); --i-cian: var(--color-secondary, #00B4D8);
+    --i-linea: #DDE3EA; --i-suave: #52606F; --i-texto: #1E293B;
+    max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; display: grid; gap: 18px;
+    font: 400 14px/1.5 var(--font-body, 'Inter', system-ui, sans-serif); color: var(--i-texto);
+}
+.inf * { box-sizing: border-box; }
+.inf-cab h1 { font: 700 1.5rem/1.25 var(--font-heading, 'Poppins', system-ui, sans-serif); color: var(--i-navy); margin: 4px 0; text-wrap: balance; }
+.inf-eyebrow { margin: 0; font: 600 0.72rem var(--font-heading, 'Poppins', sans-serif); letter-spacing: 0.14em; text-transform: uppercase; color: #B42318; }
+.inf-sub { margin: 0; color: var(--i-suave); font-size: 0.86rem; }
+.inf-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.inf-kpi { background: #fff; border: 1px solid var(--i-linea); border-radius: 12px; padding: 14px 16px; display: grid; gap: 4px; }
+.inf-kpi span { font: 600 0.7rem var(--font-heading, 'Poppins', sans-serif); letter-spacing: 0.1em; text-transform: uppercase; color: var(--i-suave); }
+.inf-kpi strong { font: 700 1.35rem/1.2 var(--font-heading, 'Poppins', sans-serif); color: var(--i-navy); font-variant-numeric: tabular-nums; }
+.inf-kpi small { color: var(--i-suave); font-size: 0.8rem; }
+.inf-kpi--prin { background: var(--i-navy); border-color: var(--i-navy); }
+.inf-kpi--prin span, .inf-kpi--prin small { color: rgb(255 255 255 / 0.75); }
+.inf-kpi--prin strong { color: #fff; }
+.inf-sec { background: #fff; border: 1px solid var(--i-linea); border-radius: 12px; padding: 18px 20px; display: grid; gap: 12px; min-width: 0; }
+.inf-sec h2 { margin: 0; font: 600 1.02rem var(--font-heading, 'Poppins', sans-serif); color: var(--i-navy); }
+.inf-tabla { overflow-x: auto; }
+.inf-tabla table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+.inf-tabla th { text-align: left; font-weight: 600; color: var(--i-suave); border-bottom: 1.5px solid var(--i-linea); padding: 7px 10px; white-space: nowrap; }
+.inf-tabla td { border-bottom: 1px solid #EEF1F5; padding: 7px 10px; vertical-align: top; }
+.inf-tabla small { color: var(--i-suave); }
+.inf-num td:not(:first-child), .inf-num th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.inf-tabla--kv td:first-child { width: 34%; color: var(--i-suave); }
+.inf-lista { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.inf-alertas { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.inf-alertas li { padding: 8px 12px; border-left: 3px solid var(--i-cian); background: #F1F8FB; border-radius: 6px; }
+.inf-alertas li[data-nivel="critica"] { border-color: #B42318; background: #FDECEA; }
+.inf-alertas li[data-nivel="advertencia"] { border-color: #D29A1E; background: #FDF4E1; }
+.inf-alertas b { text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.08em; margin-right: 6px; }
+.inf-vacio { padding: 40px; text-align: center; color: var(--i-suave); }
+@media print {
+    .page-informe { background: #fff; }
+    .inf { padding: 0; max-width: none; }
+    .inf-sec, .inf-kpi { break-inside: avoid; border-color: #ccc; }
+}

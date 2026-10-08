@@ -72,4 +72,11 @@ Estado vivo del sitio. Cuando algo se resuelve, se tacha (`~~así~~`) con la fec
 | 20 | Limpieza de código y archivos sin uso y numeración del CSS (el año del pie ya quedó: 2026-10-07) | B1, B2, B4 |
 
 ### Calculadora · siguientes fases
+| # | Tarea | Desde |
+|---|---|---|
+| 21 | Crear la hoja de Google del CRM y poner su dirección en `data-crm` de `proyecto.html` (guía en `frigopac-engine/docs/CRM_GOOGLE_SHEETS.md`) | 2026-10-08 |
+| 22 | Fotos y datos de 5–6 proyectos para "Cuartos parecidos que ya montamos" (`CONFIG.proyectos` en `js/proyecto.js`) | 2026-10-08 |
+| 23 | Regla de capacidad de cuartos pequeños: 70 % del volumen o acomodo a mano (decisión del jefe) | 2026-10-08 |
+| 24 | Poner clave al informe técnico (`informe.html`) | 2026-10-08 |
+
 Según `frigopac-engine/docs/PLAN_WEB.md`: fase 2 (afinar y comparar), fase 3 (diagnóstico), fase 4 (lead con número de proyecto, informe y consentimiento) y el servidor para el Motor 4 cuando haya precios.
