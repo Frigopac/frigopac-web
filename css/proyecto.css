@@ -93,16 +93,16 @@
 #peCuarto .cq-pared-b { fill: #E7EDF3; stroke: #9FB1C3; stroke-width: 1; }
 #peCuarto[data-frio="si"] .cq-pared-a { fill: #EEF5FC; }
 #peCuarto[data-frio="si"] .cq-pared-b { fill: #E1ECF7; }
-#peCuarto .cq-evap-t { fill: #F8FAFC; stroke: #64748B; stroke-width: 1; }
+#peCuarto .cq-evap-t { fill: var(--pe-fondo); stroke: #64748B; stroke-width: 1; }
 #peCuarto .cq-evap-f { fill: #E2E8F0; stroke: #64748B; stroke-width: 1; }
 #peCuarto .cq-aspa { fill: #94A3B8; }
 #peCuarto .cq-caja { stroke-width: 0.6; stroke-linejoin: round; }
-#peCuarto .cq-riel { stroke: #475569; stroke-width: 3; stroke-linecap: round; }
-#peCuarto .cq-gancho { stroke: #475569; stroke-width: 1.4; }
-#peCuarto .cq-vidrio { fill: rgb(255 255 255 / 0.06); stroke: #1E3A5F; stroke-width: 1.4; }
-#peCuarto .cq-puerta { fill: rgb(0 180 216 / 0.14); stroke: #0B1D3A; stroke-width: 1.6; }
-#peCuarto .cq-manija { stroke: #0B1D3A; stroke-width: 2.5; stroke-linecap: round; }
-#peCuarto .cq-escarcha { fill: rgb(191 219 254 / 0.35); stroke: #1E3A5F; stroke-width: 1.4; }
+#peCuarto .cq-riel { stroke: var(--pe-suave); stroke-width: 3; stroke-linecap: round; }
+#peCuarto .cq-gancho { stroke: var(--pe-suave); stroke-width: 1.4; }
+#peCuarto .cq-vidrio { fill: rgb(255 255 255 / 0.06); stroke: var(--pe-navy-2); stroke-width: 1.4; }
+#peCuarto .cq-puerta { fill: rgb(0 180 216 / 0.14); stroke: var(--pe-navy); stroke-width: 1.6; }
+#peCuarto .cq-manija { stroke: var(--pe-navy); stroke-width: 2.5; stroke-linecap: round; }
+#peCuarto .cq-escarcha { fill: rgb(191 219 254 / 0.35); stroke: var(--pe-navy-2); stroke-width: 1.4; }
 #peCuarto .cq-cota { font: 600 13px var(--pe-b); fill: #334155; }
 #peCuarto .cq-nocabe { font: 700 14px var(--pe-h); fill: #B42318; }
 
@@ -209,9 +209,9 @@
 .pe-cuenta__t { margin: 0; font: 600 0.72rem var(--pe-h); letter-spacing: 0.1em; text-transform: uppercase; color: var(--pe-suave); }
 .pe-cuenta ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 .pe-cuenta ol li:last-child { font-weight: 600; color: var(--pe-navy); }
-.gu-a { fill: #F3F6F9; stroke: #1E3A5F; stroke-width: 1.2; stroke-linejoin: round; }
-.gu-b { fill: #DCE4EC; stroke: #1E3A5F; stroke-width: 1.2; stroke-linejoin: round; }
-.gu-c { fill: #C7D3E0; stroke: #1E3A5F; stroke-width: 1.2; stroke-linejoin: round; }
+.gu-a { fill: #F3F6F9; stroke: var(--pe-navy-2); stroke-width: 1.2; stroke-linejoin: round; }
+.gu-b { fill: #DCE4EC; stroke: var(--pe-navy-2); stroke-width: 1.2; stroke-linejoin: round; }
+.gu-c { fill: #C7D3E0; stroke: var(--pe-navy-2); stroke-width: 1.2; stroke-linejoin: round; }
 .gu-t { font: 600 10px var(--pe-b); fill: #334155; }
 @media (max-width: 600px) { .pe-guarda { grid-template-columns: 1fr; } .pe-guarda svg { max-width: 200px; } }
 
@@ -230,9 +230,9 @@
 .pe-pasos-cuenta { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 0.92rem; line-height: 1.55; font-variant-numeric: tabular-nums; }
 .pe-pasos-cuenta { gap: 12px; }
 .pe-pasos-cuenta strong { color: var(--pe-navy); font: 600 0.95rem var(--pe-h); }
-#peBodDibujo .bd-a { fill: #EEF4F9; stroke: #1E3A5F; stroke-width: 1.2; }
-#peBodDibujo .bd-b { fill: #DCE6EF; stroke: #1E3A5F; stroke-width: 1.2; }
-#peBodDibujo .bd-c { fill: #F8FBFD; stroke: #1E3A5F; stroke-width: 1.2; }
+#peBodDibujo .bd-a { fill: #EEF4F9; stroke: var(--pe-navy-2); stroke-width: 1.2; }
+#peBodDibujo .bd-b { fill: #DCE6EF; stroke: var(--pe-navy-2); stroke-width: 1.2; }
+#peBodDibujo .bd-c { fill: #F8FBFD; stroke: var(--pe-navy-2); stroke-width: 1.2; }
 #peBodDibujo .bd-cancha { fill: #CFE8D5; stroke: #2F7D4A; stroke-width: 1.2; }
 #peBodDibujo .bd-linea { stroke: #2F7D4A; stroke-width: 1; fill: none; }
 #peBodDibujo .bd-t { font: 600 12px var(--pe-b); fill: #334155; }

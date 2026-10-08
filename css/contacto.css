@@ -77,9 +77,11 @@
     transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.ct-wa:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 22px 44px rgba(37, 211, 102, 0.36);
+@media (hover: hover) {
+    .ct-wa:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 22px 44px rgba(37, 211, 102, 0.36);
+    }
 }
 
 .ct-wa__logo {
@@ -246,9 +248,11 @@ a.ct-way:hover .ct-way__value {
     transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.ct-submit:hover {
-    background: var(--color-primary-light);
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .ct-submit:hover {
+        background: var(--color-primary-light);
+        transform: translateY(-2px);
+    }
 }
 
 .ct-legal {
@@ -305,8 +309,10 @@ a.ct-way:hover .ct-way__value {
     transition: transform var(--transition-fast);
 }
 
-.ct-calc__btn:hover {
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .ct-calc__btn:hover {
+        transform: translateY(-2px);
+    }
 }
 
 @media (max-width: 600px) {

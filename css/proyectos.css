@@ -305,8 +305,10 @@
     transition: transform var(--transition-slow);
 }
 
-.py-card:hover .py-card__media img {
-    transform: scale(1.04);
+@media (hover: hover) {
+    .py-card:hover .py-card__media img {
+        transform: scale(1.04);
+    }
 }
 
 .py-card__cat {

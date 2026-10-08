@@ -89,8 +89,10 @@
     transition: transform 0.6s ease;
 }
 
-.sv-tile:hover .sv-tile__img img {
-    transform: scale(1.06);
+@media (hover: hover) {
+    .sv-tile:hover .sv-tile__img img {
+        transform: scale(1.06);
+    }
 }
 
 .sv-tile__label {
@@ -150,8 +152,10 @@
     transition: transform 0.8s ease;
 }
 
-.sv-zoom:hover img {
-    transform: scale(1.03);
+@media (hover: hover) {
+    .sv-zoom:hover img {
+        transform: scale(1.03);
+    }
 }
 
 .sv-card__media {
@@ -318,8 +322,10 @@
     transition: transform var(--transition-fast), background-color var(--transition-fast);
 }
 
-.sv-btn:hover {
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .sv-btn:hover {
+        transform: translateY(-2px);
+    }
 }
 
 .sv-btn--calc {

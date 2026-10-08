@@ -4,6 +4,15 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-08 · Barra flotante, equipo en Nosotros, figuras de marca y cierre de la auditoría
+
+- **Tipo:** cambio
+- **Qué:** la cabecera de las seis páginas pasa a cápsulas flotantes (logo, menú al centro con la página actual marcada y botón oscuro "Cotizar" con flecha); en celular, el menú abre como una tarjeta. La sección de equipo de Nosotros se rehace: título, frase, cifras separadas por líneas y tarjetas con foto (en gris), nombre, punto celeste, cargo y una frase. Se agregan tres figuras propias en SVG (`assets/images/figuras/`): esfera de puntos (cierres de Servicios y Contacto), curvas de frío (cierre de Proyectos) y paneles que se vuelven red (Inicio, junto a "Cada instalación empieza con un cálculo"). Cierre de la auditoría: los efectos de movimiento al pasar el ratón ya no se disparan al tocar en celular, y 13 colores escritos a mano de la calculadora pasan a sus variables.
+- **Por qué:** referencia de diseño enviada por el responsable (barra y sección de equipo) y pendientes de la auditoría.
+- **Archivos:** las 6 páginas, `css/styles.css`, `css/nosotros.css`, `css/servicios.css`, `css/proyectos.css`, `css/contacto.css`, `css/proyecto.css`, `assets/images/figuras/*`
+- **Estado:** dev (2026-10-08). Pendiente de aprobación para `main`.
+- **Pendiente:** fotos reales del equipo (se ven siluetas con "Foto pendiente").
+
 ## 2026-10-08 · Auditoría de diseño (impeccable) y primera tanda de arreglos
 
 - **Tipo:** arreglo

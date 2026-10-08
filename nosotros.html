@@ -28,7 +28,7 @@
                     <li><a href="contacto.html" class="site-header__link">Contacto</a></li>
                 </ul>
             </nav>
-            <a href="contacto.html" class="site-header__cta">Cotizar</a>
+            <a href="contacto.html" class="site-header__cta">Cotizar <span class="site-header__cta-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
             <button type="button" class="site-header__toggle" id="siteMenuToggle" aria-expanded="false" aria-controls="siteMenu" aria-label="Abrir menú">
                 <span></span>
                 <span></span>
@@ -178,30 +178,62 @@
         <section class="ns-team">
             <div class="ns-wrap">
                 <div class="ns-team__head">
-                    <h2 class="ns-title">El equipo</h2>
-                    <p class="ns-lead">Son las personas que lo van a atender en la visita técnica y en la obra.</p>
+                    <h2 class="ns-team__title">Las personas detrás de cada cuarto frío.</h2>
+                    <p class="ns-team__lead">Ingeniería, montaje y mantenimiento en un mismo equipo. Son quienes lo atienden en la visita técnica y en la obra.</p>
+                    <dl class="ns-team__stats">
+                        <div><dt>obras entregadas</dt><dd>150+</dd></div>
+                        <div><dt>servicios</dt><dd>6</dd></div>
+                    </dl>
                 </div>
-                <!-- RELLENO: fotos, nombres y cargos reales del equipo -->
+                <!-- RELLENO: fotos, nombres, cargos y frase de cada persona del equipo -->
                 <div class="ns-team__grid">
-                    <article class="ns-person ns-lift">
-                        <div class="ns-person__photo">[Foto]</div>
-                        <h3 class="ns-person__name">[Nombre]</h3>
-                        <p class="ns-person__role">Gerencia general</p>
+                    <article class="ns-member">
+                        <div class="ns-member__photo">
+                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
+                            <span class="ns-member__pending">Foto pendiente</span>
+                        </div>
+                        <div class="ns-member__info">
+                            <h3 class="ns-member__name">[Nombre]</h3>
+                            <span class="ns-member__dot" aria-hidden="true"></span>
+                        </div>
+                        <p class="ns-member__role">Gerencia general</p>
+                        <p class="ns-member__note">[Una frase corta: qué le aporta al cliente]</p>
                     </article>
-                    <article class="ns-person ns-lift">
-                        <div class="ns-person__photo">[Foto]</div>
-                        <h3 class="ns-person__name">[Nombre]</h3>
-                        <p class="ns-person__role">[Cargo]</p>
+                    <article class="ns-member">
+                        <div class="ns-member__photo">
+                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
+                            <span class="ns-member__pending">Foto pendiente</span>
+                        </div>
+                        <div class="ns-member__info">
+                            <h3 class="ns-member__name">[Nombre]</h3>
+                            <span class="ns-member__dot" aria-hidden="true"></span>
+                        </div>
+                        <p class="ns-member__role">[Cargo: ingeniería de proyectos]</p>
+                        <p class="ns-member__note">[Una frase corta]</p>
                     </article>
-                    <article class="ns-person ns-lift">
-                        <div class="ns-person__photo">[Foto]</div>
-                        <h3 class="ns-person__name">[Nombre]</h3>
-                        <p class="ns-person__role">[Cargo]</p>
+                    <article class="ns-member">
+                        <div class="ns-member__photo">
+                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
+                            <span class="ns-member__pending">Foto pendiente</span>
+                        </div>
+                        <div class="ns-member__info">
+                            <h3 class="ns-member__name">[Nombre]</h3>
+                            <span class="ns-member__dot" aria-hidden="true"></span>
+                        </div>
+                        <p class="ns-member__role">[Cargo: jefe de montaje]</p>
+                        <p class="ns-member__note">[Una frase corta]</p>
                     </article>
-                    <article class="ns-person ns-lift">
-                        <div class="ns-person__photo">[Foto]</div>
-                        <h3 class="ns-person__name">[Nombre]</h3>
-                        <p class="ns-person__role">[Cargo]</p>
+                    <article class="ns-member">
+                        <div class="ns-member__photo">
+                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
+                            <span class="ns-member__pending">Foto pendiente</span>
+                        </div>
+                        <div class="ns-member__info">
+                            <h3 class="ns-member__name">[Nombre]</h3>
+                            <span class="ns-member__dot" aria-hidden="true"></span>
+                        </div>
+                        <p class="ns-member__role">[Cargo: mantenimiento]</p>
+                        <p class="ns-member__note">[Una frase corta]</p>
                     </article>
                 </div>
             </div>
