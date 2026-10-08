@@ -49,23 +49,139 @@
 
     
     <main class="ns-page">
-        <!-- ENCABEZADO CON COLLAGE -->
+        <!-- APERTURA: texto grande y figura con etiquetas -->
         <section class="ns-hero">
-            <div class="ns-wrap ns-hero__inner">
+            <div class="ns-wrap ns-hero__grid">
                 <div class="ns-hero__text">
+                    <p class="ns-hero__tag">Ingeniería del frío.<br>Obras en todo el país.<br>Más de 20 años.</p>
                     <h1 class="ns-hero__title">Hacemos refrigeración industrial desde hace más de 20 años.</h1>
-                    <p class="ns-lead ns-hero__lead">Somos un equipo de ingenieros y técnicos en Bogotá. Diseñamos, montamos y mantenemos cuartos fríos, bodegas y túneles de congelación en todo el país.</p>
-                    <ul class="ns-facts">
-                        <li><strong>+150</strong> proyectos</li>
-                        <li><strong>+20</strong> años</li>
-                        <li>Oficina en <strong>Bogotá</strong></li>
-                    </ul>
+                    <p class="ns-hero__lead">Somos un equipo de ingenieros y técnicos en Bogotá. Diseñamos, montamos y mantenemos cuartos fríos, bodegas y túneles de congelación en todo el país.</p>
+                    <div class="ns-hero__actions">
+                        <a href="proyectos.html" class="ns-btn ns-btn--dark">Ver proyectos <span class="ns-btn__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+                        <a href="#valores" class="ns-hero__link">Cómo trabajamos</a>
+                    </div>
                 </div>
-                <div class="ns-collage">
-                    <img src="assets/images/mantenimiento-1.jpg" alt="Técnico de FRIGOPAC revisando un equipo" class="ns-collage__main">
-                    <img src="assets/images/cuarto-frio-interior.jpg" alt="Interior de un cuarto frío" class="ns-collage__small">
-                    <p class="ns-collage__badge"><strong>Todo el país</strong><span>obras desde Bogotá</span></p>
+                <div class="ns-hero__art" aria-hidden="true">
+                    <canvas class="net-canvas"></canvas>
+                    <img src="assets/images/figuras/paneles-red.svg" alt="" class="ns-hero__panels">
+                    <span class="ns-callout ns-callout--1">Diseño</span>
+                    <span class="ns-callout ns-callout--2">Montaje</span>
+                    <span class="ns-callout ns-callout--3">Mantenimiento</span>
                 </div>
+            </div>
+            <div class="ns-wrap ns-hero__bar">
+                <span><strong>150+</strong> obras entregadas</span>
+                <span class="ns-hero__rule" aria-hidden="true"></span>
+                <span class="ns-hero__words">Cuartos fríos · Bodegas · Túneles</span>
+            </div>
+        </section>
+
+        <!-- EQUIPO -->
+        <section class="ns-team">
+            <div class="ns-wrap">
+                <div class="ns-team__head">
+                    <h2 class="ns-team__title">Las personas detrás de cada cuarto frío.</h2>
+                    <p class="ns-team__lead">Ingeniería, montaje y mantenimiento en un mismo equipo. Son quienes lo atienden en la visita técnica y en la obra.</p>
+                    <dl class="ns-team__stats">
+                        <div><dt>obras entregadas</dt><dd>150+</dd></div>
+                        <div><dt>servicios</dt><dd>6</dd></div>
+                    </dl>
+                </div>
+                <!-- RELLENO: fotos, nombres, cargos y frase de cada persona del equipo -->
+                <div class="ns-team__grid">
+                    <article class="ns-member">
+                        <div class="ns-member__photo">
+                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
+                            <span class="ns-member__pending">Foto pendiente</span>
+                        </div>
+                        <div class="ns-member__info">
+                            <h3 class="ns-member__name">[Nombre]</h3>
+                            <span class="ns-member__dot" aria-hidden="true"></span>
+                        </div>
+                        <p class="ns-member__role">Gerencia general</p>
+                        <p class="ns-member__note">[Una frase corta: qué le aporta al cliente]</p>
+                    </article>
+                    <article class="ns-member">
+                        <div class="ns-member__photo">
+                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
+                            <span class="ns-member__pending">Foto pendiente</span>
+                        </div>
+                        <div class="ns-member__info">
+                            <h3 class="ns-member__name">[Nombre]</h3>
+                            <span class="ns-member__dot" aria-hidden="true"></span>
+                        </div>
+                        <p class="ns-member__role">[Cargo: ingeniería de proyectos]</p>
+                        <p class="ns-member__note">[Una frase corta]</p>
+                    </article>
+                    <article class="ns-member">
+                        <div class="ns-member__photo">
+                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
+                            <span class="ns-member__pending">Foto pendiente</span>
+                        </div>
+                        <div class="ns-member__info">
+                            <h3 class="ns-member__name">[Nombre]</h3>
+                            <span class="ns-member__dot" aria-hidden="true"></span>
+                        </div>
+                        <p class="ns-member__role">[Cargo: jefe de montaje]</p>
+                        <p class="ns-member__note">[Una frase corta]</p>
+                    </article>
+                    <article class="ns-member">
+                        <div class="ns-member__photo">
+                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
+                            <span class="ns-member__pending">Foto pendiente</span>
+                        </div>
+                        <div class="ns-member__info">
+                            <h3 class="ns-member__name">[Nombre]</h3>
+                            <span class="ns-member__dot" aria-hidden="true"></span>
+                        </div>
+                        <p class="ns-member__role">[Cargo: mantenimiento]</p>
+                        <p class="ns-member__note">[Una frase corta]</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALORES: tarjetas conectadas -->
+        <section class="ns-values" id="valores">
+            <div class="ns-wrap">
+                <div class="ns-values__head">
+                    <h2 class="ns-values__title">De la visita técnica al cuarto funcionando.</h2>
+                    <p class="ns-values__lead">Cuatro cosas que cuidamos en cada obra, sea un cuarto pequeño o una bodega.</p>
+                </div>
+                <ol class="ns-flow">
+                    <li class="ns-flow__item">
+                        <span class="ns-flow__node" aria-hidden="true"></span>
+                        <article class="ns-flow__card">
+                            <div class="ns-flow__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 12-4 16-9 16z"/><path d="M4 20c4-4 7-6 11-8"/></svg></div>
+                            <h3 class="ns-flow__title">Cuidamos el ambiente</h3>
+                            <p class="ns-flow__text">Trabajamos con refrigerantes naturales y equipos eficientes, para que la operación gaste y contamine menos.</p>
+                        </article>
+                    </li>
+                    <li class="ns-flow__item">
+                        <span class="ns-flow__node" aria-hidden="true"></span>
+                        <article class="ns-flow__card ns-flow__card--dark">
+                            <div class="ns-flow__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg></div>
+                            <h3 class="ns-flow__title">Nos mantenemos al día</h3>
+                            <p class="ns-flow__text">Seguimos de cerca los equipos y técnicas nuevas del sector y las usamos cuando tienen sentido.</p>
+                        </article>
+                    </li>
+                    <li class="ns-flow__item">
+                        <span class="ns-flow__node" aria-hidden="true"></span>
+                        <article class="ns-flow__card">
+                            <div class="ns-flow__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M9 15l2 2 4-4"/></svg></div>
+                            <h3 class="ns-flow__title">Cumplimos lo acordado</h3>
+                            <p class="ns-flow__text">Plazos, alcance y especificaciones técnicas: lo que queda en la cotización es lo que entregamos.</p>
+                        </article>
+                    </li>
+                    <li class="ns-flow__item">
+                        <span class="ns-flow__node" aria-hidden="true"></span>
+                        <article class="ns-flow__card ns-flow__card--accent">
+                            <div class="ns-flow__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                            <h3 class="ns-flow__title">Hacemos bien el trabajo</h3>
+                            <p class="ns-flow__text">Usamos buenos materiales y cuidamos los detalles del montaje, sea un cuarto pequeño o una bodega.</p>
+                        </article>
+                    </li>
+                </ol>
             </div>
         </section>
 
@@ -137,129 +253,19 @@
             </div>
         </section>
 
-        <!-- VALORES -->
-        <section class="ns-values">
+        <!-- CIERRE: franja de color con la esfera -->
+        <section class="ns-band-wrap">
             <div class="ns-wrap">
-                <h2 class="ns-title ns-title--center">Nuestros valores</h2>
-                <div class="ns-values__grid">
-                    <article class="ns-value ns-lift">
-                        <div class="ns-value__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 12-4 16-9 16z"/><path d="M4 20c4-4 7-6 11-8"/></svg>
+                <div class="ns-band">
+                    <img src="assets/images/figuras/esfera-marino.svg" alt="" class="ns-band__sphere" loading="lazy" aria-hidden="true">
+                    <div class="ns-band__text">
+                        <h2 class="ns-band__title">Empecemos por su cuarto frío.</h2>
+                        <p class="ns-band__lead">Cuéntenos qué necesita guardar y a qué temperatura. Le respondemos con una propuesta.</p>
+                        <div class="ns-band__actions">
+                            <a href="https://wa.me/573103330737" target="_blank" rel="noopener" class="ns-btn ns-btn--dark"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir por WhatsApp</a>
+                            <a href="tel:+573103330737" class="ns-band__link">+57 310 333 0737</a>
+                            <a href="mailto:gerenciafrigopac@gmail.com" class="ns-band__link">gerenciafrigopac@gmail.com</a>
                         </div>
-                        <h3 class="ns-value__title">Cuidamos el ambiente</h3>
-                        <p class="ns-value__text">Trabajamos con refrigerantes naturales y equipos eficientes, para que la operación gaste y contamine menos.</p>
-                    </article>
-                    <article class="ns-value ns-lift">
-                        <div class="ns-value__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>
-                        </div>
-                        <h3 class="ns-value__title">Nos mantenemos al día</h3>
-                        <p class="ns-value__text">Seguimos de cerca los equipos y técnicas nuevas del sector y las usamos cuando tienen sentido.</p>
-                    </article>
-                    <article class="ns-value ns-lift">
-                        <div class="ns-value__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M9 15l2 2 4-4"/></svg>
-                        </div>
-                        <h3 class="ns-value__title">Cumplimos lo acordado</h3>
-                        <p class="ns-value__text">Plazos, alcance y especificaciones técnicas: lo que queda en la cotización es lo que entregamos.</p>
-                    </article>
-                    <article class="ns-value ns-lift">
-                        <div class="ns-value__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-                        </div>
-                        <h3 class="ns-value__title">Hacemos bien el trabajo</h3>
-                        <p class="ns-value__text">Usamos buenos materiales y cuidamos los detalles del montaje, sea un cuarto pequeño o una bodega.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- EQUIPO -->
-        <section class="ns-team">
-            <div class="ns-wrap">
-                <div class="ns-team__head">
-                    <h2 class="ns-team__title">Las personas detrás de cada cuarto frío.</h2>
-                    <p class="ns-team__lead">Ingeniería, montaje y mantenimiento en un mismo equipo. Son quienes lo atienden en la visita técnica y en la obra.</p>
-                    <dl class="ns-team__stats">
-                        <div><dt>obras entregadas</dt><dd>150+</dd></div>
-                        <div><dt>servicios</dt><dd>6</dd></div>
-                    </dl>
-                </div>
-                <!-- RELLENO: fotos, nombres, cargos y frase de cada persona del equipo -->
-                <div class="ns-team__grid">
-                    <article class="ns-member">
-                        <div class="ns-member__photo">
-                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
-                            <span class="ns-member__pending">Foto pendiente</span>
-                        </div>
-                        <div class="ns-member__info">
-                            <h3 class="ns-member__name">[Nombre]</h3>
-                            <span class="ns-member__dot" aria-hidden="true"></span>
-                        </div>
-                        <p class="ns-member__role">Gerencia general</p>
-                        <p class="ns-member__note">[Una frase corta: qué le aporta al cliente]</p>
-                    </article>
-                    <article class="ns-member">
-                        <div class="ns-member__photo">
-                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
-                            <span class="ns-member__pending">Foto pendiente</span>
-                        </div>
-                        <div class="ns-member__info">
-                            <h3 class="ns-member__name">[Nombre]</h3>
-                            <span class="ns-member__dot" aria-hidden="true"></span>
-                        </div>
-                        <p class="ns-member__role">[Cargo: ingeniería de proyectos]</p>
-                        <p class="ns-member__note">[Una frase corta]</p>
-                    </article>
-                    <article class="ns-member">
-                        <div class="ns-member__photo">
-                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
-                            <span class="ns-member__pending">Foto pendiente</span>
-                        </div>
-                        <div class="ns-member__info">
-                            <h3 class="ns-member__name">[Nombre]</h3>
-                            <span class="ns-member__dot" aria-hidden="true"></span>
-                        </div>
-                        <p class="ns-member__role">[Cargo: jefe de montaje]</p>
-                        <p class="ns-member__note">[Una frase corta]</p>
-                    </article>
-                    <article class="ns-member">
-                        <div class="ns-member__photo">
-                            <svg class="ns-member__silhouette" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26"/><path d="M14 150c4-34 22-52 46-52s42 18 46 52z"/></svg>
-                            <span class="ns-member__pending">Foto pendiente</span>
-                        </div>
-                        <div class="ns-member__info">
-                            <h3 class="ns-member__name">[Nombre]</h3>
-                            <span class="ns-member__dot" aria-hidden="true"></span>
-                        </div>
-                        <p class="ns-member__role">[Cargo: mantenimiento]</p>
-                        <p class="ns-member__note">[Una frase corta]</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACTO DIRECTO -->
-        <section class="ns-contact">
-            <div class="ns-wrap">
-                <div class="ns-contact__panel">
-                    <div class="ns-contact__text">
-                        <h2 class="ns-title">Hable directamente con nosotros.</h2>
-                        <p class="ns-lead">Cuéntenos qué necesita guardar y a qué temperatura.</p>
-                    </div>
-                    <div class="ns-contact__list">
-                        <a href="tel:+573103330737" class="ns-contact__row">
-                            <span class="ns-contact__label">Teléfono</span>
-                            <span class="ns-contact__value">+57 310 333 0737</span>
-                        </a>
-                        <a href="https://wa.me/573103330737" target="_blank" rel="noopener" class="ns-contact__row">
-                            <span class="ns-contact__label">WhatsApp</span>
-                            <span class="ns-contact__value ns-contact__value--wa"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Escribir ahora →</span>
-                        </a>
-                        <a href="mailto:gerenciafrigopac@gmail.com" class="ns-contact__row">
-                            <span class="ns-contact__label">Correo</span>
-                            <span class="ns-contact__value">gerenciafrigopac@gmail.com</span>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -333,5 +339,6 @@
     </a>
 
     <script src="js/main.js"></script>
+    <script src="js/redes.js"></script>
 </body>
 </html> 

@@ -223,12 +223,6 @@
     background: transparent;
 }
 
-.py-clients .clients__logo-img {
-    height: 48px;
-    filter: none;
-    opacity: 1;
-}
-
 /* --- Galería con filtros --- */
 .py-gallery {
     padding: var(--space-2xl) 0 var(--space-3xl);

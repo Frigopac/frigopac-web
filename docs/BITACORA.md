@@ -4,6 +4,14 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-08 · Nosotros con la estructura de la referencia, Servicios con índice fijo, red animada en Inicio y cinta a color
+
+- **Tipo:** cambio
+- **Qué:** Nosotros sigue la estructura de la referencia del responsable: apertura con texto grande, la figura de paneles con etiquetas (Diseño, Montaje, Mantenimiento) y una red animada; luego el equipo; los valores como cuatro tarjetas unidas por una línea (una azul y una celeste); la historia y la misión; y un cierre celeste con la esfera. Servicios tiene una disposición nueva: apertura oscura con curvas de frío, un índice que se queda fijo a la izquierda y marca el servicio que se está leyendo (en celular, una barra de botones arriba), y cada servicio como un capítulo con foto grande. En Inicio, "Cada instalación empieza con un cálculo" queda a la izquierda y detrás, saliendo hacia la derecha, van los paneles y una red animada (`js/redes.js`, quieta con "reducir movimiento"). La cinta de clientes (Inicio y Proyectos) va a color, más grande y sin cortes.
+- **Por qué:** pedido del responsable con una referencia de diseño.
+- **Archivos:** `index.html`, `nosotros.html`, `servicios.html`, `proyectos.html`, `css/styles.css`, `css/nosotros.css`, `css/servicios.css`, `css/proyectos.css`, `js/redes.js` (nuevo), `js/servicios.js` (nuevo), `assets/images/figuras/esfera-marino.svg` (nuevo)
+- **Estado:** dev (2026-10-08). Pendiente de aprobación para `main`.
+
 ## 2026-10-08 · Barra flotante, equipo en Nosotros, figuras de marca y cierre de la auditoría
 
 - **Tipo:** cambio
