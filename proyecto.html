@@ -55,7 +55,7 @@
                     <svg class="pe-entrada__svg" id="peParque" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Entrada del parque de FRIGOPAC: un portal con el logo, operarios trabajando y, más adentro, un local con cuarto frío y una bodega"></svg>
                     <div class="pe-entrada__texto">
                         <p class="pe-entrada__eyebrow">Diseñe su cuarto frío</p>
-                        <h1 class="pe-entrada__titulo">Entre y vea su cuarto frío antes de construirlo</h1>
+                        <h1 class="pe-entrada__titulo">Vea su proyecto de frío antes de construirlo</h1>
                         <p class="pe-entrada__baje"><i aria-hidden="true"></i>Baje para entrar al parque</p>
                     </div>
                     <p class="pe-entrada__frase">Cada instalación empieza con un cálculo, no con un catálogo.</p>
@@ -65,7 +65,7 @@
                         <p class="pe-entrada__eyebrow">¿Qué va a armar?</p>
                         <div class="pe-entrada__ops">
                             <button type="button" class="pe-entrada__op" data-tipo="cuarto"><strong>Cuarto frío</strong><span>Carnicería, restaurante, minimercado o finca</span><em>Armar mi cuarto →</em></button>
-                            <button type="button" class="pe-entrada__op" data-tipo="bodega"><strong>Bodega</strong><span>Almacenamiento grande, con precámara y muelles</span><em>Armar mi bodega →</em></button>
+                            <button type="button" class="pe-entrada__op" data-tipo="bodega"><strong>Bodega</strong><span>Almacenamiento grande, con zona de cargue para camiones</span><em>Armar mi bodega →</em></button>
                         </div>
                     </div>
                     <button type="button" class="pe-entrada__saltar" data-tipo="cuarto">Saltar la entrada →</button>
@@ -79,31 +79,27 @@
             <div class="pe-wrap pe-wrap--ancho pe-inicio__grid">
                 <div class="pe-inicio__plano">
                     <svg id="peInicioPlano" viewBox="0 0 520 330" role="img" aria-label="Plano de ejemplo de lo que va a armar"></svg>
-                    <p class="pe-inicio__nota">Plano de ejemplo. Las medidas de su proyecto van en el siguiente paso.</p>
+                    <p class="pe-inicio__nota">Plano de ejemplo: sus medidas van en el siguiente paso. En amarillo, algo conocido para comparar el tamaño.</p>
                 </div>
                 <div class="pe-hoja">
-                <p class="pe-eyebrow" id="peInicioSub">Arme su cuarto frío</p>
-                <h2 class="pe-h1" id="peInicioTitulo">Arme su cuarto frío y vea cómo funciona antes de construirlo</h2>
-                <p class="pe-lead">Mueva las medidas, la temperatura y la cantidad de producto. El dibujo y los números cambian mientras usted lo arma. Sin registro.</p>
-
-                <div class="pe-bloque">
-                    <h2 class="pe-h3">¿Qué va a armar?</h2>
-                    <div class="pe-seg" id="peTipo" role="radiogroup" aria-label="Tipo de proyecto">
-                        <button type="button" class="pe-seg__b" role="radio" data-tipo="cuarto">Cuarto frío</button>
-                        <button type="button" class="pe-seg__b" role="radio" data-tipo="bodega">Bodega</button>
-                    </div>
+                <div class="pe-hoja__cab">
+                    <p class="pe-eyebrow">Paso 1 de 2</p>
+                    <h2 class="pe-h1" id="peInicioTitulo">Arme su cuarto frío</h2>
+                    <p class="pe-lead">Tres preguntas y pasa a mover las medidas. Sin registro.</p>
+                    <button type="button" class="pe-link" id="peCambiarTipo" data-tipo="bodega">Prefiero armar una bodega</button>
                 </div>
 
                 <div class="pe-bloque">
                     <h2 class="pe-h3">¿Qué va a guardar?</h2>
                     <div class="pe-cats" id="peCategorias" role="radiogroup" aria-label="Tipo de producto"></div>
-                    <div class="pe-chips" id="peProductos" role="radiogroup" aria-label="Producto" hidden></div>
+                    <div class="pe-chips pe-chips--rejilla pe-chips--caja" id="peProductos" role="radiogroup" aria-label="Producto" hidden></div>
+                    <button type="button" class="pe-link" data-cat="otro">¿Guarda otro producto?</button>
                     <p class="pe-otro" id="peOtro" hidden>Para otros productos lo mejor es hablar directo con FrigoPac. <a id="peOtroWa" href="#" target="_blank" rel="noopener">Escribirnos por WhatsApp</a></p>
                 </div>
 
                 <div class="pe-bloque">
                     <h2 class="pe-h3">¿En qué ciudad va el cuarto?</h2>
-                    <div class="pe-chips" id="peCiudades" role="radiogroup" aria-label="Ciudad"></div>
+                    <div class="pe-chips pe-chips--rejilla" id="peCiudades" role="radiogroup" aria-label="Ciudad"></div>
                     <div id="peClimaWrap" hidden>
                         <p class="pe-label">¿Cómo es el clima allá?</p>
                         <div class="pe-chips" id="peClima" role="radiogroup" aria-label="Clima">
@@ -116,9 +112,10 @@
 
                 <div class="pe-bloque">
                     <h2 class="pe-h3">¿Dónde lo va a montar?</h2>
-                    <div class="pe-chips" id="peLugar" role="radiogroup" aria-label="Tipo de lugar">
+                    <p class="pe-hint">De esto depende la tarifa de luz.</p>
+                    <div class="pe-chips pe-chips--rejilla" id="peLugar" role="radiogroup" aria-label="Tipo de lugar">
                         <button type="button" class="pe-chip" role="radio" data-lugar="comercial">Local comercial</button>
-                        <button type="button" class="pe-chip" role="radio" data-lugar="industrial">Bodega o planta</button>
+                        <button type="button" class="pe-chip" role="radio" data-lugar="industrial">Planta o zona industrial</button>
                         <button type="button" class="pe-chip" role="radio" data-lugar="residencial">Casa o finca</button>
                     </div>
                     <div id="peEstratoWrap" hidden>
@@ -135,6 +132,7 @@
                 </div>
 
                 <button type="button" class="pe-btn pe-btn--primario pe-btn--grande" id="peArmar" disabled>Armar mi cuarto</button>
+                <p class="pe-hint" id="peFalta"></p>
                 <button type="button" class="pe-link" data-ir="entrada" id="peVolverEntrada">← Ver la entrada</button>
                 </div>
             </div>
@@ -147,6 +145,7 @@
                     <div>
                         <p class="pe-eyebrow" id="peCabezaSub"></p>
                         <h2 class="pe-h2" id="peCabezaTitulo"></h2>
+                        <p class="pe-cabeza__nota" id="peCabezaNota"></p>
                     </div>
                     <button type="button" class="pe-link" data-ir="inicio">Cambiar producto o ciudad</button>
                 </div>
@@ -160,7 +159,7 @@
                             <li><i class="pe-leyenda__l pe-leyenda__l--cuarto"></i>Su cuarto</li>
                             <li><i class="pe-leyenda__l pe-leyenda__l--prod"></i>Lo que usted guarda</li>
                             <li><i class="pe-leyenda__l pe-leyenda__l--ref"></i>Una persona y dos estibas, a escala</li>
-                            <li><i class="pe-leyenda__l pe-leyenda__l--local"></i>Local de referencia</li>
+                            <li><i class="pe-leyenda__l pe-leyenda__l--local"></i>Local de ejemplo, no es el suyo</li>
                         </ul>
                     </div>
 
@@ -182,6 +181,42 @@
                     <!-- Controles -->
                     <form class="pe-controles" id="peControles" novalidate>
                         <fieldset class="pe-grupo">
+                            <legend class="pe-grupo__t">Lo que guarda</legend>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peGuardo">Guarda como máximo</label><span class="pe-num"><input type="number" id="peGuardoNum" inputmode="numeric" min="1" aria-label="Guarda como máximo"><span class="peUnidadTxt"></span></span></div>
+                                <input type="range" id="peGuardo" min="0" max="1000" step="1">
+                            </div>
+                            <div class="pe-slider">
+                                <div class="pe-slider__cab"><label for="peLlegan">Le llega cada día</label><span class="pe-num"><input type="number" id="peLleganNum" inputmode="numeric" min="0" aria-label="Le llega cada día"><span class="peUnidadTxt"></span></span></div>
+                                <input type="range" id="peLlegan" min="0" max="1000" step="1">
+                            </div>
+                            <details class="pe-mas">
+                                <summary>Cómo lo guarda y cómo le llega</summary>
+                                <div class="pe-mas__c">
+                                    <p class="pe-label" id="peFormatoLbl">¿Cómo lo guarda?</p>
+                                    <div class="pe-chips pe-chips--sm" id="peFormato" role="radiogroup" aria-labelledby="peFormatoLbl">
+                                        <button type="button" class="pe-chip" role="radio" data-formato="canastilla">Canastillas</button>
+                                        <button type="button" class="pe-chip" role="radio" data-formato="cajas">Cajas de cartón</button>
+                                        <button type="button" class="pe-chip" role="radio" data-formato="estiba">Estibas con gato o montacargas</button>
+                                        <button type="button" class="pe-chip" role="radio" data-formato="riel">Colgada en rieles</button>
+                                    </div>
+                                    <p class="pe-label" id="peUnidadLbl">¿En qué lo cuenta?</p>
+                                    <div class="pe-seg" id="peUnidad" role="radiogroup" aria-labelledby="peUnidadLbl">
+                                        <button type="button" class="pe-seg__b" role="radio" data-unidad="canastillas">Por canastillas</button>
+                                        <button type="button" class="pe-seg__b" role="radio" data-unidad="kg">Por kilos</button>
+                                    </div>
+                                    <p class="pe-label" id="peEstadoLbl">¿Cómo le llega?</p>
+                                    <div class="pe-chips pe-chips--sm" id="peEstado" role="radiogroup" aria-labelledby="peEstadoLbl">
+                                        <button type="button" class="pe-chip" role="radio" data-estado="ambiente">Sin frío</button>
+                                        <button type="button" class="pe-chip" role="radio" data-estado="refrigerado">Ya viene frío</button>
+                                        <button type="button" class="pe-chip" role="radio" data-estado="congelado">Ya viene congelado</button>
+                                    </div>
+                                    <p class="pe-hint"><button type="button" class="pe-link" data-ir="bodega">¿Guarda más de 60 toneladas? Calcule una bodega</button></p>
+                                </div>
+                            </details>
+                        </fieldset>
+
+                        <fieldset class="pe-grupo">
                             <legend class="pe-grupo__t">Temperatura</legend>
                             <div class="pe-seg" id="peModo" role="radiogroup" aria-label="Tipo de cuarto">
                                 <button type="button" class="pe-seg__b" role="radio" data-modo="refrigerar">Refrigerar</button>
@@ -194,36 +229,6 @@
                                     <input type="range" id="peTemp" step="1">
                                 </div>
                                 <p class="pe-hint" id="peTempHint"></p>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="pe-grupo">
-                            <legend class="pe-grupo__t">Producto</legend>
-                            <p class="pe-label" id="peFormatoLbl">¿Cómo lo guarda?</p>
-                            <div class="pe-chips pe-chips--sm" id="peFormato" role="radiogroup" aria-labelledby="peFormatoLbl">
-                                <button type="button" class="pe-chip" role="radio" data-formato="canastilla">Canastillas</button>
-                                <button type="button" class="pe-chip" role="radio" data-formato="cajas">Cajas de cartón</button>
-                                <button type="button" class="pe-chip" role="radio" data-formato="estiba">Estibas con gato o montacargas</button>
-                                <button type="button" class="pe-chip" role="radio" data-formato="riel">Colgada en rieles</button>
-                            </div>
-                            <div class="pe-seg" id="peUnidad" role="radiogroup" aria-label="Unidad">
-                                <button type="button" class="pe-seg__b" role="radio" data-unidad="canastillas">Canastillas</button>
-                                <button type="button" class="pe-seg__b" role="radio" data-unidad="kg">Kilos</button>
-                            </div>
-                            <div class="pe-slider">
-                                <div class="pe-slider__cab"><label for="peGuardo">Guarda como máximo</label><span class="pe-num"><input type="number" id="peGuardoNum" inputmode="numeric" min="1" aria-label="Guarda como máximo"><span class="peUnidadTxt"></span></span></div>
-                                <input type="range" id="peGuardo" min="0" max="1000" step="1">
-                            </div>
-                            <p class="pe-hint"><button type="button" class="pe-link" data-ir="bodega">¿Guarda más de 60 toneladas? Calcule una bodega</button></p>
-                            <div class="pe-slider">
-                                <div class="pe-slider__cab"><label for="peLlegan">Le llega cada día</label><span class="pe-num"><input type="number" id="peLleganNum" inputmode="numeric" min="0" aria-label="Le llega cada día"><span class="peUnidadTxt"></span></span></div>
-                                <input type="range" id="peLlegan" min="0" max="1000" step="1">
-                            </div>
-                            <p class="pe-label" id="peEstadoLbl">¿Cómo le llega?</p>
-                            <div class="pe-chips pe-chips--sm" id="peEstado" role="radiogroup" aria-labelledby="peEstadoLbl">
-                                <button type="button" class="pe-chip" role="radio" data-estado="ambiente">Sin frío</button>
-                                <button type="button" class="pe-chip" role="radio" data-estado="refrigerado">Ya viene frío</button>
-                                <button type="button" class="pe-chip" role="radio" data-estado="congelado">Ya viene congelado</button>
                             </div>
                         </fieldset>
 
@@ -241,17 +246,22 @@
                                 <div class="pe-slider__cab"><label for="peAncho">Ancho</label><output id="peAnchoOut" for="peAncho"></output></div>
                                 <input type="range" id="peAncho" min="1.5" max="10" step="0.1">
                             </div>
-                            <div class="pe-slider">
-                                <div class="pe-slider__cab"><label for="peAlto">Alto</label><output id="peAltoOut" for="peAlto"></output></div>
-                                <input type="range" id="peAlto" min="2.2" max="5" step="0.1">
-                            </div>
                             <p class="pe-hint" id="peTamHint"></p>
-                            <p class="pe-label" id="pePisoLbl">Piso del cuarto</p>
-                            <div class="pe-seg" id="pePiso" role="radiogroup" aria-labelledby="pePisoLbl">
-                                <button type="button" class="pe-seg__b" role="radio" data-piso="no">Sin aislar, sobre el concreto</button>
-                                <button type="button" class="pe-seg__b" role="radio" data-piso="si">Aislado</button>
-                            </div>
-                            <p class="pe-hint" id="pePisoHint"></p>
+                            <details class="pe-mas">
+                                <summary>Alto y piso</summary>
+                                <div class="pe-mas__c">
+                                    <div class="pe-slider">
+                                        <div class="pe-slider__cab"><label for="peAlto">Alto</label><output id="peAltoOut" for="peAlto"></output></div>
+                                        <input type="range" id="peAlto" min="2.2" max="5" step="0.1">
+                                    </div>
+                                    <p class="pe-label" id="pePisoLbl">Piso del cuarto</p>
+                                    <div class="pe-seg" id="pePiso" role="radiogroup" aria-labelledby="pePisoLbl">
+                                        <button type="button" class="pe-seg__b" role="radio" data-piso="no">Sin aislar, sobre el concreto</button>
+                                        <button type="button" class="pe-seg__b" role="radio" data-piso="si">Aislado</button>
+                                    </div>
+                                    <p class="pe-hint" id="pePisoHint"></p>
+                                </div>
+                            </details>
                         </fieldset>
 
                         <fieldset class="pe-grupo">
@@ -272,6 +282,10 @@
                             <div><strong>Para esta cantidad ya no es un cuarto: es una bodega.</strong>
                             <p>Un cuarto de panel llega hasta unos 12 m de lado. Con estas toneladas conviene calcular una bodega con estanterías y montacargas.</p></div>
                             <button type="button" class="pe-btn pe-btn--primario pe-btn--sm" data-ir="bodega">Calcular como bodega</button>
+                        </section>
+                        <section class="pe-panel" id="peTarjetasBox">
+                            <h2 class="pe-h3" id="peTarjetasTitulo">Lo que debe saber</h2>
+                            <div class="pe-tarjetas" id="peTarjetas"></div>
                         </section>
                         <section class="pe-panel" id="peGuardaBox">
                             <h2 class="pe-h3" id="peGuardaTitulo">Cómo se guarda</h2>
@@ -294,10 +308,6 @@
                             <div class="pe-calor" id="peCalor"></div>
                         </section>
 
-                        <section class="pe-panel" id="peTarjetasBox">
-                            <h2 class="pe-h3" id="peTarjetasTitulo">Lo que debe saber</h2>
-                            <div class="pe-tarjetas" id="peTarjetas"></div>
-                        </section>
 
                         <section class="pe-panel">
                             <h2 class="pe-h3">Lo que revisamos en la visita</h2>
@@ -345,7 +355,7 @@
                         <div class="pe-escena__temp" id="peBodTemp"></div>
                         <ul class="pe-leyenda" id="peBodLeyenda">
                             <li><i class="pe-leyenda__l pe-leyenda__l--cuarto"></i>Su bodega</li>
-                            <li><i class="pe-leyenda__l pe-leyenda__l--pre"></i>Precámara y muelles: se definen en el diseño</li>
+                            <li><i class="pe-leyenda__l pe-leyenda__l--pre"></i>Zona fría de cargue (precámara y muelles): se define en el diseño</li>
                             <li><i class="pe-leyenda__l pe-leyenda__l--ref"></i>Tractomula de 16 m, a escala</li>
                         </ul>
                     </div>

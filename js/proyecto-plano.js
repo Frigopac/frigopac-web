@@ -148,6 +148,8 @@
             traza('pl-tubo', seg([x0 + 0.3, y0 + 0.8, H], [x0 + 0.3, yc, H]) + seg([x0 + 0.3, yc, H], [x0 + 0.3, yc, H - 0.14]));
             traza('pl-equipo-f', cond.caras);
             traza('pl-equipo', cond.vis);
+            texto('pl-nota', [x0 + 0.25, y0 + 0.25, H + 0.5], [x0 + 1.15, y0 + 0.8, H + 0.5], 0, 0, -7, 'equipo de frío');
+            texto('pl-nota', [0, 0, Hs], [W, 0, Hs], 30, 0, -5, 'local de ejemplo');
         }
 
         // El producto adentro: columnas de canastillas o cajas, o piezas colgadas en rieles
@@ -203,11 +205,12 @@
             traza('pl-ref-f', remolque.caras + cabina.caras);
             traza('pl-ref', remolque.vis + cabina.vis + seg([xc, yc - 1.3, 0], [xc, yc - 1.3, 0.9]) + seg([xc + 13.6, yc + 1.3, 0], [xc + 13.6, yc + 1.3, 0.9]));
             if (1.7 * s >= 6) persona(xc + 3, yc + 3.2);
+            if (16.3 * s >= 60) texto('pl-nota', [xc, yc + 1.3, 0], [xc + 16.3, yc + 1.3, 0], 30, 0, 13, 'tractomula · 16 m');
             if (cancha) {
                 const cy0 = y1 + sep;
                 traza('pl-ref-f', poly([ox, cy0, 0], [ox + 105, cy0, 0], [ox + 105, cy0 + 68, 0], [ox, cy0 + 68, 0]));
                 traza('pl-ref', poly([ox, cy0, 0], [ox + 105, cy0, 0], [ox + 105, cy0 + 68, 0], [ox, cy0 + 68, 0]) + seg([ox + 52.5, cy0, 0], [ox + 52.5, cy0 + 68, 0]));
-                texto('pl-nota', [ox, cy0 + 68, 0], [ox + 105, cy0 + 68, 0], 30, 0, 14, 'cancha de fútbol · 105 × 68 m');
+                texto('pl-nota', [ox, cy0 + 68, 0], [ox + 105, cy0 + 68, 0], 30, 0, 14, o.canchas ? `cancha de fútbol · su bodega mide ${num(o.canchas, o.canchas < 10 ? 1 : 0)} canchas` : 'cancha de fútbol · 105 × 68 m');
             }
         } else {
             const ya = yc - 0.45;
@@ -235,7 +238,7 @@
         texto('pl-nota', [bx - malla, by, 0], [bx, by, 0], 30, 0, -5, `${num(malla)} m`);
 
         if (!bodega && o.frac > 1) out.push(`<text class="pl-aviso" x="${VW / 2}" y="26">No cabe todo</text>`);
-        out.push(`<text class="pl-rotulo" x="${VW - 12}" y="${VH - 10}">PLANO DE REFERENCIA · ${bodega ? 'BODEGA' : 'CUARTO FRÍO'} · SIN ESCALA FIJA</text>`);
+        out.push(`<text class="pl-rotulo" x="${VW - 12}" y="${VH - 10}">${o.rotulo || 'DIBUJO A ESCALA · MEDIDAS POR DENTRO'}</text>`);
         svg.innerHTML = out.join('');
     }
 

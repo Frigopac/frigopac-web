@@ -450,7 +450,7 @@
 .pq-manga { fill: none; stroke: var(--pe-cian); stroke-width: 4.6; stroke-linecap: round; stroke-linejoin: round; vector-effect: none !important; }
 .pq-cinta { fill: var(--pe-ref); }
 .pq-fpc { font: 800 5.4px var(--pe-h); letter-spacing: 0.04em; fill: var(--pe-navy); text-anchor: middle; }
-.pq-pierna { fill: #E2E8F0; transform-box: fill-box; transform-origin: 50% 0; }
+.pq-pierna { transform-box: fill-box; transform-origin: 50% 0; }
 .pq-bota { fill: #64748B; }
 .pq-ojo { fill: #2B2118; }
 .pq-hoja { fill: #F8FAFC; stroke: #94A3B8; stroke-width: 0.8; }
@@ -494,3 +494,49 @@
     .pe-entrada__op { min-height: 0; }
     .pe-entrada__op span { display: none; }
 }
+
+/* ============================================
+   Orden y claridad (recorrido de revisión del 2026-10-13)
+   ============================================ */
+/* Plaza: cada botón debajo de su edificio; el ancho lo pone js/proyecto-parque.js */
+.pe-entrada__elegir .pe-entrada__eyebrow { text-align: center; }
+.pe-entrada__ops { max-width: 100%; margin-inline: auto; gap: 12px; }
+.pe-entrada__op { text-align: center; justify-items: center; }
+.pq-copo { fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; }
+.pq-letrero--nombre { font-size: 11.5px; letter-spacing: 0.3em; fill: #fff; }
+.pq-pierna rect:first-child { fill: #E2E8F0; }
+[data-elige] .pq-copo { opacity: 0; transition: opacity 0.35s ease; }
+
+/* Hoja de preguntas: pasos numerados y botones parejos */
+.pe-hoja { counter-reset: paso; }
+.pe-hoja__cab { display: grid; gap: 10px; justify-items: start; }
+.pe-hoja .pe-h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.pe-hoja .pe-bloque > .pe-h3::before { counter-increment: paso; content: counter(paso); display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: 10px; border-radius: 999px; background: var(--pe-navy); color: #fff; font: 600 0.8rem var(--pe-h); vertical-align: 1px; }
+.pe-cats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pe-cat { --cat: var(--pe-navy-2); min-height: 92px; align-content: center; }
+.pe-cat[data-cat="carnes"] { --cat: #B84A3A; }
+.pe-cat[data-cat="aves"] { --cat: #AE8038; }
+.pe-cat[data-cat="pescados"] { --cat: #336A9C; }
+.pe-cat[data-cat="frutas_verduras"] { --cat: #B97714; }
+.pe-cat[data-cat="lacteos"] { --cat: #8A8268; }
+.pe-cat[data-cat="congelados"] { --cat: #5E97B6; }
+.pe-cat svg { stroke: var(--cat); }
+.pe-cat[aria-checked="true"] { border-color: var(--cat); box-shadow: inset 0 0 0 1px var(--cat); }
+.pe-chips--rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); }
+.pe-chips--rejilla .pe-chip { width: 100%; padding-inline: 8px; text-align: center; line-height: 1.2; }
+.pe-chips--caja { padding: 12px; border-radius: 14px; background: var(--pe-fondo); border: 1px solid var(--pe-linea); }
+@media (max-width: 600px) {
+    .pe-cats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pe-chips--rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Taller: lo esencial a la vista, lo fino plegado */
+.pe-cabeza__nota { margin: 0; font-size: 0.86rem; color: rgb(255 255 255 / 0.7); }
+.pe-mas { border-top: 1px solid var(--pe-linea); padding-top: 4px; }
+.pe-mas summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; cursor: pointer; list-style: none; font: 500 0.88rem var(--pe-b); color: var(--pe-navy-2); }
+.pe-mas summary::-webkit-details-marker { display: none; }
+.pe-mas summary::after { content: ""; width: 8px; height: 8px; margin-right: 4px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform 0.2s ease; }
+.pe-mas[open] summary::after { transform: rotate(-135deg); }
+.pe-mas__c { display: grid; gap: 12px; padding-bottom: 4px; }
+.pe-chips--caja .pe-chip::first-letter { text-transform: uppercase; }
+#peLugar { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); }

@@ -120,16 +120,21 @@
         if (S.tipo === 'bodega' && S.lugar === 'comercial') S.lugar = 'industrial';
         pintarInicio();
     }
+    // Plano de ejemplo de la hoja de preguntas (medidas de muestra, no del cliente)
+    const planoEjemplo = (tipo) => (tipo === 'bodega'
+        ? { tipo: 'bodega', L: 30, A: 20, H: 10, rotulo: 'PLANO DE EJEMPLO' }
+        : { tipo: 'cuarto', L: 3, A: 2.5, H: 2.4, rotulo: 'PLANO DE EJEMPLO' });
     // ── Inicio ──
     function pintarInicio() {
         const bod = S.tipo === 'bodega';
-        marcar('peTipo', 'tipo', S.tipo);
-        $('peInicioSub').textContent = bod ? 'Arme su bodega' : 'Arme su cuarto frío';
-        $('peInicioTitulo').textContent = bod ? 'Arme su bodega y vea su tamaño antes de construirla' : 'Arme su cuarto frío y vea cómo funciona antes de construirlo';
+        $('peInicioTitulo').textContent = bod ? 'Arme su bodega' : 'Arme su cuarto frío';
+        const cambio = $('peCambiarTipo');
+        cambio.dataset.tipo = bod ? 'cuarto' : 'bodega';
+        cambio.textContent = bod ? 'Prefiero armar un cuarto frío' : 'Prefiero armar una bodega';
         $('peArmar').textContent = bod ? 'Armar mi bodega' : 'Armar mi cuarto';
         $('peVolverEntrada').hidden = !PQ;
-        PL.pintar($('peInicioPlano'), bod ? { tipo: 'bodega', L: 30, A: 20, H: 10 } : { tipo: 'cuarto', L: 3, A: 2.5, H: 2.4 });
-        $('peCategorias').innerHTML = CONFIG.categorias.map((c) =>
+        PL.pintar($('peInicioPlano'), planoEjemplo(S.tipo));
+        $('peCategorias').innerHTML = CONFIG.categorias.filter((c) => c.id !== 'otro').map((c) =>
             `<button type="button" class="pe-cat" role="radio" data-cat="${c.id}" aria-checked="${c.id === S.cat}"><svg viewBox="0 0 24 24" aria-hidden="true">${c.icono}</svg>${c.nombre}</button>`).join('');
         const lista = productos.filter((p) => p.categoria === S.cat);
         $('peProductos').hidden = lista.length < 2;
@@ -145,6 +150,11 @@
         $('peEstratoWrap').hidden = S.lugar !== 'residencial';
         marcar('peEstrato', 'estrato', S.estrato);
         $('peArmar').disabled = !(S.producto && S.cat !== 'otro' && S.ciudad && (S.ciudad !== 'otra' || S.climaOtro));
+        const falta = [];
+        if (!S.producto || S.cat === 'otro') falta.push('el producto');
+        if (!S.ciudad) falta.push('la ciudad'); else if (S.ciudad === 'otra' && !S.climaOtro) falta.push('el clima');
+        $('peFalta').textContent = falta.length ? `Falta elegir ${falta.join(' y ')}.` : '';
+        $('peFalta').hidden = !falta.length;
     }
 
     // Al cambiar de producto (o la primera vez) el taller arranca en valores razonables.
@@ -198,7 +208,7 @@
         const fmt = ultimo ? ultimo.al.formato : 'canastilla';
         $('peFormato').querySelector('[data-formato="riel"]').hidden = p.categoria !== 'carnes';
         marcar('peFormato', 'formato', fmt);
-        $('peUnidad').hidden = fmt !== 'canastilla';
+        $('peUnidad').hidden = fmt !== 'canastilla'; $('peUnidadLbl').hidden = fmt !== 'canastilla';
         marcar('peUnidad', 'unidad', S.unidad);
         const rg = CONFIG.rango[S.unidad];
         $('peGuardo').value = logA(S.guardo, rg); $('peLlegan').value = logA(S.llegan, rg);
@@ -214,8 +224,9 @@
 
         marcar('peTam', 'tam', S.tam);
         [['peLargo', 'largo'], ['peAncho', 'ancho'], ['peAlto', 'alto']].forEach(([id, k]) => { $(id).value = S[k]; $(id + 'Out').textContent = num(S[k], 1) + ' m'; });
+        ['peLargo', 'peAncho'].forEach((id) => { $(id).closest('.pe-slider').hidden = S.tam === 'auto'; });
         $('peTamHint').textContent = S.tam === 'auto'
-            ? 'Le proponemos el tamaño para lo que guarda, con espacio para crecer: casi siempre llega más producto del que se planea. Si mueve el largo o el ancho, pasa a "Tengo un espacio".'
+            ? 'Le proponemos el tamaño para lo que guarda, con espacio para crecer: casi siempre llega más producto del que se planea.'
             : 'Ponga las medidas por dentro del espacio que tiene.';
         marcar('pePuerta', 'uso', S.uso);
     }
@@ -240,6 +251,7 @@
 
         $('peCabezaSub').textContent = `${nombreProd(p)} · ${nombreCiudad()}`;
         $('peCabezaTitulo').textContent = `Cuarto ${S.t < 0 ? 'de congelación' : 'refrigerado'} de ${num(S.largo, 1)} × ${num(S.ancho, 1)} m`;
+        $('peCabezaNota').textContent = S.tam === 'auto' ? 'Tamaño propuesto para lo que usted guarda. Lo puede cambiar en "Tamaño del cuarto".' : 'Con las medidas que usted puso.';
 
         const guardoKg = aKg(S.guardo);
         const frac = guardoKg / x.al.kg;
@@ -515,7 +527,7 @@
         $('peBodTemp2').value = S.t; $('peBodTempOut').textContent = fmtT(S.t);
         $('peBodAlt').value = S.balt; $('peBodAltOut').textContent = `${num(S.balt)} m`;
         $('peBodSis').innerHTML = Object.entries(BD.sistemas).map(([k, s]) =>
-            `<button type="button" class="pe-sistema" role="radio" data-sistema="${k}" aria-checked="${k === S.bsis}"><strong>${s.nombre}<span>usa ${Math.round(s.fraccion_volumen * 100)} % del volumen</span></strong><small>${s.nota}</small></button>`).join('');
+            `<button type="button" class="pe-sistema" role="radio" data-sistema="${k}" aria-checked="${k === S.bsis}"><strong>${s.nombre}<span>${Math.round(s.fraccion_volumen * 100)} % del espacio es producto</span></strong><small>${s.nota}</small></button>`).join('');
 
         $('peBodVolLbl').textContent = med ? 'Le caben' : 'Volumen refrigerado';
         $('peBodVol').textContent = med ? `${miles(tCap)} t` : `${miles(bd.volumen_m3)} m³`;
@@ -563,7 +575,7 @@
         $('peBodRef').textContent = `Para comparar: el promedio mundial de bodegas frigoríficas (GCCA) es 4,3 m³ por tonelada, que daría ${miles(gcca)} m³. ${gcca < bd.volumen_m3 ? 'Sale menos porque muchas bodegas usan sistemas más apretados que la estantería selectiva, como drive-in o estantería móvil.' : 'Sale más porque el promedio mundial incluye bodegas con estantería selectiva y pasillos anchos.'} Emergent Cold, en Funza, guarda 12.000 t en 81.000 m³.`;
         const dib = $('peBodDibujo');
         dib.parentElement.dataset.vista = 'plano';
-        PL.pintar(dib, { tipo: 'bodega', L: bd.largo_m || Math.sqrt(bd.area_m2), A: bd.ancho_m || Math.sqrt(bd.area_m2), H: S.balt });
+        PL.pintar(dib, { tipo: 'bodega', L: bd.largo_m || Math.sqrt(bd.area_m2), A: bd.ancho_m || Math.sqrt(bd.area_m2), H: S.balt, canchas: bd.canchas });
     }
     // ── Guardar y ficha para FrigoPac ──
     function nuevoId() {
@@ -683,7 +695,7 @@
             if (S.pantalla !== 'entrada') { elegirTipo(tipo); return; }
             const pasar = () => {
                 elegirTipo(tipo); mostrar('inicio');
-                PL.pintar($('peInicioPlano'), tipo === 'bodega' ? { tipo: 'bodega', L: 30, A: 20, H: 10 } : { tipo: 'cuarto', L: 3, A: 2.5, H: 2.4 }, { entra: true });
+                PL.pintar($('peInicioPlano'), planoEjemplo(tipo), { entra: true });
                 try { localStorage.setItem('frigopac_entrada_vista', '1'); } catch (e) { /* sin almacenamiento local */ }
             };
             if (PQ) PQ.entrar(tipo, pasar); else pasar();

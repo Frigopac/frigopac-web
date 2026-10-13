@@ -25,10 +25,10 @@
     const RECORRIDO = 3;            // cuánto avanza la cámara de principio a fin
     const Z_PORTAL = 1, Z_PLAZA = 3;
     let VW = 400, cx = 200, via = 40, zEdif = 4;
-    let capas = [], piezas = {}, pAct = 0, pObj = 0, raf = 0, ocupado = false;
+    let capas = [], piezas = {}, plaza = null, pAct = 0, pObj = 0, raf = 0, ocupado = false;
 
     // ── Operario con camisa de FRIGOPAC (los pies quedan en x, y) ──
-    function operario({ x, y, s = 1, gira = false, pose = 'quieto', piel = '#D9A47E', casco = '#FFFFFF' }) {
+    function operario({ x, y, s = 1, gira = false, pose = 'quieto', piel = '#D9A47E', casco = '#FFFFFF', sigla = true }) {
         let brazos = '', extra = '';
         const mano = (mx, my) => `<circle cx="${mx}" cy="${my}" r="2.3" fill="${piel}"/>`;
         if (pose === 'quieto') {
@@ -44,10 +44,10 @@
             extra = `<g class="pq-llave"><path class="pq-manga" d="M8.5 -45 L16 -57 L21 -66"/>${mano(21.4, -66.6)}<path class="pq-herr" d="M21 -67 L31 -75"/><circle class="pq-herr" cx="32" cy="-76" r="3"/></g>`;
         }
         return `<g transform="translate(${x} ${y}) scale(${gira ? -s : s} ${s})">
-            <rect class="pq-pierna pq-pierna--a" x="-6" y="-27" width="5" height="25" rx="1.5"/><rect class="pq-pierna pq-pierna--b" x="1" y="-27" width="5" height="25" rx="1.5"/>
-            <rect class="pq-bota" x="-7" y="-3" width="6.5" height="3" rx="1"/><rect class="pq-bota" x="0.5" y="-3" width="6.5" height="3" rx="1"/>
+            <g class="pq-pierna pq-pierna--a"><rect x="-6" y="-27" width="5" height="25" rx="1.5"/><rect class="pq-bota" x="-7" y="-3" width="6.5" height="3" rx="1"/></g>
+            <g class="pq-pierna pq-pierna--b"><rect x="1" y="-27" width="5" height="25" rx="1.5"/><rect class="pq-bota" x="0.5" y="-3" width="6.5" height="3" rx="1"/></g>
             <rect class="pq-camisa" x="-9" y="-48" width="18" height="23" rx="3"/><rect class="pq-cinta" x="-9" y="-33" width="18" height="2.4"/>
-            <text class="pq-fpc" x="0" y="-39.6">FPC</text>
+            ${sigla ? `<text class="pq-fpc" x="0" y="-39.6"${gira ? ' transform="scale(-1 1)"' : ''}>FPC</text>` : ''}
             ${brazos}
             <circle cx="0" cy="-55" r="6.3" fill="${piel}"/><circle class="pq-ojo" cx="2.8" cy="-54.4" r="0.8"/>
             <path d="M-7.2 -56 A7.2 7.2 0 0 1 7.2 -56 Z" fill="${casco}"/><rect x="-8.8" y="-56.4" width="17.6" height="1.9" rx="0.8" fill="${casco}"/>
@@ -70,9 +70,9 @@
             <rect class="pq-l" x="-66" y="-46" width="40" height="30"/><path class="pq-cian-l" d="M-66 -40 H-26"/>
             <rect class="pq-frio" x="-2" y="-92" width="78" height="92"/><path class="pq-frio-j" d="${juntas}"/>
             <rect class="pq-frio-p" x="24" y="-58" width="26" height="58"/><path class="pq-cian-l" d="M45 -34 V-22"/>
-            <text class="pq-frio-t" x="37" y="-72">0 °C</text>
+            <path class="pq-copo" d="M37 -84 V-66 M29.2 -79.5 L44.8 -70.5 M44.8 -79.5 L29.2 -70.5"/>
             <rect class="pq-l" x="14" y="-218" width="56" height="28"/><g class="pq-gira"><circle class="pq-l" cx="42" cy="-204" r="10"/><path class="pq-fino" d="M42 -204 V-213 M42 -204 L50 -199 M42 -204 L34 -199"/></g>
-            <g class="pq-gente">${operario({ x: -36, y: -190, s: 0.72, casco: '#FFC857' })}</g>
+            <g class="pq-gente">${operario({ x: -8, y: -190, s: 0.72, pose: 'planilla', casco: '#FFC857' })}</g>
             <rect class="pq-hl" x="-94" y="-226" width="188" height="230" rx="6"/>
         </g>`;
     }
@@ -80,10 +80,10 @@
         let lamina = '';
         for (let x = -76; x < 84; x += 8) lamina += `M${x} -148 V-96`;
         const muelle = (x, abierto) => `<rect class="pq-l" x="${x}" y="-74" width="36" height="74"/><path class="pq-fino" d="M${x + 3} -64 H${x + 33} M${x + 3} -54 H${x + 33} M${x + 3} -44 H${x + 33}${abierto ? '' : ` M${x + 3} -34 H${x + 33} M${x + 3} -24 H${x + 33} M${x + 3} -14 H${x + 33}`}"/>${abierto ? `<rect class="pq-hueco" x="${x + 3}" y="-38" width="30" height="38"/>` : ''}`;
-        return `<g class="pq-edif" data-tipo="bodega" role="button" tabindex="0" aria-label="Bodega con precámara: distribución y almacenamiento grande">
+        return `<g class="pq-edif" data-tipo="bodega" role="button" tabindex="0" aria-label="Bodega con zona de cargue: almacenamiento grande">
             <rect class="pq-l" x="-84" y="-160" width="168" height="160"/><path class="pq-reja" d="${lamina}"/>
             <rect class="pq-l" x="-89" y="-172" width="178" height="12"/><path class="pq-cian-l" d="M-84 -152 H84"/>
-            <rect class="pq-placa" x="-52" y="-144" width="104" height="38" rx="2"/><text class="pq-rotulo" x="0" y="-124">BODEGA</text><text class="pq-rotulo pq-rotulo--sub" x="0" y="-112">CON PRECÁMARA</text>
+            <rect class="pq-placa" x="-52" y="-144" width="104" height="38" rx="2"/><text class="pq-rotulo" x="0" y="-124">BODEGA</text><text class="pq-rotulo pq-rotulo--sub" x="0" y="-112">CON ZONA DE CARGUE</text>
             <rect class="pq-frio" x="-76" y="-90" width="152" height="90"/>
             <rect class="pq-l" x="-72" y="-90" width="144" height="8"/>
             ${muelle(-62, false)}${muelle(-18, true)}${muelle(26, false)}
@@ -119,11 +119,14 @@
         const ancho = VW >= 900;
         svg.setAttribute('viewBox', `0 0 ${VW} ${VH}`);
         const g = ancho ? Math.min(330, VW * 0.23) : 130;         // del centro a cada poste
-        const sep = ancho ? Math.min(400, VW * 0.27) : 122;       // del centro a cada edificio
-        const k = ancho ? 1.9 : 1.1;
+        // La bodega se dibuja más grande que el local: es el proyecto grande
+        const k = ancho ? 1.9 : 1.1, kL = k * 0.8, kB = k * 1.22;
+        const hueco = ancho ? 200 : 26, total = 168 * (kL + kB) + hueco;
+        const xL = cx - total / 2 + 84 * kL, xB = cx + total / 2 - 84 * kB;
+        plaza = { total, hueco, kL, kB };
         via = ancho ? 96 : 34;
         zEdif = RECORRIDO + 1 / 0.8;
-        svg.style.setProperty('--pq-llegada', (cx + sep - 84 * k - 10 - 86 * 0.9 * k) + 'px');
+        svg.style.setProperty('--pq-llegada', (xB - 84 * kB - 14 - 86 * 0.9 * k) + 'px');
         svg.style.setProperty('--pq-salida', (-140 * k) + 'px');
 
         let f = `<defs>
@@ -143,21 +146,22 @@
 
         // Capas del mundo, de la más lejana a la más cercana
         const capa = (id, z, html) => `<g class="pq-capa" id="${id}" data-z="${z}">${html}</g>`;
-        const edificios = `<g transform="translate(${cx - sep} ${BASE}) scale(${k})">${local()}</g><g transform="translate(${cx + sep} ${BASE}) scale(${k})">${bodega()}</g>`;
-        const calle = `<g class="pq-gente">${operario({ x: cx - sep + 84 * k + 16 * k, y: BASE + 6, s: 0.85 * k, gira: true, pose: 'planilla', piel: '#C58A63' })}</g>${camion(0.9 * k)}`;
+        const edificios = `<g transform="translate(${xL} ${BASE}) scale(${kL})">${local()}</g><g transform="translate(${xB} ${BASE}) scale(${kB})">${bodega()}</g>`;
+        const calle = `<g class="pq-gente">${operario({ x: xL + 84 * kL + 14 * k, y: BASE + 6, s: 0.8 * k, gira: true, pose: 'planilla', piel: '#C58A63' })}</g>${ancho ? camion(0.9 * k) : ''}`;
 
         const pi = cx - g - 14, pd = cx + g - 14, tx = cx - g - 30, tw = 2 * g + 60;
         const poste = (x) => `<rect class="pq-l" x="${x}" y="300" width="28" height="340"/><path class="pq-fino" d="M${x + 20} 312 V608"/><rect class="pq-cian" x="${x}" y="424" width="28" height="14"/><rect class="pq-rayas" x="${x}" y="608" width="28" height="32"/>`;
         let peld = '';
-        for (let i = 1; i < 10; i++) { const t = i / 10; peld += `M${pi - 40 + 24 * t} ${640 - 330 * t} h24`; }
+        const lx = cx - 188;                                       // la escalera se apoya junto al aviso
+        for (let i = 1; i < 10; i++) { const t = i / 10; peld += `M${lx + 24 * t} ${640 - 310 * t} h24`; }
         let celosia = '';
         for (let x = tx, i = 0; x < tx + tw - 1; x += 22, i++) celosia += `M${x} ${i % 2 ? 262 : 300} L${Math.min(x + 22, tx + tw)} ${i % 2 ? 300 : 262}`;
         let portal = `<ellipse class="pq-halo" cx="${cx}" cy="266" rx="230" ry="150"/>
             <polygon class="pq-cono-luz" points="${cx - 118},344 ${cx + 118},344 ${cx + 210},640 ${cx - 210},640"/>
-            <path class="pq-escalera" d="M${pi - 40} 640 L${pi - 16} 310 M${pi - 16} 640 L${pi + 8} 310 ${peld}"/>
+            <path class="pq-escalera" d="M${lx} 640 L${lx + 24} 330 M${lx + 24} 640 L${lx + 48} 330 ${peld}"/>
             ${poste(pi)}${poste(pd)}
             <rect class="pq-l" x="${tx}" y="258" width="${tw}" height="46"/><path class="pq-fino" d="${celosia}"/>
-            <path class="pq-cota" d="M${tx} 158 H${tx + tw} M${tx} 150 V174 M${tx + tw} 150 V174 M${tx - 3} 161 l6 -6 M${tx + tw - 3} 161 l6 -6"/><text class="pq-cota-t" x="${cx}" y="149">PARQUE DEL FRÍO</text>`;
+            <rect class="pq-placa" x="${cx - 96}" y="150" width="192" height="26" rx="3"/><text class="pq-letrero pq-letrero--nombre" x="${cx}" y="167.5">PARQUE DEL FRÍO</text>`;
         if (ancho) {
             const wa = (tx + cx - 124) / 2, wb = (tx + tw + cx + 124) / 2;
             portal += `<rect class="pq-placa" x="${wa - 100}" y="262" width="200" height="38" rx="3"/><text class="pq-letrero" x="${wa}" y="287">‹ CUARTOS FRÍOS</text>
@@ -169,9 +173,9 @@
             <rect class="pq-luz" x="${cx - 118}" y="192" width="236" height="146" rx="6"/>
             <image href="assets/images/logo-frigopac.jpg" x="${cx - 104}" y="198" width="208" height="134" preserveAspectRatio="xMidYMid meet"/>
             <rect class="pq-luz-brillo" x="${cx - 118}" y="192" width="236" height="146" rx="6"/>
-            <g class="pq-gente">${operario({ x: pi - 8, y: 398, pose: 'escalera', piel: '#C58A63', casco: '#FFC857' })}
+            <g class="pq-gente">${operario({ x: lx + 30, y: 412, pose: 'escalera', piel: '#C58A63', casco: '#FFC857' })}
             ${operario({ x: pd - 22, y: 646, gira: true, pose: 'planilla', piel: '#E0B08A' })}
-            <g class="pq-pasea"><g class="pq-voltea pq-camina">${operario({ x: cx - 70, y: 648, s: 1.05, pose: 'carga', piel: '#A9714B' })}</g></g></g>
+            <g class="pq-pasea"><g class="pq-voltea pq-camina">${operario({ x: cx - 70, y: 648, s: 1.05, pose: 'carga', piel: '#A9714B', sigla: false })}</g></g></g>
             <polygon class="pq-cono" points="${cx - via - 12},640 ${cx - via - 2},640 ${cx - via - 7},620"/><polygon class="pq-cono" points="${cx + via + 2},640 ${cx + via + 12},640 ${cx + via + 7},620"/>`;
 
         svg.innerHTML = f +
@@ -183,7 +187,18 @@
             capa('pqPortal', Z_PORTAL, portal);
         capas = [...svg.querySelectorAll('.pq-capa')].map((el) => ({ el, z: Number(el.dataset.z), fijo: el.id === 'pqEdificios' || el.id === 'pqCalle' }));
         piezas = { monte: svg.querySelector('#pqMonte'), traviesas: svg.querySelector('#pqTraviesas'), plaza: svg.querySelector('#pqPlaza'), via: svg.querySelector('#pqVia'), marcas: svg.querySelector('#pqMarcas') };
+        acomodarBotones();
         aplicar(pAct);
+    }
+    // Cada botón queda debajo de su edificio y con su mismo ancho
+    function acomodarBotones() {
+        const ops = escena.querySelector('.pe-entrada__ops');
+        const r = svg.getBoundingClientRect();
+        if (!ops || !plaza || !r.width) return;
+        const sc = Math.max(r.width / VW, r.height / VH) / (zEdif - RECORRIDO);
+        ops.style.width = Math.min(r.width - 32, plaza.total * sc) + 'px';
+        ops.style.gridTemplateColumns = `${plaza.kL}fr ${plaza.kB}fr`;
+        ops.style.columnGap = Math.max(8, plaza.hueco * sc) + 'px';
     }
 
     // ── El recorrido: p va de 0 (afuera del portal) a 1 (en la plaza) ──
