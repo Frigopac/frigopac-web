@@ -4,6 +4,15 @@ Registro de cambios y decisiones del sitio. Lo más reciente arriba. Formato y r
 
 ---
 
+## 2026-10-13 · Entrada animada ("el parque") y plano de referencia en la calculadora
+
+- **Tipo:** cambio
+- **Qué:** se une a la calculadora el prototipo "Parque Frigopac" que trajo el responsable. (1) La calculadora abre con una entrada: un portal con el logo de FRIGOPAC, operarios trabajando y, al bajar, una calle con un local (cuarto frío) y una bodega; se elige uno y la cámara se acerca hasta pasar a la calculadora. Hay un botón "Saltar la entrada". (2) En el taller, el dibujo principal ahora es un plano: el cuarto en líneas dentro de un local de referencia, con cotas que se mueven con las medidas, el equipo de frío, una persona y dos estibas a escala. Con un botón se vuelve al dibujo anterior ("Por dentro", con el producto). (3) La bodega usa el mismo plano: precámara y muelles punteados, una tractomula a escala y, si es grande, una cancha de fútbol. (4) En la pantalla de producto y ciudad se puede cambiar entre cuarto y bodega. Del prototipo se cambió: letra y colores del sitio, dibujo en estilo de plano, recorrido más corto y suavizado, y las medidas ya no se piden dos veces (el prototipo tenía sus propios controles sin cálculo).
+- **Por qué:** pedido del responsable: que la calculadora tenga algo que ninguna otra tiene y que el cliente dimensione su cuarto comparado con algo conocido, sin volverse un paso extra.
+- **Archivos:** `proyecto.html`, `css/proyecto.css`, `js/proyecto.js`, `js/proyecto-parque.js` (nuevo), `js/proyecto-plano.js` (nuevo), `assets/images/logo-frigopac.jpg` (nuevo)
+- **Estado:** solo local, en la rama `tarea/parque-calculadora`. Falta que el responsable lo vea para pasarlo a `dev`.
+- **Pendiente:** confirmar el nombre del letrero ("Parque del frío"); la precámara de la bodega es solo un dibujo, el motor todavía no la calcula.
+
 ## 2026-10-08 · Nosotros con la estructura de la referencia, Servicios con índice fijo, red animada en Inicio y cinta a color
 
 - **Tipo:** cambio

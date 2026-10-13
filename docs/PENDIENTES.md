@@ -13,6 +13,7 @@ Estado vivo del sitio. Cuando algo se resuelve, se tacha (`~~así~~`) con la fec
 | D9 | El formulario de Contacto manda al visitante a `tuusuario.github.io/frigopac-web/gracias.html`, una dirección de ejemplo y una página que no existe. ¿Creamos `gracias.html` y ponemos la dirección real? | Hoy, después de enviar una solicitud, la persona ve un error aunque el correo sí llegue |
 | D7 | Política de tratamiento de datos de FRIGOPAC SAS (NIT, dirección, correo para consultas) | El aviso del formulario de contacto es provisional (C1) |
 | D8 | Llenar los datos entre corchetes de Proyectos y Nosotros | Se publicó el 2026-10-08 con `[Ciudad]`, `[Año]`, `[Nombre]`… visibles al público |
+| D10 | Nombre del letrero de la entrada de la calculadora: hoy dice "Parque del frío" | Lo propuso el agente; el responsable pidió un nombre corto |
 | D3 | ¿Qué hacer con las 9 fotos que faltan en servicios: conseguirlas o quitar esas diapositivas? | Hoy se ven huecos (C4) |
 | D4 | ¿Se sube `frigopac-engine` a GitHub? ¿Público o privado? | Es la fuente del motor de la web |
 | D5 | ¿Qué dominio se compra y dónde? | Define `og:url`, `canonical` y el correo de marca |

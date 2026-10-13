@@ -8,6 +8,8 @@
     'use strict';
     const FE = window.FrigoPacEngine;
     const M = window.FrigoPacModelo;
+    const PL = window.FrigoPacPlano;     // plano de referencia (js/proyecto-plano.js)
+    const PQ = window.FrigoPacParque;    // entrada animada (js/proyecto-parque.js)
     const raiz = document.getElementById('projectEngine');
     if (!FE || !M || !raiz) return;
 
@@ -49,7 +51,7 @@
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const S = {
-        pantalla: 'inicio',
+        pantalla: 'inicio', tipo: 'cuarto',
         cat: null, producto: null, ciudad: null, climaOtro: null, lugar: 'comercial', estrato: '4',
         modo: 'refrigerar', t: null, formato: null, unidad: 'canastillas', guardo: null, llegan: null, estado: null,
         tam: 'auto', largo: 3, ancho: 3, alto: CONFIG.altoPorDefecto,
@@ -105,14 +107,39 @@
         S.pantalla = p;
         raiz.querySelectorAll('.pe-pantalla').forEach((s) => { s.hidden = s.dataset.pantalla !== p; });
         document.body.classList.toggle('pe-en-taller', p === 'taller');
+        document.body.classList.toggle('pe-en-entrada', p === 'entrada');
         window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     }
     function marcar(id, attr, valor) {
         $(id).querySelectorAll(`[data-${attr}]`).forEach((b) => b.setAttribute('aria-checked', String(b.dataset[attr] === String(valor))));
     }
 
+    // ── Entrada: cuarto o bodega ──
+    function elegirTipo(tipo) {
+        S.tipo = tipo === 'bodega' ? 'bodega' : 'cuarto';
+        if (S.tipo === 'bodega' && S.lugar === 'comercial') S.lugar = 'industrial';
+        pintarInicio();
+    }
+    // Cuál dibujo se ve en el taller: el plano con referencias o el cuarto por dentro con el producto.
+    let escena = PL ? 'plano' : 'dentro';
+    function pintarEscena() {
+        const plano = !!PL && escena === 'plano';
+        $('pePlano').hidden = !plano;
+        $('peCuarto').hidden = plano;
+        $('peLeyenda').hidden = !plano;
+        $('peVista').hidden = !PL;
+        $('peEscena').dataset.vista = plano ? 'plano' : 'dentro';
+        marcar('peVista', 'escena', escena);
+    }
+
     // ── Inicio ──
     function pintarInicio() {
+        const bod = S.tipo === 'bodega';
+        marcar('peTipo', 'tipo', S.tipo);
+        $('peInicioSub').textContent = bod ? 'Arme su bodega' : 'Arme su cuarto frío';
+        $('peInicioTitulo').textContent = bod ? 'Arme su bodega y vea su tamaño antes de construirla' : 'Arme su cuarto frío y vea cómo funciona antes de construirlo';
+        $('peArmar').textContent = bod ? 'Armar mi bodega' : 'Armar mi cuarto';
+        $('peVolverEntrada').hidden = !PQ;
         $('peCategorias').innerHTML = CONFIG.categorias.map((c) =>
             `<button type="button" class="pe-cat" role="radio" data-cat="${c.id}" aria-checked="${c.id === S.cat}"><svg viewBox="0 0 24 24" aria-hidden="true">${c.icono}</svg>${c.nombre}</button>`).join('');
         const lista = productos.filter((p) => p.categoria === S.cat);
@@ -228,6 +255,8 @@
         const guardoKg = aKg(S.guardo);
         const frac = guardoKg / x.al.kg;
         dibujarCuarto($('peCuarto'), { L: S.largo, A: S.ancho, H: S.alto, formato: x.al.formato, frac, t: S.t, cat: p.categoria });
+        if (PL) PL.pintar($('pePlano'), { tipo: 'cuarto', L: S.largo, A: S.ancho, H: S.alto });
+        pintarEscena();
         const tc = $('peTempChip');
         tc.textContent = fmtT(S.t);
         tc.dataset.frio = S.t < 0 ? 'congelado' : 'refrigerado';
@@ -631,7 +660,11 @@
         ]).join('');
         const gcca = bd.volumen_referencia_gcca_m3;
         $('peBodRef').textContent = `Para comparar: el promedio mundial de bodegas frigoríficas (GCCA) es 4,3 m³ por tonelada, que daría ${miles(gcca)} m³. ${gcca < bd.volumen_m3 ? 'Sale menos porque muchas bodegas usan sistemas más apretados que la estantería selectiva, como drive-in o estantería móvil.' : 'Sale más porque el promedio mundial incluye bodegas con estantería selectiva y pasillos anchos.'} Emergent Cold, en Funza, guarda 12.000 t en 81.000 m³.`;
-        dibujarBodega($('peBodDibujo'), bd);
+        const dib = $('peBodDibujo');
+        dib.parentElement.dataset.vista = PL ? 'plano' : 'dentro';
+        $('peBodLeyenda').hidden = !PL;
+        if (PL) PL.pintar(dib, { tipo: 'bodega', L: bd.largo_m || Math.sqrt(bd.area_m2), A: bd.ancho_m || Math.sqrt(bd.area_m2), H: S.balt });
+        else dibujarBodega(dib, bd);
     }
     function dibujarBodega(svg, bd) {
         const LX = bd.largo_m || Math.sqrt(bd.area_m2), LY = bd.ancho_m || Math.sqrt(bd.area_m2);
@@ -767,6 +800,7 @@
         if ((el = b('[data-ir]'))) {
             const d = el.dataset.ir;
             if (d === 'inicio') { pintarInicio(); mostrar('inicio'); }
+            else if (d === 'entrada') { mostrar('entrada'); if (PQ) PQ.reiniciar(); }
             else if (d === 'bodega') { abrirBodega(); }
             else if (d === 'taller') { if (S.vista === 'bodega' && S.pantalla === 'listo') { abrirBodega(); } else { S.vista = 'cuarto'; mostrar('taller'); pintarTaller(); } }
             else if (d === 'guardar') {
@@ -778,6 +812,14 @@
             }
             return;
         }
+        if ((el = b('[data-tipo]'))) {
+            const tipo = el.dataset.tipo;
+            if (S.pantalla !== 'entrada') { elegirTipo(tipo); return; }
+            const pasar = () => { elegirTipo(tipo); mostrar('inicio'); };
+            if (PQ) PQ.entrar(tipo, pasar); else pasar();
+            return;
+        }
+        if ((el = b('[data-escena]'))) { escena = el.dataset.escena; pintarEscena(); return; }
         if ((el = b('[data-cat]'))) {
             S.cat = el.dataset.cat;
             const lista = productos.filter((p) => p.categoria === S.cat);
@@ -839,7 +881,10 @@
         $(id + 'Num').addEventListener('input', (ev) => { const v = Number(ev.target.value); if (!Number.isFinite(v) || v < RANGO_LADO[0]) return; S[k] = Math.min(RANGO_LADO[1], v); pintarBodega(); });
     });
     $('peBodAlt').addEventListener('input', (ev) => { S.balt = Number(ev.target.value); pintarBodega(); });
-    $('peArmar').addEventListener('click', () => { prepararTaller(); mostrar('taller'); pintarTaller(); });
+    $('peArmar').addEventListener('click', () => {
+        prepararTaller();
+        if (S.tipo === 'bodega') { if (S.bt == null) S.bt = 500; abrirBodega(); } else { mostrar('taller'); pintarTaller(); }
+    });
     $('peTemp').addEventListener('input', (ev) => { S.t = Number(ev.target.value); actualizar(); });
     [['peGuardo', 'guardo'], ['peLlegan', 'llegan']].forEach(([id, k]) => {
         $(id).addEventListener('input', (ev) => {
@@ -891,6 +936,6 @@
     }
 
     pintarInicio();
-    if (!restaurar()) mostrar('inicio');
+    if (!restaurar()) mostrar(PQ ? 'entrada' : 'inicio');
     window.FrigoPacProyecto = { estado: () => ({ ...estadoParaGuardar(), contacto: S.contacto }) };
 })();

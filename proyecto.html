@@ -48,12 +48,43 @@
 
 <main class="pe" id="projectEngine" data-crm="">
 
+        <!-- 0. ENTRADA: el parque. Al bajar se pasa el portal y se elige cuarto o bodega -->
+        <section class="pe-pantalla pe-entrada" data-pantalla="entrada" id="peEntrada">
+            <div class="pe-entrada__pista" id="pePista">
+                <div class="pe-entrada__escena" id="peEscenaParque">
+                    <svg class="pe-entrada__svg" id="peParque" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Entrada del parque de FRIGOPAC: un portal con el logo, operarios trabajando y, más adentro, un local con cuarto frío y una bodega"></svg>
+                    <div class="pe-entrada__texto">
+                        <p class="pe-entrada__eyebrow">Diseñe su cuarto frío</p>
+                        <h1 class="pe-entrada__titulo">Entre y vea su cuarto frío antes de construirlo</h1>
+                        <p class="pe-entrada__baje"><i aria-hidden="true"></i>Baje para entrar al parque</p>
+                    </div>
+                    <div class="pe-entrada__elegir">
+                        <p class="pe-entrada__eyebrow">¿Qué va a armar?</p>
+                        <div class="pe-entrada__ops">
+                            <button type="button" class="pe-entrada__op" data-tipo="cuarto"><strong>Cuarto frío</strong><span>Carnicería, restaurante, minimercado o finca</span><em>Armar mi cuarto →</em></button>
+                            <button type="button" class="pe-entrada__op" data-tipo="bodega"><strong>Bodega</strong><span>Almacenamiento grande, con precámara y muelles</span><em>Armar mi bodega →</em></button>
+                        </div>
+                    </div>
+                    <button type="button" class="pe-entrada__saltar" data-tipo="cuarto">Saltar la entrada →</button>
+                    <div class="pe-entrada__velo" id="peVelo" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- 1. INICIO: qué guarda y dónde -->
-        <section class="pe-pantalla pe-inicio" data-pantalla="inicio">
+        <section class="pe-pantalla pe-inicio" data-pantalla="inicio" hidden>
             <div class="pe-wrap">
-                <p class="pe-eyebrow">Arme su cuarto frío</p>
-                <h1 class="pe-h1">Arme su cuarto frío y vea cómo funciona antes de construirlo</h1>
-                <p class="pe-lead">Mueva las medidas, la temperatura y la cantidad de producto. El cuarto y los números cambian mientras usted lo arma. Sin registro.</p>
+                <p class="pe-eyebrow" id="peInicioSub">Arme su cuarto frío</p>
+                <h2 class="pe-h1" id="peInicioTitulo">Arme su cuarto frío y vea cómo funciona antes de construirlo</h2>
+                <p class="pe-lead">Mueva las medidas, la temperatura y la cantidad de producto. El dibujo y los números cambian mientras usted lo arma. Sin registro.</p>
+
+                <div class="pe-bloque">
+                    <h2 class="pe-h3">¿Qué va a armar?</h2>
+                    <div class="pe-seg" id="peTipo" role="radiogroup" aria-label="Tipo de proyecto">
+                        <button type="button" class="pe-seg__b" role="radio" data-tipo="cuarto">Cuarto frío</button>
+                        <button type="button" class="pe-seg__b" role="radio" data-tipo="bodega">Bodega</button>
+                    </div>
+                </div>
 
                 <div class="pe-bloque">
                     <h2 class="pe-h3">¿Qué va a guardar?</h2>
@@ -96,6 +127,7 @@
                 </div>
 
                 <button type="button" class="pe-btn pe-btn--primario pe-btn--grande" id="peArmar" disabled>Armar mi cuarto</button>
+                <button type="button" class="pe-link" data-ir="entrada" id="peVolverEntrada">← Volver a la entrada</button>
             </div>
         </section>
 
@@ -113,8 +145,18 @@
                 <div class="pe-taller__grid">
                     <!-- Cuarto dibujado (queda fijo arriba en celular) -->
                     <div class="pe-escena" id="peEscena">
-                        <svg id="peCuarto" viewBox="0 0 520 330" role="img" aria-label="Dibujo del cuarto frío"></svg>
+                        <svg id="pePlano" viewBox="0 0 520 330" role="img" aria-label="Plano del cuarto frío dentro de un local, con sus medidas y una persona y dos estibas para comparar el tamaño"></svg>
+                        <svg id="peCuarto" viewBox="0 0 520 330" role="img" aria-label="Dibujo del cuarto frío con el producto adentro" hidden></svg>
                         <div class="pe-escena__temp" id="peTempChip"></div>
+                        <div class="pe-vista" id="peVista" role="radiogroup" aria-label="Qué dibujo ver">
+                            <button type="button" class="pe-vista__b" role="radio" data-escena="plano">Plano</button>
+                            <button type="button" class="pe-vista__b" role="radio" data-escena="dentro">Por dentro</button>
+                        </div>
+                        <ul class="pe-leyenda" id="peLeyenda">
+                            <li><i class="pe-leyenda__l pe-leyenda__l--cuarto"></i>Su cuarto</li>
+                            <li><i class="pe-leyenda__l pe-leyenda__l--ref"></i>Una persona y dos estibas, a escala</li>
+                            <li><i class="pe-leyenda__l pe-leyenda__l--local"></i>Local de referencia</li>
+                        </ul>
                     </div>
 
                     <div class="pe-cifras">
@@ -294,8 +336,13 @@
                 </div>
                 <div class="pe-taller__grid">
                     <div class="pe-escena pe-escena--bodega">
-                        <svg id="peBodDibujo" viewBox="0 0 520 330" role="img" aria-label="Tamaño de la bodega comparado con una cancha de fútbol"></svg>
+                        <svg id="peBodDibujo" viewBox="0 0 520 330" role="img" aria-label="Plano de la bodega con sus medidas, comparada con una tractomula y, si es grande, con una cancha de fútbol"></svg>
                         <div class="pe-escena__temp" id="peBodTemp"></div>
+                        <ul class="pe-leyenda" id="peBodLeyenda">
+                            <li><i class="pe-leyenda__l pe-leyenda__l--cuarto"></i>Su bodega</li>
+                            <li><i class="pe-leyenda__l pe-leyenda__l--pre"></i>Precámara y muelles: se definen en el diseño</li>
+                            <li><i class="pe-leyenda__l pe-leyenda__l--ref"></i>Tractomula de 16 m, a escala</li>
+                        </ul>
                     </div>
                     <div class="pe-cifras pe-cifras--4">
                         <div class="pe-cifra"><p class="pe-cifra__label" id="peBodVolLbl">Volumen refrigerado</p><p class="pe-cifra__valor" id="peBodVol">–</p><p class="pe-cifra__sub" id="peBodVolSub"></p></div>
@@ -489,6 +536,8 @@
     <script src="js/main.js"></script>
     <script src="js/frigopac-engine.js"></script>
     <script src="js/proyecto-modelo.js"></script>
+    <script src="js/proyecto-plano.js"></script>
+    <script src="js/proyecto-parque.js"></script>
     <script src="js/proyecto.js"></script>
 </body>
 </html>
