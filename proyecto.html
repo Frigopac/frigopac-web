@@ -58,6 +58,9 @@
                         <h1 class="pe-entrada__titulo">Entre y vea su cuarto frío antes de construirlo</h1>
                         <p class="pe-entrada__baje"><i aria-hidden="true"></i>Baje para entrar al parque</p>
                     </div>
+                    <p class="pe-entrada__frase">Cada instalación empieza con un cálculo, no con un catálogo.</p>
+                    <p class="pe-entrada__frase">Adentro mueve las medidas y ve cuánto le cabe y cuánto paga de luz al mes.</p>
+                    <div class="pe-entrada__avance" aria-hidden="true"><i></i></div>
                     <div class="pe-entrada__elegir">
                         <p class="pe-entrada__eyebrow">¿Qué va a armar?</p>
                         <div class="pe-entrada__ops">
@@ -73,7 +76,12 @@
 
         <!-- 1. INICIO: qué guarda y dónde -->
         <section class="pe-pantalla pe-inicio" data-pantalla="inicio" hidden>
-            <div class="pe-wrap">
+            <div class="pe-wrap pe-wrap--ancho pe-inicio__grid">
+                <div class="pe-inicio__plano">
+                    <svg id="peInicioPlano" viewBox="0 0 520 330" role="img" aria-label="Plano de ejemplo de lo que va a armar"></svg>
+                    <p class="pe-inicio__nota">Plano de ejemplo. Las medidas de su proyecto van en el siguiente paso.</p>
+                </div>
+                <div class="pe-hoja">
                 <p class="pe-eyebrow" id="peInicioSub">Arme su cuarto frío</p>
                 <h2 class="pe-h1" id="peInicioTitulo">Arme su cuarto frío y vea cómo funciona antes de construirlo</h2>
                 <p class="pe-lead">Mueva las medidas, la temperatura y la cantidad de producto. El dibujo y los números cambian mientras usted lo arma. Sin registro.</p>
@@ -127,7 +135,8 @@
                 </div>
 
                 <button type="button" class="pe-btn pe-btn--primario pe-btn--grande" id="peArmar" disabled>Armar mi cuarto</button>
-                <button type="button" class="pe-link" data-ir="entrada" id="peVolverEntrada">← Volver a la entrada</button>
+                <button type="button" class="pe-link" data-ir="entrada" id="peVolverEntrada">← Ver la entrada</button>
+                </div>
             </div>
         </section>
 
@@ -145,15 +154,11 @@
                 <div class="pe-taller__grid">
                     <!-- Cuarto dibujado (queda fijo arriba en celular) -->
                     <div class="pe-escena" id="peEscena">
-                        <svg id="pePlano" viewBox="0 0 520 330" role="img" aria-label="Plano del cuarto frío dentro de un local, con sus medidas y una persona y dos estibas para comparar el tamaño"></svg>
-                        <svg id="peCuarto" viewBox="0 0 520 330" role="img" aria-label="Dibujo del cuarto frío con el producto adentro" hidden></svg>
+                        <svg id="pePlano" viewBox="0 0 520 330" role="img" aria-label="Plano del cuarto frío dentro de un local, con el producto adentro, sus medidas y una persona y dos estibas para comparar el tamaño"></svg>
                         <div class="pe-escena__temp" id="peTempChip"></div>
-                        <div class="pe-vista" id="peVista" role="radiogroup" aria-label="Qué dibujo ver">
-                            <button type="button" class="pe-vista__b" role="radio" data-escena="plano">Plano</button>
-                            <button type="button" class="pe-vista__b" role="radio" data-escena="dentro">Por dentro</button>
-                        </div>
                         <ul class="pe-leyenda" id="peLeyenda">
                             <li><i class="pe-leyenda__l pe-leyenda__l--cuarto"></i>Su cuarto</li>
+                            <li><i class="pe-leyenda__l pe-leyenda__l--prod"></i>Lo que usted guarda</li>
                             <li><i class="pe-leyenda__l pe-leyenda__l--ref"></i>Una persona y dos estibas, a escala</li>
                             <li><i class="pe-leyenda__l pe-leyenda__l--local"></i>Local de referencia</li>
                         </ul>

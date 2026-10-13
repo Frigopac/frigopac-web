@@ -11,7 +11,7 @@
     const PL = window.FrigoPacPlano;     // plano de referencia (js/proyecto-plano.js)
     const PQ = window.FrigoPacParque;    // entrada animada (js/proyecto-parque.js)
     const raiz = document.getElementById('projectEngine');
-    if (!FE || !M || !raiz) return;
+    if (!FE || !M || !window.FrigoPacPlano || !raiz) return;
 
     // ── Configuración de la página (no son datos de ingeniería) ──
     const CONFIG = Object.assign({
@@ -120,18 +120,6 @@
         if (S.tipo === 'bodega' && S.lugar === 'comercial') S.lugar = 'industrial';
         pintarInicio();
     }
-    // Cuál dibujo se ve en el taller: el plano con referencias o el cuarto por dentro con el producto.
-    let escena = PL ? 'plano' : 'dentro';
-    function pintarEscena() {
-        const plano = !!PL && escena === 'plano';
-        $('pePlano').hidden = !plano;
-        $('peCuarto').hidden = plano;
-        $('peLeyenda').hidden = !plano;
-        $('peVista').hidden = !PL;
-        $('peEscena').dataset.vista = plano ? 'plano' : 'dentro';
-        marcar('peVista', 'escena', escena);
-    }
-
     // ── Inicio ──
     function pintarInicio() {
         const bod = S.tipo === 'bodega';
@@ -140,6 +128,7 @@
         $('peInicioTitulo').textContent = bod ? 'Arme su bodega y vea su tamaño antes de construirla' : 'Arme su cuarto frío y vea cómo funciona antes de construirlo';
         $('peArmar').textContent = bod ? 'Armar mi bodega' : 'Armar mi cuarto';
         $('peVolverEntrada').hidden = !PQ;
+        PL.pintar($('peInicioPlano'), bod ? { tipo: 'bodega', L: 30, A: 20, H: 10 } : { tipo: 'cuarto', L: 3, A: 2.5, H: 2.4 });
         $('peCategorias').innerHTML = CONFIG.categorias.map((c) =>
             `<button type="button" class="pe-cat" role="radio" data-cat="${c.id}" aria-checked="${c.id === S.cat}"><svg viewBox="0 0 24 24" aria-hidden="true">${c.icono}</svg>${c.nombre}</button>`).join('');
         const lista = productos.filter((p) => p.categoria === S.cat);
@@ -254,9 +243,8 @@
 
         const guardoKg = aKg(S.guardo);
         const frac = guardoKg / x.al.kg;
-        dibujarCuarto($('peCuarto'), { L: S.largo, A: S.ancho, H: S.alto, formato: x.al.formato, frac, t: S.t, cat: p.categoria });
-        if (PL) PL.pintar($('pePlano'), { tipo: 'cuarto', L: S.largo, A: S.ancho, H: S.alto });
-        pintarEscena();
+        PL.pintar($('pePlano'), { tipo: 'cuarto', L: S.largo, A: S.ancho, H: S.alto, formato: x.al.formato, frac, color: COLOR[p.categoria] });
+        $('peEscena').dataset.vista = 'plano';
         const tc = $('peTempChip');
         tc.textContent = fmtT(S.t);
         tc.dataset.frio = S.t < 0 ? 'congelado' : 'refrigerado';
@@ -475,99 +463,12 @@
         } else box.hidden = true;
     }
 
-    // ── Dibujo del cuarto en isométrico, a escala, con el producto adentro ──
+    // Color del producto dentro del plano, por tipo
     const COLOR = {
         frutas_verduras: ['#E39B2D', '#B97714', '#F2BC63'], carnes: ['#B84A3A', '#8E3427', '#D4705F'],
         aves: ['#D9A45A', '#AE8038', '#EBC285'], pescados: ['#4F8FC9', '#336A9C', '#7FB1DE'],
         lacteos: ['#D8D2C0', '#A9A18A', '#EDE8DA'], congelados: ['#8EC3DE', '#5E97B6', '#B9DCEE']
     };
-    function dibujarCuarto(svg, o) {
-        const { L, A, H } = o;
-        const cos = Math.cos(Math.PI / 6), sin = 0.5;
-        const s = Math.min(440 / ((L + A) * cos), 262 / ((L + A) * sin + H));
-        const ox = 260 - (L - A) * cos * s / 2;
-        const alto = ((L + A) * sin + H) * s;
-        const oy = 34 + H * s + (330 - 34 - 30 - alto) / 2;
-        const X = (x, y) => ox + (x - y) * cos * s;
-        const Y = (x, y, z) => oy + (x + y) * sin * s - z * s;
-        const P = (x, y, z) => `${X(x, y).toFixed(1)},${Y(x, y, z).toFixed(1)}`;
-        const poly = (pts, cls, extra = '') => `<polygon points="${pts.join(' ')}" class="${cls}"${extra}/>`;
-        const frio = o.t < 0;
-        let g = '';
-        g += poly([P(0, 0, 0), P(L, 0, 0), P(L, A, 0), P(0, A, 0)], 'cq-piso');
-        g += poly([P(0, 0, 0), P(L, 0, 0), P(L, 0, H), P(0, 0, H)], 'cq-pared-a');
-        g += poly([P(0, 0, 0), P(0, A, 0), P(0, A, H), P(0, 0, H)], 'cq-pared-b');
-        // Evaporador en la pared del fondo
-        const ew = Math.min(1.2, L * 0.35), ex = (L - ew) / 2, ez = H - 0.12, eh = 0.36, ed = 0.4;
-        g += poly([P(ex, 0, ez), P(ex + ew, 0, ez), P(ex + ew, ed, ez), P(ex, ed, ez)], 'cq-evap-t');
-        g += poly([P(ex, ed, ez), P(ex + ew, ed, ez), P(ex + ew, ed, ez - eh), P(ex, ed, ez - eh)], 'cq-evap-f');
-        const nAsp = 2;
-        for (let i = 0; i < nAsp; i++) {
-            const cx = ex + ew * (i + 0.5) / nAsp;
-            g += `<ellipse cx="${X(cx, ed).toFixed(1)}" cy="${Y(cx, ed, ez - eh / 2).toFixed(1)}" rx="${(eh * 0.32 * s).toFixed(1)}" ry="${(eh * 0.36 * s).toFixed(1)}" class="cq-aspa"/>`;
-        }
-
-        const pw = Math.min(0.9, L * 0.4), px = Math.min(0.3, L * 0.1);
-        const frac = Math.max(0, o.frac);
-        if (o.formato === 'riel') {
-            const rieles = Math.max(1, Math.min(4, Math.floor((A - 0.6) / 0.7) + 1));
-            const zr = H - 0.3, largo = Math.min(1.8, H - 0.6);
-            const ys = rieles === 1 ? [A / 2] : Array.from({ length: rieles }, (_, i) => 0.45 + i * (A - 0.9) / (rieles - 1));
-            ys.forEach((y) => { g += `<line x1="${X(0.1, y).toFixed(1)}" y1="${Y(0.1, y, zr).toFixed(1)}" x2="${X(L - 0.1, y).toFixed(1)}" y2="${Y(L - 0.1, y, zr).toFixed(1)}" class="cq-riel"/>`; });
-            const porRiel = Math.max(1, Math.floor((L - 0.3) / 0.45));
-            const n = Math.round(Math.min(1, frac) * porRiel * rieles);
-            const [c1, c2] = COLOR.carnes;
-            const piezas = [];
-            for (let i = 0; i < rieles; i++) for (let j = 0; j < porRiel; j++) piezas.push({ x: 0.3 + j * (L - 0.6) / Math.max(1, porRiel - 1), y: ys[i] });
-            piezas.sort((a, b) => (a.x + a.y) - (b.x + b.y)).slice(0, n).forEach((pz) => {
-                const tx = X(pz.x, pz.y), ty = Y(pz.x, pz.y, zr), by = Y(pz.x, pz.y, zr - largo);
-                const w = Math.max(3, 0.14 * s), h0 = ty + 0.12 * s;
-                g += `<line x1="${tx.toFixed(1)}" y1="${ty.toFixed(1)}" x2="${tx.toFixed(1)}" y2="${h0.toFixed(1)}" class="cq-gancho"/>`;
-                g += `<path d="M${(tx - w * 0.5).toFixed(1)},${h0.toFixed(1)} C${(tx - w * 1.3).toFixed(1)},${((h0 + by) / 2).toFixed(1)} ${(tx - w).toFixed(1)},${by.toFixed(1)} ${tx.toFixed(1)},${by.toFixed(1)} C${(tx + w).toFixed(1)},${by.toFixed(1)} ${(tx + w * 1.3).toFixed(1)},${((h0 + by) / 2).toFixed(1)} ${(tx + w * 0.5).toFixed(1)},${h0.toFixed(1)} Z" fill="${c1}" stroke="${c2}" stroke-width="1"/>`;
-            });
-        } else {
-            const canast = o.formato === 'canastilla';
-            let cw = canast ? 0.6 : 0.5, cd = 0.4;
-            const ch = canast ? 0.3 : 0.32;
-            const esc = Math.max(1, Math.sqrt(((L - 0.2) / cw) * ((A - 0.2) / cd) / 90));
-            cw *= esc; cd *= esc;
-            const nx = Math.max(1, Math.floor((L - 0.2) / cw)), ny = Math.max(1, Math.floor((A - 0.2) / cd));
-            const niveles = Math.max(1, Math.min(8, Math.floor((H - 0.55) / ch)));
-            const celdas = [];
-            for (let i = 0; i < nx; i++) for (let j = 0; j < ny; j++) {
-                const x = 0.1 + i * cw, y = 0.1 + j * cd;
-                if (x + cw > px - 0.05 && x < px + pw + 0.05 && y + cd > A * 0.4) continue;   // pasillo desde la puerta
-                celdas.push({ x, y });
-            }
-            celdas.sort((a, b) => (a.x + a.y) - (b.x + b.y) || a.x - b.x);
-            let n = Math.round(Math.min(1, frac) * celdas.length * niveles);
-            const [c1, c2, c3] = COLOR[o.cat] || COLOR.congelados;
-            celdas.forEach((c) => {
-                const k = Math.min(niveles, n); n -= k;
-                for (let z0 = 0; z0 < k; z0++) {
-                    const z = z0 * ch, x = c.x + 0.02 * esc, y = c.y + 0.02 * esc, w = cw - 0.04 * esc, d = cd - 0.04 * esc, h = ch - 0.02;
-                    g += poly([P(x, y, z + h), P(x + w, y, z + h), P(x + w, y + d, z + h), P(x, y + d, z + h)], 'cq-caja', ` fill="${c3}" stroke="${c2}"`);
-                    g += poly([P(x, y + d, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x, y + d, z + h)], 'cq-caja', ` fill="${c1}" stroke="${c2}"`);
-                    g += poly([P(x + w, y, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x + w, y, z + h)], 'cq-caja', ` fill="${c2}" stroke="${c2}"`);
-                }
-            });
-        }
-        // Paredes del frente, transparentes, y la puerta
-        g += poly([P(0, A, 0), P(L, A, 0), P(L, A, H), P(0, A, H)], 'cq-vidrio');
-        g += poly([P(L, 0, 0), P(L, A, 0), P(L, A, H), P(L, 0, H)], 'cq-vidrio');
-        const ph = Math.min(2, H - 0.15);
-        g += poly([P(px, A, 0), P(px + pw, A, 0), P(px + pw, A, ph), P(px, A, ph)], 'cq-puerta');
-        g += `<line x1="${X(px + pw - 0.1, A).toFixed(1)}" y1="${Y(px + pw - 0.1, A, 1).toFixed(1)}" x2="${X(px + pw - 0.1, A).toFixed(1)}" y2="${Y(px + pw - 0.1, A, 1.2).toFixed(1)}" class="cq-manija"/>`;
-        if (frio) g += poly([P(0, 0, H), P(L, 0, H), P(L, A, H), P(0, A, H)], 'cq-escarcha');
-        const cota = (x1, y1, x2, y2, txt, dx, dy, anchor) => `<text x="${((x1 + x2) / 2 + dx).toFixed(1)}" y="${((y1 + y2) / 2 + dy).toFixed(1)}" text-anchor="${anchor}" class="cq-cota">${txt}</text>`;
-        g += cota(X(0, A), Y(0, A, 0), X(L, A), Y(L, A, 0), `${num(L, 1)} m`, -6, 18, 'end');
-        g += cota(X(L, A), Y(L, A, 0), X(L, 0), Y(L, 0, 0), `${num(A, 1)} m`, 8, 18, 'start');
-        g += cota(X(0, A), Y(0, A, 0), X(0, A), Y(0, A, H), `${num(H, 1)} m`, -8, 4, 'end');
-        if (frac > 1) g += '<text x="260" y="24" text-anchor="middle" class="cq-nocabe">No cabe todo</text>';
-        svg.innerHTML = g;
-        svg.dataset.frio = frio ? 'si' : 'no';
-    }
-
     // ── Bodega grande ──
     const BD = FE.datos.bodegasDatos();
     const RANGO_T = [10, 500000];
@@ -661,44 +562,9 @@
         const gcca = bd.volumen_referencia_gcca_m3;
         $('peBodRef').textContent = `Para comparar: el promedio mundial de bodegas frigoríficas (GCCA) es 4,3 m³ por tonelada, que daría ${miles(gcca)} m³. ${gcca < bd.volumen_m3 ? 'Sale menos porque muchas bodegas usan sistemas más apretados que la estantería selectiva, como drive-in o estantería móvil.' : 'Sale más porque el promedio mundial incluye bodegas con estantería selectiva y pasillos anchos.'} Emergent Cold, en Funza, guarda 12.000 t en 81.000 m³.`;
         const dib = $('peBodDibujo');
-        dib.parentElement.dataset.vista = PL ? 'plano' : 'dentro';
-        $('peBodLeyenda').hidden = !PL;
-        if (PL) PL.pintar(dib, { tipo: 'bodega', L: bd.largo_m || Math.sqrt(bd.area_m2), A: bd.ancho_m || Math.sqrt(bd.area_m2), H: S.balt });
-        else dibujarBodega(dib, bd);
+        dib.parentElement.dataset.vista = 'plano';
+        PL.pintar(dib, { tipo: 'bodega', L: bd.largo_m || Math.sqrt(bd.area_m2), A: bd.ancho_m || Math.sqrt(bd.area_m2), H: S.balt });
     }
-    function dibujarBodega(svg, bd) {
-        const LX = bd.largo_m || Math.sqrt(bd.area_m2), LY = bd.ancho_m || Math.sqrt(bd.area_m2);
-        const lado = LY, H = S.balt, cL = 105, cA = 68, sep = Math.max(8, Math.max(LX, LY) * 0.08);
-        const cos = Math.cos(Math.PI / 6), sin = 0.5;
-        const U = (x, y) => (x - y) * cos, V = (x, y, z) => (x + y) * sin - z;
-        const pts = [[0, 0, 0], [LX, 0, 0], [LX, LY, 0], [0, LY, 0], [0, 0, H], [LX, 0, H], [LX, LY, H], [0, LY, H],
-            [0, lado + sep, 0], [cL, lado + sep, 0], [cL, lado + sep + cA, 0], [0, lado + sep + cA, 0]];
-        const us = pts.map(([x, y]) => U(x, y)), vs = pts.map(([x, y, z]) => V(x, y, z));
-        const [u0, u1, v0, v1] = [Math.min(...us), Math.max(...us), Math.min(...vs), Math.max(...vs)];
-        const s = Math.min(470 / (u1 - u0), 250 / (v1 - v0));
-        const ox = 260 - (u0 + u1) / 2 * s, oy = 165 - (v0 + v1) / 2 * s;
-        const P = (x, y, z = 0) => [ox + U(x, y) * s, oy + V(x, y, z) * s];
-        const pp = (...ps) => ps.map((q) => P(...q).map((v) => v.toFixed(1)).join(',')).join(' ');
-        let g = '';
-        g += `<polygon points="${pp([0, LY, 0], [LX, LY, 0], [LX, LY, H], [0, LY, H])}" class="bd-a"/>`;
-        g += `<polygon points="${pp([LX, 0, 0], [LX, LY, 0], [LX, LY, H], [LX, 0, H])}" class="bd-b"/>`;
-        g += `<polygon points="${pp([0, 0, H], [LX, 0, H], [LX, LY, H], [0, LY, H])}" class="bd-c"/>`;
-        const niveles = Math.max(1, Math.min(12, Math.floor(H / 1.9)));
-        for (let k = 1; k < niveles; k++) {
-            const z = H * k / niveles, [x1, y1] = P(0, LY, z), [x2, y2] = P(LX, LY, z);
-            g += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" class="bd-rack"/>`;
-        }
-        g += `<polygon points="${pp([0, lado + sep], [cL, lado + sep], [cL, lado + sep + cA], [0, lado + sep + cA])}" class="bd-cancha"/>`;
-        const [m1x, m1y] = P(cL / 2, lado + sep), [m2x, m2y] = P(cL / 2, lado + sep + cA);
-        g += `<line x1="${m1x.toFixed(1)}" y1="${m1y.toFixed(1)}" x2="${m2x.toFixed(1)}" y2="${m2y.toFixed(1)}" class="bd-linea"/>`;
-        const [tx, ty] = P(LX, LY, 0);
-        g += `<text x="${tx.toFixed(1)}" y="${Math.min(324, ty + 18).toFixed(1)}" text-anchor="middle" class="bd-t">${miles(bd.area_m2)} m² · ${num(S.balt)} m de alto</text>`;
-        const cy = Math.max(...[[0, lado + sep], [cL, lado + sep], [cL, lado + sep + cA], [0, lado + sep + cA]].map((q) => P(...q)[1]));
-        const [cx] = P(cL / 2, lado + sep + cA / 2);
-        g += `<text x="${Math.max(60, cx).toFixed(1)}" y="${Math.min(324, cy + 16).toFixed(1)}" text-anchor="middle" class="bd-t">cancha de fútbol</text>`;
-        svg.innerHTML = g;
-    }
-
     // ── Guardar y ficha para FrigoPac ──
     function nuevoId() {
         const a = new Date().getFullYear();
@@ -815,11 +681,14 @@
         if ((el = b('[data-tipo]'))) {
             const tipo = el.dataset.tipo;
             if (S.pantalla !== 'entrada') { elegirTipo(tipo); return; }
-            const pasar = () => { elegirTipo(tipo); mostrar('inicio'); };
+            const pasar = () => {
+                elegirTipo(tipo); mostrar('inicio');
+                PL.pintar($('peInicioPlano'), tipo === 'bodega' ? { tipo: 'bodega', L: 30, A: 20, H: 10 } : { tipo: 'cuarto', L: 3, A: 2.5, H: 2.4 }, { entra: true });
+                try { localStorage.setItem('frigopac_entrada_vista', '1'); } catch (e) { /* sin almacenamiento local */ }
+            };
             if (PQ) PQ.entrar(tipo, pasar); else pasar();
             return;
         }
-        if ((el = b('[data-escena]'))) { escena = el.dataset.escena; pintarEscena(); return; }
         if ((el = b('[data-cat]'))) {
             S.cat = el.dataset.cat;
             const lista = productos.filter((p) => p.categoria === S.cat);
@@ -936,6 +805,9 @@
     }
 
     pintarInicio();
-    if (!restaurar()) mostrar(PQ ? 'entrada' : 'inicio');
+    // Quien ya pasó por la entrada llega directo a armar; puede volver a verla con "Ver la entrada".
+    let yaEntro = false;
+    try { yaEntro = localStorage.getItem('frigopac_entrada_vista') === '1'; } catch (e) { /* sin almacenamiento local */ }
+    if (!restaurar()) mostrar(PQ && !yaEntro ? 'entrada' : 'inicio');
     window.FrigoPacProyecto = { estado: () => ({ ...estadoParaGuardar(), contacto: S.contacto }) };
 })();

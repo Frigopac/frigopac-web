@@ -15,10 +15,11 @@
     const estados = new WeakMap();
 
     // Las medidas llegan de golpe; el dibujo las alcanza poco a poco para que el cambio se vea fluido.
-    function pintar(svg, o) {
+    function pintar(svg, o, opc) {
         if (!svg) return;
         let e = estados.get(svg);
         if (!e) { e = { cur: null, raf: 0, visto: false }; estados.set(svg, e); svg.classList.add('pe-plano'); }
+        if (opc && opc.entra) e.visto = false;      // volver a trazar el plano, como recién dibujado
         svg.classList.toggle('pe-plano--entra', !e.visto && !reduce);
         e.visto = true;
         e.obj = o;
@@ -115,6 +116,7 @@
             const evap = caja(x0 + 0.06, yc - ew / 2, H - 0.52, 0.4, ew, 0.38);
             traza('pl-equipo', evap.vis + evap.oc);
         }
+        if (!bodega && o.formato) producto();
         traza('pl-cara', cuerpo.caras);
         let juntas = '';
         const pj = bodega ? malla : 1;
@@ -146,6 +148,47 @@
             traza('pl-tubo', seg([x0 + 0.3, y0 + 0.8, H], [x0 + 0.3, yc, H]) + seg([x0 + 0.3, yc, H], [x0 + 0.3, yc, H - 0.14]));
             traza('pl-equipo-f', cond.caras);
             traza('pl-equipo', cond.vis);
+        }
+
+        // El producto adentro: columnas de canastillas o cajas, o piezas colgadas en rieles
+        function producto() {
+            const [c1, c2, c3] = o.color || ['#8EC3DE', '#5E97B6', '#B9DCEE'];
+            const frac = Math.max(0, Math.min(1, o.frac || 0));
+            const cara = (pts, fill) => out.push(`<path class="pl-prod" d="${poly(...pts)}" fill="${fill}" stroke="${c2}"/>`);
+            const bloque = (x, y, z, dx, dy, dz) => {
+                cara([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], c3);
+                cara([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], c1);
+                cara([[x + dx, y, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x + dx, y, z + dz]], c2);
+            };
+            if (o.formato === 'riel') {
+                const rieles = clamp(Math.floor((A - 0.6) / 0.7) + 1, 1, 4), zr = H - 0.3, largo = Math.min(1.8, H - 0.6);
+                const ys = rieles === 1 ? [yc] : Array.from({ length: rieles }, (_, i) => y0 + 0.45 + i * (A - 0.9) / (rieles - 1));
+                traza('pl-riel', ys.map((y) => seg([x0 + 0.1, y, zr], [x1 - 0.1, y, zr])).join(''));
+                const porRiel = Math.max(1, Math.floor((L - 0.3) / 0.45));
+                const lugares = [];
+                ys.forEach((y) => { for (let j = 0; j < porRiel; j++) lugares.push([x0 + 0.3 + j * (L - 0.6) / Math.max(1, porRiel - 1), y]); });
+                lugares.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1])).slice(0, Math.round(frac * lugares.length))
+                    .forEach(([x, y]) => bloque(x - 0.07, y - 0.16, zr - largo, 0.14, 0.32, largo - 0.12));
+                return;
+            }
+            let cw = o.formato === 'canastilla' ? 0.6 : 0.5, cd = 0.4;
+            const ch = o.formato === 'canastilla' ? 0.3 : 0.32;
+            const esc = Math.max(1, Math.sqrt(((L - 0.2) / cw) * ((A - 0.2) / cd) / 70));
+            cw *= esc; cd *= esc;
+            const nx = Math.max(1, Math.floor((L - 0.2) / cw)), ny = Math.max(1, Math.floor((A - 0.2) / cd));
+            const niveles = clamp(Math.floor((H - 0.55) / ch), 1, 8);
+            const celdas = [];
+            for (let i = 0; i < nx; i++) for (let j = 0; j < ny; j++) {
+                const x = x0 + 0.1 + i * cw, y = y0 + 0.1 + j * cd;
+                if (y + cd > yc - 0.45 && y < yc + 0.45 && x + cw > x0 + L * 0.45) continue;      // pasillo desde la puerta
+                celdas.push([x, y]);
+            }
+            celdas.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]) || a[0] - b[0]);
+            let n = Math.round(frac * celdas.length * niveles);
+            celdas.forEach(([x, y]) => {
+                const k = Math.min(niveles, n); n -= k;
+                if (k > 0) bloque(x + 0.03 * esc, y + 0.03 * esc, 0, cw - 0.06 * esc, cd - 0.06 * esc, k * ch);
+            });
         }
 
         // Referencias a escala
@@ -191,6 +234,7 @@
         traza('pl-escala', seg([bx - malla, by, 0], [bx, by, 0]) + marca([bx - malla, by, 0]) + marca([bx, by, 0]));
         texto('pl-nota', [bx - malla, by, 0], [bx, by, 0], 30, 0, -5, `${num(malla)} m`);
 
+        if (!bodega && o.frac > 1) out.push(`<text class="pl-aviso" x="${VW / 2}" y="26">No cabe todo</text>`);
         out.push(`<text class="pl-rotulo" x="${VW - 12}" y="${VH - 10}">PLANO DE REFERENCIA · ${bodega ? 'BODEGA' : 'CUARTO FRÍO'} · SIN ESCALA FIJA</text>`);
         svg.innerHTML = out.join('');
     }

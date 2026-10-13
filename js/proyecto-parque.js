@@ -1,8 +1,8 @@
 /* ============================================
    FRIGOPAC - Entrada de la calculadora: el parque
-   Un portal con el logo, operarios trabajando y, al bajar, una calle con un local
-   (cuarto frío) y una bodega. Es solo la puerta de entrada: no calcula nada.
-   El dibujo se arma aquí para que se adapte al ancho de la pantalla.
+   Un solo mundo en perspectiva: la cámara avanza por la vía, pasa bajo el portal
+   y las farolas, y llega a la plaza donde están el local (cuarto frío) y la bodega.
+   Es solo la puerta de entrada: no calcula nada.
    ============================================ */
 (function () {
     'use strict';
@@ -16,9 +16,16 @@
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
     const suave = (t) => { t = clamp(t); return t * t * (3 - 2 * t); };
-    const VH = 800, SUELO = 640, FUGA = 500, CALLE = 590;
-    let VW = 400, cx = 200, portal = null, calle = null, monte = null;
-    let centros = {}, pAct = 0, pObj = 0, raf = 0, ocupado = false;
+    const frases = [...escena.querySelectorAll('.pe-entrada__frase')];
+    const avance = escena.querySelector('.pe-entrada__avance i');
+
+    // Lámina de 800 de alto. El horizonte está en FUGA y el ojo a OJO unidades del suelo:
+    // algo dibujado con la base en y = 640 queda bien apoyado cuando su escala es 1.
+    const VH = 800, FUGA = 500, OJO = 140, BASE = FUGA + OJO;
+    const RECORRIDO = 3;            // cuánto avanza la cámara de principio a fin
+    const Z_PORTAL = 1, Z_PLAZA = 3;
+    let VW = 400, cx = 200, via = 40, zEdif = 4;
+    let capas = [], piezas = {}, pAct = 0, pObj = 0, raf = 0, ocupado = false;
 
     // ── Operario con camisa de FRIGOPAC (los pies quedan en x, y) ──
     function operario({ x, y, s = 1, gira = false, pose = 'quieto', piel = '#D9A47E', casco = '#FFFFFF' }) {
@@ -28,7 +35,7 @@
             brazos = `<path class="pq-manga" d="M-8.5 -45 L-12 -30"/>${mano(-12.4, -28.2)}<path class="pq-manga" d="M8.5 -45 L12 -30"/>${mano(12.4, -28.2)}`;
         } else if (pose === 'planilla') {
             brazos = `<path class="pq-manga" d="M-8.5 -45 L-12 -30"/>${mano(-12.4, -28.2)}`;
-            extra = `<g class="pq-flota pq-flota--lenta"><rect class="pq-hoja" x="16" y="-51" width="10" height="13" rx="1"/><path class="pq-hoja-l" d="M18 -47 H24 M18 -44 H24 M18 -41 H22"/>
+            extra = `<g class="pq-anota"><rect class="pq-hoja" x="16" y="-51" width="10" height="13" rx="1"/><path class="pq-hoja-l" d="M18 -47 H24 M18 -44 H24 M18 -41 H22"/>
                 <path class="pq-manga" d="M8.5 -45 L14 -37 L19 -40"/>${mano(19.4, -40.4)}</g>`;
         } else if (pose === 'carga') {
             extra = `<rect class="pq-caja" x="8" y="-43" width="18" height="15"/><path class="pq-caja-l" d="M17 -43 V-28"/><path class="pq-manga" d="M-6 -44 L10 -33"/>${mano(11, -32)}`;
@@ -47,8 +54,6 @@
             ${extra}
         </g>`;
     }
-    const caminante = (o, clase) => `<g class="pq-pasea ${clase}"><g class="pq-voltea ${clase} pq-camina">${operario(o)}</g></g>`;
-    const ENTRAR = (x, y, clase = '') => `<g class="pq-flota ${clase}"><rect class="pq-entrar" x="${x - 34}" y="${y}" width="68" height="22" rx="11"/><text class="pq-entrar-t" x="${x}" y="${y + 15.5}">ENTRAR ›</text></g>`;
 
     // ── Los dos edificios, en alzado. El origen es el centro de la base. ──
     function local() {
@@ -67,9 +72,8 @@
             <rect class="pq-frio-p" x="24" y="-58" width="26" height="58"/><path class="pq-cian-l" d="M45 -34 V-22"/>
             <text class="pq-frio-t" x="37" y="-72">0 °C</text>
             <rect class="pq-l" x="14" y="-218" width="56" height="28"/><g class="pq-gira"><circle class="pq-l" cx="42" cy="-204" r="10"/><path class="pq-fino" d="M42 -204 V-213 M42 -204 L50 -199 M42 -204 L34 -199"/></g>
-            ${operario({ x: -36, y: -190, s: 0.72, casco: '#FFC857' })}
-            ${ENTRAR(0, -262)}
-            <rect class="pq-hl" x="-94" y="-268" width="188" height="272" rx="6"/>
+            <g class="pq-gente">${operario({ x: -36, y: -190, s: 0.72, casco: '#FFC857' })}</g>
+            <rect class="pq-hl" x="-94" y="-226" width="188" height="230" rx="6"/>
         </g>`;
     }
     function bodega() {
@@ -85,13 +89,11 @@
             ${muelle(-62, false)}${muelle(-18, true)}${muelle(26, false)}
             <rect class="pq-rayas" x="-80" y="-6" width="160" height="6"/>
             <rect class="pq-l" x="-70" y="-188" width="16" height="16"/><rect class="pq-l" x="-46" y="-184" width="12" height="12"/>
-            <circle class="pq-humo" cx="-62" cy="-194" r="5"/><circle class="pq-humo pq-humo--b" cx="-62" cy="-194" r="5"/>
-            ${ENTRAR(0, -216, 'pq-flota--b')}
-            <rect class="pq-hl" x="-94" y="-222" width="188" height="226" rx="6"/>
+            <rect class="pq-hl" x="-94" y="-196" width="188" height="200" rx="6"/>
         </g>`;
     }
     function camion(k) {
-        return `<g class="pq-camion"><g transform="translate(0 ${CALLE + 52}) scale(${k})">
+        return `<g class="pq-camion"><g transform="translate(0 ${BASE + 4}) scale(${k})">
             <rect class="pq-l" x="0" y="-38" width="58" height="36"/><path class="pq-cian-l" d="M0 -13 H58"/><text class="pq-camion-t" x="29" y="-21">FRIGOPAC</text>
             <rect class="pq-l" x="44" y="-44" width="11" height="6"/>
             <polygon class="pq-l" points="60,-28 74,-28 82,-14 82,-4 60,-4"/><polygon class="pq-vidrio" points="64,-25 73,-25 78,-16 64,-16"/>
@@ -99,8 +101,16 @@
             <circle class="pq-rueda" cx="14" cy="-3" r="6"/><circle class="pq-rueda" cx="40" cy="-3" r="6"/><circle class="pq-rueda" cx="70" cy="-3" r="6"/>
         </g></g>`;
     }
+    // Farola o señal al borde de la vía; lado = -1 izquierda, 1 derecha
+    function farola(lado, letrero) {
+        const x = cx + lado * (via + 30);
+        let g = `<path class="pq-poste" d="M${x} ${BASE} V${BASE - 150} h${-lado * 26}"/><rect class="pq-foco" x="${x - lado * 26 - 9}" y="${BASE - 153}" width="18" height="5" rx="2"/>
+            <ellipse class="pq-halo-s" cx="${x - lado * 26}" cy="${BASE - 140}" rx="26" ry="16"/>`;
+        if (letrero) g += `<rect class="pq-placa" x="${x + (lado < 0 ? -92 : 6)}" y="${BASE - 118}" width="86" height="26" rx="3"/><text class="pq-senal" x="${x + (lado < 0 ? -49 : 49)}" y="${BASE - 100.5}">${letrero}</text>`;
+        return g;
+    }
 
-    // ── Armar el dibujo para el ancho de la pantalla ──
+    // ── Armar el mundo para el ancho de la pantalla ──
     function construir() {
         const r = escena.getBoundingClientRect();
         if (!r.width || !r.height) return;
@@ -108,87 +118,119 @@
         cx = VW / 2;
         const ancho = VW >= 900;
         svg.setAttribute('viewBox', `0 0 ${VW} ${VH}`);
-        svg.style.setProperty('--pq-recorrido', (VW + 280) + 'px');
-        const g = ancho ? Math.min(330, VW * 0.23) : 130;        // del centro a cada poste
-        const sep = ancho ? Math.min(340, VW * 0.235) : 104;      // del centro a cada edificio
-        const k = ancho ? 1.65 : 1;
-        centros = { cuarto: { x: cx - sep, y: CALLE - 100 * k }, bodega: { x: cx + sep, y: CALLE - 90 * k } };
+        const g = ancho ? Math.min(330, VW * 0.23) : 130;         // del centro a cada poste
+        const sep = ancho ? Math.min(400, VW * 0.27) : 122;       // del centro a cada edificio
+        const k = ancho ? 1.9 : 1.1;
+        via = ancho ? 96 : 34;
+        zEdif = RECORRIDO + 1 / 0.8;
+        svg.style.setProperty('--pq-llegada', (cx + sep - 84 * k - 10 - 86 * 0.9 * k) + 'px');
+        svg.style.setProperty('--pq-salida', (-140 * k) + 'px');
 
-        // Fondo: horizonte, montañas, suelo en perspectiva y la vía de acceso
-        let f = '<defs><pattern id="pqRayas" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="pq-rayas-a" width="12" height="12"/><rect class="pq-rayas-b" width="6" height="12"/></pattern></defs>';
+        let f = `<defs>
+            <pattern id="pqRayas" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="pq-rayas-a" width="12" height="12"/><rect class="pq-rayas-b" width="6" height="12"/></pattern>
+            <radialGradient id="pqHalo"><stop offset="0" class="pq-halo-a"/><stop offset="1" class="pq-halo-b"/></radialGradient>
+            <linearGradient id="pqCono" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pq-cono-a"/><stop offset="1" class="pq-halo-b"/></linearGradient>
+        </defs>`;
+        // Fondo fijo: horizonte, cerros y las líneas del suelo que van al punto de fuga
         const cerros = [];
         for (let x = -20; x <= VW + 60; x += 46) cerros.push(`${x},${(FUGA - 20 - 34 * Math.abs(Math.sin(x * 0.011)) - 16 * Math.abs(Math.sin(x * 0.037 + 1))).toFixed(1)}`);
-        f += `<g id="pqMonte"><polyline class="pq-monte" points="${cerros.join(' ')}"/></g><path class="pq-fino" d="M0 ${FUGA} H${VW}"/>`;
-        let reja = '';
-        for (let i = -10; i <= 10; i++) if (i) reja += `M${cx + i * 5} ${FUGA} L${cx + i * 200} ${VH}`;
-        for (let i = 1; i <= 7; i++) { const y = (FUGA + 300 * Math.pow(i / 8, 1.7)).toFixed(1); reja += `M0 ${y} H${VW}`; }
-        f += `<path class="pq-reja" d="${reja}"/>`;
-        f += `<polygon class="pq-via" points="${cx - 10},${FUGA} ${cx + 10},${FUGA} ${cx + 250},${VH} ${cx - 250},${VH}"/>`;
-        for (let i = 0; i < 9; i++) {
-            const t0 = Math.pow(i / 9, 1.7), t1 = Math.pow((i + 0.55) / 9, 1.7);
-            const ya = FUGA + 300 * t0, yb = FUGA + 300 * t1, wa = 0.6 + 4.5 * t0, wb = 0.6 + 4.5 * t1;
-            f += `<polygon class="pq-marca" points="${cx - wa},${ya.toFixed(1)} ${cx + wa},${ya.toFixed(1)} ${cx + wb},${yb.toFixed(1)} ${cx - wb},${yb.toFixed(1)}"/>`;
-        }
+        let radios = '';
+        for (let i = -10; i <= 10; i++) if (i) radios += `M${cx + i * 5} ${FUGA} L${cx + i * 200} ${VH}`;
+        f += `<g id="pqMonte"><polyline class="pq-monte" points="${cerros.join(' ')}"/></g><path class="pq-fino" d="M0 ${FUGA} H${VW}"/>
+            <path class="pq-reja" d="${radios}"/><path class="pq-reja" id="pqTraviesas"/>
+            <rect class="pq-plaza" id="pqPlaza" x="0" width="${VW}" y="${FUGA}" height="0"/>
+            <polygon class="pq-via" id="pqVia"/><path class="pq-marca" id="pqMarcas"/>`;
 
-        // La calle del parque
-        let c = `<g id="pqCalle" opacity="0"><rect class="pq-plaza" x="${-VW}" y="${CALLE - 4}" width="${VW * 3}" height="700"/>
-            <path class="pq-fino" d="M${-VW} ${CALLE - 4} H${VW * 2} M${-VW} ${CALLE + 50} H${VW * 2} M${-VW} ${CALLE + 110} H${VW * 2}"/>
-            <g transform="translate(${cx - sep} ${CALLE}) scale(${k})">${local()}</g>
-            <g transform="translate(${cx + sep} ${CALLE}) scale(${k})">${bodega()}</g>
-            ${operario({ x: cx - 14, y: CALLE + 28, s: 0.85 * k, gira: true, pose: 'planilla', piel: '#C58A63' })}
-            ${caminante({ x: cx + 26, y: CALLE + 22, s: 0.8 * k, pose: 'carga', piel: '#E0B08A' }, 'pq-pasea--b')}
-            ${camion(0.9 * k)}
-        </g>`;
+        // Capas del mundo, de la más lejana a la más cercana
+        const capa = (id, z, html) => `<g class="pq-capa" id="${id}" data-z="${z}">${html}</g>`;
+        const edificios = `<g transform="translate(${cx - sep} ${BASE}) scale(${k})">${local()}</g><g transform="translate(${cx + sep} ${BASE}) scale(${k})">${bodega()}</g>`;
+        const calle = `<g class="pq-gente">${operario({ x: cx - sep + 84 * k + 16 * k, y: BASE + 6, s: 0.85 * k, gira: true, pose: 'planilla', piel: '#C58A63' })}</g>${camion(0.9 * k)}`;
 
-        // El portal de entrada
-        const pi = cx - g - 14, pd = cx + g - 14, tx = cx - g - 36, tw = 2 * g + 72;
-        const poste = (x) => `<rect class="pq-l" x="${x}" y="330" width="28" height="310"/><path class="pq-fino" d="M${x + 20} 340 V608"/><rect class="pq-cian" x="${x}" y="424" width="28" height="14"/><rect class="pq-rayas" x="${x}" y="608" width="28" height="32"/>`;
+        const pi = cx - g - 14, pd = cx + g - 14, tx = cx - g - 30, tw = 2 * g + 60;
+        const poste = (x) => `<rect class="pq-l" x="${x}" y="300" width="28" height="340"/><path class="pq-fino" d="M${x + 20} 312 V608"/><rect class="pq-cian" x="${x}" y="424" width="28" height="14"/><rect class="pq-rayas" x="${x}" y="608" width="28" height="32"/>`;
         let peld = '';
-        for (let i = 1; i < 10; i++) { const t = i / 10; peld += `M${pi - 40 + 24 * t} ${640 - 302 * t} h24`; }
-        let p = `<g id="pqPortal">
-            <path class="pq-escalera" d="M${pi - 40} 640 L${pi - 16} 338 M${pi - 16} 640 L${pi + 8} 338 ${peld}"/>
+        for (let i = 1; i < 10; i++) { const t = i / 10; peld += `M${pi - 40 + 24 * t} ${640 - 330 * t} h24`; }
+        let celosia = '';
+        for (let x = tx, i = 0; x < tx + tw - 1; x += 22, i++) celosia += `M${x} ${i % 2 ? 262 : 300} L${Math.min(x + 22, tx + tw)} ${i % 2 ? 300 : 262}`;
+        let portal = `<ellipse class="pq-halo" cx="${cx}" cy="266" rx="230" ry="150"/>
+            <polygon class="pq-cono-luz" points="${cx - 118},344 ${cx + 118},344 ${cx + 210},640 ${cx - 210},640"/>
+            <path class="pq-escalera" d="M${pi - 40} 640 L${pi - 16} 310 M${pi - 16} 640 L${pi + 8} 310 ${peld}"/>
             ${poste(pi)}${poste(pd)}
-            <path class="pq-cota" d="M${tx} 168 H${tx + tw} M${tx} 160 V184 M${tx + tw} 160 V184 M${tx - 3} 171 l6 -6 M${tx + tw - 3} 171 l6 -6"/><text class="pq-cota-t" x="${cx}" y="160">ACCESO</text>
-            <rect class="pq-tablero" x="${tx}" y="190" width="${tw}" height="150" rx="4"/><rect class="pq-tablero-i" x="${tx + 7}" y="197" width="${tw - 14}" height="136" rx="2"/>
-            <text class="pq-letrero" x="${cx}" y="216">PARQUE DEL FRÍO</text>
-            <rect class="pq-blanco" x="${cx - 84}" y="224" width="168" height="104" rx="3"/>
-            <image href="assets/images/logo-frigopac.jpg" x="${cx - 80}" y="226" width="160" height="100" preserveAspectRatio="xMidYMid meet"/>`;
+            <rect class="pq-l" x="${tx}" y="258" width="${tw}" height="46"/><path class="pq-fino" d="${celosia}"/>
+            <path class="pq-cota" d="M${tx} 158 H${tx + tw} M${tx} 150 V174 M${tx + tw} 150 V174 M${tx - 3} 161 l6 -6 M${tx + tw - 3} 161 l6 -6"/><text class="pq-cota-t" x="${cx}" y="149">PARQUE DEL FRÍO</text>`;
         if (ancho) {
-            p += `<text class="pq-letrero pq-letrero--lado" x="${(tx + cx - 84) / 2}" y="284">‹ CUARTOS FRÍOS</text><text class="pq-letrero pq-letrero--lado" x="${(tx + tw + cx + 84) / 2}" y="284">BODEGAS ›</text>`;
+            const wa = (tx + cx - 124) / 2, wb = (tx + tw + cx + 124) / 2;
+            portal += `<rect class="pq-placa" x="${wa - 100}" y="262" width="200" height="38" rx="3"/><text class="pq-letrero" x="${wa}" y="287">‹ CUARTOS FRÍOS</text>
+                <rect class="pq-placa" x="${wb - 100}" y="262" width="200" height="38" rx="3"/><text class="pq-letrero" x="${wb}" y="287">BODEGAS ›</text>`;
         }
-        p += `<rect class="pq-foco" x="${tx + 40}" y="182" width="22" height="5" rx="2"/><rect class="pq-foco" x="${cx - 11}" y="182" width="22" height="5" rx="2"/><rect class="pq-foco" x="${tx + tw - 62}" y="182" width="22" height="5" rx="2"/>
-            ${operario({ x: pi - 8, y: 398, pose: 'escalera', piel: '#C58A63', casco: '#FFC857' })}
-            ${operario({ x: pd - 22, y: 654, gira: true, pose: 'planilla', piel: '#E0B08A' })}
-            ${caminante({ x: cx - 104, y: 730, s: 1.35, pose: 'carga', piel: '#A9714B' }, 'pq-pasea--a')}
-            <polygon class="pq-cono" points="${cx - 82},690 ${cx - 74},690 ${cx - 78},672"/><polygon class="pq-cono" points="${cx + 92},690 ${cx + 100},690 ${cx + 96},672"/>
-        </g>`;
+        // Aviso luminoso con el logo: caja de luz montada sobre la viga
+        portal += `<rect class="pq-soporte" x="${cx - 96}" y="176" width="8" height="14"/><rect class="pq-soporte" x="${cx + 88}" y="176" width="8" height="14"/><path class="pq-poste" d="M${cx - 110} 176 H${cx + 110}"/>
+            <rect class="pq-luz-marco" x="${cx - 124}" y="186" width="248" height="158" rx="10"/>
+            <rect class="pq-luz" x="${cx - 118}" y="192" width="236" height="146" rx="6"/>
+            <image href="assets/images/logo-frigopac.jpg" x="${cx - 104}" y="198" width="208" height="134" preserveAspectRatio="xMidYMid meet"/>
+            <rect class="pq-luz-brillo" x="${cx - 118}" y="192" width="236" height="146" rx="6"/>
+            <g class="pq-gente">${operario({ x: pi - 8, y: 398, pose: 'escalera', piel: '#C58A63', casco: '#FFC857' })}
+            ${operario({ x: pd - 22, y: 646, gira: true, pose: 'planilla', piel: '#E0B08A' })}
+            <g class="pq-pasea"><g class="pq-voltea pq-camina">${operario({ x: cx - 70, y: 648, s: 1.05, pose: 'carga', piel: '#A9714B' })}</g></g></g>
+            <polygon class="pq-cono" points="${cx - via - 12},640 ${cx - via - 2},640 ${cx - via - 7},620"/><polygon class="pq-cono" points="${cx + via + 2},640 ${cx + via + 12},640 ${cx + via + 7},620"/>`;
 
-        svg.innerHTML = f + c + p;
-        portal = svg.querySelector('#pqPortal'); calle = svg.querySelector('#pqCalle'); monte = svg.querySelector('#pqMonte');
+        svg.innerHTML = f +
+            capa('pqEdificios', zEdif, edificios) +
+            capa('pqCalle', zEdif - 0.1, calle) +
+            capa('pqFarC', 2.7, farola(-1) + farola(1)) +
+            capa('pqFarB', 2.05, farola(-1, 'CUARTOS ‹') + farola(1, '› BODEGAS')) +
+            capa('pqFarA', 1.45, farola(-1) + farola(1)) +
+            capa('pqPortal', Z_PORTAL, portal);
+        capas = [...svg.querySelectorAll('.pq-capa')].map((el) => ({ el, z: Number(el.dataset.z), fijo: el.id === 'pqEdificios' || el.id === 'pqCalle' }));
+        piezas = { monte: svg.querySelector('#pqMonte'), traviesas: svg.querySelector('#pqTraviesas'), plaza: svg.querySelector('#pqPlaza'), via: svg.querySelector('#pqVia'), marcas: svg.querySelector('#pqMarcas') };
         aplicar(pAct);
     }
 
-    // ── El recorrido: p va de 0 (afuera del portal) a 1 (en la calle) ──
+    // ── El recorrido: p va de 0 (afuera del portal) a 1 (en la plaza) ──
+    const altura = (d) => FUGA + OJO / d;                 // dónde cae en la lámina un punto del suelo a distancia d
     function aplicar(p) {
-        if (!portal) return;
-        const t1 = suave((p - 0.06) / 0.46);
-        portal.setAttribute('transform', `translate(${cx} ${SUELO}) scale(${(1 + 3.4 * t1).toFixed(4)}) translate(${-cx} ${-SUELO})`);
-        portal.setAttribute('opacity', (1 - suave((p - 0.34) / 0.18)).toFixed(3));
-        portal.setAttribute('visibility', p > 0.53 ? 'hidden' : 'visible');
-        const t2 = suave((p - 0.24) / 0.52);
-        calle.setAttribute('transform', `translate(${cx} 520) scale(${(0.62 + 0.38 * t2).toFixed(4)}) translate(${-cx} -520)`);
-        calle.setAttribute('opacity', clamp((p - 0.24) / 0.2).toFixed(3));
-        monte.setAttribute('transform', `translate(0 ${(p * 14).toFixed(1)})`);
-        escena.classList.toggle('is-bajando', p > 0.05);
-        escena.classList.toggle('is-viva', p > 0.8);
+        if (!capas.length) return;
+        const c = RECORRIDO * p;
+        capas.forEach((o) => {
+            const d = o.z - c;
+            if (d < 0.14) { o.el.setAttribute('visibility', 'hidden'); return; }
+            const s = 1 / d;
+            o.el.setAttribute('visibility', 'visible');
+            o.el.setAttribute('transform', `translate(${cx} ${FUGA}) scale(${s.toFixed(4)}) translate(${-cx} ${-FUGA})`);
+            o.el.setAttribute('opacity', o.fijo ? clamp(0.35 + s * 0.9).toFixed(3) : (1 - suave((s - 2.4) / 2.2)).toFixed(3));
+        });
+        // Suelo: traviesas que se acercan, la plaza al fondo y la vía hasta donde empieza la plaza
+        let trav = '', marcas = '';
+        for (let z = 0.25; z < zEdif + 1; z += 0.25) { const d = z - c; if (d > 0.46) trav += `M0 ${altura(d).toFixed(1)} H${VW}`; }
+        piezas.traviesas.setAttribute('d', trav);
+        const dPlaza = Z_PLAZA - c;
+        const yPlaza = dPlaza > 0.46 ? altura(dPlaza) : VH + 4;
+        const yFondo = altura(zEdif + 0.7 - c);
+        piezas.plaza.setAttribute('y', yFondo.toFixed(1));
+        piezas.plaza.setAttribute('height', Math.max(0, yPlaza - yFondo).toFixed(1));
+        const medio = (y) => via * (y - FUGA) / OJO;
+        piezas.via.setAttribute('points', yPlaza >= VH ? '' : `${cx - medio(yPlaza)},${yPlaza.toFixed(1)} ${cx + medio(yPlaza)},${yPlaza.toFixed(1)} ${cx + medio(VH)},${VH} ${cx - medio(VH)},${VH}`);
+        for (let z = 0.2; z < Z_PLAZA - 0.1; z += 0.22) {
+            const d0 = z + 0.09 - c, d1 = z - c;
+            if (d1 < 0.47) continue;
+            const ya = altura(d0), yb = altura(d1), wa = 2.2 / d0, wb = 2.2 / d1;
+            marcas += `M${(cx - wa).toFixed(1)} ${ya.toFixed(1)}H${(cx + wa).toFixed(1)}L${(cx + wb).toFixed(1)} ${yb.toFixed(1)}H${(cx - wb).toFixed(1)}Z`;
+        }
+        piezas.marcas.setAttribute('d', marcas);
+        piezas.monte.setAttribute('transform', `translate(0 ${(p * 10).toFixed(1)})`);
+
+        escena.classList.toggle('is-bajando', p > 0.04);
+        escena.classList.toggle('is-viva', p > 0.9);
+        frases.forEach((el, i) => el.classList.toggle('is-vista', i === 0 ? p > 0.16 && p < 0.44 : p > 0.5 && p < 0.82));
+        if (avance) avance.style.transform = `scaleY(${p.toFixed(3)})`;
     }
     function objetivo() {
         const max = pista.offsetHeight - escena.offsetHeight;
         return reduce || max < 8 ? 1 : clamp(window.scrollY / max);
     }
     function cuadro() {
-        pAct += (pObj - pAct) * 0.14;
-        if (Math.abs(pObj - pAct) < 0.0006) pAct = pObj;
+        pAct += (pObj - pAct) * 0.12;
+        if (Math.abs(pObj - pAct) < 0.0005) pAct = pObj;
         aplicar(pAct);
         raf = pAct === pObj ? 0 : requestAnimationFrame(cuadro);
     }
@@ -201,30 +243,48 @@
     let espera = 0;
     function alCambiarTamano() {
         clearTimeout(espera);
-        espera = setTimeout(() => { if (!seccion.hidden) { construir(); alMover(); } }, 120);
+        espera = setTimeout(() => { if (!seccion.hidden && !ocupado) { construir(); alMover(); } }, 120);
     }
 
-    // ── Entrar a un edificio: la cámara se acerca y da paso a la calculadora ──
+    // ── Entrar a un edificio: queda en líneas, la cámara se acerca y da paso al plano ──
     function entrar(tipo, listo) {
-        const c = centros[tipo];
-        if (reduce || seccion.hidden || !c || !velo) { listo(); return; }
+        const ed = svg.querySelector(`.pq-edif[data-tipo="${tipo}"] .pq-hl`);
+        if (reduce || seccion.hidden || !velo) { listo(); return; }
         if (ocupado) return;
         ocupado = true;
-        const enCalle = pAct > 0.8;
-        const w1 = VW * 0.14, h1 = VH * 0.14, x1 = c.x - w1 / 2, y1 = c.y - h1 / 2;
-        const t0 = performance.now(), dur = enCalle ? 640 : 280;
-        (function avanza(ahora) {
-            const t = clamp((ahora - t0) / dur), e = t * t * t;
-            if (enCalle) svg.setAttribute('viewBox', `${(x1 * e).toFixed(1)} ${(y1 * e).toFixed(1)} ${(VW + (w1 - VW) * e).toFixed(1)} ${(VH + (h1 - VH) * e).toFixed(1)}`);
-            velo.style.opacity = clamp((t - 0.4) / 0.55).toFixed(3);
-            if (t < 1) { requestAnimationFrame(avanza); return; }
+        const enPlaza = pAct > 0.9 && ed;
+        let x1 = 0, y1 = 0, w1 = VW, h1 = VH;
+        if (enPlaza) {
+            const r = svg.getBoundingClientRect(), b = ed.getBoundingClientRect();
+            const sc = Math.max(r.width / VW, r.height / VH);
+            const bx = (b.left + b.width / 2 - (r.left + (r.width - VW * sc) / 2)) / sc;
+            const by = (b.top + b.height / 2 - (r.top + (r.height - VH * sc))) / sc;
+            h1 = Math.max(b.height / sc * 1.25, b.width / sc * 1.25 * VH / VW); w1 = h1 * VW / VH;
+            x1 = bx - w1 / 2; y1 = by - h1 / 2;
+            escena.dataset.elige = tipo;
+        }
+        const t0 = performance.now(), dur = enPlaza ? 900 : 320;
+        (function paso(ahora) {
+            const t = clamp((ahora - t0) / dur), e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            if (enPlaza) svg.setAttribute('viewBox', `${(x1 * e).toFixed(1)} ${(y1 * e).toFixed(1)} ${(VW + (w1 - VW) * e).toFixed(1)} ${(VH + (h1 - VH) * e).toFixed(1)}`);
+            velo.style.opacity = clamp((t - 0.62) / 0.36).toFixed(3);
+            if (t < 1) { requestAnimationFrame(paso); return; }
             listo();
             svg.setAttribute('viewBox', `0 0 ${VW} ${VH}`);
+            delete escena.dataset.elige;
             velo.style.opacity = '0';
             ocupado = false;
         })(t0);
     }
 
+    // El botón de abajo y su edificio se iluminan juntos
+    function foco(tipo) {
+        svg.querySelectorAll('.pq-edif').forEach((b) => b.classList.toggle('is-foco', b.dataset.tipo === tipo));
+        escena.querySelectorAll('.pe-entrada__op').forEach((b) => b.classList.toggle('is-foco', b.dataset.tipo === tipo));
+    }
+    escena.addEventListener('pointerover', (ev) => { const b = ev.target.closest && ev.target.closest('.pq-edif, .pe-entrada__op'); foco(b ? b.dataset.tipo : null); });
+    escena.addEventListener('pointerleave', () => foco(null));
+    escena.addEventListener('focusin', (ev) => { const b = ev.target.closest && ev.target.closest('.pq-edif, .pe-entrada__op'); foco(b ? b.dataset.tipo : null); });
     svg.addEventListener('keydown', (ev) => {
         const b = ev.target.closest && ev.target.closest('.pq-edif');
         if (b && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); b.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
@@ -235,5 +295,5 @@
 
     function reiniciar() { construir(); pObj = pAct = objetivo(); aplicar(pAct); }
     reiniciar();
-    window.FrigoPacParque = { entrar, reiniciar };
+    window.FrigoPacParque = { entrar, reiniciar, ver: (p) => { pAct = pObj = clamp(p); aplicar(pAct); } };
 })();
