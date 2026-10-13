@@ -572,7 +572,7 @@
                 `${miles(bd.volumen_m3)} m³ ÷ ${num(S.balt)} m = <b>${miles(bd.area_m2)} m²</b>, como un cuadrado de ${num(lado)} × ${num(lado)} m. Con ${num(S.balt)} m de alto van ${niveles} estibas una encima de otra, unas ${miles(bd.posiciones / niveles)} por nivel. A eso falta sumarle muelles de carga y antecámaras.`)
         ]).join('');
         const gcca = bd.volumen_referencia_gcca_m3;
-        $('peBodRef').textContent = `Para comparar: el promedio mundial de bodegas frigoríficas (GCCA) es 4,3 m³ por tonelada, que daría ${miles(gcca)} m³. ${gcca < bd.volumen_m3 ? 'Sale menos porque muchas bodegas usan sistemas más apretados que la estantería selectiva, como drive-in o estantería móvil.' : 'Sale más porque el promedio mundial incluye bodegas con estantería selectiva y pasillos anchos.'} Emergent Cold, en Funza, guarda 12.000 t en 81.000 m³.`;
+        $('peBodRef').textContent = `Para comparar: el promedio mundial de bodegas frigoríficas (GCCA) es 4,3 m³ por tonelada, que daría ${miles(gcca)} m³. ${gcca < bd.volumen_m3 ? 'Sale menos porque muchas bodegas usan sistemas más apretados que la estantería selectiva, como drive-in o estantería móvil.' : 'Sale más porque el promedio mundial incluye bodegas con estantería selectiva y pasillos anchos.'}`;
         const dib = $('peBodDibujo');
         dib.parentElement.dataset.vista = 'plano';
         PL.pintar(dib, { tipo: 'bodega', L: bd.largo_m || Math.sqrt(bd.area_m2), A: bd.ancho_m || Math.sqrt(bd.area_m2), H: S.balt, canchas: bd.canchas });
