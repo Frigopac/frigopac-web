@@ -423,14 +423,14 @@
 
 /* Aviso luminoso del portal */
 .pq-halo { fill: url(#pqHalo); animation: pq-respira 5s ease-in-out infinite; }
-.pq-halo-a { stop-color: #CFEFFF; stop-opacity: 0.34; }
+.pq-halo-a { stop-color: #7FD8F0; stop-opacity: 0.3; }
 .pq-halo-b { stop-color: #CFEFFF; stop-opacity: 0; }
 .pq-cono-a { stop-color: #CFEFFF; stop-opacity: 0.1; }
 .pq-cono-luz { fill: url(#pqCono); }
 .pq-soporte { fill: #64748B; }
-.pq-luz-marco { fill: #1B2D4D; stroke: #CBD5E1; stroke-width: 1.6; }
-.pq-luz { fill: #fff; }
-.pq-luz-brillo { fill: none; stroke: rgb(255 255 255 / 0.9); stroke-width: 1; }
+.pq-luz-marco { fill: #1B2D4D; stroke: #9EE6F5; stroke-width: 1.8; }
+.pq-luz { fill: #071224; }
+.pq-luz-brillo { fill: none; stroke: rgb(0 180 216 / 0.55); stroke-width: 1; }
 
 /* Edificios: se iluminan con su botón y quedan en líneas al entrar */
 .pq-hl { fill: rgb(0 180 216 / 0.08); stroke: var(--pe-cian); stroke-width: 2; opacity: 0; transition: opacity 0.25s; }

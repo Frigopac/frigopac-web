@@ -171,7 +171,7 @@
         portal += `<rect class="pq-soporte" x="${cx - 96}" y="176" width="8" height="14"/><rect class="pq-soporte" x="${cx + 88}" y="176" width="8" height="14"/><path class="pq-poste" d="M${cx - 110} 176 H${cx + 110}"/>
             <rect class="pq-luz-marco" x="${cx - 124}" y="186" width="248" height="158" rx="10"/>
             <rect class="pq-luz" x="${cx - 118}" y="192" width="236" height="146" rx="6"/>
-            <image href="assets/images/logo-frigopac.jpg" x="${cx - 104}" y="198" width="208" height="134" preserveAspectRatio="xMidYMid meet"/>
+            <image href="assets/images/logo-frigopac.webp" x="${cx - 108}" y="196" width="216" height="138" preserveAspectRatio="xMidYMid meet"/>
             <rect class="pq-luz-brillo" x="${cx - 118}" y="192" width="236" height="146" rx="6"/>
             <g class="pq-gente">${operario({ x: lx + 30, y: 412, pose: 'escalera', piel: '#C58A63', casco: '#FFC857' })}
             ${operario({ x: pd - 22, y: 646, gira: true, pose: 'planilla', piel: '#E0B08A' })}
